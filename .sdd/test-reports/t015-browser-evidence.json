@@ -1,0 +1,1550 @@
+{
+  "mock": true,
+  "viewport": "1440x900",
+  "cdpPort": 9346,
+  "url": "http://127.0.0.1:5199",
+  "steps": [],
+  "viteStatus": 200,
+  "breakpoints": {
+    "hookLine": 12,
+    "svcLine": 37
+  },
+  "baseline": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "timeZone": "Asia/Shanghai",
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] outlook.md",
+        "hint": "入库中 · [Mock] 9月14日 12:12",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月14日 12:12",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": true
+      },
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "hint": "已完成 · 4 块 · [Mock] 9月13日 18:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 18:00",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      }
+    ],
+    "rowCount": 2,
+    "filenames": [
+      "[Mock] outlook.md",
+      "[Mock] vpn-faq.md"
+    ],
+    "statuses": [
+      "入库中",
+      "已完成"
+    ],
+    "emptyText": "",
+    "listError": "",
+    "uploadError": "",
+    "uploadHint": "[Mock] 仅支持 Markdown（.md）。提交后立刻入库中，可离开再回来。",
+    "detailText": "[Mock] 这篇文档正在入库中，完成后才能查看分块并修改标签或 FAQ。",
+    "filterAria": "入库状态筛选",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterPressed": [
+      "全部"
+    ],
+    "filterPressedValue": "all",
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": true,
+        "selectedClass": true,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(29, 78, 137)",
+        "background": "rgb(232, 241, 250)",
+        "borderColor": "rgb(29, 78, 137)"
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "uploadTop": 56,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "uploadBtnLabels": [
+        "上传"
+      ],
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "expectedOutlookLocal": {
+      "tz": "Asia/Shanghai",
+      "outlook": "9月14日 12:12",
+      "vpn": "9月13日 18:00"
+    },
+    "screenshot": "t015-baseline-all.png"
+  },
+  "ingestingFilter": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "timeZone": "Asia/Shanghai",
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] outlook.md",
+        "hint": "入库中 · [Mock] 9月14日 12:12",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月14日 12:12",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": true
+      }
+    ],
+    "rowCount": 1,
+    "filenames": [
+      "[Mock] outlook.md"
+    ],
+    "statuses": [
+      "入库中"
+    ],
+    "emptyText": "",
+    "listError": "",
+    "uploadError": "",
+    "uploadHint": "[Mock] 仅支持 Markdown（.md）。提交后立刻入库中，可离开再回来。",
+    "detailText": "[Mock] 这篇文档正在入库中，完成后才能查看分块并修改标签或 FAQ。",
+    "filterAria": "入库状态筛选",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterPressed": [
+      "入库中"
+    ],
+    "filterPressedValue": "ingesting",
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": true,
+        "selectedClass": true,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(29, 78, 137)",
+        "background": "rgb(232, 241, 250)",
+        "borderColor": "rgb(29, 78, 137)"
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "uploadTop": 56,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "uploadBtnLabels": [
+        "上传"
+      ],
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "queries": {
+      "listQueries": [
+        {
+          "keys": [
+            "page",
+            "page_size"
+          ],
+          "page": 1,
+          "t": 1789629398467
+        },
+        {
+          "ingest_status": "ingesting",
+          "keys": [
+            "page",
+            "page_size",
+            "ingest_status"
+          ],
+          "page": 1,
+          "t": 1789629398776
+        }
+      ],
+      "filterCalls": [
+        {
+          "filter": "all",
+          "queryKeys": [
+            "page",
+            "page_size"
+          ],
+          "t": 1789629398467
+        },
+        {
+          "filter": "ingesting",
+          "queryKeys": [
+            "page",
+            "page_size",
+            "ingest_status"
+          ],
+          "ingest_status": "ingesting",
+          "t": 1789629398775
+        }
+      ]
+    },
+    "screenshot": "t015-filter-ingesting.png"
+  },
+  "readyFilter": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "timeZone": "Asia/Shanghai",
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "hint": "已完成 · 4 块 · [Mock] 9月13日 18:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 18:00",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      }
+    ],
+    "rowCount": 1,
+    "filenames": [
+      "[Mock] vpn-faq.md"
+    ],
+    "statuses": [
+      "已完成"
+    ],
+    "emptyText": "",
+    "listError": "",
+    "uploadError": "",
+    "uploadHint": "[Mock] 仅支持 Markdown（.md）。提交后立刻入库中，可离开再回来。",
+    "detailText": "[Mock] 选择一篇已完成的文档以查看分块并编辑标签。",
+    "filterAria": "入库状态筛选",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterPressed": [
+      "已完成"
+    ],
+    "filterPressedValue": "ready",
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": true,
+        "selectedClass": true,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(29, 78, 137)",
+        "background": "rgb(232, 241, 250)",
+        "borderColor": "rgb(29, 78, 137)"
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "uploadTop": 56,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "uploadBtnLabels": [
+        "上传"
+      ],
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "screenshot": "t015-filter-ready.png"
+  },
+  "failedEmpty": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "timeZone": "Asia/Shanghai",
+    "pageHasMock": true,
+    "rows": [],
+    "rowCount": 0,
+    "filenames": [],
+    "statuses": [],
+    "emptyText": "[Mock] 当前没有该状态的文档",
+    "listError": "",
+    "uploadError": "",
+    "uploadHint": "[Mock] 仅支持 Markdown（.md）。提交后立刻入库中，可离开再回来。",
+    "detailText": "[Mock] 选择一篇已完成的文档以查看分块并编辑标签。",
+    "filterAria": "入库状态筛选",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterPressed": [
+      "请重新上传"
+    ],
+    "filterPressedValue": "failed",
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": true,
+        "selectedClass": true,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(29, 78, 137)",
+        "background": "rgb(232, 241, 250)",
+        "borderColor": "rgb(29, 78, 137)"
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "uploadTop": 56,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "uploadBtnLabels": [
+        "上传"
+      ],
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "screenshot": "t015-filter-failed-empty.png"
+  },
+  "afterFailedUpload": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "timeZone": "Asia/Shanghai",
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] t015-from-failed.md",
+        "hint": "入库中 · [Mock] 9月17日 15:16",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:16",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": true
+      },
+      {
+        "filename": "[Mock] outlook.md",
+        "hint": "入库中 · [Mock] 9月14日 12:12",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月14日 12:12",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      },
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "hint": "已完成 · 4 块 · [Mock] 9月13日 18:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 18:00",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      }
+    ],
+    "rowCount": 3,
+    "filenames": [
+      "[Mock] t015-from-failed.md",
+      "[Mock] outlook.md",
+      "[Mock] vpn-faq.md"
+    ],
+    "statuses": [
+      "入库中",
+      "入库中",
+      "已完成"
+    ],
+    "emptyText": "",
+    "listError": "",
+    "uploadError": "",
+    "uploadHint": "[Mock] 仅支持 Markdown（.md）。提交后立刻入库中，可离开再回来。",
+    "detailText": "[Mock] 这篇文档正在入库中，完成后才能查看分块并修改标签或 FAQ。",
+    "filterAria": "入库状态筛选",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterPressed": [
+      "全部"
+    ],
+    "filterPressedValue": "all",
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": true,
+        "selectedClass": true,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(29, 78, 137)",
+        "background": "rgb(232, 241, 250)",
+        "borderColor": "rgb(29, 78, 137)"
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "uploadTop": 56,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "uploadBtnLabels": [
+        "上传"
+      ],
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "nowLocal": "9月17日 15:16",
+    "screenshot": "t015-upload-from-failed.png"
+  },
+  "readyBeforeUpload": {
+    "filterPressed": [
+      "已完成"
+    ],
+    "filenames": [
+      "[Mock] vpn-faq.md"
+    ]
+  },
+  "afterReadyUpload": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "timeZone": "Asia/Shanghai",
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] t015-from-ready.md",
+        "hint": "入库中 · [Mock] 9月17日 15:16",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:16",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": true
+      },
+      {
+        "filename": "[Mock] t015-from-failed.md",
+        "hint": "入库中 · [Mock] 9月17日 15:16",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:16",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      },
+      {
+        "filename": "[Mock] outlook.md",
+        "hint": "入库中 · [Mock] 9月14日 12:12",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月14日 12:12",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      },
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "hint": "已完成 · 4 块 · [Mock] 9月13日 18:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 18:00",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      }
+    ],
+    "rowCount": 4,
+    "filenames": [
+      "[Mock] t015-from-ready.md",
+      "[Mock] t015-from-failed.md",
+      "[Mock] outlook.md",
+      "[Mock] vpn-faq.md"
+    ],
+    "statuses": [
+      "入库中",
+      "入库中",
+      "入库中",
+      "已完成"
+    ],
+    "emptyText": "",
+    "listError": "",
+    "uploadError": "",
+    "uploadHint": "[Mock] 仅支持 Markdown（.md）。提交后立刻入库中，可离开再回来。",
+    "detailText": "[Mock] 这篇文档正在入库中，完成后才能查看分块并修改标签或 FAQ。",
+    "filterAria": "入库状态筛选",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterPressed": [
+      "全部"
+    ],
+    "filterPressedValue": "all",
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": true,
+        "selectedClass": true,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(29, 78, 137)",
+        "background": "rgb(232, 241, 250)",
+        "borderColor": "rgb(29, 78, 137)"
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "uploadTop": 56,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "uploadBtnLabels": [
+        "上传"
+      ],
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "screenshot": "t015-upload-from-ready.png"
+  },
+  "afterKeepIngesting": {
+    "beforePressed": [
+      "入库中"
+    ],
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "timeZone": "Asia/Shanghai",
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] t015-keep-ingesting.md",
+        "hint": "入库中 · [Mock] 9月17日 15:16",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:16",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": true
+      },
+      {
+        "filename": "[Mock] t015-from-ready.md",
+        "hint": "入库中 · [Mock] 9月17日 15:16",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:16",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      },
+      {
+        "filename": "[Mock] t015-from-failed.md",
+        "hint": "入库中 · [Mock] 9月17日 15:16",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:16",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      },
+      {
+        "filename": "[Mock] outlook.md",
+        "hint": "入库中 · [Mock] 9月14日 12:12",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月14日 12:12",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      }
+    ],
+    "rowCount": 4,
+    "filenames": [
+      "[Mock] t015-keep-ingesting.md",
+      "[Mock] t015-from-ready.md",
+      "[Mock] t015-from-failed.md",
+      "[Mock] outlook.md"
+    ],
+    "statuses": [
+      "入库中",
+      "入库中",
+      "入库中",
+      "入库中"
+    ],
+    "emptyText": "",
+    "listError": "",
+    "uploadError": "",
+    "uploadHint": "[Mock] 仅支持 Markdown（.md）。提交后立刻入库中，可离开再回来。",
+    "detailText": "[Mock] 这篇文档正在入库中，完成后才能查看分块并修改标签或 FAQ。",
+    "filterAria": "入库状态筛选",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterPressed": [
+      "入库中"
+    ],
+    "filterPressedValue": "ingesting",
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": true,
+        "selectedClass": true,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(29, 78, 137)",
+        "background": "rgb(232, 241, 250)",
+        "borderColor": "rgb(29, 78, 137)"
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "uploadTop": 56,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "uploadBtnLabels": [
+        "上传"
+      ],
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "screenshot": "t015-keep-ingesting.png"
+  },
+  "afterKeepAll": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "timeZone": "Asia/Shanghai",
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] t015-keep-all.md",
+        "hint": "入库中 · [Mock] 9月17日 15:16",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:16",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": true
+      },
+      {
+        "filename": "[Mock] t015-keep-ingesting.md",
+        "hint": "入库中 · [Mock] 9月17日 15:16",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:16",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      },
+      {
+        "filename": "[Mock] t015-from-ready.md",
+        "hint": "入库中 · [Mock] 9月17日 15:16",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:16",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      },
+      {
+        "filename": "[Mock] t015-from-failed.md",
+        "hint": "入库中 · [Mock] 9月17日 15:16",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:16",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      },
+      {
+        "filename": "[Mock] outlook.md",
+        "hint": "入库中 · [Mock] 9月14日 12:12",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月14日 12:12",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      },
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "hint": "已完成 · 4 块 · [Mock] 9月13日 18:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 18:00",
+        "timeFontSize": "12px",
+        "timeColor": "rgb(92, 107, 122)",
+        "hasSeconds": false,
+        "hasIso": false,
+        "hasCreatedAt": false,
+        "selected": false
+      }
+    ],
+    "rowCount": 6,
+    "filenames": [
+      "[Mock] t015-keep-all.md",
+      "[Mock] t015-keep-ingesting.md",
+      "[Mock] t015-from-ready.md",
+      "[Mock] t015-from-failed.md",
+      "[Mock] outlook.md",
+      "[Mock] vpn-faq.md"
+    ],
+    "statuses": [
+      "入库中",
+      "入库中",
+      "入库中",
+      "入库中",
+      "入库中",
+      "已完成"
+    ],
+    "emptyText": "",
+    "listError": "",
+    "uploadError": "",
+    "uploadHint": "[Mock] 仅支持 Markdown（.md）。提交后立刻入库中，可离开再回来。",
+    "detailText": "[Mock] 这篇文档正在入库中，完成后才能查看分块并修改标签或 FAQ。",
+    "filterAria": "入库状态筛选",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterPressed": [
+      "全部"
+    ],
+    "filterPressedValue": "all",
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": true,
+        "selectedClass": true,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(29, 78, 137)",
+        "background": "rgb(232, 241, 250)",
+        "borderColor": "rgb(29, 78, 137)"
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false,
+        "selectedClass": false,
+        "height": 32,
+        "radius": "6px",
+        "fontSize": "12px",
+        "color": "rgb(31, 41, 51)",
+        "background": "rgb(255, 255, 255)",
+        "borderColor": "rgb(217, 226, 236)"
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "uploadTop": 56,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "uploadBtnLabels": [
+        "上传"
+      ],
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "screenshot": "t015-keep-all.png"
+  },
+  "strategy": {
+    "detailHasOverlap80": true,
+    "detailHasOverlap160": false,
+    "detailText": "[Mock] 按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 80 字，保留标题路径。 本篇共 4 块（只读）。 分块 1 · [Mock] VPN 使用说明 [Mock] VPN 使用说明 分块 2 · [Mock] VPN 使用说明 / 连接失败 [Mock] VPN 使用说明 / 连接失败 公司 VPN 认证失败时，先确认账号未被锁定，再检查是否使用了过期的配置文件。重新导入 IT 发放的 ovpn 文件后再登录。若仍失败，不要反复尝试以免触发锁"
+  },
+  "race": {
+    "observedStaleAllOverwrite": false,
+    "hits": [],
+    "settledPressed": [
+      "已完成"
+    ],
+    "settledStatuses": [
+      "已完成",
+      "已完成",
+      "已完成",
+      "已完成",
+      "已完成"
+    ],
+    "screenshot": "t015-race-ready.png"
+  },
+  "queries": {
+    "listQueries": [
+      {
+        "keys": [
+          "page",
+          "page_size"
+        ],
+        "page": 1,
+        "t": 1789629398467
+      },
+      {
+        "ingest_status": "ingesting",
+        "keys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "page": 1,
+        "t": 1789629398776
+      },
+      {
+        "ingest_status": "ready",
+        "keys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "page": 1,
+        "t": 1789629399130
+      },
+      {
+        "ingest_status": "failed",
+        "keys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "page": 1,
+        "t": 1789629399440
+      },
+      {
+        "keys": [
+          "page",
+          "page_size"
+        ],
+        "page": 1,
+        "t": 1789629399764
+      },
+      {
+        "ingest_status": "ready",
+        "keys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "page": 1,
+        "t": 1789629399949
+      },
+      {
+        "keys": [
+          "page",
+          "page_size"
+        ],
+        "page": 1,
+        "t": 1789629400201
+      },
+      {
+        "ingest_status": "ingesting",
+        "keys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "page": 1,
+        "t": 1789629400363
+      },
+      {
+        "ingest_status": "ingesting",
+        "keys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "page": 1,
+        "t": 1789629400624
+      },
+      {
+        "keys": [
+          "page",
+          "page_size"
+        ],
+        "page": 1,
+        "t": 1789629400961
+      },
+      {
+        "keys": [
+          "page",
+          "page_size"
+        ],
+        "page": 1,
+        "t": 1789629401209
+      },
+      {
+        "keys": [
+          "page",
+          "page_size"
+        ],
+        "page": 1,
+        "t": 1789629401963
+      },
+      {
+        "keys": [
+          "page",
+          "page_size"
+        ],
+        "page": 1,
+        "t": 1789629404546
+      },
+      {
+        "ingest_status": "ready",
+        "keys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "page": 1,
+        "t": 1789629404796
+      },
+      {
+        "keys": [
+          "page",
+          "page_size"
+        ],
+        "page": 1,
+        "t": 1789629407079
+      },
+      {
+        "ingest_status": "ready",
+        "keys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "page": 1,
+        "t": 1789629410055
+      },
+      {
+        "keys": [
+          "page",
+          "page_size"
+        ],
+        "page": 1,
+        "t": 1789629412309
+      },
+      {
+        "keys": [
+          "page",
+          "page_size"
+        ],
+        "page": 1,
+        "t": 1789629415344
+      },
+      {
+        "ingest_status": "ready",
+        "keys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "page": 1,
+        "t": 1789629415457
+      }
+    ],
+    "filterCalls": [
+      {
+        "filter": "all",
+        "queryKeys": [
+          "page",
+          "page_size"
+        ],
+        "t": 1789629398467
+      },
+      {
+        "filter": "ingesting",
+        "queryKeys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "ingest_status": "ingesting",
+        "t": 1789629398775
+      },
+      {
+        "filter": "ready",
+        "queryKeys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "ingest_status": "ready",
+        "t": 1789629399130
+      },
+      {
+        "filter": "failed",
+        "queryKeys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "ingest_status": "failed",
+        "t": 1789629399440
+      },
+      {
+        "filter": "all",
+        "queryKeys": [
+          "page",
+          "page_size"
+        ],
+        "t": 1789629399764
+      },
+      {
+        "filter": "ready",
+        "queryKeys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "ingest_status": "ready",
+        "t": 1789629399949
+      },
+      {
+        "filter": "all",
+        "queryKeys": [
+          "page",
+          "page_size"
+        ],
+        "t": 1789629400201
+      },
+      {
+        "filter": "ingesting",
+        "queryKeys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "ingest_status": "ingesting",
+        "t": 1789629400362
+      },
+      {
+        "filter": "ingesting",
+        "queryKeys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "ingest_status": "ingesting",
+        "t": 1789629400624
+      },
+      {
+        "filter": "all",
+        "queryKeys": [
+          "page",
+          "page_size"
+        ],
+        "t": 1789629400961
+      },
+      {
+        "filter": "all",
+        "queryKeys": [
+          "page",
+          "page_size"
+        ],
+        "t": 1789629401209
+      },
+      {
+        "filter": "all",
+        "queryKeys": [
+          "page",
+          "page_size"
+        ],
+        "t": 1789629401963
+      },
+      {
+        "filter": "all",
+        "queryKeys": [
+          "page",
+          "page_size"
+        ],
+        "t": 1789629404545
+      },
+      {
+        "filter": "ready",
+        "queryKeys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "ingest_status": "ready",
+        "t": 1789629404795
+      },
+      {
+        "filter": "all",
+        "queryKeys": [
+          "page",
+          "page_size"
+        ],
+        "t": 1789629407079
+      },
+      {
+        "filter": "ready",
+        "queryKeys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "ingest_status": "ready",
+        "t": 1789629410055
+      },
+      {
+        "filter": "all",
+        "queryKeys": [
+          "page",
+          "page_size"
+        ],
+        "t": 1789629412309
+      },
+      {
+        "filter": "all",
+        "queryKeys": [
+          "page",
+          "page_size"
+        ],
+        "t": 1789629415344
+      },
+      {
+        "filter": "ready",
+        "queryKeys": [
+          "page",
+          "page_size",
+          "ingest_status"
+        ],
+        "ingest_status": "ready",
+        "t": 1789629415456
+      }
+    ]
+  },
+  "assertions": {
+    "vite200": true,
+    "viewport1440": true,
+    "mockVisible": true,
+    "atLeastTwoDocs": true,
+    "newestFirst": true,
+    "rowFilename": true,
+    "chineseStatus": true,
+    "localTimeToMinute": true,
+    "noSeconds": true,
+    "noCreatedAt": true,
+    "timeMuted12": true,
+    "filterInLeftTop": true,
+    "uploadHasNoFilter": true,
+    "uploadMinHeight": true,
+    "leftCol320": true,
+    "fourFilters": true,
+    "defaultAll": true,
+    "chipSize": true,
+    "chipSelectedColor": true,
+    "chipUnselected": true,
+    "ingestingOnly": true,
+    "readyOnly": true,
+    "failedEmptyText": true,
+    "failedEmptyUploadEnabled": true,
+    "uploadFromFailedGoesAll": true,
+    "uploadFromFailedCurrentTime": true,
+    "uploadFromReadyGoesAll": true,
+    "keepIngesting": true,
+    "keepAll": true,
+    "overlap80Expected": true,
+    "queryAllOmits": true,
+    "queryOthersMap": true
+  },
+  "failedAssertions": [],
+  "newestFirstDetail": {
+    "ok": true,
+    "times": [
+      "· [Mock] 9月14日 12:12",
+      "· [Mock] 9月13日 18:00"
+    ],
+    "parsed": [
+      900141212,
+      900131800
+    ]
+  }
+}

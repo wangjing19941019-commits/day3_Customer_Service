@@ -1,0 +1,357 @@
+{
+  "phase": 3,
+  "cdpPort": 9388,
+  "steps": {},
+  "mdOpen": {
+    "pageHasMock": false,
+    "rows": [
+      {
+        "filename": "t011-ingest-probe.md",
+        "hint": "已完成 · 1 块 · 9月17日 11:46",
+        "status": "已完成",
+        "selected": false
+      },
+      {
+        "filename": "t011-helix-vpn.md",
+        "hint": "已完成 · 2 块 · 9月17日 11:40",
+        "status": "已完成",
+        "selected": true
+      },
+      {
+        "filename": "t011-from-ready.md",
+        "hint": "已完成 · 1 块 · 9月17日 11:40",
+        "status": "已完成",
+        "selected": false
+      },
+      {
+        "filename": "t011-printer-guide.pdf",
+        "hint": "已完成 · 6 块 · 9月17日 11:40",
+        "status": "已完成",
+        "selected": false
+      },
+      {
+        "filename": "t011-office-wifi.txt",
+        "hint": "已完成 · 3 块 · 9月17日 11:40",
+        "status": "已完成",
+        "selected": false
+      }
+    ],
+    "filenames": [
+      "t011-ingest-probe.md",
+      "t011-helix-vpn.md",
+      "t011-from-ready.md",
+      "t011-printer-guide.pdf",
+      "t011-office-wifi.txt"
+    ],
+    "statuses": [
+      "已完成",
+      "已完成",
+      "已完成",
+      "已完成",
+      "已完成"
+    ],
+    "selected": "t011-helix-vpn.md",
+    "detailText": "所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 2 块（只读）。 分块 1 · T011Helix VPN / 密码重置 T011Helix VPN / 密码重置 T011HELIX-RESET：在账号中心选择重置密码并完成手机验证，然后重新导入公司 VPN 配置文件。不要反复输入旧密码。完成验证后等待一分钟再打开客户端。 甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲 分块 2 · T011Helix VPN / 连接失败 T011Helix VPN / 连接失败 T011HELIX-FAIL：若提示认证失败，先检查是否连了访客 WiFi，再忘记网络后重连办公网。证书过期时联系 IT 换发，不要改本机防火墙做实验。 乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙乙 标签与 FAQ 当前标签：硬件设备 · 故障与异常排查 · 报修与维护服务 对象标签 硬件设备 软件与操作系统 账号与身份认证 网络与远程接入 业务系统与共享资源 诉求标签 故障与异常排查 报修与维护服务 资源申请与变更 权限开通与调整 操作与配置指导 制度与流程说明 实体 产品 设备 资源 删除 添加实体 FAQ 问法 1 答案 1 删除 FAQ 问法 2 答案 2 删除 FAQ 添加 FAQ 保存",
+    "hasChunks": 2,
+    "hasEditForm": true,
+    "faqQuestions": [
+      "T011Helix VPN 密码重置流程是什么？",
+      "T011Helix VPN 连接失败（提示认证失败）怎么办？"
+    ],
+    "faqAnswers": [
+      "在账号中心选择重置密码并完成手机验证，然后重新导入公司 VPN 配置文件。不要反复输入旧密码。完成验证后等待一分钟再打开客户端。",
+      "先检查是否连了访客 WiFi，再忘记网络后重连办公网。证书过期时联系 IT 换发，不要改本机防火墙做实验。"
+    ],
+    "saveMessage": "",
+    "objectChecked": [
+      "硬件设备"
+    ],
+    "screenshot": "t011-p3-md-hardware.png"
+  },
+  "faqDraft": {
+    "q": [
+      "T011HELIX 重置 VPN 密码的要点是什么"
+    ],
+    "a": [
+      "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+    ]
+  },
+  "faqSaved": {
+    "questions": [
+      "T011Helix VPN 密码重置流程是什么？",
+      "T011Helix VPN 连接失败（提示认证失败）怎么办？"
+    ],
+    "answers": [
+      "在账号中心选择重置密码并完成手机验证，然后重新导入公司 VPN 配置文件。不要反复输入旧密码。完成验证后等待一分钟再打开客户端。",
+      "先检查是否连了访客 WiFi，再忘记网络后重连办公网。证书过期时联系 IT 换发，不要改本机防火墙做实验。"
+    ],
+    "api": [
+      {
+        "q": "T011HELIX 重置 VPN 密码的要点是什么",
+        "a": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+      }
+    ],
+    "screenshot": "t011-p3-faq-saved.png"
+  },
+  "newFaqAsk": {
+    "conversationId": "83b39e6d-b5b6-4685-9c78-bc90159477e5",
+    "errorText": "",
+    "messageCount": 2,
+    "lastOther": {
+      "side": "other",
+      "tag": "FAQ",
+      "text": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+    },
+    "lastEmployee": {
+      "side": "employee",
+      "tag": null,
+      "text": "T011HELIX 重置 VPN 密码的要点是什么"
+    },
+    "pageHasMock": false,
+    "taDisabled": false
+  },
+  "oldFaqAsk": {
+    "conversationId": "83b39e6d-b5b6-4685-9c78-bc90159477e5",
+    "errorText": "",
+    "messageCount": 4,
+    "lastOther": {
+      "side": "other",
+      "tag": "FAQ",
+      "text": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+    },
+    "lastEmployee": {
+      "side": "employee",
+      "tag": null,
+      "text": "T011Helix VPN 密码重置流程是什么？"
+    },
+    "pageHasMock": false,
+    "taDisabled": false
+  },
+  "stayIngesting": {
+    "pageHasMock": false,
+    "rows": [
+      {
+        "filename": "t011-stay-ingesting.md",
+        "hint": "入库中 · 9月17日 11:50",
+        "status": "入库中",
+        "selected": true
+      },
+      {
+        "filename": "t011-helix-vpn.md",
+        "hint": "已完成 · 2 块 · 9月17日 11:50",
+        "status": "已完成",
+        "selected": false
+      },
+      {
+        "filename": "t011-ingest-probe.md",
+        "hint": "已完成 · 1 块 · 9月17日 11:46",
+        "status": "已完成",
+        "selected": false
+      },
+      {
+        "filename": "t011-from-ready.md",
+        "hint": "已完成 · 1 块 · 9月17日 11:40",
+        "status": "已完成",
+        "selected": false
+      },
+      {
+        "filename": "t011-printer-guide.pdf",
+        "hint": "已完成 · 6 块 · 9月17日 11:40",
+        "status": "已完成",
+        "selected": false
+      },
+      {
+        "filename": "t011-office-wifi.txt",
+        "hint": "已完成 · 3 块 · 9月17日 11:40",
+        "status": "已完成",
+        "selected": false
+      }
+    ],
+    "filenames": [
+      "t011-stay-ingesting.md",
+      "t011-helix-vpn.md",
+      "t011-ingest-probe.md",
+      "t011-from-ready.md",
+      "t011-printer-guide.pdf",
+      "t011-office-wifi.txt"
+    ],
+    "statuses": [
+      "入库中",
+      "已完成",
+      "已完成",
+      "已完成",
+      "已完成",
+      "已完成"
+    ],
+    "selected": "t011-stay-ingesting.md",
+    "detailText": "这篇文档正在入库中，完成后才能查看分块并修改标签或 FAQ。",
+    "hasChunks": 0,
+    "hasEditForm": false,
+    "faqQuestions": [],
+    "faqAnswers": [],
+    "saveMessage": "",
+    "objectChecked": [],
+    "screenshot": "t011-p3-stay-ingesting.png"
+  },
+  "stayBack": {
+    "pageHasMock": false,
+    "rows": [
+      {
+        "filename": "t011-stay-ingesting.md",
+        "hint": "入库中 · 9月17日 11:50",
+        "status": "入库中",
+        "selected": true
+      },
+      {
+        "filename": "t011-helix-vpn.md",
+        "hint": "已完成 · 2 块 · 9月17日 11:50",
+        "status": "已完成",
+        "selected": false
+      },
+      {
+        "filename": "t011-ingest-probe.md",
+        "hint": "已完成 · 1 块 · 9月17日 11:46",
+        "status": "已完成",
+        "selected": false
+      },
+      {
+        "filename": "t011-from-ready.md",
+        "hint": "已完成 · 1 块 · 9月17日 11:40",
+        "status": "已完成",
+        "selected": false
+      },
+      {
+        "filename": "t011-printer-guide.pdf",
+        "hint": "已完成 · 6 块 · 9月17日 11:40",
+        "status": "已完成",
+        "selected": false
+      },
+      {
+        "filename": "t011-office-wifi.txt",
+        "hint": "已完成 · 3 块 · 9月17日 11:40",
+        "status": "已完成",
+        "selected": false
+      }
+    ],
+    "filenames": [
+      "t011-stay-ingesting.md",
+      "t011-helix-vpn.md",
+      "t011-ingest-probe.md",
+      "t011-from-ready.md",
+      "t011-printer-guide.pdf",
+      "t011-office-wifi.txt"
+    ],
+    "statuses": [
+      "入库中",
+      "已完成",
+      "已完成",
+      "已完成",
+      "已完成",
+      "已完成"
+    ],
+    "selected": "t011-stay-ingesting.md",
+    "detailText": "这篇文档正在入库中，完成后才能查看分块并修改标签或 FAQ。",
+    "hasChunks": 0,
+    "hasEditForm": false,
+    "faqQuestions": [],
+    "faqAnswers": [],
+    "saveMessage": "",
+    "objectChecked": [],
+    "screenshot": "t011-p3-stay-back.png"
+  },
+  "checks": [
+    {
+      "id": "ac017-md-shows-hardware",
+      "pass": true,
+      "expected": "硬件设备",
+      "actual": {
+        "selected": "t011-helix-vpn.md",
+        "checked": [
+          "硬件设备"
+        ]
+      }
+    },
+    {
+      "id": "ac018-page-shows-new-faq",
+      "pass": false,
+      "expected": "T011HELIX 重置 VPN 密码的要点是什么",
+      "actual": {
+        "questions": [
+          "T011Helix VPN 密码重置流程是什么？",
+          "T011Helix VPN 连接失败（提示认证失败）怎么办？"
+        ],
+        "answers": [
+          "在账号中心选择重置密码并完成手机验证，然后重新导入公司 VPN 配置文件。不要反复输入旧密码。完成验证后等待一分钟再打开客户端。",
+          "先检查是否连了访客 WiFi，再忘记网络后重连办公网。证书过期时联系 IT 换发，不要改本机防火墙做实验。"
+        ],
+        "api": [
+          {
+            "q": "T011HELIX 重置 VPN 密码的要点是什么",
+            "a": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ac018-new-faq-hit",
+      "pass": true,
+      "expected": {
+        "tag": "FAQ",
+        "token": "T011HELIX-FAQ-NEW"
+      },
+      "actual": {
+        "tag": "FAQ",
+        "text": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+      }
+    },
+    {
+      "id": "ac018-old-faq-not-hit",
+      "pass": true,
+      "expected": {
+        "notOldFaqAnswer": true
+      },
+      "actual": {
+        "tag": "FAQ",
+        "text": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+      }
+    },
+    {
+      "id": "ac023-ingesting-hint-no-edit",
+      "pass": true,
+      "expected": {
+        "hint": "正在入库中",
+        "noEdit": true
+      },
+      "actual": {
+        "selected": "t011-stay-ingesting.md",
+        "status": "入库中",
+        "chunks": 0,
+        "edit": false,
+        "detail": "这篇文档正在入库中，完成后才能查看分块并修改标签或 FAQ。"
+      }
+    },
+    {
+      "id": "ac023-leave-return-still-ingesting",
+      "pass": true,
+      "expected": {
+        "stillIngesting": true,
+        "noEdit": true
+      },
+      "actual": {
+        "stay": {
+          "filename": "t011-stay-ingesting.md",
+          "hint": "入库中 · 9月17日 11:50",
+          "status": "入库中",
+          "selected": true
+        },
+        "selected": "t011-stay-ingesting.md",
+        "chunks": 0,
+        "edit": false,
+        "detail": "这篇文档正在入库中，完成后才能查看分块并修改标签或 FAQ。"
+      }
+    }
+  ],
+  "failed": [
+    "ac018-page-shows-new-faq"
+  ]
+}

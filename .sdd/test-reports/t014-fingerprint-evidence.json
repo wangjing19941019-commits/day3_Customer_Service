@@ -1,0 +1,158 @@
+{
+  "checks": {
+    "embedded_parse_ok": true,
+    "embedded_equals_file": true,
+    "hash_ok": true,
+    "size_ok": true,
+    "params_ok": false,
+    "no_old_dashboard_in_html_source": true,
+    "no_secrets_in_html": true,
+    "no_secrets_in_map": true,
+    "pages_ok": true,
+    "apis_ok": true,
+    "agent_null": true,
+    "bailian_httpx_modules": true,
+    "no_invented_tools": true,
+    "algorithm_claims": true,
+    "all_features_have_flow": true
+  },
+  "hash_mismatches": [],
+  "missing_files": [],
+  "size_mismatches": [],
+  "param_mismatch": [
+    {
+      "key": "jwt_expire_minutes",
+      "appsettings": "",
+      "expected": "720",
+      "where": "AppSettings"
+    },
+    {
+      "key": "llm_base_url",
+      "appsettings": "",
+      "expected": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "where": "AppSettings"
+    }
+  ],
+  "html_old_dashboard": [],
+  "html_secrets": [],
+  "map_secrets": [],
+  "page_mismatch": {},
+  "api_mismatch": {},
+  "module_kinds": {
+    "mod-axios": "普通函数",
+    "mod-auth": "普通函数",
+    "mod-chunk": "普通函数",
+    "mod-ingest": "普通函数",
+    "mod-qa": "普通函数",
+    "mod-handoff": "普通函数",
+    "mod-cosine": "普通函数",
+    "mod-bailian-chat": "外部服务",
+    "mod-bailian-embed": "外部服务"
+  },
+  "invented": [],
+  "agent": null,
+  "not_present": [
+    "无 Plugin 层、无工单工具、无实时查询工具。",
+    "无 Agent 模型选工具 / observation / 重试循环；问答是固定流水线。",
+    "无独立登出接口、无按账号的页面权限隐藏。",
+    "未找到对 dashscope SDK 的引用（集成层为 httpx）。",
+    "本导航未读取真实 .env、日志、SQLite 或用户上传文件。"
+  ],
+  "alg_notes": {
+    "alg-chunk_800": true,
+    "alg-chunk_160": true,
+    "alg-chunk_markdown": true,
+    "alg-qa_5": true,
+    "alg-retrieve_tag": true,
+    "alg-handoff": true
+  },
+  "feature_flows": [
+    {
+      "id": "feat-login",
+      "has_trigger": true,
+      "has_io": true,
+      "flow_steps": 5,
+      "flow_has_branch": true,
+      "api_ids": [
+        "api-001"
+      ]
+    },
+    {
+      "id": "feat-restore",
+      "has_trigger": true,
+      "has_io": true,
+      "flow_steps": 4,
+      "flow_has_branch": true,
+      "api_ids": [
+        "api-002"
+      ]
+    },
+    {
+      "id": "feat-logout",
+      "has_trigger": true,
+      "has_io": true,
+      "flow_steps": 2,
+      "flow_has_branch": true,
+      "api_ids": []
+    },
+    {
+      "id": "feat-ask",
+      "has_trigger": true,
+      "has_io": true,
+      "flow_steps": 4,
+      "flow_has_branch": true,
+      "api_ids": [
+        "api-007",
+        "api-009",
+        "api-010"
+      ]
+    },
+    {
+      "id": "feat-handoff",
+      "has_trigger": true,
+      "has_io": true,
+      "flow_steps": 3,
+      "flow_has_branch": true,
+      "api_ids": [
+        "api-011"
+      ]
+    },
+    {
+      "id": "feat-agent-inbox",
+      "has_trigger": true,
+      "has_io": true,
+      "flow_steps": 3,
+      "flow_has_branch": true,
+      "api_ids": [
+        "api-008",
+        "api-009",
+        "api-012"
+      ]
+    },
+    {
+      "id": "feat-kb-ingest",
+      "has_trigger": true,
+      "has_io": true,
+      "flow_steps": 4,
+      "flow_has_branch": true,
+      "api_ids": [
+        "api-003",
+        "api-004"
+      ]
+    },
+    {
+      "id": "feat-kb-edit",
+      "has_trigger": true,
+      "has_io": true,
+      "flow_steps": 2,
+      "flow_has_branch": true,
+      "api_ids": [
+        "api-005",
+        "api-006"
+      ]
+    }
+  ],
+  "embedded_error": null,
+  "file_count": 50,
+  "pass": false
+}

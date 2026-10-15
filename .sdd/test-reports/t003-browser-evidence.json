@@ -1,0 +1,243 @@
+{
+  "mock": true,
+  "viewport": "1440x900",
+  "url": "http://127.0.0.1:5199/knowledge",
+  "steps": [],
+  "seed": {
+    "pathname": "/knowledge",
+    "rows": [
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "statusText": "已完成 · 4 块",
+        "selected": true
+      }
+    ],
+    "chunkCount": 4,
+    "strategyHit": {
+      "titlePara": true,
+      "max800": true,
+      "overlap80": true
+    },
+    "hasEditForm": true,
+    "saveButtons": [
+      "保存"
+    ],
+    "bodyHasMock": true,
+    "layout": {
+      "topbarHeight": "56px",
+      "uploadMinHeight": "64px",
+      "uploadHeight": 65,
+      "listWidth": 320,
+      "detailWidth": 900,
+      "detailMinWidth": "520px",
+      "primaryBg": "rgb(29, 78, 137)",
+      "primaryHeight": "40px",
+      "canvas": "rgb(244, 246, 248)",
+      "readyDot": "rgb(15, 123, 90)",
+      "warnDot": null,
+      "badDot": null,
+      "chunkBodyFont": "14px",
+      "chunkMetaFont": "12px"
+    },
+    "screenshot": "t003-seed-vpn.png"
+  },
+  "nonMd": {
+    "uploadError": "[Mock] 请重新上传",
+    "rowCount": 1,
+    "listGrew": false,
+    "filenames": [
+      "[Mock] vpn-faq.md"
+    ],
+    "screenshot": "t003-non-md.png"
+  },
+  "mdImmediate": {
+    "elapsedMs": 53,
+    "rows": [
+      {
+        "filename": "[Mock] ingesting-demo.md",
+        "statusText": "入库中",
+        "selected": true
+      },
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "statusText": "已完成 · 4 块",
+        "selected": false
+      }
+    ],
+    "selected": {
+      "filename": "[Mock] ingesting-demo.md",
+      "statusText": "入库中",
+      "selected": true
+    },
+    "hasChunks": false,
+    "hasEditForm": false,
+    "detailText": "[Mock] 这篇文档正在入库中，完成后才能查看分块并修改标签或 FAQ。",
+    "screenshot": "t003-md-ingesting.png"
+  },
+  "leaveAndReturn": {
+    "awayPath": "/employee",
+    "backPath": "/knowledge",
+    "elapsedMs": 526,
+    "rows": [
+      {
+        "filename": "[Mock] ingesting-demo.md",
+        "statusText": "入库中",
+        "selected": true
+      },
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "statusText": "已完成 · 4 块",
+        "selected": false
+      }
+    ],
+    "ingestingStill": true,
+    "hasChunks": false,
+    "hasEditForm": false,
+    "saveButtons": [],
+    "detailText": "[Mock] 这篇文档正在入库中，完成后才能查看分块并修改标签或 FAQ。",
+    "screenshot": "t003-leave-return-ingesting.png"
+  },
+  "mdReady": {
+    "waitMs": 8650,
+    "totalMs": 9319,
+    "rows": [
+      {
+        "filename": "[Mock] ingesting-demo.md",
+        "statusText": "已完成 · 3 块",
+        "selected": true
+      },
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "statusText": "已完成 · 4 块",
+        "selected": false
+      }
+    ],
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "meta": "分块 1 · [Mock] 测试入库",
+        "contentLen": 11,
+        "contentEditable": null,
+        "hasInput": false,
+        "preview": "[Mock] 测试入库"
+      },
+      {
+        "meta": "分块 2 · [Mock] 测试入库 / 第一节",
+        "contentLen": 678,
+        "contentEditable": null,
+        "hasInput": false,
+        "preview": "[Mock] 测试入库 / 第一节\n这是一篇用于 Mock 入库中状态的 Markdown。内容需要足够长，以便切出多于一块，并覆盖标题路径。处理顺序先看账号再"
+      },
+      {
+        "meta": "分块 3 · [Mock] 测试入库 / 第二节",
+        "contentLen": 426,
+        "contentEditable": null,
+        "hasInput": false,
+        "preview": "[Mock] 测试入库 / 第二节\n导入客户端配置后先断开再连接一次。若出现重复名称只保留最新发放的文件。TLS handshake failed 多半是拦截或"
+      }
+    ],
+    "strategyHit": {
+      "titlePara": true,
+      "max800": true,
+      "overlap80": true
+    },
+    "hasEditForm": true,
+    "saveButtons": [
+      "保存"
+    ],
+    "detailHasStrategy": true,
+    "screenshot": "t003-md-ready.png"
+  },
+  "saveTagsFaq": {
+    "currentTags": "[Mock] 当前标签：网络与远程接入 · 硬件设备 · 操作与配置指导",
+    "faqQuestion": "保存后的新问法",
+    "faqAnswer": "保存后的新答案",
+    "saveMessage": "[Mock] 已保存，将立即用于后续提问。",
+    "chunkCount": 3,
+    "chunksUnchanged": true,
+    "screenshot": "t003-save-tags.png"
+  },
+  "vpnReady": {
+    "rows": [
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "statusText": "已完成 · 4 块",
+        "selected": true
+      }
+    ],
+    "chunkCount": 4,
+    "strategyHit": {
+      "titlePara": true,
+      "max800": true,
+      "overlap80": true
+    },
+    "headingPaths": [
+      "分块 1 · [Mock] VPN 使用说明",
+      "分块 2 · [Mock] VPN 使用说明 / 连接失败",
+      "分块 3 · [Mock] VPN 使用说明 / 配置导入",
+      "分块 4 · [Mock] VPN 使用说明 / 常见报错"
+    ],
+    "hasEditForm": true,
+    "saveButtons": [
+      "保存"
+    ],
+    "bodyHasMock": true,
+    "layout": {
+      "topbarHeight": "56px",
+      "uploadMinHeight": "64px",
+      "uploadHeight": 65,
+      "listWidth": 320,
+      "detailWidth": 900,
+      "detailMinWidth": "520px",
+      "primaryBg": "rgb(29, 78, 137)",
+      "primaryHeight": "40px",
+      "canvas": "rgb(244, 246, 248)",
+      "readyDot": "rgb(15, 123, 90)",
+      "warnDot": null,
+      "badDot": null,
+      "chunkBodyFont": "14px",
+      "chunkMetaFont": "12px"
+    },
+    "screenshot": "t003-vpn-ready.png"
+  },
+  "failIngesting": {
+    "elapsedMs": 73,
+    "rows": [
+      {
+        "filename": "[Mock] fail.md",
+        "statusText": "入库中",
+        "selected": true
+      }
+    ],
+    "hasChunks": false,
+    "hasEditForm": false
+  },
+  "failReady": {
+    "waitMs": 9490,
+    "rows": [
+      {
+        "filename": "[Mock] fail.md",
+        "statusText": "请重新上传",
+        "selected": true
+      }
+    ],
+    "detailText": "[Mock] 请重新上传",
+    "hasChunks": false,
+    "hasEditForm": false,
+    "screenshot": "t003-fail.md.png"
+  },
+  "statusScan": {
+    "hasIngestingWord": true,
+    "hasReadyWord": true,
+    "hasFailedWord": true,
+    "hasIngestingEn": true,
+    "hasReadyEn": false,
+    "hasFailedEn": false,
+    "hasMock": true,
+    "listStatuses": [
+      "请重新上传",
+      "已完成 · 3 块",
+      "已完成 · 4 块"
+    ]
+  }
+}

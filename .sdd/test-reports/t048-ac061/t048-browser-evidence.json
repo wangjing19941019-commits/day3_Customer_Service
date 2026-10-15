@@ -1,0 +1,303 @@
+{
+  "checks": [
+    {
+      "id": "mock-off-login",
+      "pass": true,
+      "expected": {
+        "mockEnabled": false,
+        "pageHasMock": false
+      },
+      "actual": {
+        "mockEnabled": false,
+        "pageHasMock": false,
+        "pathname": "/login"
+      }
+    },
+    {
+      "id": "ac061-agent-home",
+      "pass": true,
+      "expected": {
+        "path": "/agent",
+        "nav": [
+          "客服端"
+        ],
+        "mock": false
+      },
+      "actual": {
+        "pathname": "/agent",
+        "topbarUser": "已登录：agent",
+        "nav": [
+          "客服端"
+        ],
+        "pageHasMock": false,
+        "mockEnabled": false
+      }
+    },
+    {
+      "id": "ac061-agent-cannot-open-templates",
+      "pass": true,
+      "expected": {
+        "redirected": "/agent",
+        "noEditor": true
+      },
+      "actual": {
+        "pathname": "/agent",
+        "hasTemplateEditor": false,
+        "hasSave": false,
+        "hasGray": false
+      }
+    },
+    {
+      "id": "ac061-agent-cannot-open-tickets-gray",
+      "pass": true,
+      "expected": {
+        "redirected": "/agent"
+      },
+      "actual": {
+        "pathname": "/agent",
+        "hasGray": false
+      }
+    },
+    {
+      "id": "ac061-agent-api-403",
+      "pass": true,
+      "expected": {
+        "status": 403,
+        "error_code": "FORBIDDEN"
+      },
+      "actual": {
+        "status": 403,
+        "error": "没有权限",
+        "error_code": "FORBIDDEN",
+        "success": false
+      }
+    },
+    {
+      "id": "ac061-admin-nav-has-templates",
+      "pass": true,
+      "expected": {
+        "navIncludes": "模板",
+        "mock": false
+      },
+      "actual": {
+        "nav": [
+          "知识库",
+          "工单列表",
+          "模板"
+        ],
+        "topbarUser": "已登录：admin",
+        "mockEnabled": false
+      }
+    },
+    {
+      "id": "ac061-admin-open-templates",
+      "pass": true,
+      "expected": {
+        "path": "/templates",
+        "canEdit": true,
+        "canGray": true,
+        "mock": false
+      },
+      "actual": {
+        "pathname": "/templates",
+        "hasTemplateTitle": true,
+        "hasSave": true,
+        "hasGray": true,
+        "pageHasMock": false
+      }
+    }
+  ],
+  "evidence": {
+    "base": "http://127.0.0.1:5218",
+    "cdpPort": 9548,
+    "loginPage": {
+      "pathname": "/login",
+      "title": "智能客服",
+      "pageName": null,
+      "topbarUser": null,
+      "nav": [],
+      "hasLoginCard": true,
+      "hasTemplateEditor": false,
+      "hasSave": false,
+      "hasGray": false,
+      "hasTemplateTitle": false,
+      "rowCount": 0,
+      "listError": null,
+      "pageHasMock": false,
+      "mockEnabled": false,
+      "screenshot": "t048-login.png"
+    },
+    "agentHome": {
+      "pathname": "/agent",
+      "title": null,
+      "pageName": "客服端",
+      "topbarUser": "已登录：agent",
+      "nav": [
+        "客服端"
+      ],
+      "hasLoginCard": false,
+      "hasTemplateEditor": false,
+      "hasSave": false,
+      "hasGray": false,
+      "hasTemplateTitle": false,
+      "rowCount": 0,
+      "listError": null,
+      "pageHasMock": false,
+      "mockEnabled": false,
+      "screenshot": "t048-agent.png"
+    },
+    "agentBlockedTemplates": {
+      "pathname": "/agent",
+      "title": null,
+      "pageName": "客服端",
+      "topbarUser": "已登录：agent",
+      "nav": [
+        "客服端"
+      ],
+      "hasLoginCard": false,
+      "hasTemplateEditor": false,
+      "hasSave": false,
+      "hasGray": false,
+      "hasTemplateTitle": false,
+      "rowCount": 0,
+      "listError": null,
+      "pageHasMock": false,
+      "mockEnabled": false,
+      "screenshot": "t048-agent-templates-blocked.png"
+    },
+    "agentBlockedTickets": {
+      "pathname": "/agent",
+      "title": null,
+      "pageName": "客服端",
+      "topbarUser": "已登录：agent",
+      "nav": [
+        "客服端"
+      ],
+      "hasLoginCard": false,
+      "hasTemplateEditor": false,
+      "hasSave": false,
+      "hasGray": false,
+      "hasTemplateTitle": false,
+      "rowCount": 0,
+      "listError": null,
+      "pageHasMock": false,
+      "mockEnabled": false
+    },
+    "agentApi403": {
+      "status": 403,
+      "error": "没有权限",
+      "error_code": "FORBIDDEN",
+      "success": false
+    },
+    "adminHome": {
+      "pathname": "/knowledge",
+      "title": null,
+      "pageName": "知识库",
+      "topbarUser": "已登录：admin",
+      "nav": [
+        "知识库",
+        "工单列表",
+        "模板"
+      ],
+      "hasLoginCard": false,
+      "hasTemplateEditor": false,
+      "hasSave": false,
+      "hasGray": false,
+      "hasTemplateTitle": false,
+      "rowCount": 0,
+      "listError": null,
+      "pageHasMock": false,
+      "mockEnabled": false,
+      "screenshot": "t048-admin-home.png"
+    },
+    "adminTemplates": {
+      "pathname": "/templates",
+      "title": "模板配置",
+      "pageName": "模板",
+      "topbarUser": "已登录：admin",
+      "nav": [
+        "知识库",
+        "工单列表",
+        "模板"
+      ],
+      "hasLoginCard": false,
+      "hasTemplateEditor": true,
+      "hasSave": true,
+      "hasGray": true,
+      "hasTemplateTitle": true,
+      "rowCount": 2,
+      "listError": null,
+      "pageHasMock": false,
+      "mockEnabled": false,
+      "screenshot": "t048-admin-templates.png"
+    },
+    "apiHits": [
+      {
+        "url": "/api/sessions",
+        "status": 200
+      },
+      {
+        "url": "/api/sessions/current",
+        "status": 200
+      },
+      {
+        "url": "/api/sessions/current",
+        "status": 200
+      },
+      {
+        "url": "/api/sessions/current",
+        "status": 200
+      },
+      {
+        "url": "/api/sessions/current",
+        "status": 200
+      },
+      {
+        "url": "/api/prompt-templates",
+        "status": 403
+      },
+      {
+        "url": "/api/sessions",
+        "status": 200
+      },
+      {
+        "url": "/api/prompt-templates",
+        "status": 200
+      },
+      {
+        "url": "/api/prompt-template-alerts",
+        "status": 200
+      },
+      {
+        "url": "/api/prompt-templates",
+        "status": 200
+      },
+      {
+        "url": "/api/prompt-template-alerts",
+        "status": 200
+      },
+      {
+        "url": "/api/prompt-templates/e49d0047-154b-4933-baca-a967404f3e2e/versions",
+        "status": 200
+      },
+      {
+        "url": "/api/prompt-templates/e49d0047-154b-4933-baca-a967404f3e2e",
+        "status": 200
+      },
+      {
+        "url": "/api/prompt-templates/e49d0047-154b-4933-baca-a967404f3e2e/metrics",
+        "status": 200
+      }
+    ],
+    "failed": [],
+    "passed": [
+      "mock-off-login",
+      "ac061-agent-home",
+      "ac061-agent-cannot-open-templates",
+      "ac061-agent-cannot-open-tickets-gray",
+      "ac061-agent-api-403",
+      "ac061-admin-nav-has-templates",
+      "ac061-admin-open-templates"
+    ]
+  }
+}

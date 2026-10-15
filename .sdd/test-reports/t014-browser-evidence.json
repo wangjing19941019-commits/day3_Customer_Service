@@ -1,0 +1,703 @@
+{
+  "base": "http://127.0.0.1:8766",
+  "cdpPort": 9433,
+  "userDataDir": "C:\\Users\\慈海客服\\AppData\\Local\\Temp\\t014-chrome-fFsqPf",
+  "steps": {
+    "desktop": {
+      "title": "页面功能导航 · 智能客服系统",
+      "h1": "页面功能导航",
+      "innerWidth": 1280,
+      "innerHeight": 900,
+      "scrollWidth": 1265,
+      "clientWidth": 1265,
+      "bodyScrollWidth": 1265,
+      "overflowX": "hidden",
+      "wrapColumns": "220px 880px",
+      "navBottom": 23865,
+      "mainTop": 0,
+      "navRight": 303,
+      "mainLeft": 303,
+      "desktopOverlap": false,
+      "pageIds": [
+        "page-login",
+        "page-employee",
+        "page-agent",
+        "page-knowledge"
+      ],
+      "pageNames": [
+        "登录 源码已核对",
+        "员工端 源码已核对",
+        "客服端 源码已核对",
+        "知识库 源码已核对"
+      ],
+      "navPageLinks": [
+        {
+          "href": "#page-login",
+          "text": "登录"
+        },
+        {
+          "href": "#page-employee",
+          "text": "员工端"
+        },
+        {
+          "href": "#page-agent",
+          "text": "客服端"
+        },
+        {
+          "href": "#page-knowledge",
+          "text": "知识库"
+        },
+        {
+          "href": "#feat-login",
+          "text": "提交账号登录"
+        },
+        {
+          "href": "#feat-restore",
+          "text": "刷新恢复登录态"
+        },
+        {
+          "href": "#feat-logout",
+          "text": "顶栏退出"
+        },
+        {
+          "href": "#feat-ask",
+          "text": "员工提问（状态机）"
+        },
+        {
+          "href": "#feat-handoff",
+          "text": "员工转人工"
+        },
+        {
+          "href": "#feat-agent-inbox",
+          "text": "客服查看已转接会话并回复"
+        },
+        {
+          "href": "#feat-kb-ingest",
+          "text": "上传入库与列表筛选"
+        },
+        {
+          "href": "#feat-kb-edit",
+          "text": "分块预览与改标签/FAQ"
+        },
+        {
+          "href": "#api-001",
+          "text": "POST /api/sessions"
+        },
+        {
+          "href": "#api-002",
+          "text": "GET /api/sessions/current"
+        },
+        {
+          "href": "#api-003",
+          "text": "POST /api/documents"
+        },
+        {
+          "href": "#api-004",
+          "text": "GET /api/documents"
+        },
+        {
+          "href": "#api-005",
+          "text": "GET /api/documents/{document_id}"
+        },
+        {
+          "href": "#api-006",
+          "text": "PATCH /api/documents/{document_id}"
+        },
+        {
+          "href": "#api-007",
+          "text": "POST /api/conversations"
+        },
+        {
+          "href": "#api-008",
+          "text": "GET /api/conversations"
+        },
+        {
+          "href": "#api-009",
+          "text": "GET /api/conversations/{conversation_id}"
+        },
+        {
+          "href": "#api-010",
+          "text": "POST /api/conversations/{conversation_id}/messages"
+        },
+        {
+          "href": "#api-011",
+          "text": "POST /api/conversations/{conversation_id}/transfer"
+        },
+        {
+          "href": "#api-012",
+          "text": "POST /api/conversations/{conversation_id}/replies"
+        },
+        {
+          "href": "#ext-001",
+          "text": "POST {llm_base_url}/chat/completions"
+        },
+        {
+          "href": "#ext-002",
+          "text": "POST {llm_base_url}/embeddings"
+        }
+      ],
+      "featureIds": [
+        "feat-login",
+        "feat-restore",
+        "feat-logout",
+        "feat-ask",
+        "feat-handoff",
+        "feat-agent-inbox",
+        "feat-kb-ingest",
+        "feat-kb-edit"
+      ],
+      "hasTrigger": true,
+      "detailsCount": 43,
+      "openDetails": 0,
+      "sixZone": [],
+      "hasPluginTool": false,
+      "notPresent": true,
+      "statusText": "已从 project-map.json 重新加载。\n\n· 本交付只静态核对源码与配置定义（AppSettings / .env.example），未读取真实 .env、日志、数据库或上传文件，也未调用百炼。\n\n· 百炼仅作为 httpx.AsyncClient(trust_env=False) 的外部调用模块（EXT-001/002）。源码无 Plugin 层、无工单工具、无 Agent 工具观察循环。\n\n· 设计与源码差异：tech-spec 写前端 Axios 除 API-010=60000ms 外为 15000ms（含 API-003）；源码 axios 默认 timeout=10000ms，documentService 上传未覆盖超时，conversationService 仅对会话接口覆盖 15000/60000。\n\n· 设计与源码差异：tech-spec 写启动时把过期 ingesting 标失败；源码 on_startup 只 init_db+seed_shared_user，fail_stale_ingesting_documents 在 API-003/004/005/006 路径调用。\n\n· 设计与源码差异：tech-spec 写每个 issue 的 requires_live_data/out_of_scope 记为 fallback 段；源码只对 processing_status=ready 的 issue 做标签过滤召回，无知识段时整轮一条兜底，混合 issue 不拼接多段兜底。\n\n· VITE_USE_MOCK：frontend/.env.example 示例为 false；isMockEnabled() 在未设置或非 false/0 时默认 true。未读真实 .env。\n\n· 敏感配置 secret_key / shared_password / llm_api_key 无源码默认值，本页不展示任何密钥或占位口令。",
+      "appTextHead": "登录 源码已核对\n\n路由 /login\n\n未登录访客输入统一账号。成功进入员工端；失败留在本页并看到失败说明。已登录访问本页会转到 /employee。\n\n提交账号登录 源码已核对\n\n触发在登录卡填写用户名和密码后点「登录」。\n\n输入username、password（前端先 trim；空值本页拦截，不发请求）。\n\n输出成功：JWT 写入 localStorage 键 access_token，进",
+      "loadError": null,
+      "staleBanner": null,
+      "algStatus": {
+        "alg-login": "源码已核对",
+        "alg-chunk": "源码已核对",
+        "alg-ingest": "源码已核对",
+        "alg-stale-ingest": "源码已核对",
+        "alg-qa-state": "源码已核对",
+        "alg-cosine-faq": "源码已核对",
+        "alg-retrieve": "源码已核对",
+        "alg-handoff": "源码已核对"
+      },
+      "algChips": [
+        {
+          "parent": "alg-chunk",
+          "text": "源码已核对"
+        },
+        {
+          "parent": "alg-qa-state",
+          "text": "源码已核对"
+        },
+        {
+          "parent": "alg-cosine-faq",
+          "text": "源码已核对"
+        },
+        {
+          "parent": "alg-retrieve",
+          "text": "源码已核对"
+        }
+      ],
+      "chunkChip": "源码已核对",
+      "qaChip": "源码已核对",
+      "cosineChip": "源码已核对",
+      "retrieveChip": "源码已核对",
+      "handoffChip": "源码已核对",
+      "loginChip": "源码已核对",
+      "copyFailVisible": false,
+      "copyBtnText": "复制路径",
+      "focusedId": "present",
+      "api001InView": false,
+      "chunk800": true,
+      "chunk160": true,
+      "clarify5": true,
+      "bailianHttpx": true,
+      "noAgentLoop": true
+    },
+    "desktopLayout": {
+      "hOverflow": false,
+      "twoCol": true,
+      "sideBySide": true,
+      "occlude": false
+    },
+    "navFeature": {
+      "inView": true,
+      "trigger": "触发输入区输入后点「发送」或 Enter（Shift+Enter 换行）。"
+    },
+    "expand": true,
+    "apiJump": {
+      "inView": true,
+      "method": "POST /api/sessions"
+    },
+    "copyLive": {
+      "btn": "请手选",
+      "failVisible": true,
+      "value": "backend/src/api/routes/sessions.py"
+    },
+    "narrow": {
+      "title": "页面功能导航 · 智能客服系统",
+      "h1": "页面功能导航",
+      "innerWidth": 375,
+      "innerHeight": 812,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "bodyScrollWidth": 375,
+      "overflowX": "hidden",
+      "wrapColumns": "375px",
+      "navBottom": -9531,
+      "mainTop": -9531,
+      "navRight": 375,
+      "mainLeft": 0,
+      "desktopOverlap": false,
+      "pageIds": [
+        "page-login",
+        "page-employee",
+        "page-agent",
+        "page-knowledge"
+      ],
+      "pageNames": [
+        "登录 源码已核对",
+        "员工端 源码已核对",
+        "客服端 源码已核对",
+        "知识库 源码已核对"
+      ],
+      "navPageLinks": [
+        {
+          "href": "#page-login",
+          "text": "登录"
+        },
+        {
+          "href": "#page-employee",
+          "text": "员工端"
+        },
+        {
+          "href": "#page-agent",
+          "text": "客服端"
+        },
+        {
+          "href": "#page-knowledge",
+          "text": "知识库"
+        },
+        {
+          "href": "#feat-login",
+          "text": "提交账号登录"
+        },
+        {
+          "href": "#feat-restore",
+          "text": "刷新恢复登录态"
+        },
+        {
+          "href": "#feat-logout",
+          "text": "顶栏退出"
+        },
+        {
+          "href": "#feat-ask",
+          "text": "员工提问（状态机）"
+        },
+        {
+          "href": "#feat-handoff",
+          "text": "员工转人工"
+        },
+        {
+          "href": "#feat-agent-inbox",
+          "text": "客服查看已转接会话并回复"
+        },
+        {
+          "href": "#feat-kb-ingest",
+          "text": "上传入库与列表筛选"
+        },
+        {
+          "href": "#feat-kb-edit",
+          "text": "分块预览与改标签/FAQ"
+        },
+        {
+          "href": "#api-001",
+          "text": "POST /api/sessions"
+        },
+        {
+          "href": "#api-002",
+          "text": "GET /api/sessions/current"
+        },
+        {
+          "href": "#api-003",
+          "text": "POST /api/documents"
+        },
+        {
+          "href": "#api-004",
+          "text": "GET /api/documents"
+        },
+        {
+          "href": "#api-005",
+          "text": "GET /api/documents/{document_id}"
+        },
+        {
+          "href": "#api-006",
+          "text": "PATCH /api/documents/{document_id}"
+        },
+        {
+          "href": "#api-007",
+          "text": "POST /api/conversations"
+        },
+        {
+          "href": "#api-008",
+          "text": "GET /api/conversations"
+        },
+        {
+          "href": "#api-009",
+          "text": "GET /api/conversations/{conversation_id}"
+        },
+        {
+          "href": "#api-010",
+          "text": "POST /api/conversations/{conversation_id}/messages"
+        },
+        {
+          "href": "#api-011",
+          "text": "POST /api/conversations/{conversation_id}/transfer"
+        },
+        {
+          "href": "#api-012",
+          "text": "POST /api/conversations/{conversation_id}/replies"
+        },
+        {
+          "href": "#ext-001",
+          "text": "POST {llm_base_url}/chat/completions"
+        },
+        {
+          "href": "#ext-002",
+          "text": "POST {llm_base_url}/embeddings"
+        }
+      ],
+      "featureIds": [
+        "feat-login",
+        "feat-restore",
+        "feat-logout",
+        "feat-ask",
+        "feat-handoff",
+        "feat-agent-inbox",
+        "feat-kb-ingest",
+        "feat-kb-edit"
+      ],
+      "hasTrigger": true,
+      "detailsCount": 43,
+      "openDetails": 1,
+      "sixZone": [],
+      "hasPluginTool": false,
+      "notPresent": true,
+      "statusText": "已从 project-map.json 重新加载。\n\n· 本交付只静态核对源码与配置定义（AppSettings / .env.example），未读取真实 .env、日志、数据库或上传文件，也未调用百炼。\n\n· 百炼仅作为 httpx.AsyncClient(trust_env=False) 的外部调用模块（EXT-001/002）。源码无 Plugin 层、无工单工具、无 Agent 工具观察循环。\n\n· 设计与源码差异：tech-spec 写前端 Axios 除 API-010=60000ms 外为 15000ms（含 API-003）；源码 axios 默认 timeout=10000ms，documentService 上传未覆盖超时，conversationService 仅对会话接口覆盖 15000/60000。\n\n· 设计与源码差异：tech-spec 写启动时把过期 ingesting 标失败；源码 on_startup 只 init_db+seed_shared_user，fail_stale_ingesting_documents 在 API-003/004/005/006 路径调用。\n\n· 设计与源码差异：tech-spec 写每个 issue 的 requires_live_data/out_of_scope 记为 fallback 段；源码只对 processing_status=ready 的 issue 做标签过滤召回，无知识段时整轮一条兜底，混合 issue 不拼接多段兜底。\n\n· VITE_USE_MOCK：frontend/.env.example 示例为 false；isMockEnabled() 在未设置或非 false/0 时默认 true。未读真实 .env。\n\n· 敏感配置 secret_key / shared_password / llm_api_key 无源码默认值，本页不展示任何密钥或占位口令。",
+      "appTextHead": "登录 源码已核对\n\n路由 /login\n\n未登录访客输入统一账号。成功进入员工端；失败留在本页并看到失败说明。已登录访问本页会转到 /employee。\n\n提交账号登录 源码已核对\n\n触发在登录卡填写用户名和密码后点「登录」。\n\n输入username、password（前端先 trim；空值本页拦截，不发请求）。\n\n输出成功：JWT 写入 localStorage 键 access_token，进",
+      "loadError": null,
+      "staleBanner": null,
+      "algStatus": {
+        "alg-login": "源码已核对",
+        "alg-chunk": "源码已核对",
+        "alg-ingest": "源码已核对",
+        "alg-stale-ingest": "源码已核对",
+        "alg-qa-state": "源码已核对",
+        "alg-cosine-faq": "源码已核对",
+        "alg-retrieve": "源码已核对",
+        "alg-handoff": "源码已核对"
+      },
+      "algChips": [
+        {
+          "parent": "alg-chunk",
+          "text": "源码已核对"
+        },
+        {
+          "parent": "alg-qa-state",
+          "text": "源码已核对"
+        },
+        {
+          "parent": "alg-cosine-faq",
+          "text": "源码已核对"
+        },
+        {
+          "parent": "alg-retrieve",
+          "text": "源码已核对"
+        }
+      ],
+      "chunkChip": "源码已核对",
+      "qaChip": "源码已核对",
+      "cosineChip": "源码已核对",
+      "retrieveChip": "源码已核对",
+      "handoffChip": "源码已核对",
+      "loginChip": "源码已核对",
+      "copyFailVisible": true,
+      "copyBtnText": "复制路径",
+      "focusedId": "present",
+      "api001InView": true,
+      "chunk800": true,
+      "chunk160": true,
+      "clarify5": true,
+      "bailianHttpx": true,
+      "noAgentLoop": true,
+      "layout": {
+        "hOverflow": false,
+        "stacked": true,
+        "occlude": false
+      }
+    },
+    "stale": {
+      "chunk": "来源已变化待复核",
+      "cosine": "来源已变化待复核",
+      "qa": "源码已核对",
+      "banner": "算法未保持「源码已核对」：alg-chunk 待复核；alg-cosine-faq 待复核。更新 generated_at 不能代替定向重读。",
+      "status": "隔离样例：假装 text.py 源码指纹已变。依赖该文件的切块/余弦算法不得继续显示「源码已核对」。\n算法未保持「源码已核对」：alg-chunk 待复核；alg-cosine-faq 待复核。更新 generated_at 不能代替定向重读。\n\n· 本交付只静态核对源码与配置定义（AppSettings / .env.example），未读取真实 .env、日志、数据库或上传文件，也未调用百炼。\n\n· 百炼仅作为 httpx.AsyncClient(trust_env=False) 的外部调用模块（EXT-001/002）。源码无 Plugin 层、无工单工具、无 Agent 工具观察循环。\n\n· 设计与源码差异：tech-spec 写前端 Axios 除 API-010=60000ms 外为 15000ms（含 API-003）；源码 axios 默认 timeout=10000ms，documentService 上传未覆盖超时，conversationService 仅对会话接口覆盖 15000/60000。\n\n· 设计与源码差异：tech-spec 写启动时把过期 ingesting 标失败；源码 on_startup 只 init_db+seed_shared_user，fail_stale_ingesting_documents 在 API-003/004/005/006 路径调用。\n\n· 设计与源码差异：tech-spec 写每个 issue 的 requires_live_data/out_of_scope 记为 fallback 段；源码只对 processing_status=ready 的 issue 做标签过滤召回，无知识段时整轮一条兜底，混合 issue 不拼接多段兜底。\n\n· VITE_USE_MOCK：frontend/.env.example 示例为 false；isMockEnabled() 在未设置或非 false/0 时默认 true。未读真实 .env。\n\n· 敏感配置 secret_key / shared_password / llm_api_key 无源码默认值，本页不展示任何密钥或占位口令。"
+    },
+    "missing": {
+      "qa": "未找到实现",
+      "retrieve": "未找到实现",
+      "cosine": "未找到实现",
+      "chunk": "源码已核对",
+      "status": "隔离样例：假装 qa.py 来源缺失。依赖该文件的提问状态机算法降为「未找到实现」。\n算法未保持「源码已核对」：alg-qa-state 来源缺失；alg-cosine-faq 来源缺失；alg-retrieve 来源缺失。更新 generated_at 不能代替定向重读。\n\n· 本交付只静态核对源码与配置定义（AppSettings / .env.example），未读取真实 .env、日志、数据库或上传文件，也未调用百炼。\n\n· 百炼仅作为 httpx.AsyncClient(trust_env=False) 的外部调用模块（EXT-001/002）。源码无 Plugin 层、无工单工具、无 Agent 工具观察循环。\n\n· 设计与源码差异：tech-spec 写前端 Axios 除 API-010=60000ms 外为 15000ms（含 API-003）；源码 axios 默认 timeout=10000ms，documentService 上传未覆盖超时，conversationService 仅对会话接口覆盖 15000/60000。\n\n· 设计与源码差异：tech-spec 写启动时把过期 ingesting 标失败；源码 on_startup 只 init_db+seed_shared_user，fail_stale_ingesting_documents 在 API-003/004/005/006 路径调用。\n\n· 设计与源码差异：tech-spec 写每个 issue 的 requires_live_data/out_of_scope 记为 fallback 段；源码只对 processing_status=ready 的 issue 做标签过滤召回，无知识段时整轮一条兜底，混合 issue 不拼接多段兜底。\n\n· VITE_USE_MOCK：frontend/.env.example 示例为 false；isMockEnabled() 在未设置或非 false/0 时默认 true。未读真实 .env。\n\n· 敏感配置 secret_key / shared_password / llm_api_key 无源码默认值，本页不展示任何密钥或占位口令。"
+    },
+    "invalid": {
+      "loadError": "隔离样例：JSON 解析失败\n\nJSON 解析失败：Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+      "featureIds": [],
+      "app": "说明数据不可用，已停止按功能卡片渲染，避免把损坏内容标成已核对。"
+    },
+    "reload": "已从 project-map.json 重新加载。\n\n· 本交付只静态核对源码与配置定义（AppSettings / .env.example），未读取真实 .env、日志、数据库或上传文件，也未调用百炼。\n\n· 百炼仅作为 httpx.AsyncClient(trust_env=False) 的外部调用模块（EXT-001/002）。源码无 Plugin 层、无工单工具、无 Agent 工具观察循环。\n\n· 设计与源码差异：tech-spec 写前端 Axios 除 API-010=60000ms 外为 15000ms（含 API-003）；源码 axios 默认 timeout=10000ms，documentService 上传未覆盖超时，conversationService 仅对会话接口覆盖 15000/60000。\n\n· 设计与源码差异：tech-spec 写启动时把过期 ingesting 标失败；源码 on_startup 只 init_db+seed_shared_user，fail_stale_ingesting_documents 在 API-003/004/005/006 路径调用。\n\n· 设计与源码差异：tech-spec 写每个 issue 的 requires_live_data/out_of_scope 记为 fallback 段；源码只对 processing_status=ready 的 issue 做标签过滤召回，无知识段时整轮一条兜底，混合 issue 不拼接多段兜底。\n\n· VITE_USE_MOCK：frontend/.env.example 示例为 false；isMockEnabled() 在未设置或非 false/0 时默认 true。未读真实 .env。\n\n· 敏感配置 secret_key / shared_password / llm_api_key 无源码默认值，本页不展示任何密钥或占位口令。",
+    "copytest": {
+      "btn": "请手选",
+      "failVisible": true,
+      "value": "frontend/src/pages/LoginPage.tsx"
+    }
+  },
+  "staticStatus": 200,
+  "mapStatus": 200,
+  "networkSample": [
+    "http://127.0.0.1:8766/project-console.html",
+    "http://127.0.0.1:8766/project-map.json",
+    "http://127.0.0.1:8766/favicon.ico",
+    "http://127.0.0.1:8766/project-console.html?sample=stale&expand=all&focus=alg-chunk",
+    "http://127.0.0.1:8766/project-map.json",
+    "http://127.0.0.1:8766/project-console.html?sample=missing",
+    "http://127.0.0.1:8766/project-map.json",
+    "http://127.0.0.1:8766/project-console.html?sample=invalid",
+    "http://127.0.0.1:8766/project-map.json",
+    "http://127.0.0.1:8766/project-console.html",
+    "http://127.0.0.1:8766/project-map.json",
+    "http://127.0.0.1:8766/project-map.json",
+    "http://127.0.0.1:8766/project-console.html?copytest=1",
+    "http://127.0.0.1:8766/project-map.json"
+  ],
+  "forbiddenNetwork": [],
+  "checks": [
+    {
+      "id": "static-html",
+      "pass": true,
+      "expected": 200,
+      "actual": 200
+    },
+    {
+      "id": "static-map",
+      "pass": true,
+      "expected": 200,
+      "actual": 200
+    },
+    {
+      "id": "del001-pages",
+      "pass": true,
+      "expected": [
+        "page-login",
+        "page-employee",
+        "page-agent",
+        "page-knowledge"
+      ],
+      "actual": [
+        "page-login",
+        "page-employee",
+        "page-agent",
+        "page-knowledge"
+      ]
+    },
+    {
+      "id": "del001-no-sixzone",
+      "pass": true,
+      "expected": [],
+      "actual": []
+    },
+    {
+      "id": "del001-h1",
+      "pass": true,
+      "expected": "页面功能导航",
+      "actual": "页面功能导航"
+    },
+    {
+      "id": "del001-desktop-overflow",
+      "pass": true,
+      "expected": false,
+      "actual": {
+        "hOverflow": false,
+        "twoCol": true,
+        "sideBySide": true,
+        "occlude": false
+      }
+    },
+    {
+      "id": "del001-desktop-columns",
+      "pass": true,
+      "expected": true,
+      "actual": {
+        "hOverflow": false,
+        "twoCol": true,
+        "sideBySide": true,
+        "occlude": false
+      }
+    },
+    {
+      "id": "del001-features-present",
+      "pass": true,
+      "expected": true,
+      "actual": [
+        "feat-login",
+        "feat-restore",
+        "feat-logout",
+        "feat-ask",
+        "feat-handoff",
+        "feat-agent-inbox",
+        "feat-kb-ingest",
+        "feat-kb-edit"
+      ]
+    },
+    {
+      "id": "del003-chunk-params",
+      "pass": true,
+      "expected": true,
+      "actual": {
+        "chunk800": true,
+        "chunk160": true,
+        "clarify5": true
+      }
+    },
+    {
+      "id": "del003-bailian-httpx",
+      "pass": true,
+      "expected": true,
+      "actual": {
+        "httpx": true,
+        "noAgent": true
+      }
+    },
+    {
+      "id": "del003-live-checked",
+      "pass": true,
+      "expected": "源码已核对",
+      "actual": {
+        "chunk": "源码已核对",
+        "qa": "源码已核对",
+        "handoff": "源码已核对"
+      }
+    },
+    {
+      "id": "del001-nav-feature",
+      "pass": true,
+      "expected": true,
+      "actual": {
+        "inView": true,
+        "trigger": "触发输入区输入后点「发送」或 Enter（Shift+Enter 换行）。"
+      }
+    },
+    {
+      "id": "del001-expand-source",
+      "pass": true,
+      "expected": true,
+      "actual": true
+    },
+    {
+      "id": "del002-api-jump",
+      "pass": true,
+      "expected": true,
+      "actual": {
+        "inView": true,
+        "method": "POST /api/sessions"
+      }
+    },
+    {
+      "id": "del004-copy-or-hand",
+      "pass": true,
+      "expected": "已复制|请手选",
+      "actual": {
+        "btn": "请手选",
+        "failVisible": true,
+        "value": "backend/src/api/routes/sessions.py"
+      }
+    },
+    {
+      "id": "del001-narrow-overflow",
+      "pass": true,
+      "expected": false,
+      "actual": {
+        "hOverflow": false,
+        "stacked": true,
+        "occlude": false
+      }
+    },
+    {
+      "id": "del001-narrow-stacked",
+      "pass": true,
+      "expected": true,
+      "actual": {
+        "hOverflow": false,
+        "stacked": true,
+        "occlude": false
+      }
+    },
+    {
+      "id": "del005-stale-chunk",
+      "pass": true,
+      "expected": "来源已变化待复核",
+      "actual": "来源已变化待复核"
+    },
+    {
+      "id": "del005-stale-cosine",
+      "pass": true,
+      "expected": "来源已变化待复核",
+      "actual": "来源已变化待复核"
+    },
+    {
+      "id": "del005-stale-other-login",
+      "pass": true,
+      "expected": "源码已核对",
+      "actual": "源码已核对"
+    },
+    {
+      "id": "del005-missing-qa",
+      "pass": true,
+      "expected": "未找到实现",
+      "actual": "未找到实现"
+    },
+    {
+      "id": "del005-missing-retrieve",
+      "pass": true,
+      "expected": "未找到实现",
+      "actual": "未找到实现"
+    },
+    {
+      "id": "del005-missing-chunk-still-ok",
+      "pass": true,
+      "expected": "源码已核对",
+      "actual": "源码已核对"
+    },
+    {
+      "id": "del005-invalid-banner",
+      "pass": true,
+      "expected": "解析失败",
+      "actual": "隔离样例：JSON 解析失败\n\nJSON 解析失败：Expected property name or '}' in JSON at position 1 (line 1 column 2)"
+    },
+    {
+      "id": "del005-invalid-no-features",
+      "pass": true,
+      "expected": [],
+      "actual": []
+    },
+    {
+      "id": "del005-reload",
+      "pass": true,
+      "expected": "已从 project-map.json 重新加载",
+      "actual": "已从 project-map.json 重新加载。\n\n· 本交付只静态核对源码与配置定义（AppSettings / .env.example），未读取真实 .env、日志、数据库或上传文件，也未调用百炼。\n\n· 百炼仅作为 httpx.AsyncClient(trust_env=False) 的外部调用模块（EXT-001/002）。源码无 Plugin "
+    },
+    {
+      "id": "del004-copytest",
+      "pass": true,
+      "expected": "已复制|请手选",
+      "actual": {
+        "btn": "请手选",
+        "failVisible": true,
+        "value": "frontend/src/pages/LoginPage.tsx"
+      }
+    },
+    {
+      "id": "del004-no-business-net",
+      "pass": true,
+      "expected": [],
+      "actual": []
+    }
+  ],
+  "failed": []
+}

@@ -1,0 +1,155 @@
+{
+  "error": "Error: eval failed: TypeError: Illegal invocation\n    at setVal (<anonymous>:12:16)\n    at <anonymous>:16:5\n    at <anonymous>:19:5",
+  "checks": [
+    {
+      "id": "p2-mock-off",
+      "pass": true,
+      "expected": false,
+      "actual": false
+    },
+    {
+      "id": "ac028-filter-all-synced",
+      "pass": true,
+      "expected": {
+        "uiEqualsApi": true
+      },
+      "actual": {
+        "ui": 4,
+        "api": 4,
+        "statuses": [
+          "已完成",
+          "已完成",
+          "已完成",
+          "已完成"
+        ]
+      }
+    },
+    {
+      "id": "ac028-filter-ready-synced",
+      "pass": true,
+      "expected": "all 已完成",
+      "actual": {
+        "ui": [
+          "已完成",
+          "已完成",
+          "已完成",
+          "已完成"
+        ],
+        "api": [
+          "ready",
+          "ready",
+          "ready",
+          "ready"
+        ]
+      }
+    },
+    {
+      "id": "ac028-filter-ingesting-synced",
+      "pass": true,
+      "expected": "UI matches API ingesting",
+      "actual": {
+        "uiCount": 0,
+        "apiCount": 0,
+        "empty": "当前没有该状态的文档",
+        "statuses": []
+      }
+    },
+    {
+      "id": "ac028-filter-failed-synced",
+      "pass": true,
+      "expected": "UI matches API failed",
+      "actual": {
+        "uiCount": 0,
+        "apiCount": 0,
+        "empty": "当前没有该状态的文档"
+      }
+    },
+    {
+      "id": "ac023-upload-ingesting",
+      "pass": true,
+      "expected": {
+        "status": "入库中",
+        "noPreview": true
+      },
+      "actual": {
+        "first": "t011-ingest-probe.md",
+        "status": "入库中",
+        "chunks": 0,
+        "edit": false,
+        "detail": "选择一篇已完成的文档以查看分块并编辑标签。"
+      }
+    },
+    {
+      "id": "ac023-ask-not-hit-ingesting",
+      "pass": true,
+      "expected": {
+        "notHitIngestingDoc": true
+      },
+      "actual": {
+        "tag": "兜底",
+        "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+        "error": ""
+      }
+    },
+    {
+      "id": "ac023-still-listed-after-leave",
+      "pass": true,
+      "expected": {
+        "listed": true
+      },
+      "actual": {
+        "filename": "t011-ingest-probe.md",
+        "hint": "已完成 · 1 块 · 9月17日 11:46",
+        "status": "已完成",
+        "timeText": "· 9月17日 11:46",
+        "selected": true
+      }
+    },
+    {
+      "id": "ac017-tags-still-hardware",
+      "pass": false,
+      "expected": "硬件设备",
+      "actual": [
+        "软件与操作系统"
+      ]
+    },
+    {
+      "id": "ac003-md-faq-intercept",
+      "pass": true,
+      "expected": {
+        "tag": "FAQ",
+        "has账号中心": true
+      },
+      "actual": {
+        "tag": "FAQ",
+        "text": "在账号中心选择重置密码并完成手机验证，然后重新导入公司 VPN 配置文件。不要反复输入旧密码。完成验证后等待一分钟再打开客户端。",
+        "error": ""
+      }
+    },
+    {
+      "id": "ac017-new-tag-question",
+      "pass": true,
+      "expected": {
+        "answered": true
+      },
+      "actual": {
+        "tag": "知识问答",
+        "text": "T011HELIX-FAIL 认证失败，通常**不是网卡硬件故障**，现有知识中未提及该错误与网卡硬件损坏存在关联。\n\n排查步骤如下：  \n1. **确认网络连接类型**：请先检查是否误连了访客 WiFi 或手机热点，必须连接公司办公无线网络（非访客网）；  \n2. **重连办公网络**：在系统设置中“忘记此网络”，关闭飞行模式后，重新输入 IT 发放的密码连接；  \n3. **检查证书状态**：若反复提示认证失败，可能是客户端证书过期，需联系 IT 部门换发新证书；  \n4. **勿自行调整防火墙或反复输错密码**：这可能导致临时锁定或配置异常，影响排查。  \n\n如按以上步骤操作后仍失败，建议提交 IT 工单并注明已执行的操作，由 IT 进一步核查账号、证书或网络策略问题。当前信息不支持判断为网卡硬件故障，无需优先更换或检测网卡。"
+      }
+    },
+    {
+      "id": "ac003-txt-tag-retrieval",
+      "pass": true,
+      "expected": {
+        "tag": "知识问答"
+      },
+      "actual": {
+        "tag": "知识问答",
+        "text": "是的，T011WIFI 办公网在忘记后重新连接时，仍需避开微波炉等干扰源。\n\n原因在于：T011WIFI 使用的是 2.4GHz 频段（该频段为办公无线网络默认部署频段），而微波炉、蓝牙设备、无线电话等常见办公周边设备均工作在相同或邻近频段，会产生强电磁干扰，导致信号衰减、重传率升高甚至连接中断。即使已完成“忘记网络→重输密码”的操作，若设备仍处于强干扰环境中，无线网卡仍可能无法稳定协商链路、完成 DHCP 获取或维持正常通信。\n\n操作要求明确如下：  \n- 在执行“忘记网络并重新输入密码”后，如连接失败或连接后频繁掉线、网页加载缓慢，应主动将终端设备（笔记本/手机）移离微波炉、大型金属柜体、密集USB 3.0设备等已知干扰源；  \n- 同时建议重启无线网卡（如Windows中禁用再启用WLAN适配器，macOS中关闭再打开Wi-Fi），以清除旧信道缓存并触发AP重新优选干扰较小的信道；  \n- 不要反复尝试输入密码——输错三次将触发临时认证锁定，需等待5分钟或联系IT重置。  \n\n以上要求基于企业AP采用动态信道调整策略，但其响应存在延迟，物理避让干扰源仍是最快有效的前置排障动作。"
+      }
+    }
+  ],
+  "failed": [
+    "ac017-tags-still-hardware"
+  ]
+}

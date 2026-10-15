@@ -1,0 +1,205 @@
+{
+  "backend": "http://127.0.0.1:8110",
+  "frontend": "http://127.0.0.1:5220",
+  "database_path": "data/t045.db",
+  "llm_api_key": "present",
+  "shared_password_set": true,
+  "t045_db": {
+    "exists": true,
+    "bytes": 360448,
+    "mtime": "2026-09-23T09:54:46+08:00"
+  },
+  "biz_db": {
+    "exists": true,
+    "bytes": 622592,
+    "mtime": "2026-09-17T22:38:41+08:00"
+  },
+  "checks": {
+    "docs": {
+      "status": 200
+    },
+    "admin_login": {
+      "status": 200,
+      "success": true,
+      "error": null,
+      "error_code": null,
+      "data_keys": [
+        "access_token",
+        "role",
+        "token_type",
+        "username"
+      ],
+      "role": "admin",
+      "username": "admin",
+      "item_count": null
+    },
+    "employee_login": {
+      "status": 200,
+      "success": true,
+      "error": null,
+      "error_code": null,
+      "data_keys": [
+        "access_token",
+        "role",
+        "token_type",
+        "username"
+      ],
+      "role": "employee",
+      "username": "employee",
+      "item_count": null
+    },
+    "agent_login": {
+      "status": 200,
+      "success": true,
+      "error": null,
+      "error_code": null,
+      "data_keys": [
+        "access_token",
+        "role",
+        "token_type",
+        "username"
+      ],
+      "role": "frontline_agent",
+      "username": "agent",
+      "item_count": null
+    },
+    "admin_list_documents": {
+      "status": 200,
+      "success": true,
+      "error": null,
+      "error_code": null,
+      "data_keys": null,
+      "role": null,
+      "username": null,
+      "item_count": 3,
+      "docs": [
+        {
+          "filename": "t045-user-visible.md",
+          "ingest_status": "ready",
+          "visibility": "user_visible",
+          "has_from": true,
+          "has_to": true,
+          "chunk_count": 1
+        },
+        {
+          "filename": "t045-high-risk.md",
+          "ingest_status": "ready",
+          "visibility": "high_risk_human_only",
+          "has_from": true,
+          "has_to": true,
+          "chunk_count": 1
+        },
+        {
+          "filename": "t045-agent-only.md",
+          "ingest_status": "ready",
+          "visibility": "agent_only",
+          "has_from": true,
+          "has_to": true,
+          "chunk_count": 2
+        }
+      ]
+    },
+    "admin_document_details": [
+      {
+        "filename": "t045-user-visible.md",
+        "status": 200,
+        "visibility": "user_visible",
+        "has_from": true,
+        "has_to": true,
+        "chunk_count": 1,
+        "chunk_preview_ready": true
+      },
+      {
+        "filename": "t045-high-risk.md",
+        "status": 200,
+        "visibility": "high_risk_human_only",
+        "has_from": true,
+        "has_to": true,
+        "chunk_count": 1,
+        "chunk_preview_ready": true
+      },
+      {
+        "filename": "t045-agent-only.md",
+        "status": 200,
+        "visibility": "agent_only",
+        "has_from": true,
+        "has_to": true,
+        "chunk_count": 2,
+        "chunk_preview_ready": true
+      }
+    ],
+    "employee_current": {
+      "status": 200,
+      "success": true,
+      "error": null,
+      "error_code": null,
+      "data_keys": [
+        "role",
+        "username"
+      ],
+      "role": "employee",
+      "username": "employee",
+      "item_count": null
+    },
+    "proxy_admin_login": {
+      "status": 200,
+      "success": true,
+      "error": null,
+      "error_code": null,
+      "data_keys": [
+        "access_token",
+        "role",
+        "token_type",
+        "username"
+      ],
+      "role": "admin",
+      "username": "admin",
+      "item_count": null
+    },
+    "proxy_list_documents": {
+      "status": 200,
+      "success": true,
+      "error": null,
+      "error_code": null,
+      "data_keys": null,
+      "role": null,
+      "username": null,
+      "item_count": 3,
+      "docs": [
+        {
+          "filename": "t045-user-visible.md",
+          "ingest_status": "ready",
+          "visibility": "user_visible",
+          "has_from": true,
+          "has_to": true,
+          "chunk_count": 1
+        },
+        {
+          "filename": "t045-high-risk.md",
+          "ingest_status": "ready",
+          "visibility": "high_risk_human_only",
+          "has_from": true,
+          "has_to": true,
+          "chunk_count": 1
+        },
+        {
+          "filename": "t045-agent-only.md",
+          "ingest_status": "ready",
+          "visibility": "agent_only",
+          "has_from": true,
+          "has_to": true,
+          "chunk_count": 2
+        }
+      ]
+    },
+    "frontend_index": {
+      "status": 200,
+      "has_mock_badge_in_html": false
+    }
+  },
+  "same_docs_on_proxy": [
+    "t045-user-visible.md",
+    "t045-high-risk.md",
+    "t045-agent-only.md"
+  ]
+}

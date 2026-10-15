@@ -1,0 +1,79 @@
+{
+  "viteStatus": 200,
+  "backendStatus": 200,
+  "viteUseMock": "false",
+  "vitePollIntervalMs": "3000",
+  "llmKeyConfigured": true,
+  "llmKeyLength": 117,
+  "frontendEnvKeysMatchExample": true,
+  "backendEnvKeysMatchExample": true,
+  "frontendExtraKeys": [],
+  "backendExtraKeys": [],
+  "loginHttp": 200,
+  "loginSuccess": true,
+  "hasToken": true,
+  "invalidFilter": {
+    "http": 400,
+    "error": "入库状态筛选无效",
+    "error_code": "VALIDATION_ERROR"
+  },
+  "listAll": {
+    "http": 200,
+    "total": 0,
+    "count": 0
+  },
+  "filters": {
+    "ingesting": {
+      "status": 200,
+      "total": 0,
+      "count": 0,
+      "statuses": []
+    },
+    "ready": {
+      "status": 200,
+      "total": 0,
+      "count": 0,
+      "statuses": []
+    },
+    "failed": {
+      "status": 200,
+      "total": 0,
+      "count": 0,
+      "statuses": []
+    }
+  },
+  "rejects": [
+    {
+      "filename": "notes.docx",
+      "http": 400,
+      "error": "请重新上传",
+      "error_code": "VALIDATION_ERROR",
+      "success": false
+    },
+    {
+      "filename": "empty.txt",
+      "http": 400,
+      "error": "请重新上传",
+      "error_code": "VALIDATION_ERROR",
+      "success": false
+    },
+    {
+      "filename": "blank.pdf",
+      "http": 400,
+      "error": "请重新上传",
+      "error_code": "VALIDATION_ERROR",
+      "success": false
+    }
+  ],
+  "listTotalBeforeRejects": 0,
+  "listTotalAfterRejects": 0,
+  "listHttpAfterRejects": 200,
+  "rejectNamesInList": [],
+  "blankPdfBytes": 431,
+  "blankPdfExtractedLen": 0,
+  "textPdfBytes": 4130,
+  "textPdfExtractedLen": 3551,
+  "textPdfHasToken": true,
+  "textPdfSourceLen": 3552,
+  "fixtureDir": "C:\\Users\\慈海客服\\Desktop\\demo\\Develop_Helper\\Projects_Repo\\Customer_Service\\.sdd\\test-reports\\t011-fixtures"
+}

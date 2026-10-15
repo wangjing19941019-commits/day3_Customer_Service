@@ -1,0 +1,196 @@
+{
+  "mock": true,
+  "base": "http://127.0.0.1:5204",
+  "viewport": "1440x900",
+  "cdpPort": 9451,
+  "chrome": "Chrome/153.0.8010.48",
+  "userDataDir": "C:\\Users\\慈海客服\\AppData\\Local\\Temp\\t020-chrome-KjzGoY",
+  "steps": {
+    "emptyAgent": {
+      "pathname": "/agent",
+      "emptyText": "还没有需要人工处理的对话",
+      "listCount": 0,
+      "confirmText": null,
+      "workWidth": 360,
+      "topbarUser": "已登录：[Mock] it-help"
+    },
+    "untransferred409": {
+      "threw": true,
+      "status": 409,
+      "error_code": "CONFLICT",
+      "message": "会话尚未转人工，不能填单"
+    },
+    "draft": {
+      "listCount": 1,
+      "confirmDisabled": true,
+      "typeValue": "",
+      "lineValue": "",
+      "hasNoLineHint": true,
+      "hasSendToUserButton": false,
+      "knowledgeHint": [
+        "[Mock] 未指定业务线，不套用单一口径",
+        "[Mock] 当前没有可推送的政策或流程",
+        "[Mock] 仅坐席可见，不会发给用户。"
+      ],
+      "listWidth": 320,
+      "workWidth": 360,
+      "bodyHasMock": true,
+      "topbarUser": "已登录：[Mock] it-help"
+    },
+    "presalePolish": {
+      "draft": "[Mock] 您好，已了解您希望办理的事项。售前核对一下退货条件。请补充必要信息，我们会按售后流程帮您登记。",
+      "confirmDisabled": true,
+      "messageCount": 2,
+      "beforePresaleSend": 2
+    },
+    "presaleSend": {
+      "lastPeer": {
+        "side": "peer",
+        "tag": "客服",
+        "text": "[Mock] 您好，已了解您希望办理的事项。售前核对一下退货条件。请补充必要信息，我们会按售后流程帮您登记。"
+      },
+      "confirmDisabled": true
+    },
+    "extracting": {
+      "extracting": true,
+      "extractText": "[Mock] 正在根据对话补全…",
+      "confirmDisabled": true,
+      "typeValue": "return_exchange",
+      "lineValue": "",
+      "hasReturnMethod": true,
+      "hasQuantity": true,
+      "hasTaxId": false,
+      "composerDisabled": false
+    },
+    "lineWhileExtract": {
+      "extracting": true,
+      "confirmDisabled": false,
+      "lineValue": "digital_3c"
+    },
+    "digital3c": {
+      "productValue": "连衣裙",
+      "productStatus": "已提取",
+      "knowledgeText": "[Mock] 3C 数码 / 保修与只换不修[Mock] 以签收后的保修说明为准，非人为损坏可保修或只换不修，不适用服饰七天无理由。",
+      "extracting": false,
+      "confirmDisabled": false
+    },
+    "apparel": {
+      "lineValue": "apparel_beauty",
+      "knowledgeText": "[Mock] 服饰美妆 / 七天无理由退货[Mock] 签收后七日内可无理由退货，吊牌完整、不影响二次销售。该口径不适用于 3C 质保。"
+    },
+    "invoice": {
+      "extracting": true,
+      "hasInvoiceTitle": true,
+      "hasTaxId": true,
+      "hasQuantity": false,
+      "hasReturnMethod": false,
+      "fieldIds": [
+        "agent-business-line",
+        "agent-ticket-type",
+        "ticket-field-order_no",
+        "ticket-field-product_info",
+        "ticket-field-amount",
+        "ticket-field-intent_summary",
+        "ticket-field-invoice_kind",
+        "ticket-field-invoice_title",
+        "ticket-field-tax_id",
+        "ticket-field-invoice_contact"
+      ]
+    },
+    "backReturn": {
+      "hasReturnMethod": true,
+      "hasQuantity": true,
+      "hasTaxId": false,
+      "hasInvoiceTitle": false
+    },
+    "handEdit": {
+      "productValue": "坐席手改-勿覆盖",
+      "productStatus": "坐席已改",
+      "extracting": false,
+      "storedAfterEdit": {
+        "value": "坐席手改-勿覆盖",
+        "status": "agent_edited"
+      }
+    },
+    "complaint": {
+      "knowledgeCards": 0,
+      "hasEmptyKnowledge": true,
+      "knowledgeText": ""
+    },
+    "afterReloadDraft": {
+      "confirmText": "确认工单",
+      "typeDisabled": false,
+      "typeValue": "return_exchange",
+      "lineValue": "apparel_beauty",
+      "productValue": "坐席手改-勿覆盖",
+      "productStatus": "坐席已改",
+      "storedAfterReload": {
+        "status": "draft",
+        "extract_status": "ready",
+        "product": {
+          "value": "坐席手改-勿覆盖",
+          "status": "agent_edited"
+        }
+      }
+    },
+    "employeeBeforePolish": {
+      "messageCount": 3,
+      "otherTexts": [
+        "[Mock] 服饰美妆支持七天无理由退货，需商品完好",
+        "[Mock] 您好，已了解您希望办理的事项。售前核对一下退货条件。请补充必要信息，我们会按售后流程帮您登记。"
+      ],
+      "hasApparelPush": false,
+      "hasDigitalPush": false
+    },
+    "polishRisky": {
+      "draft": "[Mock] 您好，已了解您希望办理的事项。可以按现有规则核对处理方式，按七天无理由处理。请补充必要信息，我们会按售后流程帮您登记。",
+      "messageCount": 3,
+      "agentMsgBeforeRisky": 3,
+      "hasFullRefund": false
+    },
+    "employeeDuringPolish": {
+      "messageCount": 3,
+      "before": 3,
+      "lastOther": {
+        "side": "other",
+        "tag": "客服",
+        "text": "[Mock] 您好，已了解您希望办理的事项。售前核对一下退货条件。请补充必要信息，我们会按售后流程帮您登记。"
+      }
+    },
+    "employeeAfterSend": {
+      "messageCount": 4,
+      "lastOther": {
+        "side": "other",
+        "tag": "客服",
+        "text": "[Mock] 改回原稿再发送测试"
+      },
+      "hasOriginal": true,
+      "hasApparelPush": false
+    },
+    "confirmed": {
+      "confirmText": "已确认",
+      "confirmDisabled": true,
+      "typeDisabled": true,
+      "lineDisabled": false,
+      "typeValue": "return_exchange",
+      "productDisabled": false
+    },
+    "afterConfirmEdit": {
+      "lineValue": "digital_3c",
+      "quantity": "2",
+      "typeValue": "return_exchange",
+      "typeDisabled": true,
+      "patchType409": {
+        "threw": true,
+        "status": 409,
+        "error_code": "CONFLICT",
+        "message": "工单已确认，不能更改工单类型"
+      }
+    }
+  },
+  "failed": [],
+  "viteStatus": 200,
+  "viteUrl": "http://127.0.0.1:5204",
+  "conversationId": "1f53f3d1-cb3c-4c8e-9cca-94d30440e653",
+  "pass": true
+}

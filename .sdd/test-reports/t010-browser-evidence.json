@@ -1,0 +1,460 @@
+{
+  "mock": false,
+  "viewport": "1440x900",
+  "cdpPort": 9368,
+  "url": "http://127.0.0.1:5199",
+  "backend": "http://127.0.0.1:8099",
+  "userDataDir": "C:\\Users\\慈海客服\\AppData\\Local\\Temp\\t010-chrome-6ZwYlu",
+  "steps": [],
+  "viteStatus": 200,
+  "backendStatus": 200,
+  "cors": [
+    {
+      "origin": "http://127.0.0.1:5199",
+      "status": 200,
+      "allowOrigin": "http://127.0.0.1:5199",
+      "allowHeaders": "authorization,content-type"
+    },
+    {
+      "origin": "http://localhost:5199",
+      "status": 200,
+      "allowOrigin": "http://localhost:5199",
+      "allowHeaders": "authorization,content-type"
+    },
+    {
+      "origin": "http://127.0.0.1:5175",
+      "status": 200,
+      "allowOrigin": "http://127.0.0.1:5175",
+      "allowHeaders": "authorization,content-type"
+    },
+    {
+      "origin": "http://localhost:5175",
+      "status": 200,
+      "allowOrigin": "http://localhost:5175",
+      "allowHeaders": "authorization,content-type"
+    }
+  ],
+  "noLogoutApi": {
+    "deleteSessions": 405,
+    "postLogout": 404
+  },
+  "mockEnabled": false,
+  "loginStart": {
+    "pathname": "/login",
+    "title": "智能客服",
+    "hasLoggedOutHint": true,
+    "formError": "",
+    "tokenPresent": false,
+    "pageHasMock": false,
+    "hasBusinessShell": false,
+    "hasLoginCard": true,
+    "screenshot": "t010-login.png"
+  },
+  "wrongPassword": {
+    "pathname": "/login",
+    "title": "智能客服",
+    "hasLoggedOutHint": true,
+    "formError": "用户名或密码错误",
+    "tokenPresent": false,
+    "pageHasMock": false,
+    "hasBusinessShell": false,
+    "hasLoginCard": true,
+    "screenshot": "t010-wrong-password.png"
+  },
+  "wrongPasswordNetwork": [
+    {
+      "kind": "response",
+      "requestId": "7380.55",
+      "status": 401,
+      "url": "http://127.0.0.1:5199/api/sessions",
+      "mimeType": "application/json"
+    }
+  ],
+  "employee": {
+    "pathname": "/employee",
+    "title": "员工端",
+    "topbarUser": "已登录：it-help",
+    "logoutText": "退出",
+    "activeNav": [
+      "员工端"
+    ],
+    "hasEmployee": true,
+    "hasEmployeeComposer": true,
+    "hasAgent": false,
+    "hasKnowledge": false,
+    "tokenPresent": true,
+    "pageHasMock": false,
+    "api002": {
+      "status": 200,
+      "username": "it-help",
+      "success": true,
+      "tokenPresent": true
+    },
+    "screenshot": "t010-employee.png"
+  },
+  "agent": {
+    "pathname": "/agent",
+    "title": "客服端",
+    "topbarUser": "已登录：it-help",
+    "logoutText": "退出",
+    "activeNav": [
+      "客服端"
+    ],
+    "hasEmployee": false,
+    "hasEmployeeComposer": false,
+    "hasAgent": true,
+    "hasKnowledge": false,
+    "tokenPresent": true,
+    "pageHasMock": false,
+    "screenshot": "t010-agent.png"
+  },
+  "knowledge": {
+    "pathname": "/knowledge",
+    "title": "知识库",
+    "topbarUser": "已登录：it-help",
+    "logoutText": "退出",
+    "activeNav": [
+      "知识库"
+    ],
+    "hasEmployee": false,
+    "hasEmployeeComposer": false,
+    "hasAgent": false,
+    "hasKnowledge": true,
+    "tokenPresent": true,
+    "pageHasMock": false,
+    "screenshot": "t010-knowledge.png"
+  },
+  "logout": {
+    "pathname": "/login",
+    "title": "智能客服",
+    "hasLoggedOutHint": true,
+    "formError": "",
+    "tokenPresent": false,
+    "pageHasMock": false,
+    "hasBusinessShell": false,
+    "hasLoginCard": true,
+    "screenshot": "t010-logout.png"
+  },
+  "direct/employee": {
+    "pathname": "/login",
+    "title": "智能客服",
+    "hasLoggedOutHint": true,
+    "formError": "",
+    "tokenPresent": false,
+    "pageHasMock": false,
+    "hasBusinessShell": false,
+    "hasLoginCard": true,
+    "screenshot": "t010-direct-employee.png"
+  },
+  "direct/agent": {
+    "pathname": "/login",
+    "title": "智能客服",
+    "hasLoggedOutHint": true,
+    "formError": "",
+    "tokenPresent": false,
+    "pageHasMock": false,
+    "hasBusinessShell": false,
+    "hasLoginCard": true,
+    "screenshot": "t010-direct-agent.png"
+  },
+  "direct/knowledge": {
+    "pathname": "/login",
+    "title": "智能客服",
+    "hasLoggedOutHint": true,
+    "formError": "",
+    "tokenPresent": false,
+    "pageHasMock": false,
+    "hasBusinessShell": false,
+    "hasLoginCard": true,
+    "screenshot": "t010-direct-knowledge.png"
+  },
+  "sessionNetwork": [
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/sessions",
+      "hasAuthHeader": false
+    },
+    {
+      "kind": "response",
+      "status": 401,
+      "url": "http://127.0.0.1:5199/api/sessions"
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/sessions",
+      "hasAuthHeader": false
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/sessions"
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/sessions/current",
+      "hasAuthHeader": true
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/sessions/current"
+    }
+  ],
+  "checks": [
+    {
+      "id": "env-vite",
+      "pass": true,
+      "expected": 200,
+      "actual": 200
+    },
+    {
+      "id": "env-backend",
+      "pass": true,
+      "expected": 200,
+      "actual": 200
+    },
+    {
+      "id": "tc-cors-5199-5175",
+      "pass": true,
+      "expected": "CORS allow 5199 and 5175",
+      "actual": [
+        {
+          "origin": "http://127.0.0.1:5199",
+          "status": 200,
+          "allowOrigin": "http://127.0.0.1:5199",
+          "allowHeaders": "authorization,content-type"
+        },
+        {
+          "origin": "http://localhost:5199",
+          "status": 200,
+          "allowOrigin": "http://localhost:5199",
+          "allowHeaders": "authorization,content-type"
+        },
+        {
+          "origin": "http://127.0.0.1:5175",
+          "status": 200,
+          "allowOrigin": "http://127.0.0.1:5175",
+          "allowHeaders": "authorization,content-type"
+        },
+        {
+          "origin": "http://localhost:5175",
+          "status": 200,
+          "allowOrigin": "http://localhost:5175",
+          "allowHeaders": "authorization,content-type"
+        }
+      ]
+    },
+    {
+      "id": "tc-no-logout-api",
+      "pass": true,
+      "expected": {
+        "deleteSessions": 405,
+        "postLogout": 404
+      },
+      "actual": {
+        "deleteSessions": 405,
+        "postLogout": 404
+      }
+    },
+    {
+      "id": "tc-mock-off",
+      "pass": true,
+      "expected": false,
+      "actual": false
+    },
+    {
+      "id": "tc-login-no-mock",
+      "pass": true,
+      "expected": {
+        "pathname": "/login",
+        "当前未登录": true,
+        "mock": false,
+        "token": false
+      },
+      "actual": {
+        "pathname": "/login",
+        "title": "智能客服",
+        "hasLoggedOutHint": true,
+        "formError": "",
+        "tokenPresent": false,
+        "pageHasMock": false,
+        "hasBusinessShell": false,
+        "hasLoginCard": true
+      }
+    },
+    {
+      "id": "ac010-wrong-password",
+      "pass": true,
+      "expected": {
+        "stayLogin": true,
+        "error": "用户名或密码错误",
+        "noToken": true
+      },
+      "actual": {
+        "pathname": "/login",
+        "formError": "用户名或密码错误",
+        "tokenPresent": false,
+        "hasBusinessShell": false
+      }
+    },
+    {
+      "id": "tc-wrong-password-401",
+      "pass": true,
+      "expected": 401,
+      "actual": [
+        {
+          "status": 401,
+          "url": "http://127.0.0.1:5199/api/sessions"
+        }
+      ]
+    },
+    {
+      "id": "ac009-employee",
+      "pass": true,
+      "expected": {
+        "page": "/employee",
+        "topbar": "已登录：it-help",
+        "logout": "退出"
+      },
+      "actual": {
+        "pathname": "/employee",
+        "topbarUser": "已登录：it-help",
+        "logoutText": "退出",
+        "hasEmployee": true,
+        "tokenPresent": true,
+        "pageHasMock": false
+      }
+    },
+    {
+      "id": "tc-api002-topbar",
+      "pass": true,
+      "expected": {
+        "status": 200,
+        "username": "it-help"
+      },
+      "actual": {
+        "status": 200,
+        "username": "it-help",
+        "success": true,
+        "tokenPresent": true
+      }
+    },
+    {
+      "id": "ac009-agent",
+      "pass": true,
+      "expected": {
+        "page": "/agent",
+        "topbar": "已登录：it-help"
+      },
+      "actual": {
+        "pathname": "/agent",
+        "topbarUser": "已登录：it-help",
+        "logoutText": "退出",
+        "hasAgent": true,
+        "tokenPresent": true,
+        "pageHasMock": false
+      }
+    },
+    {
+      "id": "ac009-knowledge",
+      "pass": true,
+      "expected": {
+        "page": "/knowledge",
+        "topbar": "已登录：it-help"
+      },
+      "actual": {
+        "pathname": "/knowledge",
+        "topbarUser": "已登录：it-help",
+        "logoutText": "退出",
+        "hasKnowledge": true,
+        "tokenPresent": true,
+        "pageHasMock": false
+      }
+    },
+    {
+      "id": "ac026-logout",
+      "pass": true,
+      "expected": {
+        "pathname": "/login",
+        "当前未登录": true,
+        "token": false
+      },
+      "actual": {
+        "pathname": "/login",
+        "title": "智能客服",
+        "hasLoggedOutHint": true,
+        "formError": "",
+        "tokenPresent": false,
+        "pageHasMock": false,
+        "hasBusinessShell": false,
+        "hasLoginCard": true
+      }
+    },
+    {
+      "id": "ac026-direct/employee",
+      "pass": true,
+      "expected": {
+        "redirect": "/login",
+        "当前未登录": true
+      },
+      "actual": {
+        "pathname": "/login",
+        "hasLoggedOutHint": true,
+        "tokenPresent": false,
+        "hasBusinessShell": false
+      }
+    },
+    {
+      "id": "ac026-direct/agent",
+      "pass": true,
+      "expected": {
+        "redirect": "/login",
+        "当前未登录": true
+      },
+      "actual": {
+        "pathname": "/login",
+        "hasLoggedOutHint": true,
+        "tokenPresent": false,
+        "hasBusinessShell": false
+      }
+    },
+    {
+      "id": "ac026-direct/knowledge",
+      "pass": true,
+      "expected": {
+        "redirect": "/login",
+        "当前未登录": true
+      },
+      "actual": {
+        "pathname": "/login",
+        "hasLoggedOutHint": true,
+        "tokenPresent": false,
+        "hasBusinessShell": false
+      }
+    },
+    {
+      "id": "tc-real-post-sessions",
+      "pass": true,
+      "expected": ">=2 real POST /api/sessions",
+      "actual": 2
+    },
+    {
+      "id": "tc-real-get-current",
+      "pass": true,
+      "expected": ">=1 real GET /api/sessions/current",
+      "actual": 1
+    },
+    {
+      "id": "ac-no-mock",
+      "pass": true,
+      "expected": false,
+      "actual": {
+        "anyMock": false
+      }
+    }
+  ],
+  "failed": []
+}

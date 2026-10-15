@@ -1,0 +1,420 @@
+{
+  "chrome": "Chrome/153.0.8010.48",
+  "cdpPort": 9488,
+  "base": "http://127.0.0.1:5288",
+  "mock": true,
+  "screenshots": [
+    "t034-admin-templates.png",
+    "t034-after-save.png",
+    "t034-preview.png",
+    "t034-eval-ready.png",
+    "t034-rollback.png",
+    "t034-agent-home.png",
+    "t034-agent-blocked.png"
+  ],
+  "mockFlag": {
+    "pageHasMockLabel": true
+  },
+  "initial": {
+    "pathname": "/templates",
+    "navLabels": [
+      "知识库",
+      "工单列表",
+      "模板"
+    ],
+    "rows": [
+      {
+        "title": "[Mock] 服饰美妆 · 退换货 · 售后",
+        "hint": "[Mock] 稳定 v1",
+        "alert": "",
+        "selected": false
+      },
+      {
+        "title": "[Mock] 3C 数码 · 退换货 · 售后",
+        "hint": "[Mock] 稳定 v1",
+        "alert": "[Mock] 合规拦截率突然升高",
+        "selected": true
+      },
+      {
+        "title": "[Mock] 3C 数码 · 物流异常 · 行程中",
+        "hint": "[Mock] 稳定 v1",
+        "alert": "",
+        "selected": false
+      }
+    ],
+    "primary": [
+      {
+        "text": "保存新版本",
+        "cls": "btn btn-primary",
+        "disabled": true
+      }
+    ],
+    "grayBtn": {
+      "text": "灰度约 5%",
+      "cls": "btn btn-secondary",
+      "disabled": true
+    },
+    "grayReason": "[Mock] 没有不少于 5000 条的评测集，不能开始灰度",
+    "alerts": [
+      {
+        "text": "[Mock] 合规拦截率突然升高",
+        "color": "rgb(180, 35, 24)"
+      },
+      {
+        "text": "[Mock] 合规拦截率突然升高",
+        "color": "rgb(180, 35, 24)"
+      }
+    ],
+    "alertColor": "rgb(180, 35, 24)",
+    "layout": {
+      "listWidth": 320,
+      "editorLeft": 540,
+      "listLeft": 220
+    },
+    "h1": "[Mock] 模板配置",
+    "evalHint": [
+      "[Mock] 未配置金额线，不因金额单独升为高风险。",
+      "[Mock] 当前 0 条，不足 5000 条不能灰度。Mock 可用一行 {\"item_count\":5000} 声明条数，{\"item_count\":0} 清空。"
+    ],
+    "amountHint": "[Mock] 未配置金额线，不因金额单独升为高风险。",
+    "mockEnabledHint": true
+  },
+  "afterSave": {
+    "saveHint": [
+      "[Mock] 可使用 {{emotion}} / {{情绪}}（用户情绪）、{{order}} / {{订单}}（订单信息）、{{policy}} / {{政策}}（政策条款）。预览用测试说法本地替换占位，不调用发出坐席回复的模型路径。",
+      "[Mock] 新版本 v2 · admin · 2026/9/23 08:36:43 · T034-tester 退货售后说明补充"
+    ],
+    "versions": [
+      "[Mock] v1 · system · 2026/9/23 08:36:42 · 初始版本",
+      "[Mock] v2 · admin · 2026/9/23 08:36:43 · T034-tester 退货售后说明补充"
+    ],
+    "diff": [
+      "[Mock] --- v1\n+++ v2\n-请结合用户情绪{{emotion}}、订单{{order}}与政策{{policy}}给出售后说明。\n+【T034修订】请结合用户情绪{{emotion}}、订单{{order}}与政策{{policy}}给出售后说明。"
+    ],
+    "rows": [
+      {
+        "title": "[Mock] 服饰美妆 · 退换货 · 售后",
+        "hint": "[Mock] 稳定 v1",
+        "alert": "",
+        "selected": false
+      },
+      {
+        "title": "[Mock] 3C 数码 · 退换货 · 售后",
+        "hint": "[Mock] 稳定 v1",
+        "alert": "[Mock] 合规拦截率突然升高",
+        "selected": true
+      },
+      {
+        "title": "[Mock] 3C 数码 · 物流异常 · 行程中",
+        "hint": "[Mock] 稳定 v1",
+        "alert": "",
+        "selected": false
+      }
+    ]
+  },
+  "afterGray": {
+    "rows": [
+      {
+        "title": "[Mock] 服饰美妆 · 退换货 · 售后",
+        "hint": "[Mock] 稳定 v1",
+        "alert": "",
+        "selected": false
+      },
+      {
+        "title": "[Mock] 3C 数码 · 退换货 · 售后",
+        "hint": "[Mock] 稳定 v1 · 灰度 v2 5%",
+        "alert": "[Mock] 合规拦截率突然升高",
+        "selected": true
+      },
+      {
+        "title": "[Mock] 3C 数码 · 物流异常 · 行程中",
+        "hint": "[Mock] 稳定 v1",
+        "alert": "",
+        "selected": false
+      }
+    ]
+  },
+  "afterRollback": {
+    "rollbackMessage": [
+      "[Mock] 新会话将使用该版本"
+    ],
+    "rows": [
+      {
+        "title": "[Mock] 服饰美妆 · 退换货 · 售后",
+        "hint": "[Mock] 稳定 v1",
+        "alert": "",
+        "selected": false
+      },
+      {
+        "title": "[Mock] 3C 数码 · 退换货 · 售后",
+        "hint": "[Mock] 稳定 v1",
+        "alert": "[Mock] 合规拦截率突然升高",
+        "selected": true
+      },
+      {
+        "title": "[Mock] 3C 数码 · 物流异常 · 行程中",
+        "hint": "[Mock] 稳定 v1",
+        "alert": "",
+        "selected": false
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "TC-login-admin",
+      "ok": true,
+      "expected": "admin 登录后进入受保护页",
+      "actual": {
+        "pathname": "/knowledge",
+        "user": "已登录：[Mock] admin"
+      }
+    },
+    {
+      "id": "TC-nav-template",
+      "ok": true,
+      "expected": "管理端侧栏有模板入口并可点击",
+      "actual": true
+    },
+    {
+      "id": "TC-select-return",
+      "ok": true,
+      "expected": "选中 3C 数码退换货售后模板",
+      "actual": true
+    },
+    {
+      "id": "TC-11-layout",
+      "ok": true,
+      "expected": "左列表右编辑",
+      "actual": {
+        "listWidth": 320,
+        "editorLeft": 540,
+        "listLeft": 220
+      }
+    },
+    {
+      "id": "TC-07-primary",
+      "ok": true,
+      "expected": "编辑区主按钮只有「保存新版本」",
+      "actual": {
+        "primary": [
+          {
+            "text": "保存新版本",
+            "cls": "btn btn-primary",
+            "disabled": true
+          }
+        ],
+        "editorBtns": [
+          {
+            "text": "保存新版本",
+            "cls": "btn btn-primary",
+            "disabled": true
+          },
+          {
+            "text": "预览",
+            "cls": "btn btn-secondary",
+            "disabled": true
+          },
+          {
+            "text": "对比",
+            "cls": "btn btn-secondary",
+            "disabled": false
+          },
+          {
+            "text": "灰度约 5%",
+            "cls": "btn btn-secondary",
+            "disabled": true
+          },
+          {
+            "text": "回滚",
+            "cls": "btn btn-secondary",
+            "disabled": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "TC-03-gray-blocked",
+      "ok": true,
+      "expected": "不足 5000 灰度禁用并写明原因，带 [Mock]",
+      "actual": {
+        "grayBtn": {
+          "text": "灰度约 5%",
+          "cls": "btn btn-secondary",
+          "disabled": true
+        },
+        "grayReason": "[Mock] 没有不少于 5000 条的评测集，不能开始灰度",
+        "evalHint": [
+          "[Mock] 未配置金额线，不因金额单独升为高风险。",
+          "[Mock] 当前 0 条，不足 5000 条不能灰度。Mock 可用一行 {\"item_count\":5000} 声明条数，{\"item_count\":0} 清空。"
+        ]
+      }
+    },
+    {
+      "id": "TC-06-alert",
+      "ok": true,
+      "expected": "告警 Danger 文字 #B42318 且带 [Mock]",
+      "actual": {
+        "alerts": [
+          {
+            "text": "[Mock] 合规拦截率突然升高",
+            "color": "rgb(180, 35, 24)"
+          },
+          {
+            "text": "[Mock] 合规拦截率突然升高",
+            "color": "rgb(180, 35, 24)"
+          }
+        ],
+        "alertColor": "rgb(180, 35, 24)"
+      }
+    },
+    {
+      "id": "TC-08-mock",
+      "ok": true,
+      "expected": "页面 Mock 数据带 [Mock]",
+      "actual": {
+        "h1": "[Mock] 模板配置",
+        "mockEnabledHint": true
+      }
+    },
+    {
+      "id": "TC-01-save",
+      "ok": true,
+      "expected": "保存出现新版本号、修改人/时间/内容，对比可见正文差异",
+      "actual": {
+        "saveHint": [
+          "[Mock] 可使用 {{emotion}} / {{情绪}}（用户情绪）、{{order}} / {{订单}}（订单信息）、{{policy}} / {{政策}}（政策条款）。预览用测试说法本地替换占位，不调用发出坐席回复的模型路径。",
+          "[Mock] 新版本 v2 · admin · 2026/9/23 08:36:43 · T034-tester 退货售后说明补充"
+        ],
+        "versions": [
+          "[Mock] v1 · system · 2026/9/23 08:36:42 · 初始版本",
+          "[Mock] v2 · admin · 2026/9/23 08:36:43 · T034-tester 退货售后说明补充"
+        ],
+        "diff": [
+          "[Mock] --- v1\n+++ v2\n-请结合用户情绪{{emotion}}、订单{{order}}与政策{{policy}}给出售后说明。\n+【T034修订】请结合用户情绪{{emotion}}、订单{{order}}与政策{{policy}}给出售后说明。"
+        ]
+      }
+    },
+    {
+      "id": "TC-02-preview",
+      "ok": true,
+      "expected": "预览只替换占位，不发坐席回复，无模型回复路径请求",
+      "actual": {
+        "previewText": "[Mock] 【T034修订】请结合用户情绪生气、订单JD20260922001与政策七天无理由退货给出售后说明。",
+        "tokensLeft": {
+          "emotion": false,
+          "order": false
+        },
+        "chatBubbles": 0,
+        "net": [],
+        "replyUrls": [],
+        "convStoreKeys": []
+      }
+    },
+    {
+      "id": "TC-10a-amount-save",
+      "ok": true,
+      "expected": "金额线可保存",
+      "actual": {
+        "amountMessage": [
+          "[Mock] 当前金额线 8888 元。",
+          "[Mock] 金额线已保存",
+          "[Mock] 当前 0 条，不足 5000 条不能灰度。Mock 可用一行 {\"item_count\":5000} 声明条数，{\"item_count\":0} 清空。"
+        ],
+        "settings": {
+          "high_risk_amount_threshold": 8888
+        }
+      }
+    },
+    {
+      "id": "TC-10b-amount-clear",
+      "ok": true,
+      "expected": "金额线可清空",
+      "actual": {
+        "amountMessage": [
+          "[Mock] 未配置金额线，不因金额单独升为高风险。",
+          "[Mock] 金额线已清空",
+          "[Mock] 当前 0 条，不足 5000 条不能灰度。Mock 可用一行 {\"item_count\":5000} 声明条数，{\"item_count\":0} 清空。"
+        ],
+        "settings": {
+          "high_risk_amount_threshold": null
+        }
+      }
+    },
+    {
+      "id": "TC-04a-eval-ready",
+      "ok": true,
+      "expected": "满 5000 灰度按钮可用",
+      "actual": {
+        "grayBtn": {
+          "text": "灰度约 5%",
+          "cls": "btn btn-secondary",
+          "disabled": false
+        },
+        "evalHint": [
+          "[Mock] 未配置金额线，不因金额单独升为高风险。",
+          "[Mock] 金额线已清空",
+          "[Mock] 当前 5000 条，可灰度。"
+        ]
+      }
+    },
+    {
+      "id": "TC-04b-gray-release",
+      "ok": true,
+      "expected": "灰度约 5% 后列表显示灰度版本",
+      "actual": [
+        {
+          "title": "[Mock] 服饰美妆 · 退换货 · 售后",
+          "hint": "[Mock] 稳定 v1",
+          "alert": "",
+          "selected": false
+        },
+        {
+          "title": "[Mock] 3C 数码 · 退换货 · 售后",
+          "hint": "[Mock] 稳定 v1 · 灰度 v2 5%",
+          "alert": "[Mock] 合规拦截率突然升高",
+          "selected": true
+        },
+        {
+          "title": "[Mock] 3C 数码 · 物流异常 · 行程中",
+          "hint": "[Mock] 稳定 v1",
+          "alert": "",
+          "selected": false
+        }
+      ]
+    },
+    {
+      "id": "TC-05-rollback",
+      "ok": true,
+      "expected": "回滚后提示新会话将使用该版本",
+      "actual": [
+        "[Mock] 新会话将使用该版本"
+      ]
+    },
+    {
+      "id": "TC-09a-agent-nav",
+      "ok": true,
+      "expected": "坐席侧栏无模板入口",
+      "actual": {
+        "navLabels": [
+          "客服端"
+        ],
+        "user": "已登录：[Mock] agent",
+        "pathname": "/agent"
+      }
+    },
+    {
+      "id": "TC-09b-agent-blocked",
+      "ok": true,
+      "expected": "坐席直接打开 /templates 被挡回，打不开编辑发布",
+      "actual": {
+        "pathname": "/agent",
+        "h1": "",
+        "navLabels": [
+          "客服端"
+        ]
+      }
+    }
+  ],
+  "failed": [],
+  "pass": true
+}

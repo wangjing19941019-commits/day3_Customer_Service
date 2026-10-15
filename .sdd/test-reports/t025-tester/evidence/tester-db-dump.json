@@ -1,0 +1,182 @@
+{
+  "tickets_count": 0,
+  "conversations": [
+    {
+      "id": "166d7c3b-0603-4998-9f38-59426e770739",
+      "status": "bot",
+      "clarification_round": 1
+    },
+    {
+      "id": "4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "status": "bot",
+      "clarification_round": 0
+    },
+    {
+      "id": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "status": "bot",
+      "clarification_round": 0
+    }
+  ],
+  "messages": {
+    "c7fd212f-f229-46d6-82c2-d93e3235b64c": [
+      {
+        "kind": "employee_turn",
+        "role": "employee",
+        "original_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+        "rewritten_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+        "content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+      },
+      {
+        "kind": "knowledge",
+        "role": "system",
+        "original_content": null,
+        "rewritten_content": null,
+        "content": "星海 X1 耳机配合充电盒的总续航是 48 小时。  \n充电盒官方颜色只有星海蓝一种。"
+      },
+      {
+        "kind": "employee_turn",
+        "role": "employee",
+        "original_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+        "rewritten_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+        "content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+      },
+      {
+        "kind": "knowledge",
+        "role": "system",
+        "original_content": null,
+        "rewritten_content": null,
+        "content": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策：  \n- 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）；  \n- 要求商品完好、吊牌未剪。  \n\n非质量问题的退货运费由买家承担。"
+      },
+      {
+        "kind": "employee_turn",
+        "role": "employee",
+        "original_content": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+        "rewritten_content": "星海 X1 耳机的蓝牙版本是什么？云棉连衣裙签收后几天可以无理由退货？",
+        "content": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？"
+      },
+      {
+        "kind": "knowledge",
+        "role": "system",
+        "original_content": null,
+        "rewritten_content": null,
+        "content": "星海 X1 耳机的蓝牙版本是 5.4。\n\n云棉连衣裙签收后 7 个自然日内可申请七天无理由退货，时限自签收次日起算，满 7 日截止。"
+      },
+      {
+        "kind": "employee_turn",
+        "role": "employee",
+        "original_content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+        "rewritten_content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+        "content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品"
+      },
+      {
+        "kind": "small_talk",
+        "role": "system",
+        "original_content": null,
+        "rewritten_content": null,
+        "content": "是呀，阳光暖暖的，连心情都跟着轻快起来了～ 😊"
+      },
+      {
+        "kind": "employee_turn",
+        "role": "employee",
+        "original_content": "包裹现在到哪了，不要说政策只要当前位置",
+        "rewritten_content": "包裹现在到哪了，只要当前位置，不要说政策",
+        "content": "包裹现在到哪了，不要说政策只要当前位置"
+      },
+      {
+        "kind": "fallback",
+        "role": "system",
+        "original_content": null,
+        "rewritten_content": null,
+        "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+      },
+      {
+        "kind": "employee_turn",
+        "role": "employee",
+        "original_content": "仓库里星海 X1 现在还有多少件库存",
+        "rewritten_content": "仓库里星海 X1 现在还有多少件库存",
+        "content": "仓库里星海 X1 现在还有多少件库存"
+      },
+      {
+        "kind": "fallback",
+        "role": "system",
+        "original_content": null,
+        "rewritten_content": null,
+        "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+      },
+      {
+        "kind": "employee_turn",
+        "role": "employee",
+        "original_content": "刚才那笔支付成功了吗",
+        "rewritten_content": "刚才那笔支付是否成功",
+        "content": "刚才那笔支付成功了吗"
+      },
+      {
+        "kind": "fallback",
+        "role": "system",
+        "original_content": null,
+        "rewritten_content": null,
+        "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+      },
+      {
+        "kind": "employee_turn",
+        "role": "employee",
+        "original_content": "帮我推导一下广义相对论场方程，这和购物无关",
+        "rewritten_content": "帮我推导一下广义相对论场方程，这和购物无关",
+        "content": "帮我推导一下广义相对论场方程，这和购物无关"
+      },
+      {
+        "kind": "fallback",
+        "role": "system",
+        "original_content": null,
+        "rewritten_content": null,
+        "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+      }
+    ],
+    "4a1d3756-599f-46ed-ad85-9b5803d78db2": [
+      {
+        "kind": "employee_turn",
+        "role": "employee",
+        "original_content": "这件云棉连衣裙退货要不要保留吊牌？",
+        "rewritten_content": "这件云棉连衣裙退货要不要保留吊牌？",
+        "content": "这件云棉连衣裙退货要不要保留吊牌？"
+      },
+      {
+        "kind": "knowledge",
+        "role": "system",
+        "original_content": null,
+        "rewritten_content": null,
+        "content": "需要保留吊牌。  \n云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策：签收后7个自然日内，商品完好且吊牌未剪，方可办理无理由退货。"
+      },
+      {
+        "kind": "employee_turn",
+        "role": "employee",
+        "original_content": "能退吗",
+        "rewritten_content": "云棉连衣裙能退吗",
+        "content": "能退吗"
+      },
+      {
+        "kind": "knowledge",
+        "role": "system",
+        "original_content": null,
+        "rewritten_content": null,
+        "content": "云棉连衣裙支持退货。作为服饰美妆类商品，适用“七天无理由退货”政策：签收后7个自然日内（自签收次日起算），商品保持完好、吊牌未剪，即可申请无理由退货；非质量问题的退货运费由买家承担。\n\n办理方式：在订单页提交退货申请，原因选择「七天无理由」，并将商品寄回「华东服饰仓」。"
+      }
+    ],
+    "166d7c3b-0603-4998-9f38-59426e770739": [
+      {
+        "kind": "employee_turn",
+        "role": "employee",
+        "original_content": "能不能退",
+        "rewritten_content": "能不能退",
+        "content": "能不能退"
+      },
+      {
+        "kind": "clarification",
+        "role": "system",
+        "original_content": null,
+        "rewritten_content": null,
+        "content": "请问您想退的是哪件商品？是电子产品（如手机、耳机）还是服饰美妆类商品？方便我为您确认对应的退货政策。"
+      }
+    ]
+  }
+}

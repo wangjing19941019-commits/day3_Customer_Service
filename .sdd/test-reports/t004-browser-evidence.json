@@ -1,0 +1,201 @@
+{
+  "mock": true,
+  "viewport": "1440x900",
+  "url": "http://127.0.0.1:5199/agent",
+  "steps": [
+    {
+      "id": "empty",
+      "elapsedMs": 0,
+      "pathname": "/agent",
+      "pageName": "客服端",
+      "topbarUser": "已登录：[Mock] it-help",
+      "hasLogout": true,
+      "emptyTexts": [
+        "还没有需要人工处理的对话",
+        "还没有需要人工处理的对话"
+      ],
+      "rowCount": 0,
+      "textareaDisabled": true,
+      "replyDisabled": true,
+      "replyLabel": "回复",
+      "hasVpn": false,
+      "hasOutlook": false,
+      "hasMock": true,
+      "listWidth": 320,
+      "canvas": "rgb(244, 246, 248)",
+      "topbarHeight": "56px",
+      "screenshot": "t004-empty.png"
+    },
+    {
+      "id": "after-poll",
+      "elapsedMs": 3113,
+      "rowCount": 1
+    }
+  ],
+  "empty": {
+    "elapsedMs": 0,
+    "pathname": "/agent",
+    "pageName": "客服端",
+    "topbarUser": "已登录：[Mock] it-help",
+    "hasLogout": true,
+    "emptyTexts": [
+      "还没有需要人工处理的对话",
+      "还没有需要人工处理的对话"
+    ],
+    "rowCount": 0,
+    "textareaDisabled": true,
+    "replyDisabled": true,
+    "replyLabel": "回复",
+    "hasVpn": false,
+    "hasOutlook": false,
+    "hasMock": true,
+    "listWidth": 320,
+    "canvas": "rgb(244, 246, 248)",
+    "topbarHeight": "56px",
+    "screenshot": "t004-empty.png"
+  },
+  "afterPoll": {
+    "elapsedMs": 3113,
+    "pathname": "/agent",
+    "emptyTexts": [],
+    "rowCount": 1,
+    "rows": [
+      {
+        "title": "[Mock] Outlook 打不开",
+        "meta": "2026/9/13 00:21:42 · 已转人工",
+        "selected": true
+      }
+    ],
+    "messages": [
+      {
+        "className": "agent-msg agent-msg-user",
+        "tag": null,
+        "content": "[Mock] 邮箱打不开",
+        "rewrite": "改写为：[Mock] 邮箱客户端无法打开"
+      },
+      {
+        "className": "agent-msg agent-msg-peer",
+        "tag": "反问",
+        "content": "[Mock] 请问是 Outlook 桌面客户端无法启动，还是网页版打不开？",
+        "rewrite": null
+      },
+      {
+        "className": "agent-msg agent-msg-user",
+        "tag": null,
+        "content": "[Mock] Outlook 打不开",
+        "rewrite": "改写为：[Mock] Outlook 客户端无法启动的故障排查"
+      },
+      {
+        "className": "agent-msg agent-msg-peer",
+        "tag": "FAQ",
+        "content": "[Mock] 请先确认 Outlook 已更新到公司指定版本，并以安全模式启动排查加载项。",
+        "rewrite": null
+      }
+    ],
+    "textareaDisabled": false,
+    "replyDisabled": true,
+    "hasVpn": false,
+    "hasOutlook": true,
+    "hasMock": true,
+    "hasRewrite": true,
+    "listWidth": 320,
+    "listBorder": "1px rgb(217, 226, 236)",
+    "userBubbleBg": "rgb(29, 78, 137)",
+    "peerBubbleBg": "rgb(232, 241, 250)",
+    "composerMinHeight": "88px",
+    "replyBtnHeight": "40px",
+    "screenshot": "t004-handed-off.png"
+  },
+  "opened": {
+    "rowCount": 1,
+    "rows": [
+      {
+        "title": "[Mock] Outlook 打不开",
+        "meta": "2026/9/13 00:21:42 · 已转人工",
+        "selected": true
+      }
+    ],
+    "messages": [
+      {
+        "className": "agent-msg agent-msg-user",
+        "tag": null,
+        "content": "[Mock] 邮箱打不开",
+        "rewrite": "改写为：[Mock] 邮箱客户端无法打开"
+      },
+      {
+        "className": "agent-msg agent-msg-peer",
+        "tag": "反问",
+        "content": "[Mock] 请问是 Outlook 桌面客户端无法启动，还是网页版打不开？",
+        "rewrite": null
+      },
+      {
+        "className": "agent-msg agent-msg-user",
+        "tag": null,
+        "content": "[Mock] Outlook 打不开",
+        "rewrite": "改写为：[Mock] Outlook 客户端无法启动的故障排查"
+      },
+      {
+        "className": "agent-msg agent-msg-peer",
+        "tag": "FAQ",
+        "content": "[Mock] 请先确认 Outlook 已更新到公司指定版本，并以安全模式启动排查加载项。",
+        "rewrite": null
+      }
+    ],
+    "hasRewrite": true,
+    "hasVpn": false,
+    "hasMock": true,
+    "textareaDisabled": false,
+    "replyDisabled": true,
+    "screenshot": "t004-opened.png"
+  },
+  "afterReply": {
+    "rowCount": 1,
+    "rows": [
+      {
+        "title": "[Mock] Outlook 打不开",
+        "meta": "2026/9/13 00:21:42 · 已转人工",
+        "selected": true
+      }
+    ],
+    "messages": [
+      {
+        "className": "agent-msg agent-msg-user",
+        "tag": null,
+        "content": "[Mock] 邮箱打不开",
+        "rewrite": "改写为：[Mock] 邮箱客户端无法打开"
+      },
+      {
+        "className": "agent-msg agent-msg-peer",
+        "tag": "反问",
+        "content": "[Mock] 请问是 Outlook 桌面客户端无法启动，还是网页版打不开？",
+        "rewrite": null
+      },
+      {
+        "className": "agent-msg agent-msg-user",
+        "tag": null,
+        "content": "[Mock] Outlook 打不开",
+        "rewrite": "改写为：[Mock] Outlook 客户端无法启动的故障排查"
+      },
+      {
+        "className": "agent-msg agent-msg-peer",
+        "tag": "FAQ",
+        "content": "[Mock] 请先确认 Outlook 已更新到公司指定版本，并以安全模式启动排查加载项。",
+        "rewrite": null
+      },
+      {
+        "className": "agent-msg agent-msg-peer",
+        "tag": "客服",
+        "content": "[Mock] 已帮你报修，工单稍后代登",
+        "rewrite": null
+      }
+    ],
+    "hasAgentTag": true,
+    "agentBubbleTexts": [
+      "[Mock] 已帮你报修，工单稍后代登"
+    ],
+    "hasVpn": false,
+    "hasMock": true,
+    "hasRewrite": true,
+    "screenshot": "t004-after-reply.png"
+  }
+}

@@ -1,0 +1,2015 @@
+{
+  "mock": true,
+  "viewport": "1440x900",
+  "cdpPort": 9357,
+  "url": "http://127.0.0.1:5199",
+  "userDataDir": "C:\\Users\\慈海客服\\AppData\\Local\\Temp\\t017-chrome-Xjea3f",
+  "longTxtLen": 1529,
+  "pdfBodyLen": 1958,
+  "steps": [],
+  "viteStatus": 200,
+  "baseline": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] outlook.md",
+        "hint": "入库中 · [Mock] 9月14日 12:12",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月14日 12:12",
+        "selected": true
+      },
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "hint": "已完成 · 4 块 · [Mock] 9月13日 18:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 18:00",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] wifi-reset.txt",
+        "hint": "已完成 · 2 块 · [Mock] 9月13日 16:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 16:00",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] scan-only.pdf",
+        "hint": "请重新上传 · [Mock] 9月12日 16:00",
+        "status": "请重新上传",
+        "timeText": "· [Mock] 9月12日 16:00",
+        "selected": false
+      }
+    ],
+    "rowCount": 4,
+    "filenames": [
+      "[Mock] outlook.md",
+      "[Mock] vpn-faq.md",
+      "[Mock] wifi-reset.txt",
+      "[Mock] scan-only.pdf"
+    ],
+    "statuses": [
+      "入库中",
+      "已完成",
+      "已完成",
+      "请重新上传"
+    ],
+    "emptyText": "",
+    "uploadError": "",
+    "uploadHint": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF",
+    "accept": ".md,.txt,.pdf,text/markdown,text/plain,application/pdf",
+    "filterPressedValue": "all",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": true
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "storeKeyV4": false,
+    "storeKeyLegacy": false,
+    "screenshot": "t017-baseline-all.png"
+  },
+  "wifiDetail": {
+    "strategyText": "[Mock] 所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 2 块（只读）。",
+    "detailText": "[Mock] 所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 2 块（只读）。 分块 1 [Mock] 步骤1：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。 步骤2：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。 步骤3：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。 步骤4：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。 步骤5：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。 步骤6：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。 步骤7：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号 分块 2 [Mock] 重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。 步骤7：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。 步骤8：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。 步骤9：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。 步骤10：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。 步骤11：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。 步骤12：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。 标签与 FAQ [Mock] 当前标签：网络与远程接入 · 故障与异常排查 对象标签 硬件设备 软件与操作系统 账号与身份认证 网络与远程接入 业务系统与共享资源 诉求标签 故障与异常排查 报修与维护服务 资源申请与变更 权限开通与调整 操作与配置指导 制度与流程说明 实体 添加实体 FAQ 问法 1 答案 1 删除 FAQ 添加 FAQ 保存",
+    "chunkCount": 2,
+    "chunks": [
+      {
+        "meta": "分块 1",
+        "headingInMeta": false,
+        "body": "步骤1：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。\n\n步骤2：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。\n\n步骤3：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。\n\n步骤4：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。\n\n步骤5：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。\n\n步骤6：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。\n\n步骤7：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号",
+        "bodyLen": 800,
+        "hasInput": false
+      },
+      {
+        "meta": "分块 2",
+        "headingInMeta": false,
+        "body": "重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。\n\n步骤7：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。\n\n步骤8：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。\n\n步骤9：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。\n\n步骤10：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。\n\n步骤11：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。\n\n步骤12：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码以免账号锁定。",
+        "bodyLen": 741,
+        "hasInput": false
+      }
+    ],
+    "headingMetas": [
+      "分块 1",
+      "分块 2"
+    ],
+    "hasSaveChunk": false,
+    "hasEditForm": true,
+    "hasOverlap80": false,
+    "hasOnlyMarkdown": false,
+    "has800": true,
+    "has160": true,
+    "hasConvert": true,
+    "hasPercent": true,
+    "screenshot": "t017-wifi-detail.png"
+  },
+  "vpnDetail": {
+    "strategyText": "[Mock] 所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 4 块（只读）。",
+    "detailText": "[Mock] 所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 4 块（只读）。 分块 1 · [Mock] VPN 使用说明 [Mock] VPN 使用说明 分块 2 · [Mock] VPN 使用说明 / 连接失败 [Mock] VPN 使用说明 / 连接失败 公司 VPN 认证失败时，先确认账号未被锁定，再检查是否使用了过期的配置文件。重新导入 IT 发放的 ovpn 文件后再登录。若仍失败，不要反复尝试以免触发锁定，改为联系现场支持。 处理顺序：先看账号状态，再核对配置文件版本，最后检查本机系统时间和证书。连接前请确认已连上公司允许的网络，关闭会劫持流量的代理软件，并使用 IT 公布的最新客户端。认证失败连续三次后应停止重试，改为走密码重置或现场支持，避免账号被锁定。导入配置后名称必须与公司标准名称一致，否则会连到错误的网关。Windows 与 Mac 的证书提示文案不同，但处理原则相同：过期证书必须替换，不能靠重装系统解决。现场支持会核对本机时间、证书指纹和账号锁定标记，不会在未完成这些检查前重装客户端。 若公司网络策略变更，旧配置会在握手阶段失败。此时不要改本机防火墙实验，按知识库步骤替换配置即可。完成替换后重新打开客户端，确认状态为已连接，并能打开内网门户。若门户能开但个别系统打不开，属于权限问题，应改走权限开通而不是继续排查 VPN。以上步骤走完仍失败时，记录客户端日志时间戳，交给现场支持继续处理。 分块 3 · [Mock] VPN 使用说明 / 配置导入 [Mock] VPN 使用说明 / 配置导入 Windows 打开客户端后选择导入配置，选择公司提供的文件。Mac 用户需先允许系统扩展。导入后配置名称应显示为公司标准名称。导入过程中不要同时打开两个客户端，以免配置被旧进程占用。导入成功后先断开再连接一次，确认新配置生效。若列表里出现重复名称，删除旧项只保留最新发放的文件。 分块 4 · [Mock] VPN 使用说明 / 常见报错 [Mock] VPN 使用说明 / 常见报错 提示 TLS handshake failed 时，多半是网络拦截或证书过期。提示 authentication failed 时，优先重置密码而不是重装系统。提示 connection timed out 时，先确认是否连了访客网络。把报错原文保留给现场支持，便于对照本篇分块。 标签与 FAQ [Mock] 当前标签：网络与远程接入 · 故障与异常排查 对象标签 硬件设备 软件与操作系统 账号与身份认证 网络与远程接入 业务系统与共享资源 诉求标签 故障与异常排查 报修与维护服务 资源申请与变更 权限开通与调整 操作与配置指导 制度与流程说明 实体 产品 设备 资源 删除 添加实体 FAQ 问法 1 答案 1 删除 FAQ 添加 FAQ 保存",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "meta": "分块 1 · [Mock] VPN 使用说明",
+        "headingInMeta": true,
+        "body": "VPN 使用说明",
+        "bodyLen": 8,
+        "hasInput": false
+      },
+      {
+        "meta": "分块 2 · [Mock] VPN 使用说明 / 连接失败",
+        "headingInMeta": true,
+        "body": "VPN 使用说明 / 连接失败\n公司 VPN 认证失败时，先确认账号未被锁定，再检查是否使用了过期的配置文件。重新导入 IT 发放的 ovpn 文件后再登录。若仍失败，不要反复尝试以免触发锁定，改为联系现场支持。\n处理顺序：先看账号状态，再核对配置文件版本，最后检查本机系统时间和证书。连接前请确认已连上公司允许的网络，关闭会劫持流量的代理软件，并使用 IT 公布的最新客户端。认证失败连续三次后应停止重试，改为走密码重置或现场支持，避免账号被锁定。导入配置后名称必须与公司标准名称一致，否则会连到错误的网关。Windows 与 Mac 的证书提示文案不同，但处理原则相同：过期证书必须替换，不能靠重装系统解决。现场支持会核对本机时间、证书指纹和账号锁定标记，不会在未完成这些检查前重装客户端。\n若公司网络策略变更，旧配置会在握手阶段失败。此时不要改本机防火墙实验，按知识库步骤替换配置即可。完成替换后重新打开客户端，确认状态为已连接，并能打开内网门户。若门户能开但个别系统打不开，属于权限问题，应改走权限开通而不是继续排查 VPN。以上步骤走完仍失败时，记录客户端日志时间戳，交给现场支持继续处理。",
+        "bodyLen": 500,
+        "hasInput": false
+      },
+      {
+        "meta": "分块 3 · [Mock] VPN 使用说明 / 配置导入",
+        "headingInMeta": true,
+        "body": "VPN 使用说明 / 配置导入\nWindows 打开客户端后选择导入配置，选择公司提供的文件。Mac 用户需先允许系统扩展。导入后配置名称应显示为公司标准名称。导入过程中不要同时打开两个客户端，以免配置被旧进程占用。导入成功后先断开再连接一次，确认新配置生效。若列表里出现重复名称，删除旧项只保留最新发放的文件。",
+        "bodyLen": 156,
+        "hasInput": false
+      },
+      {
+        "meta": "分块 4 · [Mock] VPN 使用说明 / 常见报错",
+        "headingInMeta": true,
+        "body": "VPN 使用说明 / 常见报错\n提示 TLS handshake failed 时，多半是网络拦截或证书过期。提示 authentication failed 时，优先重置密码而不是重装系统。提示 connection timed out 时，先确认是否连了访客网络。把报错原文保留给现场支持，便于对照本篇分块。",
+        "bodyLen": 156,
+        "hasInput": false
+      }
+    ],
+    "headingMetas": [
+      "分块 1 · [Mock] VPN 使用说明",
+      "分块 2 · [Mock] VPN 使用说明 / 连接失败",
+      "分块 3 · [Mock] VPN 使用说明 / 配置导入",
+      "分块 4 · [Mock] VPN 使用说明 / 常见报错"
+    ],
+    "hasSaveChunk": false,
+    "hasEditForm": true,
+    "hasOverlap80": false,
+    "hasOnlyMarkdown": false,
+    "has800": true,
+    "has160": true,
+    "hasConvert": true,
+    "hasPercent": true
+  },
+  "rejectDocx": {
+    "before": 4,
+    "after": {
+      "pathname": "/knowledge",
+      "viewport": {
+        "w": 1440,
+        "h": 900
+      },
+      "pageHasMock": true,
+      "rows": [
+        {
+          "filename": "[Mock] outlook.md",
+          "hint": "入库中 · [Mock] 9月14日 12:12",
+          "status": "入库中",
+          "timeText": "· [Mock] 9月14日 12:12",
+          "selected": false
+        },
+        {
+          "filename": "[Mock] vpn-faq.md",
+          "hint": "已完成 · 4 块 · [Mock] 9月13日 18:00",
+          "status": "已完成",
+          "timeText": "· [Mock] 9月13日 18:00",
+          "selected": true
+        },
+        {
+          "filename": "[Mock] wifi-reset.txt",
+          "hint": "已完成 · 2 块 · [Mock] 9月13日 16:00",
+          "status": "已完成",
+          "timeText": "· [Mock] 9月13日 16:00",
+          "selected": false
+        },
+        {
+          "filename": "[Mock] scan-only.pdf",
+          "hint": "请重新上传 · [Mock] 9月12日 16:00",
+          "status": "请重新上传",
+          "timeText": "· [Mock] 9月12日 16:00",
+          "selected": false
+        }
+      ],
+      "rowCount": 4,
+      "filenames": [
+        "[Mock] outlook.md",
+        "[Mock] vpn-faq.md",
+        "[Mock] wifi-reset.txt",
+        "[Mock] scan-only.pdf"
+      ],
+      "statuses": [
+        "入库中",
+        "已完成",
+        "已完成",
+        "请重新上传"
+      ],
+      "emptyText": "",
+      "uploadError": "[Mock] 请重新上传",
+      "uploadHint": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF",
+      "accept": ".md,.txt,.pdf,text/markdown,text/plain,application/pdf",
+      "filterPressedValue": "all",
+      "filterLabels": [
+        "全部",
+        "入库中",
+        "已完成",
+        "请重新上传"
+      ],
+      "filterBtns": [
+        {
+          "label": "全部",
+          "value": "all",
+          "pressed": true
+        },
+        {
+          "label": "入库中",
+          "value": "ingesting",
+          "pressed": false
+        },
+        {
+          "label": "已完成",
+          "value": "ready",
+          "pressed": false
+        },
+        {
+          "label": "请重新上传",
+          "value": "failed",
+          "pressed": false
+        }
+      ],
+      "layout": {
+        "uploadHeight": 65,
+        "listWidth": 320,
+        "filterTop": 121,
+        "listScrollTop": 170,
+        "filterInList": true,
+        "filterInUpload": false,
+        "fileDisabled": false,
+        "uploadDisabled": false
+      },
+      "storeKeyV4": false,
+      "storeKeyLegacy": false
+    },
+    "screenshot": "t017-reject-docx.png"
+  },
+  "rejectEmpty": {
+    "rowCount": 4,
+    "uploadError": "[Mock] 请重新上传"
+  },
+  "rejectScan": {
+    "scanCountBefore": 1,
+    "scanCountAfter": 1,
+    "uploadError": "[Mock] 请重新上传",
+    "screenshot": "t017-reject-scan-only.png"
+  },
+  "rejectImagePdf": {
+    "rowCount": 4,
+    "uploadError": "[Mock] 请重新上传",
+    "hasImageOnly": false,
+    "screenshot": "t017-reject-image-pdf.png"
+  },
+  "filterIngesting": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] outlook.md",
+        "hint": "入库中 · [Mock] 9月14日 12:12",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月14日 12:12",
+        "selected": false
+      }
+    ],
+    "rowCount": 1,
+    "filenames": [
+      "[Mock] outlook.md"
+    ],
+    "statuses": [
+      "入库中"
+    ],
+    "emptyText": "",
+    "uploadError": "[Mock] 请重新上传",
+    "uploadHint": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF",
+    "accept": ".md,.txt,.pdf,text/markdown,text/plain,application/pdf",
+    "filterPressedValue": "ingesting",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": false
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": true
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "storeKeyV4": false,
+    "storeKeyLegacy": false,
+    "screenshot": "t017-filter-ingesting.png"
+  },
+  "filterReady": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "hint": "已完成 · 4 块 · [Mock] 9月13日 18:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 18:00",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] wifi-reset.txt",
+        "hint": "已完成 · 2 块 · [Mock] 9月13日 16:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 16:00",
+        "selected": false
+      }
+    ],
+    "rowCount": 2,
+    "filenames": [
+      "[Mock] vpn-faq.md",
+      "[Mock] wifi-reset.txt"
+    ],
+    "statuses": [
+      "已完成",
+      "已完成"
+    ],
+    "emptyText": "",
+    "uploadError": "[Mock] 请重新上传",
+    "uploadHint": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF",
+    "accept": ".md,.txt,.pdf,text/markdown,text/plain,application/pdf",
+    "filterPressedValue": "ready",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": false
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": true
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "storeKeyV4": false,
+    "storeKeyLegacy": false,
+    "screenshot": "t017-filter-ready.png"
+  },
+  "filterFailed": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] scan-only.pdf",
+        "hint": "请重新上传 · [Mock] 9月12日 16:00",
+        "status": "请重新上传",
+        "timeText": "· [Mock] 9月12日 16:00",
+        "selected": false
+      }
+    ],
+    "rowCount": 1,
+    "filenames": [
+      "[Mock] scan-only.pdf"
+    ],
+    "statuses": [
+      "请重新上传"
+    ],
+    "emptyText": "",
+    "uploadError": "[Mock] 请重新上传",
+    "uploadHint": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF",
+    "accept": ".md,.txt,.pdf,text/markdown,text/plain,application/pdf",
+    "filterPressedValue": "failed",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": false
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": true
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "storeKeyV4": false,
+    "storeKeyLegacy": false,
+    "screenshot": "t017-filter-failed.png"
+  },
+  "uploadFromFailed": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] from-failed.md",
+        "hint": "入库中 · [Mock] 9月17日 15:45",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:45",
+        "selected": true
+      },
+      {
+        "filename": "[Mock] outlook.md",
+        "hint": "入库中 · [Mock] 9月14日 12:12",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月14日 12:12",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "hint": "已完成 · 4 块 · [Mock] 9月13日 18:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 18:00",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] wifi-reset.txt",
+        "hint": "已完成 · 2 块 · [Mock] 9月13日 16:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 16:00",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] scan-only.pdf",
+        "hint": "请重新上传 · [Mock] 9月12日 16:00",
+        "status": "请重新上传",
+        "timeText": "· [Mock] 9月12日 16:00",
+        "selected": false
+      }
+    ],
+    "rowCount": 5,
+    "filenames": [
+      "[Mock] from-failed.md",
+      "[Mock] outlook.md",
+      "[Mock] vpn-faq.md",
+      "[Mock] wifi-reset.txt",
+      "[Mock] scan-only.pdf"
+    ],
+    "statuses": [
+      "入库中",
+      "入库中",
+      "已完成",
+      "已完成",
+      "请重新上传"
+    ],
+    "emptyText": "",
+    "uploadError": "",
+    "uploadHint": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF",
+    "accept": ".md,.txt,.pdf,text/markdown,text/plain,application/pdf",
+    "filterPressedValue": "all",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": true
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "storeKeyV4": true,
+    "storeKeyLegacy": false,
+    "screenshot": "t017-upload-from-failed.png"
+  },
+  "uploadFromReady": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] from-ready.md",
+        "hint": "入库中 · [Mock] 9月17日 15:45",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:45",
+        "selected": true
+      },
+      {
+        "filename": "[Mock] from-failed.md",
+        "hint": "入库中 · [Mock] 9月17日 15:45",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:45",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] outlook.md",
+        "hint": "入库中 · [Mock] 9月14日 12:12",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月14日 12:12",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "hint": "已完成 · 4 块 · [Mock] 9月13日 18:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 18:00",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] wifi-reset.txt",
+        "hint": "已完成 · 2 块 · [Mock] 9月13日 16:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 16:00",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] scan-only.pdf",
+        "hint": "请重新上传 · [Mock] 9月12日 16:00",
+        "status": "请重新上传",
+        "timeText": "· [Mock] 9月12日 16:00",
+        "selected": false
+      }
+    ],
+    "rowCount": 6,
+    "filenames": [
+      "[Mock] from-ready.md",
+      "[Mock] from-failed.md",
+      "[Mock] outlook.md",
+      "[Mock] vpn-faq.md",
+      "[Mock] wifi-reset.txt",
+      "[Mock] scan-only.pdf"
+    ],
+    "statuses": [
+      "入库中",
+      "入库中",
+      "入库中",
+      "已完成",
+      "已完成",
+      "请重新上传"
+    ],
+    "emptyText": "",
+    "uploadError": "",
+    "uploadHint": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF",
+    "accept": ".md,.txt,.pdf,text/markdown,text/plain,application/pdf",
+    "filterPressedValue": "all",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": true
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "storeKeyV4": true,
+    "storeKeyLegacy": false,
+    "screenshot": "t017-upload-from-ready.png"
+  },
+  "uploadTxt": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] office-wifi.txt",
+        "hint": "入库中 · [Mock] 9月17日 15:45",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:45",
+        "selected": true
+      },
+      {
+        "filename": "[Mock] office-notes.md",
+        "hint": "入库中 · [Mock] 9月17日 15:45",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:45",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] from-ready.md",
+        "hint": "入库中 · [Mock] 9月17日 15:45",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:45",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] from-failed.md",
+        "hint": "入库中 · [Mock] 9月17日 15:45",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:45",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] outlook.md",
+        "hint": "入库中 · [Mock] 9月14日 12:12",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月14日 12:12",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "hint": "已完成 · 4 块 · [Mock] 9月13日 18:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 18:00",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] wifi-reset.txt",
+        "hint": "已完成 · 2 块 · [Mock] 9月13日 16:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 16:00",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] scan-only.pdf",
+        "hint": "请重新上传 · [Mock] 9月12日 16:00",
+        "status": "请重新上传",
+        "timeText": "· [Mock] 9月12日 16:00",
+        "selected": false
+      }
+    ],
+    "rowCount": 8,
+    "filenames": [
+      "[Mock] office-wifi.txt",
+      "[Mock] office-notes.md",
+      "[Mock] from-ready.md",
+      "[Mock] from-failed.md",
+      "[Mock] outlook.md",
+      "[Mock] vpn-faq.md",
+      "[Mock] wifi-reset.txt",
+      "[Mock] scan-only.pdf"
+    ],
+    "statuses": [
+      "入库中",
+      "入库中",
+      "入库中",
+      "入库中",
+      "入库中",
+      "已完成",
+      "已完成",
+      "请重新上传"
+    ],
+    "emptyText": "",
+    "uploadError": "",
+    "uploadHint": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF",
+    "accept": ".md,.txt,.pdf,text/markdown,text/plain,application/pdf",
+    "filterPressedValue": "all",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": true
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "storeKeyV4": true,
+    "storeKeyLegacy": false
+  },
+  "uploadPdf": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "pageHasMock": true,
+    "rows": [
+      {
+        "filename": "[Mock] guide.pdf",
+        "hint": "入库中 · [Mock] 9月17日 15:45",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:45",
+        "selected": true
+      },
+      {
+        "filename": "[Mock] office-wifi.txt",
+        "hint": "入库中 · [Mock] 9月17日 15:45",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:45",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] office-notes.md",
+        "hint": "入库中 · [Mock] 9月17日 15:45",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:45",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] from-ready.md",
+        "hint": "入库中 · [Mock] 9月17日 15:45",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:45",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] from-failed.md",
+        "hint": "入库中 · [Mock] 9月17日 15:45",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月17日 15:45",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] outlook.md",
+        "hint": "入库中 · [Mock] 9月14日 12:12",
+        "status": "入库中",
+        "timeText": "· [Mock] 9月14日 12:12",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] vpn-faq.md",
+        "hint": "已完成 · 4 块 · [Mock] 9月13日 18:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 18:00",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] wifi-reset.txt",
+        "hint": "已完成 · 2 块 · [Mock] 9月13日 16:00",
+        "status": "已完成",
+        "timeText": "· [Mock] 9月13日 16:00",
+        "selected": false
+      },
+      {
+        "filename": "[Mock] scan-only.pdf",
+        "hint": "请重新上传 · [Mock] 9月12日 16:00",
+        "status": "请重新上传",
+        "timeText": "· [Mock] 9月12日 16:00",
+        "selected": false
+      }
+    ],
+    "rowCount": 9,
+    "filenames": [
+      "[Mock] guide.pdf",
+      "[Mock] office-wifi.txt",
+      "[Mock] office-notes.md",
+      "[Mock] from-ready.md",
+      "[Mock] from-failed.md",
+      "[Mock] outlook.md",
+      "[Mock] vpn-faq.md",
+      "[Mock] wifi-reset.txt",
+      "[Mock] scan-only.pdf"
+    ],
+    "statuses": [
+      "入库中",
+      "入库中",
+      "入库中",
+      "入库中",
+      "入库中",
+      "入库中",
+      "已完成",
+      "已完成",
+      "请重新上传"
+    ],
+    "emptyText": "",
+    "uploadError": "",
+    "uploadHint": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF",
+    "accept": ".md,.txt,.pdf,text/markdown,text/plain,application/pdf",
+    "filterPressedValue": "all",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": true
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "storeKeyV4": true,
+    "storeKeyLegacy": false,
+    "screenshot": "t017-upload-three-types.png"
+  },
+  "txtReady": {
+    "strategyText": "[Mock] 所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 3 块（只读）。",
+    "detailText": "[Mock] 所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 3 块（只读）。 分块 1 [Mock] 段落1：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落2：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落3：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落4：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落5：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落6：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落7：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落8：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客 分块 2 [Mock] 干扰，不要反复输错密码。 段落7：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落8：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落9：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落10：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落11：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落12：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落13：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落14：办公区无线网络无法连接时，先 分块 3 [Mock] 。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落13：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 段落14：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。 标签与 FAQ [Mock] 当前标签：网络与远程接入 · 故障与异常排查 对象标签 硬件设备 软件与操作系统 账号与身份认证 网络与远程接入 业务系统与共享资源 诉求标签 故障与异常排查 报修与维护服务 资源申请与变更 权限开通与调整 操作与配置指导 制度与流程说明 实体 添加实体 FAQ 问法 1 答案 1 删除 FAQ 添加 FAQ 保存",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "meta": "分块 1",
+        "headingInMeta": false,
+        "body": "段落1：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落2：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落3：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落4：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落5：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落6：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落7：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落8：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客",
+        "bodyLen": 800,
+        "hasInput": false
+      },
+      {
+        "meta": "分块 2",
+        "headingInMeta": false,
+        "body": "干扰，不要反复输错密码。\n\n段落7：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落8：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落9：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落10：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落11：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落12：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落13：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落14：办公区无线网络无法连接时，先",
+        "bodyLen": 800,
+        "hasInput": false
+      },
+      {
+        "meta": "分块 3",
+        "headingInMeta": false,
+        "body": "。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落13：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。\n\n段落14：办公区无线网络无法连接时，先确认电脑连的是公司办公网络，而不是访客网络或手机热点。关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码。若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。",
+        "bodyLen": 249,
+        "hasInput": false
+      }
+    ],
+    "headingMetas": [
+      "分块 1",
+      "分块 2",
+      "分块 3"
+    ],
+    "hasSaveChunk": false,
+    "hasEditForm": true,
+    "hasOverlap80": false,
+    "hasOnlyMarkdown": false,
+    "has800": true,
+    "has160": true,
+    "hasConvert": true,
+    "hasPercent": true,
+    "screenshot": "t017-txt-ready-chunks.png"
+  },
+  "pdfReady": {
+    "strategyText": "[Mock] 所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 3 块（只读）。",
+    "detailText": "[Mock] 所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 3 块（只读）。 分块 1 [Mock] Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. 分块 2 [Mock] set steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer r 分块 3 [Mock] m the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. 标签与 FAQ [Mock] 当前标签：软件与操作系统 · 故障与异常排查 对象标签 硬件设备 软件与操作系统 账号与身份认证 网络与远程接入 业务系统与共享资源 诉求标签 故障与异常排查 报修与维护服务 资源申请与变更 权限开通与调整 操作与配置指导 制度与流程说明 实体 添加实体 FAQ 问法 1 答案 1 删除 FAQ 添加 FAQ 保存",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "meta": "分块 1",
+        "headingInMeta": false,
+        "body": "Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on.",
+        "bodyLen": 800,
+        "hasInput": false
+      },
+      {
+        "meta": "分块 2",
+        "headingInMeta": false,
+        "body": "set steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer r",
+        "bodyLen": 800,
+        "hasInput": false
+      },
+      {
+        "meta": "分块 3",
+        "headingInMeta": false,
+        "body": "m the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on. Office printer reset steps. Confirm the device is on the company network and powered on.",
+        "bodyLen": 677,
+        "hasInput": false
+      }
+    ],
+    "headingMetas": [
+      "分块 1",
+      "分块 2",
+      "分块 3"
+    ],
+    "hasSaveChunk": false,
+    "hasEditForm": true,
+    "hasOverlap80": false,
+    "hasOnlyMarkdown": false,
+    "has800": true,
+    "has160": true,
+    "hasConvert": true,
+    "hasPercent": true,
+    "screenshot": "t017-pdf-ready-chunks.png"
+  },
+  "ingestAnalysis": {
+    "overlapConst": 160,
+    "maxConst": 800,
+    "extractedLen": 1957,
+    "mdHasHeading": false,
+    "txtMdHasHeading": false,
+    "convertedPdf": {
+      "count": 3,
+      "heading_paths": [
+        "",
+        "",
+        ""
+      ],
+      "overlap160": true
+    },
+    "rawPdf": {
+      "count": 5,
+      "heading_paths": [
+        "",
+        "Fake Heading from raw bytes"
+      ],
+      "hasFakeHeading": true
+    },
+    "convertedTxt": {
+      "count": 3,
+      "heading_paths": [
+        ""
+      ],
+      "overlap160": true,
+      "firstLen": 800
+    },
+    "storedTxt": {
+      "filename": "office-wifi.txt",
+      "chunkCount": 3,
+      "heading_paths": [
+        ""
+      ],
+      "matchesConverted": true,
+      "sourceLooksRawPdf": false
+    },
+    "storedPdf": {
+      "filename": "guide.pdf",
+      "chunkCount": 3,
+      "heading_paths": [
+        ""
+      ],
+      "matchesConverted": true,
+      "sourceLooksRawPdf": false,
+      "sourceEqualsExtracted": true
+    }
+  },
+  "emptyFilterSetup": [
+    "guide.pdf",
+    "office-wifi.txt",
+    "office-notes.md",
+    "from-ready.md",
+    "from-failed.md",
+    "vpn-faq.md",
+    "wifi-reset.txt"
+  ],
+  "emptyIngesting": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "pageHasMock": true,
+    "rows": [],
+    "rowCount": 0,
+    "filenames": [],
+    "statuses": [],
+    "emptyText": "[Mock] 当前没有该状态的文档",
+    "uploadError": "",
+    "uploadHint": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF",
+    "accept": ".md,.txt,.pdf,text/markdown,text/plain,application/pdf",
+    "filterPressedValue": "ingesting",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": false
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": true
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "storeKeyV4": true,
+    "storeKeyLegacy": false,
+    "screenshot": "t017-empty-ingesting.png"
+  },
+  "emptyFailed": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "pageHasMock": true,
+    "rows": [],
+    "rowCount": 0,
+    "filenames": [],
+    "statuses": [],
+    "emptyText": "[Mock] 当前没有该状态的文档",
+    "uploadError": "",
+    "uploadHint": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF",
+    "accept": ".md,.txt,.pdf,text/markdown,text/plain,application/pdf",
+    "filterPressedValue": "failed",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": false
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": true
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "storeKeyV4": true,
+    "storeKeyLegacy": false,
+    "screenshot": "t017-empty-failed.png"
+  },
+  "emptyAll": {
+    "pathname": "/knowledge",
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "pageHasMock": true,
+    "rows": [],
+    "rowCount": 0,
+    "filenames": [],
+    "statuses": [],
+    "emptyText": "[Mock] 还没有知识文档。请上传 Markdown、TXT 或能抽出文字的 PDF。",
+    "uploadError": "",
+    "uploadHint": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF",
+    "accept": ".md,.txt,.pdf,text/markdown,text/plain,application/pdf",
+    "filterPressedValue": "all",
+    "filterLabels": [
+      "全部",
+      "入库中",
+      "已完成",
+      "请重新上传"
+    ],
+    "filterBtns": [
+      {
+        "label": "全部",
+        "value": "all",
+        "pressed": true
+      },
+      {
+        "label": "入库中",
+        "value": "ingesting",
+        "pressed": false
+      },
+      {
+        "label": "已完成",
+        "value": "ready",
+        "pressed": false
+      },
+      {
+        "label": "请重新上传",
+        "value": "failed",
+        "pressed": false
+      }
+    ],
+    "layout": {
+      "uploadHeight": 65,
+      "listWidth": 320,
+      "filterTop": 121,
+      "listScrollTop": 170,
+      "filterInList": true,
+      "filterInUpload": false,
+      "fileDisabled": false,
+      "uploadDisabled": false
+    },
+    "storeKeyV4": true,
+    "storeKeyLegacy": false,
+    "screenshot": "t017-empty-all.png"
+  },
+  "kbShell": {
+    "pathname": "/knowledge",
+    "title": "知识库",
+    "topbarUser": "已登录：[Mock] it-help",
+    "logoutText": "退出",
+    "activeNav": [
+      "知识库"
+    ],
+    "activeCount": 1,
+    "pageHasMock": true
+  },
+  "logoutKnowledge": {
+    "pathname": "/login",
+    "hasLoggedOutHint": true,
+    "tokenPresent": false,
+    "pageHasMock": true,
+    "screenshot": "t017-logout-knowledge.png"
+  },
+  "employeeShell": {
+    "pathname": "/employee",
+    "title": "员工端",
+    "topbarUser": "已登录：[Mock] it-help",
+    "logoutText": "退出",
+    "activeNav": [
+      "员工端"
+    ],
+    "activeCount": 1,
+    "pageHasMock": true
+  },
+  "employeeFaq": {
+    "pathname": "/employee",
+    "statusText": "[Mock] AI 接待中",
+    "messageCount": 2,
+    "messages": [
+      {
+        "side": "employee",
+        "tag": null,
+        "text": "[Mock] Outlook 打不开"
+      },
+      {
+        "side": "other",
+        "tag": "FAQ",
+        "text": "[Mock] 请检查是否在安全模式启动，并尝试用公司提供的安装包修复 Office。"
+      }
+    ],
+    "lastOther": {
+      "side": "other",
+      "tag": "FAQ",
+      "text": "[Mock] 请检查是否在安全模式启动，并尝试用公司提供的安装包修复 Office。"
+    },
+    "systemTags": [
+      "FAQ"
+    ],
+    "pageHasMock": true,
+    "screenshot": "t017-employee-faq.png"
+  },
+  "employeeClarify": {
+    "pathname": "/employee",
+    "statusText": "[Mock] AI 接待中",
+    "messageCount": 4,
+    "messages": [
+      {
+        "side": "employee",
+        "tag": null,
+        "text": "[Mock] Outlook 打不开"
+      },
+      {
+        "side": "other",
+        "tag": "FAQ",
+        "text": "[Mock] 请检查是否在安全模式启动，并尝试用公司提供的安装包修复 Office。"
+      },
+      {
+        "side": "employee",
+        "tag": null,
+        "text": "[Mock] 连不上"
+      },
+      {
+        "side": "other",
+        "tag": "反问",
+        "text": "[Mock] 请问出问题的是哪套系统或设备？例如 Outlook、VPN 还是电脑硬件。"
+      }
+    ],
+    "lastOther": {
+      "side": "other",
+      "tag": "反问",
+      "text": "[Mock] 请问出问题的是哪套系统或设备？例如 Outlook、VPN 还是电脑硬件。"
+    },
+    "systemTags": [
+      "FAQ",
+      "反问"
+    ],
+    "pageHasMock": true
+  },
+  "logoutEmployee": {
+    "pathname": "/login",
+    "hasLoggedOutHint": true,
+    "tokenPresent": false,
+    "pageHasMock": true
+  },
+  "agentEmpty": {
+    "shell": {
+      "pathname": "/agent",
+      "title": "客服端",
+      "topbarUser": "已登录：[Mock] it-help",
+      "logoutText": "退出",
+      "activeNav": [
+        "客服端"
+      ],
+      "activeCount": 1,
+      "pageHasMock": true
+    },
+    "agent": {
+      "pathname": "/agent",
+      "emptyText": [
+        "还没有需要人工处理的对话",
+        "还没有需要人工处理的对话"
+      ],
+      "rowCount": 0,
+      "pageHasMock": true
+    },
+    "screenshot": "t017-agent-empty.png"
+  },
+  "logoutAgent": {
+    "pathname": "/login",
+    "hasLoggedOutHint": true,
+    "tokenPresent": false,
+    "pageHasMock": true,
+    "screenshot": "t017-logout-agent.png"
+  },
+  "checks": [
+    {
+      "id": "env-vite",
+      "pass": true,
+      "expected": 200,
+      "actual": 200
+    },
+    {
+      "id": "tc01-hint",
+      "pass": true,
+      "expected": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF",
+      "actual": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF"
+    },
+    {
+      "id": "tc01-accept",
+      "pass": true,
+      "expected": ".md,.txt,.pdf,text/markdown,text/plain,application/pdf",
+      "actual": ".md,.txt,.pdf,text/markdown,text/plain,application/pdf"
+    },
+    {
+      "id": "tc01-viewport",
+      "pass": true,
+      "expected": {
+        "w": 1440,
+        "h": 900
+      },
+      "actual": {
+        "w": 1440,
+        "h": 900
+      }
+    },
+    {
+      "id": "tc01-seed-names",
+      "pass": true,
+      "expected": [
+        "wifi-reset.txt",
+        "scan-only.pdf",
+        "vpn-faq.md"
+      ],
+      "actual": [
+        "[Mock] outlook.md",
+        "[Mock] vpn-faq.md",
+        "[Mock] wifi-reset.txt",
+        "[Mock] scan-only.pdf"
+      ]
+    },
+    {
+      "id": "tc01-layout",
+      "pass": true,
+      "expected": {
+        "filterInList": true,
+        "filterInUpload": false,
+        "listWidth": 320
+      },
+      "actual": {
+        "uploadHeight": 65,
+        "listWidth": 320,
+        "filterTop": 121,
+        "listScrollTop": 170,
+        "filterInList": true,
+        "filterInUpload": false,
+        "fileDisabled": false,
+        "uploadDisabled": false
+      }
+    },
+    {
+      "id": "tc01-store-v4",
+      "pass": false,
+      "expected": true,
+      "actual": false
+    },
+    {
+      "id": "tc03-strategy",
+      "pass": true,
+      "expected": [
+        "先转为 Markdown",
+        "800",
+        "重叠 160 字",
+        "上限的 20%"
+      ],
+      "actual": {
+        "strategyText": "[Mock] 所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 2 块（只读）。",
+        "hasOverlap80": false,
+        "hasOnlyMarkdown": false
+      }
+    },
+    {
+      "id": "tc03-wifi-heading-empty",
+      "pass": true,
+      "expected": {
+        "chunkCount": ">1",
+        "headingInMeta": false
+      },
+      "actual": {
+        "chunkCount": 2,
+        "headingMetas": [
+          "分块 1",
+          "分块 2"
+        ]
+      }
+    },
+    {
+      "id": "tc03-wifi-overlap160",
+      "pass": true,
+      "expected": true,
+      "actual": {
+        "ok": true,
+        "overlap": 160,
+        "aLen": 800,
+        "bLen": 741,
+        "count": 2
+      }
+    },
+    {
+      "id": "tc03-readonly",
+      "pass": true,
+      "expected": true,
+      "actual": {
+        "hasEditForm": true,
+        "hasSaveChunk": false
+      }
+    },
+    {
+      "id": "tc03-vpn-has-heading",
+      "pass": true,
+      "expected": true,
+      "actual": [
+        "分块 1 · [Mock] VPN 使用说明",
+        "分块 2 · [Mock] VPN 使用说明 / 连接失败",
+        "分块 3 · [Mock] VPN 使用说明 / 配置导入",
+        "分块 4 · [Mock] VPN 使用说明 / 常见报错"
+      ]
+    },
+    {
+      "id": "tc02-reject-ext",
+      "pass": true,
+      "expected": {
+        "noNewRow": true,
+        "error": "请重新上传"
+      },
+      "actual": {
+        "rowCount": 4,
+        "uploadError": "[Mock] 请重新上传",
+        "filenames": [
+          "[Mock] outlook.md",
+          "[Mock] vpn-faq.md",
+          "[Mock] wifi-reset.txt",
+          "[Mock] scan-only.pdf"
+        ]
+      }
+    },
+    {
+      "id": "tc02-reject-empty",
+      "pass": true,
+      "expected": {
+        "noNewRow": true
+      },
+      "actual": {
+        "rowCount": 4,
+        "uploadError": "[Mock] 请重新上传"
+      }
+    },
+    {
+      "id": "tc02-reject-scan-fixture",
+      "pass": true,
+      "expected": {
+        "scanCountBefore": 1,
+        "noNewRow": true
+      },
+      "actual": {
+        "scanCountAfter": 1,
+        "uploadError": "[Mock] 请重新上传"
+      }
+    },
+    {
+      "id": "tc02-reject-no-text-pdf",
+      "pass": true,
+      "expected": {
+        "noNewRow": true
+      },
+      "actual": {
+        "rowCount": 4,
+        "uploadError": "[Mock] 请重新上传",
+        "filenames": [
+          "[Mock] outlook.md",
+          "[Mock] vpn-faq.md",
+          "[Mock] wifi-reset.txt",
+          "[Mock] scan-only.pdf"
+        ]
+      }
+    },
+    {
+      "id": "tc02-filter-ingesting",
+      "pass": true,
+      "expected": "all 入库中",
+      "actual": [
+        "入库中"
+      ]
+    },
+    {
+      "id": "tc02-filter-ready",
+      "pass": true,
+      "expected": "all 已完成",
+      "actual": [
+        "已完成",
+        "已完成"
+      ]
+    },
+    {
+      "id": "tc02-filter-failed",
+      "pass": true,
+      "expected": "all 请重新上传",
+      "actual": [
+        "请重新上传"
+      ]
+    },
+    {
+      "id": "tc02-upload-from-failed-to-all",
+      "pass": true,
+      "expected": {
+        "filter": "all",
+        "first": "from-failed.md",
+        "status": "入库中"
+      },
+      "actual": {
+        "filter": "all",
+        "first": "[Mock] from-failed.md",
+        "status": "入库中"
+      }
+    },
+    {
+      "id": "tc02-upload-from-ready-to-all",
+      "pass": true,
+      "expected": {
+        "filter": "all",
+        "first": "from-ready.md",
+        "status": "入库中"
+      },
+      "actual": {
+        "filter": "all",
+        "first": "[Mock] from-ready.md",
+        "status": "入库中"
+      }
+    },
+    {
+      "id": "tc01-upload-md",
+      "pass": true,
+      "expected": {
+        "first": "office-notes.md",
+        "status": "入库中"
+      },
+      "actual": {
+        "first": "[Mock] office-notes.md",
+        "status": "入库中",
+        "rowCount": 7
+      }
+    },
+    {
+      "id": "tc01-upload-txt-original-name",
+      "pass": true,
+      "expected": {
+        "first": "office-wifi.txt",
+        "status": "入库中"
+      },
+      "actual": {
+        "first": "[Mock] office-wifi.txt",
+        "status": "入库中"
+      }
+    },
+    {
+      "id": "tc01-upload-pdf-original-name",
+      "pass": true,
+      "expected": {
+        "first": "guide.pdf",
+        "status": "入库中"
+      },
+      "actual": {
+        "first": "[Mock] guide.pdf",
+        "status": "入库中",
+        "filenames": [
+          "[Mock] guide.pdf",
+          "[Mock] office-wifi.txt",
+          "[Mock] office-notes.md",
+          "[Mock] from-ready.md",
+          "[Mock] from-failed.md",
+          "[Mock] outlook.md"
+        ]
+      }
+    },
+    {
+      "id": "tc04-txt-chunks",
+      "pass": true,
+      "expected": {
+        "chunks": ">1",
+        "headingEmpty": true,
+        "overlap160": true
+      },
+      "actual": {
+        "chunkCount": 3,
+        "headingMetas": [
+          "分块 1",
+          "分块 2",
+          "分块 3"
+        ],
+        "overlap": {
+          "ok": true,
+          "overlap": 160,
+          "aLen": 800,
+          "bLen": 800,
+          "count": 3
+        },
+        "strategy": "[Mock] 所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 3 块（只读）。"
+      }
+    },
+    {
+      "id": "tc04-pdf-chunks",
+      "pass": true,
+      "expected": {
+        "chunks": ">1",
+        "headingEmpty": true,
+        "noRawFakeHeading": true
+      },
+      "actual": {
+        "chunkCount": 3,
+        "headingMetas": [
+          "分块 1",
+          "分块 2",
+          "分块 3"
+        ],
+        "overlap": {
+          "ok": true,
+          "overlap": 160,
+          "aLen": 800,
+          "bLen": 800,
+          "count": 3
+        },
+        "detailHasFake": false
+      }
+    },
+    {
+      "id": "tc04-convert-then-chunk",
+      "pass": true,
+      "expected": {
+        "convertThenChunk": true,
+        "rawWouldHaveFakeHeading": true,
+        "overlap": 160
+      },
+      "actual": {
+        "overlapConst": 160,
+        "maxConst": 800,
+        "extractedLen": 1957,
+        "mdHasHeading": false,
+        "txtMdHasHeading": false,
+        "convertedPdf": {
+          "count": 3,
+          "heading_paths": [
+            "",
+            "",
+            ""
+          ],
+          "overlap160": true
+        },
+        "rawPdf": {
+          "count": 5,
+          "heading_paths": [
+            "",
+            "Fake Heading from raw bytes"
+          ],
+          "hasFakeHeading": true
+        },
+        "convertedTxt": {
+          "count": 3,
+          "heading_paths": [
+            ""
+          ],
+          "overlap160": true,
+          "firstLen": 800
+        },
+        "storedTxt": {
+          "filename": "office-wifi.txt",
+          "chunkCount": 3,
+          "heading_paths": [
+            ""
+          ],
+          "matchesConverted": true,
+          "sourceLooksRawPdf": false
+        },
+        "storedPdf": {
+          "filename": "guide.pdf",
+          "chunkCount": 3,
+          "heading_paths": [
+            ""
+          ],
+          "matchesConverted": true,
+          "sourceLooksRawPdf": false,
+          "sourceEqualsExtracted": true
+        }
+      }
+    },
+    {
+      "id": "tc02-empty-ingesting",
+      "pass": true,
+      "expected": "当前没有该状态的文档",
+      "actual": {
+        "emptyText": "[Mock] 当前没有该状态的文档",
+        "rowCount": 0,
+        "uploadDisabled": false
+      }
+    },
+    {
+      "id": "tc02-empty-failed",
+      "pass": true,
+      "expected": "当前没有该状态的文档",
+      "actual": {
+        "emptyText": "[Mock] 当前没有该状态的文档",
+        "rowCount": 0
+      }
+    },
+    {
+      "id": "tc02-empty-all-copy",
+      "pass": true,
+      "expected": "还没有知识文档。请上传 Markdown、TXT 或能抽出文字的 PDF。",
+      "actual": {
+        "emptyText": "[Mock] 还没有知识文档。请上传 Markdown、TXT 或能抽出文字的 PDF。",
+        "rowCount": 0
+      }
+    },
+    {
+      "id": "tc05-knowledge-topbar",
+      "pass": true,
+      "expected": "已登录：[Mock] it-help + 退出",
+      "actual": {
+        "pathname": "/knowledge",
+        "title": "知识库",
+        "topbarUser": "已登录：[Mock] it-help",
+        "logoutText": "退出",
+        "activeNav": [
+          "知识库"
+        ],
+        "activeCount": 1,
+        "pageHasMock": true
+      }
+    },
+    {
+      "id": "tc05-logout-knowledge",
+      "pass": true,
+      "expected": "/login 当前未登录",
+      "actual": {
+        "pathname": "/login",
+        "hasLoggedOutHint": true,
+        "tokenPresent": false,
+        "pageHasMock": true
+      }
+    },
+    {
+      "id": "tc05-employee-topbar",
+      "pass": true,
+      "expected": "已登录：[Mock] it-help",
+      "actual": {
+        "pathname": "/employee",
+        "title": "员工端",
+        "topbarUser": "已登录：[Mock] it-help",
+        "logoutText": "退出",
+        "activeNav": [
+          "员工端"
+        ],
+        "activeCount": 1,
+        "pageHasMock": true
+      }
+    },
+    {
+      "id": "tc05-employee-faq",
+      "pass": true,
+      "expected": "FAQ bubble",
+      "actual": {
+        "tag": "FAQ",
+        "text": "[Mock] 请检查是否在安全模式启动，并尝试用公司提供的安装包修复 Office。",
+        "tags": [
+          "FAQ"
+        ]
+      }
+    },
+    {
+      "id": "tc05-employee-clarify",
+      "pass": true,
+      "expected": "反问",
+      "actual": {
+        "tag": "反问",
+        "text": "[Mock] 请问出问题的是哪套系统或设备？例如 Outlook、VPN 还是电脑硬件。"
+      }
+    },
+    {
+      "id": "tc05-logout-employee",
+      "pass": true,
+      "expected": "/login 当前未登录",
+      "actual": {
+        "pathname": "/login",
+        "hasLoggedOutHint": true,
+        "tokenPresent": false,
+        "pageHasMock": true
+      }
+    },
+    {
+      "id": "tc05-agent-topbar",
+      "pass": true,
+      "expected": "已登录：[Mock] it-help",
+      "actual": {
+        "pathname": "/agent",
+        "title": "客服端",
+        "topbarUser": "已登录：[Mock] it-help",
+        "logoutText": "退出",
+        "activeNav": [
+          "客服端"
+        ],
+        "activeCount": 1,
+        "pageHasMock": true
+      }
+    },
+    {
+      "id": "tc05-agent-empty",
+      "pass": true,
+      "expected": "还没有需要人工处理的对话",
+      "actual": {
+        "pathname": "/agent",
+        "emptyText": [
+          "还没有需要人工处理的对话",
+          "还没有需要人工处理的对话"
+        ],
+        "rowCount": 0,
+        "pageHasMock": true
+      }
+    },
+    {
+      "id": "tc05-logout-agent",
+      "pass": true,
+      "expected": "/login 当前未登录",
+      "actual": {
+        "pathname": "/login",
+        "hasLoggedOutHint": true,
+        "tokenPresent": false,
+        "pageHasMock": true
+      }
+    }
+  ],
+  "failed": [
+    "tc01-store-v4"
+  ]
+}

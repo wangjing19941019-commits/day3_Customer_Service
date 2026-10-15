@@ -1,0 +1,128 @@
+{
+  "version": "2.0",
+  "name": "电商知识问答标签体系",
+  "description": "从问题对象、用户诉求和具体实体三个方面理解电商咨询。对象与诉求标签同时用于知识入库标注和查询识别，不包含长期用户画像或跨会话记忆。未转人工只回答静态知识，不创建工单。",
+  "object_types": [
+    {
+      "code": "product_3c",
+      "name": "3C数码商品",
+      "definition": "数码、电器、配件的规格、兼容、保修口径与使用说明。",
+      "examples": ["手机", "耳机", "充电器", "笔记本电脑", "保修年限"]
+    },
+    {
+      "code": "product_fashion",
+      "name": "服饰美妆商品",
+      "definition": "服装、鞋包、美妆个护的款式、尺码、材质、色号与使用说明。",
+      "examples": ["连衣裙", "运动鞋", "口红", "尺码表", "色号"]
+    },
+    {
+      "code": "order_logistics",
+      "name": "订单与配送",
+      "definition": "下单规则、配送时效、运费政策等可写入知识库的说明，不含实时物流轨迹。",
+      "examples": ["包邮条件", "发货时效", "偏远地区运费"]
+    },
+    {
+      "code": "return_exchange",
+      "name": "退换货",
+      "definition": "退货、换货、仅退款的条件、时限与办理说明。",
+      "examples": ["七天无理由", "是否支持退货", "换货要寄回吗"]
+    },
+    {
+      "code": "address_change",
+      "name": "修改地址",
+      "definition": "未发货或运输中改收货地址的规则与限制。",
+      "examples": ["发货前能改地址吗", "已发货能否拦截"]
+    },
+    {
+      "code": "invoice",
+      "name": "发票",
+      "definition": "普通发票、专用发票、抬头与税号等开票规则。",
+      "examples": ["能开专票吗", "抬头怎么填", "电子发票发到哪"]
+    },
+    {
+      "code": "complaint",
+      "name": "投诉维权",
+      "definition": "投诉渠道、升级条件与处理口径，不含实时工单进度。",
+      "examples": ["怎么投诉", "多久给回复", "能否升级"]
+    }
+  ],
+  "request_types": [
+    {
+      "code": "pre_sale_consult",
+      "name": "售前咨询",
+      "definition": "购买前询问规格、兼容、尺码、色号、是否适合，尚未要求办理售后。",
+      "examples": ["这款耳机能连两台手机吗", "M码相当于多少胸围"]
+    },
+    {
+      "code": "usage_guidance",
+      "name": "使用与保养指导",
+      "definition": "已购或拟购商品如何使用、清洗、充电或保养，没有明确要退换。",
+      "examples": ["真丝怎么洗", "电池第一次怎么充"]
+    },
+    {
+      "code": "policy_process",
+      "name": "制度与流程说明",
+      "definition": "询问规定、资格、时效、是否支持某项政策或办理渠道。",
+      "examples": ["服饰能七天无理由吗", "3C拆封还能退吗", "专票要哪些材料"]
+    },
+    {
+      "code": "after_sale_howto",
+      "name": "售后办理说明",
+      "definition": "希望了解如何退换、改地址、开发票或投诉，但未转人工时只给知识说明，不创建工单。",
+      "examples": ["退货要怎么寄", "地址填错了怎么办", "发票开错了怎么处理"]
+    },
+    {
+      "code": "troubleshooting",
+      "name": "商品异常说明",
+      "definition": "描述商品无法正常使用的现象，希望根据知识得到检查或处理建议。",
+      "examples": ["耳机一边没声", "衣服洗完掉色正常吗"]
+    }
+  ],
+  "classification_rules": [
+    "实体记录具体商品、订单号或规格名称；对象标签记录所属领域；诉求标签记录用户希望得到的帮助。实体不是预先穷举的标签。",
+    "按完整语义识别，不用商品名直接决定诉求。例如提到某款手机不代表要退货。",
+    "不把现象当成原因。无法开机不一定是质量问题，尺码不合不一定能无理由退。",
+    "3C 与服饰美妆口径不得混用：保修年限、只换不修等只用于 3C；七天无理由等服饰政策只用于服饰美妆。",
+    "未转人工只检索静态知识并回答，不查询实时订单/物流/库存/支付，不创建或确认工单。",
+    "以了解规定或渠道为目标时选择制度与流程说明；以了解如何办理为目标时选择售后办理说明。",
+    "同一个问题选择一个主要诉求；多个可独立处理的问题拆成多个issues。",
+    "分类不完全确定但已有足够信息进行有意义的检索时，可以先检索，不为了分类本身反复追问。",
+    "只有缺失信息会改变检索方向或回答内容时才追问，沿用当前会话中已经提供的信息。"
+  ],
+  "query_output": {
+    "message_type": "service_request 或 small_talk",
+    "issues": [
+      {
+        "issue_id": "当前消息内的问题编号",
+        "summary": "用户问题的简短概括",
+        "primary_object_type": "主要对象代码，无法确定时为null",
+        "related_object_types": "相关对象代码数组，没有则为空数组",
+        "request_type": "主要诉求代码，无法确定或不适用时为null",
+        "entities": [
+          {
+            "name": "用户明确提到的实体名称",
+            "type": "product、order 或 spec"
+          }
+        ],
+        "symptom": "用户描述的异常现象，没有则为null",
+        "error_message": "报错或页面提示原文，没有则为null",
+        "processing_status": "ready、needs_clarification、requires_live_data或out_of_scope",
+        "retrieval_query": "结合当前会话补全后的独立检索问题；不加入推测事实，无适用知识检索时为null",
+        "missing_information": "影响下一步处理的缺失信息数组",
+        "clarification_question": "当前最必要的追问，无需追问时为null"
+      }
+    ]
+  },
+  "processing_statuses": {
+    "ready": "已有足够信息进行知识检索。",
+    "needs_clarification": "缺少影响检索或回答的关键信息。",
+    "requires_live_data": "需要查询具体订单、物流、库存或支付的实时状态，静态知识不能给出实际结果。",
+    "out_of_scope": "超出当前电商知识服务范围。"
+  },
+  "context_policy": {
+    "use_current_conversation": true,
+    "use_cross_conversation_memory": false,
+    "extract_long_term_profile": false,
+    "persist_long_term_profile": false
+  }
+}

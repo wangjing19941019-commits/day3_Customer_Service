@@ -1,0 +1,191 @@
+{
+  "mock": true,
+  "base": "http://127.0.0.1:5288",
+  "viewport": "1440x900",
+  "cdpPort": 9460,
+  "chrome": "Chrome/153.0.8010.48",
+  "userDataDir": "C:\\Users\\慈海客服\\AppData\\Local\\Temp\\t030-chrome-ifP40C",
+  "demoUser": "admin",
+  "steps": {
+    "login": {
+      "pathname": "/knowledge",
+      "user": "已登录：[Mock] admin"
+    },
+    "list": [
+      {
+        "filename": "[Mock] 订单配送时效说明.md",
+        "status": "[Mock] 订单配送时效说明.md入库中 · [Mock] 9月22日 20:40"
+      },
+      {
+        "filename": "[Mock] 投诉处理说明.md",
+        "status": "[Mock] 投诉处理说明.md已完成 · 4 块 · [Mock] 9月22日 20:36"
+      },
+      {
+        "filename": "[Mock] 发票开具说明.md",
+        "status": "[Mock] 发票开具说明.md已完成 · 4 块 · [Mock] 9月22日 20:32"
+      },
+      {
+        "filename": "[Mock] 修改收货地址.md",
+        "status": "[Mock] 修改收货地址.md已完成 · 4 块 · [Mock] 9月22日 20:28"
+      },
+      {
+        "filename": "[Mock] 3C数码常见问题.md",
+        "status": "[Mock] 3C数码常见问题.md已完成 · 4 块 · [Mock] 9月22日 20:22"
+      },
+      {
+        "filename": "[Mock] 服饰美妆常见问题.md",
+        "status": "[Mock] 服饰美妆常见问题.md已完成 · 4 块 · [Mock] 9月22日 20:20"
+      },
+      {
+        "filename": "[Mock] 3C数码质保与退换.md",
+        "status": "[Mock] 3C数码质保与退换.md已完成 · 5 块 · [Mock] 9月22日 20:12"
+      },
+      {
+        "filename": "[Mock] 服饰美妆退换货政策.md",
+        "status": "[Mock] 服饰美妆退换货政策.md已完成 · 5 块 · [Mock] 9月22日 20:10"
+      },
+      {
+        "filename": "[Mock] scan-only.pdf",
+        "status": "[Mock] scan-only.pdf请重新上传 · [Mock] 9月12日 16:00"
+      }
+    ],
+    "readyEditor": {
+      "pathname": "/knowledge",
+      "hasEditor": true,
+      "legend": "可见范围与政策生效时间",
+      "radios": [
+        {
+          "value": "user_visible",
+          "label": "用户可见",
+          "checked": true
+        },
+        {
+          "value": "agent_only",
+          "label": "仅坐席可见",
+          "checked": false
+        },
+        {
+          "value": "high_risk_human_only",
+          "label": "高风险仅人工",
+          "checked": false
+        }
+      ],
+      "radioLabels": [
+        "用户可见",
+        "仅坐席可见",
+        "高风险仅人工"
+      ],
+      "checkedLabel": "用户可见",
+      "checkedValue": "user_visible",
+      "from": "",
+      "to": "",
+      "datetimeCount": 2,
+      "saveText": "保存可见范围和生效时间",
+      "saveClass": "btn btn-secondary",
+      "saveBg": "rgb(255, 255, 255)",
+      "saveColor": "rgb(31, 41, 51)",
+      "saveBorder": "rgb(217, 226, 236)",
+      "tagSaveClass": null,
+      "tagSaveBg": null,
+      "hint": [
+        "[Mock] 当前可见范围：用户可见"
+      ],
+      "saveMessage": [
+        "[Mock] 所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 4 块（只读）。",
+        "[Mock] 当前标签：服饰美妆商品 · 售前咨询 · 使用与保养指导",
+        "[Mock] 当前可见范围：用户可见",
+        ""
+      ],
+      "saveError": "",
+      "detailHasMock": true,
+      "detailHasUserVisible": true,
+      "detailHasAgentOnly": true,
+      "detailHasHighRisk": true,
+      "detailHasEnum": false,
+      "ingestHint": null,
+      "bodyHasMock": true
+    },
+    "beforeSave": {
+      "checkedLabel": "仅坐席可见",
+      "from": "2026-03-01T09:00",
+      "to": "2026-06-30T18:00"
+    },
+    "afterSave": {
+      "checkedLabel": "仅坐席可见",
+      "from": "2026-03-01T09:00",
+      "to": "2026-06-30T18:00",
+      "saveMessage": [
+        "[Mock] 所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 4 块（只读）。",
+        "[Mock] 当前标签：服饰美妆商品 · 售前咨询 · 使用与保养指导",
+        "[Mock] 当前可见范围：仅坐席可见",
+        "[Mock] 已保存，将立即用于后续提问。"
+      ],
+      "saveError": ""
+    },
+    "leftToOther": {
+      "checkedLabel": "仅坐席可见",
+      "from": "2026-03-01T09:00",
+      "to": "2026-06-30T18:00"
+    },
+    "reopened": {
+      "checkedLabel": "仅坐席可见",
+      "from": "2026-03-01T09:00",
+      "to": "2026-06-30T18:00"
+    },
+    "afterReload": {
+      "checkedLabel": "仅坐席可见",
+      "from": "2026-03-01T09:00",
+      "to": "2026-06-30T18:00"
+    },
+    "afterClear": {
+      "checkedLabel": "仅坐席可见",
+      "from": "",
+      "to": "",
+      "saveError": ""
+    },
+    "clearedReopen": {
+      "checkedLabel": "仅坐席可见",
+      "from": "",
+      "to": ""
+    },
+    "ingesting": {
+      "pathname": "/knowledge",
+      "hasEditor": false,
+      "legend": null,
+      "radios": [],
+      "radioLabels": [],
+      "checkedLabel": null,
+      "checkedValue": null,
+      "from": null,
+      "to": null,
+      "datetimeCount": 0,
+      "saveText": null,
+      "saveClass": null,
+      "saveBg": null,
+      "saveColor": null,
+      "saveBorder": null,
+      "tagSaveClass": null,
+      "tagSaveBg": null,
+      "hint": [],
+      "saveMessage": [
+        "[Mock] 这篇文档正在入库中，完成后才能查看分块并修改标签、FAQ、可见范围或生效时间。"
+      ],
+      "saveError": "",
+      "detailHasMock": true,
+      "detailHasUserVisible": false,
+      "detailHasAgentOnly": false,
+      "detailHasHighRisk": false,
+      "detailHasEnum": false,
+      "ingestHint": "[Mock] 这篇文档正在入库中，完成后才能查看分块并修改标签、FAQ、可见范围或生效时间。",
+      "bodyHasMock": true
+    }
+  },
+  "failed": [
+    {
+      "id": "TC-labels-ui04",
+      "error": "ASSERT FAIL: tag save remains primary null"
+    }
+  ],
+  "viteStatus": 200,
+  "viteUrl": "http://127.0.0.1:5288"
+}

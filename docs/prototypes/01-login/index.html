@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>登录 · 智能客服</title>
+  <link rel="stylesheet" href="../shared/styles.css" />
+</head>
+<body>
+  <div class="login-wrap">
+    <form class="login-card" id="login-form">
+      <h1>智能客服</h1>
+      <p class="hint">当前未登录</p>
+      <p class="hint">使用统一账号进入员工端、客服端和知识库。演示账号 it-help / it-help123</p>
+      <div class="field">
+        <label for="user">用户名</label>
+        <input id="user" name="user" autocomplete="username" />
+      </div>
+      <div class="field">
+        <label for="pass">密码</label>
+        <input id="pass" name="pass" type="password" autocomplete="current-password" />
+      </div>
+      <p class="error-text" id="login-error"></p>
+      <button class="btn btn-primary" type="submit">登录</button>
+    </form>
+  </div>
+  <script src="../shared/app.js"></script>
+  <script>initLogin();</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+# local secrets
+.env
+**/.env
+!.env.example
+!**/.env.example
+
+# dependencies and caches
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+.vite/
+
+# runtime data
+backend/data/
+logs/
+*.log
+*.db
+*.db-wal
+*.db-shm
+
+# isolated acceptance scratch
+.sdd/tmp-*/

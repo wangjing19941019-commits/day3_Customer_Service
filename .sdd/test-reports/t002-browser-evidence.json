@@ -1,0 +1,387 @@
+{
+  "mock": true,
+  "viewport": "1440x900",
+  "steps": [],
+  "empty": {
+    "pathname": "/employee",
+    "emptyText": "[Mock] 描述你的 IT 问题",
+    "statusText": "[Mock] AI 接待中",
+    "transferText": "转人工",
+    "transferDisabled": false,
+    "messageCount": 0,
+    "conversationId": "a14fd651-a35f-4a81-afe5-229e7c610add",
+    "pageHasMock": true,
+    "topbarUser": "已登录：[Mock] it-help",
+    "composer": {
+      "minHeight": "88px",
+      "bottom": 900,
+      "viewportHeight": 900,
+      "pinGap": 0,
+      "flexShrink": "0"
+    },
+    "screenshot": "t002-empty.png"
+  },
+  "vague": {
+    "rounds": [
+      {
+        "input": "连不上",
+        "lastEmployee": {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 连不上",
+          "rewrite": "[Mock] 改写为：当前问法缺少系统或设备对象，需补充后才能检索",
+          "alignSelf": "flex-end"
+        },
+        "lastOther": {
+          "side": "other",
+          "tag": "反问",
+          "text": "[Mock] 请问出问题的是哪套系统或设备？例如 Outlook、VPN 还是电脑硬件。",
+          "rewrite": null,
+          "alignSelf": "flex-start"
+        },
+        "systemTags": [
+          "反问"
+        ],
+        "messageCount": 2
+      },
+      {
+        "input": "怎么办",
+        "lastEmployee": {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 怎么办",
+          "rewrite": "[Mock] 改写为：当前问法缺少系统或设备对象，需补充后才能检索",
+          "alignSelf": "flex-end"
+        },
+        "lastOther": {
+          "side": "other",
+          "tag": "反问",
+          "text": "[Mock] 请问出问题的是哪套系统或设备？例如 Outlook、VPN 还是电脑硬件。",
+          "rewrite": null,
+          "alignSelf": "flex-start"
+        },
+        "systemTags": [
+          "反问",
+          "反问"
+        ],
+        "messageCount": 4
+      },
+      {
+        "input": "不行啊",
+        "lastEmployee": {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 不行啊",
+          "rewrite": "[Mock] 改写为：当前问法缺少系统或设备对象，需补充后才能检索",
+          "alignSelf": "flex-end"
+        },
+        "lastOther": {
+          "side": "other",
+          "tag": "反问",
+          "text": "[Mock] 请问出问题的是哪套系统或设备？例如 Outlook、VPN 还是电脑硬件。",
+          "rewrite": null,
+          "alignSelf": "flex-start"
+        },
+        "systemTags": [
+          "反问",
+          "反问",
+          "反问"
+        ],
+        "messageCount": 6
+      },
+      {
+        "input": "没反应",
+        "lastEmployee": {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 没反应",
+          "rewrite": "[Mock] 改写为：当前问法缺少系统或设备对象，需补充后才能检索",
+          "alignSelf": "flex-end"
+        },
+        "lastOther": {
+          "side": "other",
+          "tag": "反问",
+          "text": "[Mock] 请问出问题的是哪套系统或设备？例如 Outlook、VPN 还是电脑硬件。",
+          "rewrite": null,
+          "alignSelf": "flex-start"
+        },
+        "systemTags": [
+          "反问",
+          "反问",
+          "反问",
+          "反问"
+        ],
+        "messageCount": 8
+      },
+      {
+        "input": "打不开",
+        "lastEmployee": {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 打不开",
+          "rewrite": "[Mock] 改写为：当前问法缺少系统或设备对象，需补充后才能检索",
+          "alignSelf": "flex-end"
+        },
+        "lastOther": {
+          "side": "other",
+          "tag": "反问",
+          "text": "[Mock] 请问出问题的是哪套系统或设备？例如 Outlook、VPN 还是电脑硬件。",
+          "rewrite": null,
+          "alignSelf": "flex-start"
+        },
+        "systemTags": [
+          "反问",
+          "反问",
+          "反问",
+          "反问",
+          "反问"
+        ],
+        "messageCount": 10
+      },
+      {
+        "input": "还是不行",
+        "lastEmployee": {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 还是不行",
+          "rewrite": "[Mock] 改写为：当前问法缺少系统或设备对象，需补充后才能检索",
+          "alignSelf": "flex-end"
+        },
+        "lastOther": {
+          "side": "other",
+          "tag": "兜底",
+          "text": "[Mock] 抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+          "rewrite": null,
+          "alignSelf": "flex-start"
+        },
+        "systemTags": [
+          "反问",
+          "反问",
+          "反问",
+          "反问",
+          "反问",
+          "兜底"
+        ],
+        "messageCount": 12
+      }
+    ],
+    "screenshot": "t002-vague-fallback.png"
+  },
+  "faq": {
+    "lastEmployee": {
+      "side": "employee",
+      "tag": null,
+      "text": "[Mock] Outlook 打不开",
+      "rewrite": "[Mock] 改写为：Outlook 客户端无法启动的故障排查",
+      "alignSelf": "flex-end"
+    },
+    "lastOther": {
+      "side": "other",
+      "tag": "FAQ",
+      "text": "[Mock] 请检查是否在安全模式启动，并尝试用公司提供的安装包修复 Office。",
+      "rewrite": null,
+      "alignSelf": "flex-start"
+    },
+    "screenshot": "t002-faq.png"
+  },
+  "smallTalk": {
+    "lastEmployee": {
+      "side": "employee",
+      "tag": null,
+      "text": "[Mock] 你好",
+      "rewrite": "[Mock] 改写为：你好",
+      "alignSelf": "flex-end"
+    },
+    "lastOther": {
+      "side": "other",
+      "tag": "闲聊",
+      "text": "[Mock] 你好，我是内部 IT 助手，可以直接问具体系统或设备问题。",
+      "rewrite": null,
+      "alignSelf": "flex-start"
+    },
+    "screenshot": "t002-small-talk.png"
+  },
+  "knowledge": {
+    "lastEmployee": {
+      "side": "employee",
+      "tag": null,
+      "text": "[Mock] VPN连不上而且打印机无法使用",
+      "rewrite": "[Mock] 改写为：VPN 连接失败与打印机无法使用",
+      "alignSelf": "flex-end"
+    },
+    "lastOther": {
+      "side": "other",
+      "tag": "知识问答",
+      "text": "[Mock] 1. VPN：先确认账号未被锁定，再检查是否使用了过期的配置文件并重新导入。\n2. 打印机：请确认默认打印机、驱动和网络连通后再重试打印。",
+      "rewrite": null,
+      "alignSelf": "flex-start"
+    },
+    "otherAfterSend": [
+      {
+        "side": "other",
+        "tag": "闲聊",
+        "text": "[Mock] 你好，我是内部 IT 助手，可以直接问具体系统或设备问题。",
+        "rewrite": null,
+        "alignSelf": "flex-start"
+      },
+      {
+        "side": "other",
+        "tag": "知识问答",
+        "text": "[Mock] 1. VPN：先确认账号未被锁定，再检查是否使用了过期的配置文件并重新导入。\n2. 打印机：请确认默认打印机、驱动和网络连通后再重试打印。",
+        "rewrite": null,
+        "alignSelf": "flex-start"
+      }
+    ],
+    "screenshot": "t002-knowledge.png"
+  },
+  "outOfScope": {
+    "lastEmployee": {
+      "side": "employee",
+      "tag": null,
+      "text": "[Mock] 我的工单进度怎么样了",
+      "rewrite": "[Mock] 改写为：我的工单进度怎么样了",
+      "alignSelf": "flex-end"
+    },
+    "lastOther": {
+      "side": "other",
+      "tag": "兜底",
+      "text": "[Mock] 抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "rewrite": null,
+      "alignSelf": "flex-start"
+    },
+    "screenshot": "t002-fallback.png"
+  },
+  "afterTransfer": {
+    "statusText": "[Mock] 已转人工，等待客服",
+    "transferText": "已转人工",
+    "transferDisabled": true,
+    "conversationId": "a14fd651-a35f-4a81-afe5-229e7c610add",
+    "otherCount": 10,
+    "screenshot": "t002-transferred.png"
+  },
+  "afterHandoffMessages": {
+    "otherCountBefore": 10,
+    "otherCountAfter1": 10,
+    "otherCountAfter2": 10,
+    "lastEmployee": {
+      "side": "employee",
+      "tag": null,
+      "text": "[Mock] 你好",
+      "rewrite": null,
+      "alignSelf": "flex-end"
+    },
+    "lastOther": {
+      "side": "other",
+      "tag": "兜底",
+      "text": "[Mock] 抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "rewrite": null,
+      "alignSelf": "flex-start"
+    },
+    "newEmployeeHasRewrite": false,
+    "waitingHintVisible": false,
+    "screenshot": "t002-after-handoff-send.png"
+  },
+  "afterReload": {
+    "conversationId": "a14fd651-a35f-4a81-afe5-229e7c610add",
+    "sameId": true,
+    "statusText": "[Mock] 已转人工，等待客服",
+    "transferDisabled": true,
+    "messageCount": 22,
+    "lastEmployee": {
+      "side": "employee",
+      "tag": null,
+      "text": "[Mock] 你好",
+      "rewrite": null,
+      "alignSelf": "flex-end"
+    },
+    "lastOther": {
+      "side": "other",
+      "tag": "兜底",
+      "text": "[Mock] 抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "rewrite": null,
+      "alignSelf": "flex-start"
+    },
+    "composer": {
+      "minHeight": "88px",
+      "bottom": 900,
+      "viewportHeight": 900,
+      "pinGap": 0,
+      "flexShrink": "0"
+    },
+    "messagePane": {
+      "overflow": "auto",
+      "minHeight": "0px",
+      "height": 688,
+      "scrollHeight": 1670,
+      "scrollTop": 982
+    },
+    "employeeBubble": {
+      "backgroundColor": "rgb(29, 78, 137)",
+      "color": "rgb(255, 255, 255)",
+      "maxWidth": "640px"
+    },
+    "systemBubble": {
+      "backgroundColor": "rgb(232, 241, 250)",
+      "color": "rgb(31, 41, 51)"
+    },
+    "pageHasMock": true,
+    "enumLeak": false,
+    "topbarHeight": "56px",
+    "screenshot": "t002-reload.png"
+  },
+  "layout": {
+    "composer": {
+      "minHeight": "88px",
+      "bottom": 900,
+      "viewportHeight": 900,
+      "pinGap": 0,
+      "flexShrink": "0"
+    },
+    "messagePane": {
+      "overflow": "auto",
+      "minHeight": "0px",
+      "height": 688,
+      "scrollHeight": 1670,
+      "scrollTop": 982
+    },
+    "employeeBubble": {
+      "backgroundColor": "rgb(29, 78, 137)",
+      "color": "rgb(255, 255, 255)",
+      "maxWidth": "640px"
+    },
+    "systemBubble": {
+      "backgroundColor": "rgb(232, 241, 250)",
+      "color": "rgb(31, 41, 51)"
+    },
+    "topbarHeight": "56px"
+  },
+  "assertions": {
+    "emptyHasHint": true,
+    "emptyHasMock": true,
+    "statusBotChinese": true,
+    "firstVagueIsClarify": true,
+    "firstVagueHasRewrite": true,
+    "rounds1to5Clarify": true,
+    "round6Fallback": true,
+    "faqTag": true,
+    "smallTalkTag": true,
+    "knowledgeTag": true,
+    "knowledgeSegmented": true,
+    "knowledgeSingleBubble": true,
+    "outOfScopeFallback": true,
+    "transferredStatus": true,
+    "transferButtonDisabled": true,
+    "noSystemAfterHandoff": true,
+    "reloadSameConversation": true,
+    "reloadStillHandedOff": true,
+    "composerPinned": true,
+    "composerMin88": true,
+    "employeeRight": true,
+    "systemLeft": true,
+    "employeeBubbleColor": true,
+    "systemBubbleColor": true,
+    "pageHasMock": true,
+    "noEnumLeak": true
+  },
+  "failedAssertions": []
+}

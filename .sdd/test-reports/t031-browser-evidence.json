@@ -1,0 +1,456 @@
+{
+  "mock": true,
+  "base": "http://127.0.0.1:5291",
+  "viewport": "1440x900",
+  "cdpPort": 9462,
+  "chrome": "Chrome/153.0.8010.48",
+  "userDataDir": "C:\\Users\\慈海客服\\AppData\\Local\\Temp\\t031-chrome-LAt24w",
+  "employeeUser": "it-help",
+  "agentUser": "agent",
+  "steps": {
+    "agentEmptyLogin": {
+      "pathname": "/agent",
+      "user": "已登录：[Mock] agent"
+    },
+    "emptyInbox": {
+      "pathname": "/agent",
+      "empty": "还没有需要人工处理的对话",
+      "hasForm": false,
+      "mock": true
+    },
+    "employeeLogin": {
+      "pathname": "/employee",
+      "user": "已登录：[Mock] it-help"
+    },
+    "afterTransferEmployee": {
+      "status": "[Mock] 已转人工，等待客服",
+      "transferDisabled": true
+    },
+    "beforeType": {
+      "typeValue": "",
+      "lineValue": "",
+      "confirmDisabled": true,
+      "typeOptions": [
+        "售前咨询（不建单）",
+        "退换货",
+        "修改地址",
+        "开发票",
+        "投诉维权",
+        "费用争议",
+        "物流异常"
+      ],
+      "mock": true
+    },
+    "typeKeys": {
+      "return_exchange": {
+        "label": "退换货",
+        "ids": [
+          "order_no",
+          "product_info",
+          "amount",
+          "intent_summary",
+          "return_method",
+          "return_reason",
+          "quantity"
+        ],
+        "typeValue": "return_exchange"
+      },
+      "address_change": {
+        "label": "修改地址",
+        "ids": [
+          "order_no",
+          "product_info",
+          "amount",
+          "intent_summary",
+          "original_address",
+          "new_address",
+          "recipient_name",
+          "phone"
+        ],
+        "typeValue": "address_change"
+      },
+      "invoice": {
+        "label": "开发票",
+        "ids": [
+          "order_no",
+          "product_info",
+          "amount",
+          "intent_summary",
+          "invoice_kind",
+          "invoice_title",
+          "tax_id",
+          "invoice_contact"
+        ],
+        "typeValue": "invoice"
+      },
+      "complaint": {
+        "label": "投诉维权",
+        "ids": [
+          "order_no",
+          "product_info",
+          "amount",
+          "intent_summary",
+          "complaint_category",
+          "incident_summary",
+          "user_expectation",
+          "need_escalate"
+        ],
+        "typeValue": "complaint"
+      },
+      "fee_dispute": {
+        "label": "费用争议",
+        "ids": [
+          "order_no",
+          "product_info",
+          "amount",
+          "intent_summary",
+          "dispute_type",
+          "claimed_amount",
+          "platform_amount",
+          "diff_reason"
+        ],
+        "typeValue": "fee_dispute"
+      },
+      "logistics_exception": {
+        "label": "物流异常",
+        "ids": [
+          "order_no",
+          "product_info",
+          "amount",
+          "intent_summary",
+          "tracking_no",
+          "exception_type",
+          "responsible_party",
+          "user_request",
+          "compensation_plan"
+        ],
+        "typeValue": "logistics_exception"
+      }
+    },
+    "noType": {
+      "confirmDisabled": true,
+      "typeValue": ""
+    },
+    "noLine": {
+      "confirmDisabled": true,
+      "lineValue": ""
+    },
+    "extracting": {
+      "extracting": true,
+      "extractText": "[Mock] 正在根据对话补全…"
+    },
+    "oneOrder": {
+      "order": {
+        "id": "ticket-field-order_no",
+        "label": "订单号",
+        "tag": "INPUT",
+        "value": "JD20260922001",
+        "status": "已填",
+        "statusColor": "rgb(15, 123, 90)",
+        "statusClass": "field-status slot-filled",
+        "candidates": [],
+        "conflict": null,
+        "attachments": []
+      },
+      "amount": {
+        "id": "ticket-field-amount",
+        "label": "相关金额",
+        "tag": "INPUT",
+        "value": "99",
+        "status": "已填",
+        "statusColor": "rgb(15, 123, 90)",
+        "statusClass": "field-status slot-filled",
+        "candidates": [],
+        "conflict": null,
+        "attachments": []
+      },
+      "product": {
+        "id": "ticket-field-product_info",
+        "label": "商品信息",
+        "tag": "INPUT",
+        "value": "连衣裙",
+        "status": "已填",
+        "statusColor": "rgb(15, 123, 90)",
+        "statusClass": "field-status slot-filled",
+        "candidates": [],
+        "conflict": null,
+        "attachments": []
+      },
+      "missing": {
+        "id": "ticket-field-return_reason",
+        "label": "退换原因",
+        "tag": "INPUT",
+        "value": "",
+        "status": "缺失",
+        "statusColor": "rgb(180, 35, 24)",
+        "statusClass": "field-status slot-danger",
+        "candidates": [],
+        "conflict": null,
+        "attachments": []
+      },
+      "confirmDisabled": true,
+      "knowledge": [
+        "[Mock] 3C数码质保与退换.md / 质保 [Mock] 以签收后的保修说明为准，非人为损坏可保修或只换不修。 [Mock] 3C 按质保处理，不适用服饰七天无理由。 生效：2026年1月1日 ~ 2026年12月31日 适用品类：3C数码",
+        "[Mock] 3C数码常见问题.md / 规格核对 [Mock] 优先核对规格、兼容与质保。 [Mock] 3C 售前口径，不引用服饰七天无理由。 生效：2026年3月1日 ~ 2026年12月31日 适用品类：3C数码"
+      ],
+      "draft": "",
+      "sendUser": false
+    },
+    "conflict99": {
+      "id": "ticket-field-amount",
+      "label": "相关金额",
+      "tag": "INPUT",
+      "value": "99",
+      "status": "冲突",
+      "statusColor": "rgb(180, 35, 24)",
+      "statusClass": "field-status slot-danger",
+      "candidates": [],
+      "conflict": "[Mock] 原值 99，新值 88 保留原值 改用新值",
+      "attachments": []
+    },
+    "polishOk": {
+      "text": "[Mock] 原稿 [Mock] 你这个退不了，超时间了 [Mock] 润色稿 [Mock] 您好，已了解您希望办理的事项。原稿表达较生硬，整理如下：当前仍按超过 7 天无理由处理，不能直接退货。可以继续看其他办法。 采用 修改 放弃 [Mock] 当次结果反馈，不会保存为模板。 有用 无用 说明提交反馈",
+      "hasAdopt": true,
+      "hasEdit": true,
+      "hasDiscard": true,
+      "hasSaveTemplate": false,
+      "risk": null,
+      "original": "[Mock] 你这个退不了，超时间了",
+      "polished": "[Mock] 您好，已了解您希望办理的事项。原稿表达较生硬，整理如下：当前仍按超过 7 天无理由处理，不能直接退货。可以继续看其他办法。",
+      "riskColor": null
+    },
+    "afterFeedback": {
+      "done": true,
+      "saveTemplate": false
+    },
+    "discard": {
+      "originalDraft": "你这个退不了，超时间了",
+      "afterDiscard": "你这个退不了，超时间了"
+    },
+    "polishBad": {
+      "text": "[Mock] 合规未通过，不能直接采用润色稿。 [Mock] 润色稿出现会话中未承诺的「一定退」类表述 [Mock] 润色稿改变了原稿或会话中的时效 放弃 [Mock] 当次结果反馈，不会保存为模板。 有用 无用 说明提交反馈",
+      "hasAdopt": false,
+      "hasEdit": false,
+      "hasDiscard": true,
+      "hasSaveTemplate": false,
+      "risk": "[Mock] 合规未通过，不能直接采用润色稿。 [Mock] 润色稿出现会话中未承诺的「一定退」类表述 [Mock] 润色稿改变了原稿或会话中的时效",
+      "original": null,
+      "polished": null,
+      "riskColor": "rgb(180, 35, 24)"
+    },
+    "narrow": {
+      "work": {
+        "x": 0,
+        "y": 779.1875,
+        "width": 390,
+        "height": 1708,
+        "top": 779.1875,
+        "right": 390,
+        "bottom": 2487.1875,
+        "left": 0
+      },
+      "thread": {
+        "x": 0,
+        "y": 441.59375,
+        "width": 390,
+        "height": 337.59375,
+        "top": 441.59375,
+        "right": 390,
+        "bottom": 779.1875,
+        "left": 0
+      },
+      "inboxClass": "column"
+    },
+    "employeeSawOriginal": true,
+    "twoOrders": {
+      "id": "ticket-field-order_no",
+      "label": "订单号",
+      "tag": "INPUT",
+      "value": "",
+      "status": "待确认",
+      "statusColor": "rgb(180, 83, 9)",
+      "statusClass": "field-status slot-candidate",
+      "candidates": [
+        {
+          "text": "[Mock] JD20260922001 · 蓝色手机",
+          "pressed": "false"
+        },
+        {
+          "text": "[Mock] JD20260922002 · 蓝色手机（另一笔）",
+          "pressed": "false"
+        }
+      ],
+      "conflict": null,
+      "attachments": []
+    },
+    "zeroOrder": {
+      "order": {
+        "id": "ticket-field-order_no",
+        "label": "订单号",
+        "tag": "INPUT",
+        "value": "",
+        "status": "缺失",
+        "statusColor": "rgb(180, 35, 24)",
+        "statusClass": "field-status slot-danger",
+        "candidates": [],
+        "conflict": null,
+        "attachments": []
+      },
+      "hints": [
+        "[Mock] 暂未查到",
+        "[Mock] 确认被挡住：订单号、相关金额、退换原因、数量",
+        "[Mock] 3C 按质保处理，不适用服饰七天无理由。",
+        "生效：2026年1月1日 ~ 2026年12月31日",
+        "适用品类：3C数码",
+        "[Mock] 3C 售前口径，不引用服饰七天无理由。",
+        "生效：2026年3月1日 ~ 2026年12月31日",
+        "适用品类：3C数码",
+        "[Mock] 仅坐席可见，不会发给用户。"
+      ]
+    },
+    "feeBeforeFill": {
+      "confirmDisabled": true,
+      "blockers": [
+        "[Mock] 确认被挡住：证据截图",
+        "[Mock] 3C 按质保处理，不适用服饰七天无理由。",
+        "生效：2026年1月1日 ~ 2026年12月31日",
+        "适用品类：3C数码",
+        "[Mock] 3C 售前口径，不引用服饰七天无理由。",
+        "生效：2026年3月1日 ~ 2026年12月31日",
+        "适用品类：3C数码",
+        "[Mock] 仅坐席可见，不会发给用户。"
+      ],
+      "fields": [
+        {
+          "label": "业务线",
+          "value": "digital_3c",
+          "status": null
+        },
+        {
+          "label": "工单类型",
+          "value": "fee_dispute",
+          "status": null
+        },
+        {
+          "label": "订单号",
+          "value": "JD20260922001",
+          "status": "已填"
+        },
+        {
+          "label": "商品信息",
+          "value": "连衣裙",
+          "status": "已填"
+        },
+        {
+          "label": "相关金额",
+          "value": "99",
+          "status": "已填"
+        },
+        {
+          "label": "用户诉求摘要",
+          "value": "我昨天买的蓝色手机费用争议，主张99元，价保差异不对",
+          "status": "已填"
+        },
+        {
+          "label": "争议类型",
+          "value": "price_protect",
+          "status": "已填"
+        },
+        {
+          "label": "用户主张金额",
+          "value": "99",
+          "status": "已填"
+        },
+        {
+          "label": "平台核算金额",
+          "value": "99",
+          "status": "已填"
+        },
+        {
+          "label": "差异原因",
+          "value": "不对",
+          "status": "已填"
+        },
+        {
+          "label": "证据截图",
+          "value": null,
+          "status": "缺失"
+        }
+      ]
+    },
+    "feeNoShot": {
+      "confirmDisabled": true,
+      "blockers": [
+        "[Mock] 确认被挡住：证据截图",
+        "[Mock] 3C 按质保处理，不适用服饰七天无理由。",
+        "生效：2026年1月1日 ~ 2026年12月31日",
+        "适用品类：3C数码",
+        "[Mock] 3C 售前口径，不引用服饰七天无理由。",
+        "生效：2026年3月1日 ~ 2026年12月31日",
+        "适用品类：3C数码",
+        "[Mock] 仅坐席可见，不会发给用户。"
+      ],
+      "evidenceStatus": {
+        "id": "ticket-evidence",
+        "label": "证据截图",
+        "tag": "FILE",
+        "value": null,
+        "status": "缺失",
+        "statusColor": "rgb(180, 35, 24)",
+        "statusClass": "field-status slot-danger",
+        "candidates": [],
+        "conflict": null,
+        "attachments": []
+      }
+    },
+    "feeWithShot": {
+      "confirmDisabled": false,
+      "blockers": [
+        "[Mock] 3C 按质保处理，不适用服饰七天无理由。",
+        "生效：2026年1月1日 ~ 2026年12月31日",
+        "适用品类：3C数码",
+        "[Mock] 3C 售前口径，不引用服饰七天无理由。",
+        "生效：2026年3月1日 ~ 2026年12月31日",
+        "适用品类：3C数码",
+        "[Mock] 仅坐席可见，不会发给用户。"
+      ],
+      "attachments": {
+        "id": "ticket-evidence",
+        "label": "证据截图",
+        "tag": "FILE",
+        "value": null,
+        "status": null,
+        "statusColor": null,
+        "statusClass": null,
+        "candidates": [],
+        "conflict": null,
+        "attachments": [
+          "[Mock] t031-evidence.png"
+        ]
+      }
+    },
+    "feeConfirmed": {
+      "confirmText": "已确认",
+      "typeDisabled": true
+    }
+  },
+  "failed": [
+    {
+      "id": "product-blue-phone",
+      "error": "ASSERT FAIL: product-blue-phone {\"id\":\"ticket-field-product_info\",\"label\":\"商品信息\",\"tag\":\"INPUT\",\"value\":\"连衣裙\",\"status\":\"已填\",\"statusColor\":\"rgb(15, 123, 90)\",\"statusClass\":\"field-status slot-filled\",\"candidates\":[],\"conflict\":null,\"attachments\":[]}",
+      "extra": {
+        "id": "ticket-field-product_info",
+        "label": "商品信息",
+        "tag": "INPUT",
+        "value": "连衣裙",
+        "status": "已填",
+        "statusColor": "rgb(15, 123, 90)",
+        "statusClass": "field-status slot-filled",
+        "candidates": [],
+        "conflict": null,
+        "attachments": []
+      }
+    }
+  ],
+  "viteStatus": 200
+}

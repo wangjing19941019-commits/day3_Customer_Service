@@ -1,0 +1,4624 @@
+{
+  "project": "智能客服系统",
+  "project_type": "web",
+  "specification": "default",
+  "created": "2026-09-12",
+  "max_retries": 2,
+  "execution_mode": "automatic",
+  "step_gate": {
+    "kind": "task_review",
+    "task_id": null,
+    "status": "pending",
+    "user_confirmation": null
+  },
+  "source_files": {
+    "prd": "docs/PRD.md",
+    "tech_spec": "docs/tech-spec.md",
+    "ui_style": "docs/ui-style.md",
+    "prototype": "docs/prototypes/"
+  },
+  "external_services": [
+    {
+      "name": "阿里云百炼 Chat",
+      "config_keys": [
+        "llm_api_key",
+        "llm_base_url",
+        "llm_model",
+        "llm_temperature",
+        "llm_timeout_seconds",
+        "llm_max_retries"
+      ],
+      "tester_access_required": true,
+      "required": true,
+      "fallback_allowed": false,
+      "status": "confirmed"
+    },
+    {
+      "name": "阿里云百炼 Embedding",
+      "config_keys": [
+        "llm_api_key",
+        "llm_base_url",
+        "embedding_model",
+        "embedding_dimensions",
+        "embedding_batch_size"
+      ],
+      "tester_access_required": true,
+      "required": true,
+      "fallback_allowed": false,
+      "status": "confirmed"
+    },
+    {
+      "name": "订单中心适配器",
+      "config_keys": [
+        "order_center_base_url"
+      ],
+      "tester_access_required": false,
+      "required": false,
+      "fallback_allowed": true,
+      "status": "fallback"
+    },
+    {
+      "name": "仓储适配器",
+      "config_keys": [
+        "warehouse_base_url"
+      ],
+      "tester_access_required": false,
+      "required": false,
+      "fallback_allowed": true,
+      "status": "fallback"
+    },
+    {
+      "name": "财务适配器",
+      "config_keys": [
+        "finance_base_url"
+      ],
+      "tester_access_required": false,
+      "required": false,
+      "fallback_allowed": true,
+      "status": "fallback"
+    },
+    {
+      "name": "会员适配器",
+      "config_keys": [
+        "member_base_url"
+      ],
+      "tester_access_required": false,
+      "required": false,
+      "fallback_allowed": true,
+      "status": "fallback"
+    },
+    {
+      "name": "物流轨迹适配器",
+      "config_keys": [
+        "logistics_base_url"
+      ],
+      "tester_access_required": false,
+      "required": false,
+      "fallback_allowed": true,
+      "status": "fallback"
+    }
+  ],
+  "features": [
+    {
+      "id": "F-001",
+      "title": "统一账号登录、已登录展示与退出",
+      "source_requirements": [
+        "REQ-004"
+      ]
+    },
+    {
+      "id": "F-002",
+      "title": "知识入库、分块只读预览与改标签/FAQ",
+      "source_requirements": [
+        "REQ-002"
+      ]
+    },
+    {
+      "id": "F-003",
+      "title": "员工提问：改写、反问、FAQ、闲聊、标签检索与兜底",
+      "source_requirements": [
+        "REQ-001"
+      ]
+    },
+    {
+      "id": "F-004",
+      "title": "员工转人工与客服接管回复",
+      "source_requirements": [
+        "REQ-003"
+      ]
+    },
+    {
+      "id": "F-005",
+      "title": "转人工后坐席填单、知识推送与话术润色",
+      "source_requirements": [
+        "REQ-005",
+        "REQ-006",
+        "REQ-007",
+        "REQ-008"
+      ]
+    },
+    {
+      "id": "F-006",
+      "title": "管理端维护提示模板的版本、灰度、回滚和评测",
+      "source_requirements": [
+        "REQ-009"
+      ]
+    },
+    {
+      "id": "F-007",
+      "title": "确认后自动分配、紧急程度打标与按类型计时",
+      "source_requirements": [
+        "REQ-010"
+      ]
+    },
+    {
+      "id": "F-008",
+      "title": "退货开票联动并把进度告诉用户",
+      "source_requirements": [
+        "REQ-011"
+      ]
+    },
+    {
+      "id": "F-DELIVERY",
+      "title": "理解各页面功能及其接口算法与实现位置",
+      "source_requirements": [
+        "SDD-DELIVERY"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T-001",
+      "title": "前端：登录页、应用外壳与鉴权 Mock",
+      "type": "frontend",
+      "description": "在 frontend/ 按 default 栈初始化 Vite+React+TS 工程（不先搭与本页无关的业务骨架）。实现 LoginPage、受保护外壳（顶栏+侧栏互斥导航）、JWT 存 localStorage 键 access_token、Axios 单例与 Mock 开关。Mock 对齐 API-001/002：正确账号进入员工端路由，错误密码留在登录页；未登录访问业务路由回登录并显示「当前未登录」；已登录顶栏「已登录：用户名」+「退出」（丢弃 token）。为员工端/客服端/知识库路由提供可编译占位页，由 T-002～T-004 替换。本阶段不验收真实登录 AC；AC-009、AC-010、AC-025、AC-026 由 T-010 承接。",
+      "source_feature": "F-001",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "cd frontend && npm run dev 可在 127.0.0.1:5199 打开；type-check/lint/build 按改动通过。",
+        "浏览器：登录页显示「当前未登录」；空表/错误密码 it-help + 错密码停留本页并见失败说明，带 [Mock]；正确 it-help/it-help123 进入受保护外壳。",
+        "顶栏右侧为「已登录：it-help」与「退出」；退出后回登录页；未登录直接打开 /employee 被送回登录。",
+        "侧栏三项互斥且非当前项不占内容区；刷新后地址与选中导航一致。Mock 数据集中在 frontend/src/mocks/ 且信封与 API-001/002 一致。",
+        "对照 ui-style UI-01 与全局外壳：登录卡居中、顶栏 56px、主色与字阶；对照原型 01-login。baseURL 来自 VITE_API_BASE_URL，无硬编码后端主机。"
+      ],
+      "externalServices": [],
+      "dependencies": [],
+      "priority": 1,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-004 统一账号登录、已登录状态与退出"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-001 登录"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-002 恢复登录态"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 传输与校验"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-001"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-002"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "二、全局视觉系统 > 配色方案"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "二、全局视觉系统 > 布局、间距与形状"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-01 登录"
+        },
+        {
+          "path": "docs/prototypes/01-login/index.html",
+          "section": "01-login"
+        },
+        {
+          "path": "docs/prototypes/shared/styles.css",
+          "section": "topbar / login"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/package.json",
+        "frontend/package-lock.json",
+        "frontend/tsconfig.json",
+        "frontend/tsconfig.app.json",
+        "frontend/tsconfig.node.json",
+        "frontend/vite.config.ts",
+        "frontend/eslint.config.js",
+        "frontend/index.html",
+        "frontend/.env.example",
+        "frontend/.gitignore",
+        "frontend/src/main.tsx",
+        "frontend/src/App.tsx",
+        "frontend/src/index.css",
+        "frontend/src/vite-env.d.ts",
+        "frontend/src/router/",
+        "frontend/src/pages/LoginPage.tsx",
+        "frontend/src/pages/EmployeeChatPage.tsx",
+        "frontend/src/pages/AgentInboxPage.tsx",
+        "frontend/src/pages/KnowledgePage.tsx",
+        "frontend/src/components/AppShell.tsx",
+        "frontend/src/stores/",
+        "frontend/src/services/",
+        "frontend/src/types/",
+        "frontend/src/utils/",
+        "frontend/src/mocks/auth.ts",
+        "frontend/src/mocks/index.ts"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-12 Tester f4a46e37-df98-4191-89e4-2e123deebcda PASS（前端阶段/Mock）。TC-01～05 通过。报告 .sdd/test-reports/test-T-001.md。AC-009/010/025/026 仍由 T-010。不代替 T-005 用户门禁。"
+    },
+    {
+      "id": "T-002",
+      "title": "前端：员工端对话 Mock",
+      "type": "frontend",
+      "description": "实现 EmployeeChatPage：发消息、展示原问与改写、反问/FAQ/闲聊/知识分段/兜底/客服气泡、未转人工可点转人工、已转人工后不再出现系统自动回、消息区滚动且输入钉底、sessionStorage.conversation_id（D-001）。Mock 对齐 API-007/009/010/011。关联 AC-001、AC-002、AC-006、AC-007、AC-011～AC-016、AC-019～AC-022 由 T-012 真实验收；转人工后跨页结果由 T-005/T-013 收口。",
+      "source_feature": "F-003",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "登录后打开员工端：空态「描述你的 IT 问题」；发送含糊问法出现反问气泡且可见改写；连续可走到第 6 次含糊的兜底原文（PRD 固定句）。",
+        "可演示 FAQ、闲聊、知识分段、超范围兜底；点转人工后面板变为「已转人工，等待客服」，再发送只有员工气泡、无系统自动回。",
+        "刷新同标签页仍是同一会话；对照 ui-style UI-02 与原型 02-employee：气泡左右、输入钉底、状态条文案为中文业务名。Mock 带 [Mock]，数据在 frontend/src/mocks/。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-001"
+      ],
+      "priority": 2,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-001 未转人工时的提问回答（FAQ、闲聊、标签检索）"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-003 员工触发转人工，客服接管并回复"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-007 创建员工会话"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-009 会话详情"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-010 员工发消息"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-011 转人工"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 共享结构"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-010 提问状态机"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-001 员工端刷新后能否继续同一会话"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-003 客服端和新消息如何更新"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-004 「同一问题链路」在员工换题时是否重置反问轮次"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-02 员工端"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "三、全局组件与状态"
+        },
+        {
+          "path": "docs/prototypes/02-employee/index.html",
+          "section": "02-employee"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/pages/EmployeeChatPage.tsx",
+        "frontend/src/components/chat/",
+        "frontend/src/hooks/useConversation.ts",
+        "frontend/src/services/conversationService.ts",
+        "frontend/src/mocks/conversations.ts"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-13 Tester ebead7ea-73f6-4e1d-8ace-468fee491e7a PASS（前端阶段/Mock）。TC-01～03 通过。报告 .sdd/test-reports/test-T-002.md。业务 AC 仍由 T-012；跨页由 T-005/T-013。不代替 T-005 用户门禁。"
+    },
+    {
+      "id": "T-003",
+      "title": "前端：知识库入库与分块预览 Mock",
+      "type": "frontend",
+      "description": "实现 KnowledgePage：仅 .md 上传；立刻「入库中」可离开再回来；列表区分入库中/已完成/请重新上传；仅 ready 展示切块策略说明与只读分块（序号、标题路径、正文）以及可改标签/FAQ；ingesting/failed 无分块、不可保存。约 3 秒拉取（D-002/D-003）。Mock 对齐 API-003～006。关联 AC-003、AC-004、AC-017、AC-018、AC-023、AC-024 由 T-011 真实验收。",
+      "source_feature": "F-002",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "上传非 md 立刻「请重新上传」且列表无新行；上传 md 立刻「入库中」，切走再回来仍见进行中，此时不能预览分块、不能改标签/FAQ。",
+        "Mock 完成后详情含切块策略原文（标题与段落、800 字、重叠 80 字）、多块只读预览、无保存分块入口；保存标签/FAQ 后页面立即更新且分块正文不变。",
+        "对照 ui-style UI-04 与原型 04-knowledge；状态只用中文「入库中 / 已完成 / 请重新上传」。Mock 带 [Mock]。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-001"
+      ],
+      "priority": 3,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-002 知识文档入库、查看分块预览与实时改标签/FAQ"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-003 上传并受理后台入库"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-004 文档列表"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-005 文档详情"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-006 修改标签与 FAQ"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 共享结构"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-003 入库（D-002=B，后台）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-004 / API-005 / API-006"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-002 知识入库是当场等完还是后台进行"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-005 知识库分块只读预览，不可编辑"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-04 知识库"
+        },
+        {
+          "path": "docs/prototypes/04-knowledge/index.html",
+          "section": "04-knowledge"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/pages/KnowledgePage.tsx",
+        "frontend/src/hooks/useDocuments.ts",
+        "frontend/src/services/documentService.ts",
+        "frontend/src/mocks/documents.ts"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-13 Tester 0361b20d-7643-4701-9e31-c6684e6cf2bc PASS（前端阶段/Mock）。TC-01～03 通过。报告 .sdd/test-reports/test-T-003.md。业务 AC 仍由 T-011。不代替 T-005 用户门禁。 2026-09-14 Planner：AC-027/028 列表增量改由 T-015 Mock、T-011 真实验收；本任务保持 passed，不重开。 2026-09-17 Planner：上传格式增量（.md/.txt/可抽出文字的 PDF、原文件名、切块说明 800/160）改由 T-017 Mock 承接；本任务保持 passed，不重开。"
+    },
+    {
+      "id": "T-004",
+      "title": "前端：客服端已转接会话 Mock",
+      "type": "frontend",
+      "description": "实现 AgentInboxPage：左侧仅已转人工会话；右侧完整链路（含改写）与回复框；无会话空态；未转接会话不出现。约 3 秒拉取（D-003）。Mock 对齐 API-008/009/012。关联 AC-005、AC-006、AC-008 由 T-013 真实验收。",
+      "source_feature": "F-004",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "无已转接会话时见「还没有需要人工处理的对话」，回复禁用；Mock 转入一条 handed_off 后列表出现且可打开完整对话（含改写）。",
+        "发送客服回复后同一会话可见客服气泡；未转接会话不得出现在列表。对照 ui-style UI-03 与原型 03-agent。Mock 带 [Mock]。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-001"
+      ],
+      "priority": 4,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-003 员工触发转人工，客服接管并回复"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-008 已转人工会话列表"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-009 会话详情"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-012 客服回复"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-007 / API-008 / API-009"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-011 / API-012"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-011 / API-012"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-003 客服端和新消息如何更新"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-03 客服端"
+        },
+        {
+          "path": "docs/prototypes/03-agent/index.html",
+          "section": "03-agent"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/pages/AgentInboxPage.tsx",
+        "frontend/src/hooks/useAgentInbox.ts",
+        "frontend/src/services/agentInboxService.ts",
+        "frontend/src/mocks/agentInbox.ts"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-13 Tester af45bd0e-56ce-463c-a102-33930f22796a PASS（前端阶段/Mock）。TC-01～08 通过。报告 .sdd/test-reports/test-T-004.md。业务 AC-005/006/008 仍由 T-013。不代替 T-005 用户门禁。"
+    },
+    {
+      "id": "T-005",
+      "title": "前端：四页 Mock 主流程收口与用户门禁",
+      "type": "frontend",
+      "description": "在 T-001～T-004 基础上打通跨页 Mock：登录→知识库入库中/完成/失败→员工提问各分支→转人工→客服回复回到员工端；顶栏登录态与退出在三业务页一致；导航互斥；轮询间隔与 D-003 一致。Tester 通过后由编排器将 user_gate 置 awaiting_user，停止新派发，待用户验收 Mock 并在 backend/.env 填写百炼等配置。本任务通过只表示前端 Mock 阶段通过，不计业务 AC 完成。",
+      "source_feature": "F-001",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "浏览器按 ui-style 第五节清单走通四页 Mock 主流程与关键失败：错密码、非 md、入库中不可编辑、转人工后员工不再自动回、客服回复出现在员工端。",
+        "1440 与窄于 1024 的布局：侧栏改横排、对话输入仍钉底、长消息不遮顶栏；三个业务页顶栏用户名与退出一致。",
+        "复用前序稳定证据，只补测跨页与本任务改动；全部页面 Mock 数据仍带 [Mock] 且信封未偏离 §二。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-001",
+        "T-002",
+        "T-003",
+        "T-004"
+      ],
+      "priority": 5,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "用户目标与完整流程"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "一、用户要完成什么"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > 接口索引"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "五、使用与验收"
+        },
+        {
+          "path": "docs/prototypes/01-login/index.html",
+          "section": "01-login"
+        },
+        {
+          "path": "docs/prototypes/02-employee/index.html",
+          "section": "02-employee"
+        },
+        {
+          "path": "docs/prototypes/03-agent/index.html",
+          "section": "03-agent"
+        },
+        {
+          "path": "docs/prototypes/04-knowledge/index.html",
+          "section": "04-knowledge"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/mocks/",
+        "frontend/src/router/",
+        "frontend/src/components/AppShell.tsx",
+        "frontend/src/services/conversationService.ts",
+        "frontend/src/services/agentInboxService.ts"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-13 Tester e4003a14-bb1b-4e52-8351-5233dbc01c6f PASS（前端阶段/Mock）。TC-01～06 通过。报告 .sdd/test-reports/test-T-005.md。user_gate → awaiting_user。本 PASS 不等于用户已放行。业务 AC 仍由 T-010～T-013。 2026-09-14 Planner：唯一 user_gate 已从本任务迁至 T-015；本任务保持 passed。 原 Tester PASS 与 .sdd/test-reports/test-T-005.md 仍有效，不代替新的 Mock 收口。 2026-09-17 Planner：唯一 user_gate 已从 T-015 迁至 T-017；本任务保持 passed。 2026-09-22 Planner：唯一 user_gate 迁至 T-021；本任务保持 passed。"
+    },
+    {
+      "id": "T-006",
+      "title": "后端：共享账号登录与恢复登录态",
+      "type": "backend",
+      "description": "在 backend/ 按 pycore+FastAPI 初始化（探测 Python 3.11+、项目内 venv、requirements、pyproject）。实现完整 SQLite ORM（users/documents/chunks/faqs/conversations/messages），启动时写入唯一共享账号哈希。实现 API-001/002、get_current_user、CORS 含 5199/5175、.env.example 列出 §七全部字段占位。main.py 挂载 sessions 路由，并预置空的 documents/conversations 路由模块供后续任务填充，避免并行任务改 main.py。不实现业务入库与提问。无独立登出接口。",
+      "source_feature": "F-001",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "uvicorn 在 127.0.0.1:8099 启动；pytest backend/tests 覆盖正确登录 200 返回 access_token 与 username、错误密码 401 文案「用户名或密码错误」、缺 token 调 API-002 为 401「请先登录」。",
+        "响应为 pycore 信封；密码不回传；JWT 有效期取 jwt_expire_minutes；密钥只出现在 backend/.env，example 仅占位。",
+        "ruff/mypy 范围仅 backend/src 与 backend/tests；不改 pycore/。"
+      ],
+      "externalServices": [],
+      "dependencies": [],
+      "priority": 6,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-004 统一账号登录、已登录状态与退出"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-001 登录"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-002 恢复登录态"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 持久化（SQLite）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-001 / API-002"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-001"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-002"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计 > 配置表"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/requirements.txt",
+        "backend/.env.example",
+        "backend/src/main.py",
+        "backend/src/api/deps.py",
+        "backend/src/api/routes/sessions.py",
+        "backend/src/db/models.py",
+        "backend/src/db/session.py",
+        "backend/src/models/session.py",
+        "backend/src/repositories/user_repository.py",
+        "backend/src/services/auth.py",
+        "backend/src/api/routes/documents.py",
+        "backend/src/api/routes/conversations.py",
+        "backend/tests/test_sessions.py",
+        "backend/tests/__init__.py",
+        "backend/src/__init__.py",
+        "backend/src/api/__init__.py",
+        "backend/src/api/routes/__init__.py",
+        "backend/src/db/__init__.py",
+        "backend/src/models/__init__.py",
+        "backend/src/repositories/__init__.py",
+        "backend/src/services/__init__.py",
+        "backend/.gitignore",
+        "pyproject.toml"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-12 Tester a037e675-7baa-4694-b1e2-6f119aed32fa PASS（后端阶段）。TC-01～03 通过。报告 .sdd/test-reports/test-T-006.md。页面登录 AC 仍由 T-010。"
+    },
+    {
+      "id": "T-007",
+      "title": "后端：知识上传、后台入库、分块与标签/FAQ",
+      "type": "backend",
+      "description": "实现 API-003～006 与后台入库：请求内校验并 202 ingesting；后台真正切块落库（800/80/标题路径）、EXT-001 打标抽 FAQ、EXT-002 分批嵌入、ready 后 API-005 返回全部 ChunkPreview；失败「请重新上传」且无检索数据。无 Key 时：上传仍可受理为 ingesting，随后应变 failed；切块纯函数可单测。写入 integrations/bailian.py（httpx，禁止 dashscope）与 prompts/ingest_tag_faq.md、resources/tag-taxonomy.json 副本。业务 AC 由 T-011 在真实页面验收；提问命中见 T-012。",
+      "source_feature": "F-002",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "非 .md/空文件/超大小：400「请重新上传」且不建行；合法 md：202 ingest_status=ingesting，chunks 为空。",
+        "单元测试：含多级标题且长于 800 字的 md，切块数>1、position 从 1、heading_path/content 与策略一致。",
+        "有 Key 时一篇短 md 能到 ready，API-005 chunks 条数=chunk_count、ingesting/failed 的 chunks=[]；API-006 非 ready 返回 409，ready 改标签不重切正文。",
+        "无 Key：后台以 failed+「请重新上传」收口，不留下可检索 FAQ/分块。禁止 dashscope SDK。"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat",
+        "阿里云百炼 Embedding"
+      ],
+      "dependencies": [
+        "T-006"
+      ],
+      "priority": 7,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-002 知识文档入库、查看分块预览与实时改标签/FAQ"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-003 上传并受理后台入库"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-004 文档列表"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-005 文档详情"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-006 修改标签与 FAQ"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > EXT-001 百炼 Chat Completions（外部）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > EXT-002 百炼 Embeddings（外部）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 共享结构"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "四、模型选型与提示词设计 > 提示词文件（用户问题只作运行时输入）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-003 入库（D-002=B，后台）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-004 / API-005 / API-006"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-003"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-004～006"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计 > 配置表"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计 > 外部服务清单"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-002 知识入库是当场等完还是后台进行"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-005 知识库分块只读预览，不可编辑"
+        },
+        {
+          "path": "docs/tag-taxonomy.json",
+          "section": "object_types"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/api/routes/documents.py",
+        "backend/src/services/ingest.py",
+        "backend/src/integrations/bailian.py",
+        "backend/src/prompts/ingest_tag_faq.md",
+        "backend/src/resources/tag-taxonomy.json",
+        "backend/src/utils/text.py",
+        "backend/src/utils/__init__.py",
+        "backend/src/integrations/__init__.py",
+        "backend/src/models/document.py",
+        "backend/src/repositories/document_repository.py",
+        "backend/tests/test_documents.py",
+        "backend/tests/test_chunking.py"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-13 Tester 2f9023ea-89e6-4288-bdf3-6064bf435938 PASS（后端阶段）。TC-01～04 通过。报告 .sdd/test-reports/test-T-007.md。业务 AC 仍由 T-011。经验已沉淀：Markdown 父标题无正文不落空块。 2026-09-14 Planner：API-004 可选 ingest_status 过滤由 T-016 承接；本任务保持 passed，不重开。 2026-09-17 Planner：API-003 上传格式与 convert-then-chunk（重叠 160）增量由 T-018 承接；本任务保持 passed，不重开旧 md-only / overlap 80。"
+    },
+    {
+      "id": "T-008",
+      "title": "后端：会话创建、转人工与客服回复",
+      "type": "backend",
+      "description": "实现 API-007/008/009/011/012：新建 status=bot 会话；列表仅 handed_off；详情含改写字段；转人工改 handed_off；客服回复写入同一会话；未转接回复 409。不实现 API-010 智能链路，不依赖百炼。业务 AC-005～AC-008 由 T-013 真实验收。",
+      "source_feature": "F-004",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "pytest：创建会话 HTTP 200 且 status=bot；API-008 不返回 bot；转人工后列表可见；详情 messages 含 original/rewritten 字段形状。",
+        "未转接调 API-012 为 409「会话尚未转人工，无法以客服身份回复」；缺会话 404；均需 Bearer。",
+        "不引入 WebSocket；不调用 LLM。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-006"
+      ],
+      "priority": 8,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-003 员工触发转人工，客服接管并回复"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-007 创建员工会话"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-008 已转人工会话列表"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-009 会话详情"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-011 转人工"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-012 客服回复"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 共享结构"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-007 / API-008 / API-009"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-011 / API-012"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-007～009"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-011 / API-012"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-001 员工端刷新后能否继续同一会话"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-003 客服端和新消息如何更新"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/api/routes/conversations.py",
+        "backend/src/services/handoff.py",
+        "backend/src/models/conversation.py",
+        "backend/src/repositories/conversation_repository.py",
+        "backend/tests/test_conversations.py"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-13 Tester 0833cce2-88fd-41ac-a396-6550dde05f36 PASS（后端阶段）。TC-01～03 通过。报告 .sdd/test-reports/test-T-008.md。AC-005～008 仍由 T-013。经验已沉淀：异步 Session 读关系须 selectinload；写子行后 expire 已加载集合再按 id 查询。"
+    },
+    {
+      "id": "T-009",
+      "title": "后端：员工发消息状态机与检索生成",
+      "type": "backend",
+      "description": "在 conversations 路由实现 API-010：handed_off 不调 FAQ/AI；未转人工走改写分类、最多 5 轮反问、D-004 可处理则重置、FAQ 拦截、闲聊、标签过滤余弦召回、多问题一条分段、超范围/实时工具/无知识固定兜底且无工具。提示词 rewrite_classify.md / small_talk.md / answer.md；禁止 Plugin 与工单工具。无 Key：本地可测 handed_off 等待路径与兜底文案常量；智能分支待 Key。业务 AC 由 T-012/T-013 真实验收。",
+      "source_feature": "F-003",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "pytest：handed_off 会话发消息不调用 bailian、返回等待客服；bot 会话连续 6 次强制 needs_clarification 时第 6 次为 fallback 原文。",
+        "召回实现先按对象标签过滤，禁止全库无差别向量检索；FAQ 只命中 ready 文档；fallback_reply 只从 config 读取。",
+        "有 Key：改写失败时 rewritten=原问仍继续；分类/嵌入失败返回「服务暂时不可用，请稍后重试」且不把 429 当超范围。",
+        "curl/pytest 对照 §二 API-010 字段 kind/original_content/rewritten_content。"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat",
+        "阿里云百炼 Embedding"
+      ],
+      "dependencies": [
+        "T-007",
+        "T-008"
+      ],
+      "priority": 9,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-001 未转人工时的提问回答（FAQ、闲聊、标签检索）"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-003 员工触发转人工，客服接管并回复"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-010 员工发消息"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "四、模型选型与提示词设计 > 提示词文件（用户问题只作运行时输入）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 共用：余弦检索"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-010 提问状态机"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-010"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计 > 配置表"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-004 「同一问题链路」在员工换题时是否重置反问轮次"
+        },
+        {
+          "path": "docs/tag-taxonomy.json",
+          "section": "classification_rules"
+        },
+        {
+          "path": "docs/tag-taxonomy.json",
+          "section": "query_output"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/api/routes/conversations.py",
+        "backend/src/services/qa.py",
+        "backend/src/prompts/rewrite_classify.md",
+        "backend/src/prompts/small_talk.md",
+        "backend/src/prompts/answer.md",
+        "backend/src/models/message.py",
+        "backend/src/repositories/conversation_repository.py",
+        "backend/tests/test_qa.py",
+        "backend/tests/test_conversations.py"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-13 Developer dd0a525e-3657-4173-87fa-ed78ac92fcb3 自验：test_qa 15 passed。 2026-09-17 Tester 25adc6d3-87d1-448f-98c4-382d98085c2c PASS（后端阶段）。TC-01～04 通过。pytest 24 passed。报告 .sdd/test-reports/test-T-009.md。业务 AC 仍由 T-012/T-013。未打真实百炼。"
+    },
+    {
+      "id": "T-010",
+      "title": "联调：真实登录、顶栏已登录与退出",
+      "type": "integration",
+      "description": "前端门禁通过后关闭 Mock，VITE_USE_MOCK=false 走真实 API-001/002。验收 AC-009、AC-010、AC-025、AC-026。不依赖百炼。",
+      "source_feature": "F-001",
+      "acceptanceCriteria": [
+        "[AC-009] 使用正确的那一套用户名和密码 → 登录成功 → 能分别进入员工端、客服端、知识库页面并使用对应能力；三个页面顶栏都能看到已登录用户名",
+        "[AC-010] 用户名或密码错误 → 不能进入上述页面的业务能力，并看到登录失败说明",
+        "[AC-025] 已登录 → 顶栏显示「已登录」及该用户名，并提供「退出」",
+        "[AC-026] 已登录时点「退出」→ 回到登录页（可见未登录）；再打开员工端/客服端/知识库会被要求先登录，不能继续使用业务能力"
+      ],
+      "technicalChecks": [
+        "浏览器对真实后端：错密码 401 文案可见；正确登录后 localStorage.access_token 存在；API-002 返回 username 与顶栏一致。",
+        "退出只删前端 token、无登出 API；直开业务地址回到登录。前端不再展示 [Mock]。",
+        "Agent 端口 5199/8099 或门禁端口 5175/8003 与 CORS 一致。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-005",
+        "T-006",
+        "T-015",
+        "T-017"
+      ],
+      "priority": 10,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-004 统一账号登录、已登录状态与退出"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-001 登录"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-002 恢复登录态"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-001"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-01 登录"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/.env",
+        "frontend/.env.example",
+        "frontend/src/services/",
+        "frontend/src/mocks/"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-17 Developer fef747ba-8267-4b38-96af-49606a121f2e：VITE_USE_MOCK=false。 2026-09-17 Tester 570fd357-d23b-49f8-be16-c8211e615263 PASS。AC-009/010/025/026 通过。报告 .sdd/test-reports/test-T-010.md。未调用百炼。"
+    },
+    {
+      "id": "T-011",
+      "title": "联调：知识入库、入库中、失败、分块预览与列表筛选",
+      "type": "integration",
+      "description": "真实 API-003～006 与知识库页，并接 API-010 验证改标签/FAQ 立即对提问生效。承接 AC-003、AC-004、AC-017、AC-018、AC-023、AC-024、AC-029，以及 AC-027、AC-028（列表最近更新倒序、行上原文件名/状态/本地时间、四档单选筛选、筛空、上传后若会藏住新文档则切到「全部」）。依赖 T-015/T-017 Mock 与 T-016/T-018 服务端。AC-003：至少一篇 Markdown 全链路到 FAQ 拦截与标签检索；TXT 与可抽出文字的 PDF 各至少入库到可查看标签/FAQ。AC-004/AC-023 无 Key 也可验请求期失败与「入库中」；AC-024/AC-003/AC-017/AC-018/AC-029 需要入库至 ready 及提问，缺 Key 时这些 AC 记未验。不得把 T-015/T-017 Mock 当业务 AC 通过。后台先转 Markdown 再切块（800 字、重叠 160 字）；列表 filename 为上传原名。须等前端 user_gate 放行后派发，不跳过门禁。",
+      "source_feature": "F-002",
+      "acceptanceCriteria": [
+        "[AC-003] 已登录并进入知识库页面，提交一篇可用的 Markdown、TXT 或能抽出文字的 PDF 且后台入库完成 → 该文档已分块、已打标并进入向量库，且已抽出 FAQ；页面能看到该文档的标签和 FAQ 并允许修改；随后用文档中的 FAQ 提问能被拦截，用文档中的非 FAQ、但属于其标签范围的问题能检索到该文档分块并回答；至少用 Markdown 完成一次全链路，TXT 与可抽出文字的 PDF 各至少完成一次入库到可查看标签/FAQ",
+        "[AC-004] 提交不支持的格式（非 `.md` / `.txt` / `.pdf`），或空文件，或抽不出可用正文的 PDF（扫描件、纯图片），或后台入库失败 → 页面提示「请重新上传」；该文件不会变成可拦截的 FAQ，也不会进入可召回的知识分块；校验失败时列表不出现该文件",
+        "[AC-017] 入库完成后在知识库页面修改某文档的标签并保存 → 页面立即显示新标签；随后员工提一个只匹配新标签、不再匹配旧标签的问题（FAQ 未命中）→ 召回范围按新标签生效",
+        "[AC-018] 入库完成后在知识库页面修改某条 FAQ 的问法或答案并保存 → 页面立即显示新 FAQ；随后员工按新问法提问能命中新答案，按已删除或已改掉的旧问法不再命中旧答案",
+        "[AC-023] 提交一篇可通过校验的 Markdown、TXT 或能抽出文字的 PDF 后、后台尚未完成 → 页面立刻显示「入库中」，可离开再回来仍能看到该条进行中；此时不能查看分块预览，也不能改该文档标签/FAQ；员工提问不会命中这篇尚未完成的文档",
+        "[AC-024] 入库完成后打开该文档 → 页面展示分块策略说明，以及按该策略实际切出的全部分块（至少能看到序号和每块正文；有标题时能看到标题路径），块数与入库结果一致，且不是整篇原文只显示为 1 块（除非原文确实短于一块上限）；分块正文只读，没有保存分块的入口",
+        "[AC-029] 提交一篇总长度明显超过 800 字的 TXT，以及一篇能抽出大段文字的 PDF，且入库完成 → 两者都先转为 Markdown 再按同一套 Markdown 分块规则入库；页面能看到多块（除非转换后的正文短于一块上限），标题路径仅在转换后的 Markdown 确有标题时出现，否则为空不冒充标题；分块正文来自转换后的 Markdown 且只读",
+        "[AC-027] 已登录并进入知识库，列表中已有至少两篇更新时间不同的文档 → 打开知识库或再上传一篇可通过校验的文档 → 列表按最近更新时间倒序，最新在最上；每行能看到文件名、入库状态和时间；新上传的那条在最前且状态为「入库中」",
+        "[AC-028] 已登录，列表中能区分到不同入库状态（至少用已有文档或上传构造）→ 分别选择「全部 / 入库中 / 已完成 / 请重新上传」→ 「全部」显示所有文档且仍按最近更新倒序；其余三项只显示对应状态；某项一个都没有时出现「当前没有该状态的文档」，上传仍可用。当前筛选为「已完成」或「请重新上传」时再上传一篇成功的文档 → 筛选自动变为「全部」，新文档在最前且为「入库中」"
+      ],
+      "technicalChecks": [
+        "上传合法 `.md` / `.txt` / 能抽出文字的 `.pdf` 后 HTTP 202 且列表为「入库中」；行上 filename 为原名（可仍是 `.txt` / `.pdf`，不改成转换后的 `.md`）；轮询约 3 秒；ready 后 API-005 chunks 与页面块数一致。",
+        "请求期：非这三种扩展名、空文件、抽不出文字的 PDF → HTTP 400、error「请重新上传」、不建文档行。缺 Key：AC-024/AC-003/AC-017/AC-018/AC-029 明确 BLOCKED；AC-004 请求期失败与无 Key 导致的 failed「请重新上传」、AC-023 入库中仍要有证据。",
+        "对照 D-002=B、D-005 与 UI-04。切块策略可见「先转为 Markdown」、单块 800 字、重叠 160 字。AC-029：一篇超 800 字 TXT 与一篇可抽出文字 PDF 均须证明走转换后再切，无标题则 heading_path 为空。",
+        "真实 API-004：不传 ingest_status 返回全部且 updated_at 降序；分别传 ingesting/ready/failed 只含对应状态；非法值 400「入库状态筛选无效」。响应仍为既有 DocumentListItem 字段。",
+        "浏览器（关 Mock）：每行可见原文件名、中文入库状态、本地时区到分钟的时间（不展示 created_at）；四档单选；筛空见「当前没有该状态的文档」且上传条仍可用；在「已完成」或「请重新上传」下上传合法文档后筛选切到「全部」，新条最前且为「入库中」。不得用 T-015/T-017 Mock 证据宣布业务 AC 通过。"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat",
+        "阿里云百炼 Embedding"
+      ],
+      "dependencies": [
+        "T-010",
+        "T-007",
+        "T-009",
+        "T-015",
+        "T-016",
+        "T-017",
+        "T-018"
+      ],
+      "priority": 11,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-002 知识文档入库、查看分块预览与实时改标签/FAQ"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-003 上传并受理后台入库"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-003 入库（D-002=B，后台）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-005 / API-006"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-010 提问状态机"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 共用：余弦检索"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-003"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-002 知识入库是当场等完还是后台进行"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-005 知识库分块只读预览，不可编辑"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-04 知识库"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-02 员工端"
+        },
+        {
+          "path": "docs/prototypes/04-knowledge/index.html",
+          "section": "04-knowledge"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-004 文档列表"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 传输与校验"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-004 列表（AC-027、AC-028）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-004～006"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计 > 配置表"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 用户流程图：知识入库（D-002=B，已与 PRD 对齐；含 AC-027、AC-028、AC-029）"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-17 Tester af3614ba-6fef-494c-8079-e4b33e75a14f PASS。AC-003/004/017/018/023/024/027/028/029 真实链路通过。报告 .sdd/test-reports/test-T-011.md。未用 Mock。"
+    },
+    {
+      "id": "T-012",
+      "title": "联调：知识生效后的员工提问全链路",
+      "type": "integration",
+      "description": "真实 API-010 + 已 ready 知识。验收 REQ-001 全部 AC。必须证明请求经过后端与百炼/向量，不能用 Mock 通过。缺 Key 时先完成不依赖模型的准备，智能 AC 保持未验。",
+      "source_feature": "F-003",
+      "acceptanceCriteria": [
+        "[AC-001] 已登录、知识库已有对应标签的知识、会话未转人工、补全后的问题不能被 FAQ 命中且属于 IT 服务问题 → 员工提交该问题 → 员工看到基于匹配标签范围内知识的回答，且未进入等待客服状态",
+        "[AC-002] 会话未转人工，FAQ 未命中 → 无论随后是反问、闲聊、知识回答还是兜底回复，系统都不自动转人工；员工仍可自己点转人工",
+        "[AC-011] 知识入库时已抽出并可缓存的 FAQ 问题 → 员工提交与该 FAQ 对应的问题（含需结合上文才能对齐 FAQ 的简短追问）→ 员工看到 FAQ 缓存答案；该次不进入闲聊，也不进入标签范围内的分块召回问答",
+        "[AC-012] 会话未转人工，消息为闲聊且不能被 FAQ 命中 → 员工提交该消息 → 员工看到一条直接回复，答案不依赖知识库分块",
+        "[AC-013] 存在至少两类不同对象标签的知识分块 → 员工提一个只属于其中一类对象的 IT 问题（FAQ 未命中）→ 回答所依据的知识应来自标签匹配后的范围，而不是把另一类对象的知识当作依据",
+        "[AC-014] 超出企业 IT 范围、询问实时工单/申请/权限状态，或标签范围内没有可用知识 → 员工看到固定文案「抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。」看不到工具查询结果、也不是知识问答正文；系统不自动转人工",
+        "[AC-015] 出现 AC-014 的情形时 → 系统不调用工单或其他实时查询工具、不编造实时状态",
+        "[AC-016] 一条消息包含至少两个可独立处理的 IT 问题，且均可检索回答 → 员工看到同一次回复中按问题分段说明，而不是多条独立系统消息",
+        "[AC-019] 当前问法不清楚且该问题链路未满 5 轮 → 员工看到反问，而不是兜底原文，也不是猜测后的知识回答；该轮的原问与改写结果出现在本会话记录中",
+        "[AC-020] 系统已反问后，员工在同一会话、5 轮内补充了关键信息 → 系统用补全后的问法继续 FAQ 或知识回答，而不是忽略上文",
+        "[AC-021] 同一会话中员工用简短指代追问 → 系统按补全后的问题处理，而不是当成全新的、无对象的问题直接兜底；改写结果写入会话记录",
+        "[AC-022] 同一问题链路已连续 5 轮因意图不清而反问 → 员工再发送一条仍无法确定意图的消息 → 员工看到兜底原文，不再看到第 6 次反问"
+      ],
+      "technicalChecks": [
+        "每条 AC 附真实 HTTP/会话记录；FAQ 命中不走分块生成；标签过滤可用两类文档对照。",
+        "AC-015 查 bailian/httpx 调用日志无工单工具；兜底原文与 config.fallback_reply 完全一致。",
+        "刷新同标签页 conversation_id 仍续聊（D-001）；换题清楚后 clarification_round 重置（D-004）。"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat",
+        "阿里云百炼 Embedding"
+      ],
+      "dependencies": [
+        "T-010",
+        "T-007",
+        "T-009"
+      ],
+      "priority": 12,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-001 未转人工时的提问回答（FAQ、闲聊、标签检索）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 共用：余弦检索"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-010 提问状态机"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-010"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-001 员工端刷新后能否继续同一会话"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-004 「同一问题链路」在员工换题时是否重置反问轮次"
+        },
+        {
+          "path": "docs/tag-taxonomy.json",
+          "section": "classification_rules"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-02 员工端"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-17 Tester ebae5577-1069-445d-ba92-41b618748042 PASS。AC-001/002/011～016/019～022 及 D-001/D-004 真实链路通过。报告 .sdd/test-reports/test-T-012.md。点一次转人工仅证明按钮可用。"
+    },
+    {
+      "id": "T-013",
+      "title": "联调：转人工后客服接管与员工等待",
+      "type": "integration",
+      "description": "真实 API-011/012/008/009/010。验收 AC-005～AC-008。转人工本身不需要百炼；AC-007 仍走未转人工智能回复，缺 Key 时该条未验。",
+      "source_feature": "F-004",
+      "acceptanceCriteria": [
+        "[AC-005] 员工已点转人工 → 客服端打开该会话，能看到转接前员工与系统的完整对话及改写记录，并发送一条回复 → 员工在同一条对话中看到该客服回复",
+        "[AC-006] 会话已转人工 → 员工再发送新问题（即使是已缓存 FAQ 或闲聊）→ 该问题不进入 FAQ、也不进入 AI，会话保持等待客服响应，直至客服回复",
+        "[AC-007] 会话未转人工 → 员工即使提到“转人工”等字样，只要未点转人工按钮，新问题仍走 REQ-001 链路；客服端不按已接管会话来处理它",
+        "[AC-008] 会话未转人工 → 不出现“等待客服响应”的接管结果"
+      ],
+      "technicalChecks": [
+        "API-008 仅 handed_off；客服回复约 3 秒内出现在员工端（D-003）；已转接后再问不产生 FAQ/AI kind。",
+        "仅文字「转人工」不改变 status；未转接会话不能被 API-012 接管。",
+        "对照 UI-02/UI-03 与原型 02-employee、03-agent。"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat"
+      ],
+      "dependencies": [
+        "T-010",
+        "T-008",
+        "T-009"
+      ],
+      "priority": 13,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-003 员工触发转人工，客服接管并回复"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-011 转人工"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-012 客服回复"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-010 提问状态机"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-011 / API-012"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-011 / API-012"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-001 员工端刷新后能否继续同一会话"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-003 客服端和新消息如何更新"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-02 员工端"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-03 客服端"
+        },
+        {
+          "path": "docs/prototypes/03-agent/index.html",
+          "section": "03-agent"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-17 Tester 36b6c5a5-dd89-4260-bf76-8a1c7fb246b1 PASS。AC-005～008 真实转人工通过。报告 .sdd/test-reports/test-T-013.md。未开始 T-014。"
+    },
+    {
+      "id": "T-015",
+      "title": "前端：知识库列表时间、四档筛选与上传后切全部 Mock",
+      "type": "frontend",
+      "description": "在已通过的 KnowledgePage Mock（T-003）上做知识库列表增量，不重做入库/分块/改标签主流程，也不并入 T-017 的上传格式（`.md`/`.txt`/`.pdf`）增量。列表按最近更新倒序；每行文件名 + 中文入库状态 + 本地时间（到分钟，不展示 created_at）；单选筛选「全部 / 入库中 / 已完成 / 请重新上传」，默认全部；筛空展示「当前没有该状态的文档」且上传条仍可用；上传合法文档后若当前筛选会藏住新文档（已完成/请重新上传）则自动切到「全部」。Mock 对齐 API-004 可选 ingest_status（全部不传；入库中 ingesting；已完成 ready；请重新上传 failed），响应字段不增。本任务不再承担整体 Mock 收口与 user_gate；唯一前端门禁迁至 T-017。acceptanceCriteria 为空：本阶段没有可独立完成的业务 AC。关联 AC-027、AC-028 的 Mock 可观察行为由本任务 technicalChecks 覆盖；业务 AC 由联调 T-011 验收，本任务通过不计业务 AC 完成。",
+      "source_feature": "F-002",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "Mock 知识库：至少两篇不同 updated_at 的文档时列表最近更新在上；每行可见文件名、中文状态（入库中/已完成/请重新上传）与本地时区到分钟的时间，不展示 created_at。上传合法文档后该条在最前且为「入库中」并带当前时间。对照 ui-style UI-04 与原型 04-knowledge：筛选胶囊在左列顶、上传条不放筛选。",
+        "四档单选「全部 / 入库中 / 已完成 / 请重新上传」：全部显示所有文档且仍倒序；其余只显示对应状态。构造某档为空时见「当前没有该状态的文档」，上传条仍可用。在「已完成」或「请重新上传」下再上传合法文档 → 筛选自动变为「全部」，新文档在最前且为「入库中」；已是「全部」或「入库中」时筛选保持。Mock 拉列表时「全部」不传 ingest_status，其余映射 ingesting/ready/failed。带 [Mock]。",
+        "不验收 `.txt`/`.pdf` 上传格式、切块说明 800/160、抽不出文字的 PDF；那些由 T-017 承接。本 PASS 只表示列表筛选 Mock 增量通过，AC-027/AC-028 业务验收在 T-011；不代替 T-017 用户门禁。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-005"
+      ],
+      "priority": 5,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-002 知识文档入库、查看分块预览与实时改标签/FAQ"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-003 上传并受理后台入库"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-004 文档列表"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 传输与校验"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-004 列表（AC-027、AC-028）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 用户流程图：知识入库（D-002=B，已与 PRD 对齐；含 AC-027、AC-028、AC-029）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-004～006"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "三、全局组件与状态"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-04 知识库"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "五、使用与验收"
+        },
+        {
+          "path": "docs/prototypes/04-knowledge/index.html",
+          "section": "04-knowledge"
+        },
+        {
+          "path": "docs/prototypes/01-login/index.html",
+          "section": "01-login"
+        },
+        {
+          "path": "docs/prototypes/02-employee/index.html",
+          "section": "02-employee"
+        },
+        {
+          "path": "docs/prototypes/03-agent/index.html",
+          "section": "03-agent"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/pages/KnowledgePage.tsx",
+        "frontend/src/hooks/useDocuments.ts",
+        "frontend/src/services/documentService.ts",
+        "frontend/src/mocks/documents.ts",
+        "frontend/src/types/api.ts",
+        "frontend/src/components/knowledge/"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-14 编排器派发 Developer 6a5c0571-bf46-4198-b39f-e73b4185e90c（知识库列表 Mock）。 2026-09-17 Planner：唯一 user_gate 迁至 T-017。 2026-09-17 Developer 01514f7d-28bf-48b9-a4a8-0b75823743d6。 2026-09-17 Tester 69e1656f-cde0-4b5b-9beb-549021b411f0 PASS（前端阶段/Mock）。TC-01～03 通过。报告 .sdd/test-reports/test-T-015.md。业务 AC-027/028 仍由 T-011。不代替 T-017 用户门禁。筛选+轮询竞态本轮未复现，经验不新增。 2026-09-22 Planner：唯一 user_gate 迁至 T-021；本任务保持 passed。"
+    },
+    {
+      "id": "T-016",
+      "title": "后端：API-004 可选 ingest_status 过滤与非法 400",
+      "type": "backend",
+      "description": "在已通过的 API-003～006（T-007）上增量实现 API-004 可选 query ingest_status：取值仅 ingesting|ready|failed；不传或省略=全部状态；非法非空值 HTTP 400、error「入库状态筛选无效」、error_code VALIDATION_ERROR，不返回部分列表。过滤后仍按 updated_at 降序分页；pagination.total_items/total_pages 按过滤后集合计算；响应仍为既有 DocumentListItem，不增字段、不改 documents 表结构。pytest 覆盖三档过滤、不传=全部、非法 400、排序。不实现前端页面；不重做切块/打标/嵌入。不调用百炼。关联 AC-027、AC-028 的服务端契约由本任务 technicalChecks 覆盖；业务 AC 由 T-011 在真实页面验收。write_scope 仅 backend/，可与 T-015 并行。",
+      "source_feature": "F-002",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "pytest：至少三篇不同 ingest_status、不同 updated_at 的文档；不传 ingest_status 返回全部且 updated_at 降序；分别传 ingesting/ready/failed 只含对应状态且仍降序；pagination.total_items 为过滤后条数。",
+        "pytest：ingest_status 为未知值、空字符串或大小写变体（如 Ready）时 HTTP 400，error 为「入库状态筛选无效」，error_code 为 VALIDATION_ERROR，body 不含 data 列表。分页非法仍走既有 400。响应字段不出现新增键。",
+        "不改 frontend/；不调用 bailian；ruff/mypy 范围仅本任务写入的 backend 文件。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-007"
+      ],
+      "priority": 7,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-002 知识文档入库、查看分块预览与实时改标签/FAQ"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-004 文档列表"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 传输与校验"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 共享结构"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-004 列表（AC-027、AC-028）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-004～006"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/api/routes/documents.py",
+        "backend/src/repositories/document_repository.py",
+        "backend/src/models/document.py",
+        "backend/tests/test_documents.py"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-14 Tester 0c10d550-571c-4899-92f8-fdbaf5a6b6f5 PASS（后端阶段）。TC-01～03 通过。报告 .sdd/test-reports/test-T-016.md。业务 AC-027/028 仍由 T-011。 Developer 72698ed8-4f1b-42bf-9a85-af732e7b21cf 自验 pytest 13 passed。 2026-09-17 Planner：列表 ingest_status 过滤仍由本任务覆盖；上传格式增量不重开本任务。"
+    },
+    {
+      "id": "T-017",
+      "title": "前端：知识库上传 md/txt/pdf Mock 与整体门禁",
+      "type": "frontend",
+      "description": "在 T-015 列表筛选 Mock 之上做知识库上传格式增量，不重做四档筛选。KnowledgePage Mock 接受 `.md` / `.txt` / 已含可复制文字的 `.pdf`；列表行始终显示上传原文件名（可仍是 `.txt` / `.pdf`，不改成转换后的 `.md`）。上传辅助说明对照 UI-04：「支持 Markdown、TXT，以及能抽出文字的 PDF」。错误扩展名、空文件、抽不出可复制文字的 PDF → 立刻「请重新上传」，列表不出现该行。切块策略文案：所有格式先转为 Markdown，再按标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）。Mock 对齐 API-003：合法三种扩展名 202 ingesting；请求期失败不建行。Mock 入库须先把 `.txt` / 可抽出文字的 `.pdf` 转为 Markdown 再走同一套切块（`.md` 原文即 Markdown；`.txt` 按段落保留正文且不编造标题），与契约一致，不能跳过转换。保留 T-015 的四档筛选、筛空与上传后切全部。本任务为当前唯一最后一个前端任务，承担整体 Mock 收口与唯一 user_gate；复用 T-001～T-005、T-015 稳定证据，只补测本增量与跨页。acceptanceCriteria 为空：本阶段没有可独立完成的业务 AC。关联 AC-003、AC-004、AC-023、AC-024、AC-029 的 Mock 可观察行为由 technicalChecks 覆盖；业务 AC 由联调 T-011 真实验收，本任务通过不计业务 AC 完成。",
+      "source_feature": "F-002",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "Mock 知识库：文件选择可提交 `.md` / `.txt` / `.pdf`；上传条辅助说明为 UI-04 原文「支持 Markdown、TXT，以及能抽出文字的 PDF」。合法三种格式立刻「入库中」，行上 filename 为原名（`wifi-reset.txt` / `guide.pdf` 不得显示成 `.md`）。对照原型 04-knowledge。带 [Mock]。",
+        "立刻拒绝且列表无新行：其他扩展名、空文件、无复制文字的 PDF（Mock 用约定夹具模拟扫描件）。提示「请重新上传」。T-015 四档筛选、筛空「当前没有该状态的文档」、在「已完成」或「请重新上传」下上传合法文档后切到「全部」仍成立。",
+        "已完成详情的切块策略说明含：先转为 Markdown；单块不超过 800 字；块间重叠 160 字（上限的 20%）；无标题则标题路径为空。不得再写重叠 80 字或「仅 Markdown」。",
+        "Mock 入库：一篇总长明显超过 800 字的无标题 TXT、一篇可抽出长文 PDF，均先转为 Markdown 再走同一套切块（块数>1，除非转换后短于一块上限）；重叠 160；无标题则 heading_path 为空不冒充。不得对 TXT/PDF 原文直接切块。带 [Mock]。",
+        "复用 T-001～T-005、T-015 稳定证据，只补测本增量与跨页：登录→知识库上传三种格式/失败不建行/原文件名/切块说明→列表筛选与上传切全部仍成立→员工端/客服端主流程与关键失败仍成立；顶栏登录态与退出在三业务页一致。本 PASS 只表示前端 Mock 阶段通过；AC-003/004/023/024/027/028/029 业务验收在 T-011。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-015"
+      ],
+      "priority": 5,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-002 知识文档入库、查看分块预览与实时改标签/FAQ"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-003 上传并受理后台入库"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-004 文档列表"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-005 文档详情"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 传输与校验"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-003 入库（D-002=B，后台）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-003"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-004 列表（AC-027、AC-028）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 用户流程图：知识入库（D-002=B，已与 PRD 对齐；含 AC-027、AC-028、AC-029）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计 > 配置表"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "三、全局组件与状态"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-04 知识库"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "五、使用与验收"
+        },
+        {
+          "path": "docs/prototypes/04-knowledge/index.html",
+          "section": "04-knowledge"
+        },
+        {
+          "path": "docs/prototypes/01-login/index.html",
+          "section": "01-login"
+        },
+        {
+          "path": "docs/prototypes/02-employee/index.html",
+          "section": "02-employee"
+        },
+        {
+          "path": "docs/prototypes/03-agent/index.html",
+          "section": "03-agent"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/pages/KnowledgePage.tsx",
+        "frontend/src/hooks/useDocuments.ts",
+        "frontend/src/services/documentService.ts",
+        "frontend/src/mocks/documents.ts",
+        "frontend/src/types/api.ts",
+        "frontend/src/components/knowledge/"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-17 Planner：承接上传格式 Mock 与唯一 user_gate。 2026-09-17 Developer 4036429f-f34f-4761-a9c2-f09e1d53754e。 2026-09-17 Tester 5aade0a7-c0c3-4f64-a1d0-f05313997652 PASS（前端阶段/Mock）。TC-01～05 通过。报告 .sdd/test-reports/test-T-017.md。业务 AC 仍由 T-011。 2026-09-17 编排器：user_gate → awaiting_user。 2026-09-17 用户确认 Mock 界面可以，配置已齐，user_gate → passed。 2026-09-22 Planner：本轮新增前端后，唯一 user_gate 迁至 T-021；本任务保持 passed/retry_count/notes。原门禁证据归档（T-017 不再持有 user_gate 键，以满足计划内仅一个门禁）：status=passed；user_confirmation=2026-09-17 用户确认 Mock 界面可以（预览 http://127.0.0.1:5199/）。；configuration_confirmation=2026-09-17 非空检查：backend/.env 已从 .env.example 生成。llm_api_key 非占位；secret_key 已生成且非 change-me；shared_password 与演示登录一致。百炼 Key 复用本机已有本地配置（值未写入本记录）。真实连通性由后续联调 Tester 验证。T-009 本地 pytest 仍用假客户端，不发起付费调用。。本轮客服工作台 Mock 须重新走 T-021 门禁，不把本任务 passed 当作本轮 Mock 已放行。"
+    },
+    {
+      "id": "T-018",
+      "title": "后端：API-003 接受 md/txt/pdf、先转 Markdown 再切块",
+      "type": "backend",
+      "description": "在已通过的 API-003～006（T-007）与列表过滤（T-016）上增量：请求期接受 `.md` / `.txt` / `.pdf`；错误扩展名、空文件、`.pdf` 抽不出可复制文字 → HTTP 400、error「请重新上传」、error_code VALIDATION_ERROR，不建文档行。受理后 filename 保持用户原名。后台先把文件转为一份 Markdown 字符串，再走既有 Markdown 切块：`.md` 原文即 Markdown；`.txt` 按段落作正文且不编造标题；`.pdf` 仅本地抽出可复制文字再整理为 Markdown（能识别的标题才写成标题，否则 heading_path 为空）。切块上限 chunk_max_chars 默认 800，chunk_overlap_chars 默认 160（20%）。requirements 增加 pypdf，仅本地抽 PDF 可复制文字，不调用外部识别、禁止 dashscope。pytest：txt/pdf convert-then-chunk、重叠 160、坏文件不建行；转换/切块单测不调用百炼。无 Key：与 T-007 相同，合法文件仍可受理为 ingesting，后台随后 failed +「请重新上传」。不重做 API-004 过滤、不改前端。业务 AC 由 T-011 真实验收。",
+      "source_feature": "F-002",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "合法 `.md` / `.txt` / 能抽出文字的 `.pdf`：HTTP 202、ingest_status=ingesting、filename 为原名、chunks 为空。非这三种扩展名、空文件、抽不出文字的 PDF：HTTP 400「请重新上传」，库中无新行。",
+        "pytest：一篇超 800 字无标题 TXT、一篇可抽出长文 PDF，均先转 Markdown 再 chunk_markdown；切块数>1、position 从 1、重叠 160 字、无标题则 heading_path 为空。`.md` 仍按标题路径切。config chunk_overlap_chars 默认 160（.env.example 与 session 默认同步）。",
+        "requirements 含 pypdf；抽取只走本地解析。禁止 dashscope SDK，转换/切块测试不发百炼请求。",
+        "无 Key：上传仍可 202 ingesting，后台以 failed+「请重新上传」收口，不留下可检索 FAQ/分块。有 Key 的 ready/打标路径沿用 T-007，本任务不强制付费调用。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-007",
+        "T-016"
+      ],
+      "priority": 7,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-002 知识文档入库、查看分块预览与实时改标签/FAQ"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-003 上传并受理后台入库"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 传输与校验"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 共享结构"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-003 入库（D-002=B，后台）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 用户流程图：知识入库（D-002=B，已与 PRD 对齐；含 AC-027、AC-028、AC-029）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-003"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计 > 运行环境"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计 > 配置表"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-002 知识入库是当场等完还是后台进行"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-005 知识库分块只读预览，不可编辑"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/requirements.txt",
+        "backend/.env.example",
+        "backend/src/db/session.py",
+        "backend/src/api/routes/documents.py",
+        "backend/src/services/ingest.py",
+        "backend/src/utils/text.py",
+        "backend/src/utils/__init__.py",
+        "backend/tests/test_documents.py",
+        "backend/tests/test_chunking.py"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-17 Planner：API-003 增量。 2026-09-17 Developer e36e5589-dd85-47af-a543-af4f58adf274。 2026-09-17 Tester f73dd610-2cee-4e32-b3ae-17372af36059 PASS（后端阶段）。TC-01～04 与 API-004 过滤通过。报告 .sdd/test-reports/test-T-018.md。业务 AC 仍由 T-011。父标题无正文不落空块在 overlap 160 下仍成立，经验不新增。test_sessions/qa/conversations 夹具仍写 overlap 80，不计入本任务。"
+    },
+    {
+      "id": "T-014",
+      "title": "生成或刷新页面功能导航",
+      "type": "delivery",
+      "description": "按 harness-core/protocols/project-delivery.md 从当前源码梳理页面→功能→流程→接口→算法/工具，产出 docs/project-console.html（建议 docs/project-map.json），并在 README 写明打开与刷新方式。不改业务代码、不改任务状态、不输出旧六区看板。DEL-001～005 为框架交付例外，不计入业务 AC。",
+      "source_feature": "F-DELIVERY",
+      "acceptanceCriteria": [
+        "[DEL-001] 页面按实际页面/入口组织，功能卡片能导航与展开，桌面和窄屏无遮挡/整页溢出，不再展示旧六区管理看板。",
+        "[DEL-002] 每项功能说明触发、输入输出与带分支的前后端流程；接口 method/URL、请求响应字段及类型与代码对应，共享接口引用可到达。",
+        "[DEL-003] 核对关键算法的步骤、条件、参数单位/默认值/位置/影响、结果选择及异常；工具/Agent仅按实际存在的调用与观察循环呈现，不编造能力。",
+        "[DEL-004] 功能、接口和算法有可定位的实现来源及核对状态；设计、源码默认值、运行验证边界清晰。实际浏览器导航、展开、来源查看和路径复制/失败手选可用，无业务或付费调用。",
+        "[DEL-005] README 的刷新方式有效；隔离样例中源变更/缺失/解析错误明确反映，过期算法不继续标已核对；仅写导航产物，不改业务代码或原任务状态。"
+      ],
+      "technicalChecks": [
+        "浏览器检查页面导航、功能展开、接口跳转与路径复制、窄屏布局。",
+        "按源码核对登录、入库切块（先转 Markdown；800 字、重叠 160 字）、标签过滤召回、反问 5 轮、转人工；参数默认值来自 config 定义而非猜测 .env。",
+        "百炼仅作为 httpx 外部调用模块呈现，不编造 Plugin/工单工具；隔离样例验证刷新与来源缺失提示。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-001",
+        "T-002",
+        "T-003",
+        "T-004",
+        "T-005",
+        "T-006",
+        "T-007",
+        "T-008",
+        "T-009",
+        "T-010",
+        "T-011",
+        "T-012",
+        "T-013",
+        "T-015",
+        "T-016",
+        "T-017",
+        "T-018"
+      ],
+      "priority": 14,
+      "context_files": [
+        {
+          "path": ".sdd/project.json",
+          "section": "id"
+        },
+        {
+          "path": ".sdd/tasks.json",
+          "section": "tasks"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > 接口索引"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计"
+        },
+        {
+          "path": "frontend/src/pages/LoginPage.tsx",
+          "section": "LoginPage"
+        },
+        {
+          "path": "frontend/src/pages/EmployeeChatPage.tsx",
+          "section": "EmployeeChatPage"
+        },
+        {
+          "path": "frontend/src/pages/AgentInboxPage.tsx",
+          "section": "AgentInboxPage"
+        },
+        {
+          "path": "frontend/src/pages/KnowledgePage.tsx",
+          "section": "KnowledgePage"
+        },
+        {
+          "path": "frontend/src/services/",
+          "section": "API client"
+        },
+        {
+          "path": "backend/src/api/routes/sessions.py",
+          "section": "API-001 / API-002"
+        },
+        {
+          "path": "backend/src/api/routes/documents.py",
+          "section": "API-003～006"
+        },
+        {
+          "path": "backend/src/api/routes/conversations.py",
+          "section": "API-007～012"
+        },
+        {
+          "path": "backend/src/services/ingest.py",
+          "section": "入库切块打标"
+        },
+        {
+          "path": "backend/src/services/qa.py",
+          "section": "提问状态机"
+        },
+        {
+          "path": "backend/src/utils/text.py",
+          "section": "分块与余弦"
+        },
+        {
+          "path": "backend/src/integrations/bailian.py",
+          "section": "EXT-001 / EXT-002"
+        }
+      ],
+      "rules_files": [],
+      "write_scope": [
+        "docs/project-console.html",
+        "docs/project-map.json",
+        "README.md"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-17 Developer 7643d5e4-a78b-4867-894f-7ea8a1a6cfb7。 2026-09-17 Tester a9b9d1e3-7a78-4ec3-9807-e0e7c6f59d1e PASS。DEL-001～005 通过。报告 .sdd/test-reports/test-T-014.md。不计入业务 AC。 2026-09-22 Planner：本轮交付刷新为 T-028；本任务保持 passed，不复用。"
+    },
+    {
+      "id": "T-019",
+      "title": "前端：员工端电商空态文案 Mock",
+      "type": "frontend",
+      "description": "在已通过的 EmployeeChatPage（T-002）上把空态与演示口径改为电商，不重做发消息/转人工主流程。空会话辅助句改为 UI-02「描述你的购物问题」；示例问法与改写按服饰/购物咨询，不再写 IT 问题。Mock 仍对齐 API-007/009/010/011。acceptanceCriteria 为空：本阶段没有可独立完成的业务 AC。关联 AC-001、AC-012、AC-019、AC-021 的文案与示例由 technicalChecks 覆盖；业务 AC 由联调 T-025 真实验收。不代替 T-021 用户门禁。",
+      "source_feature": "F-003",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "登录后打开员工端空会话：辅助句为「描述你的购物问题」，不得再出现「描述你的 IT 问题」。带 [Mock]。",
+        "演示问法可用服饰/购物咨询（如连衣裙能否退货）；对照 ui-style UI-02 与原型 02-employee。发消息、反问、转人工主路径仍可用，不重验 T-002 全部分支。",
+        "type-check/lint 按改动通过。本 PASS 不计业务 AC 完成。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-002"
+      ],
+      "priority": 15,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-001 未转人工时的提问回答（FAQ、闲聊、标签检索）"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-02 员工端"
+        },
+        {
+          "path": "docs/prototypes/02-employee/index.html",
+          "section": "02-employee"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/pages/EmployeeChatPage.tsx",
+        "frontend/src/mocks/conversations.ts",
+        "frontend/src/components/chat/ChatStatusBar.tsx"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-22 Developer 4a100ef4-e232-4a27-99d2-d2ac495fce3e。2026-09-22 Tester f11dde07-14e7-486a-a77e-ba3295850278 PASS（前端阶段/Mock）。TC-01～03。报告 .sdd/test-reports/test-T-019.md。业务 AC 仍由 T-025。不代替 T-021 门禁。"
+    },
+    {
+      "id": "T-020",
+      "title": "前端：客服工作台填单、知识推送与润色 Mock",
+      "type": "frontend",
+      "description": "在已通过的 AgentInboxPage（T-004）上按 UI-03 增加已转人工工作台 Mock：手选业务线（3C/服饰，可改）、售后四类或售前不选、规范表单（已提取/待补全/坐席已改）、确认工单、坐席侧知识推送、输入区润色次按钮与发送主按钮。Mock 对齐 API-013～017；发出仍走 API-012 的当前输入区文本。确认工单与发送回复分开；知识区无「发给用户」。未选四类时确认禁用；确认后类型不可改、字段与业务线仍可手改；抽取中显示「正在根据对话补全…」且 GET 不阻塞（D-006=B）。不实现 OMS、销售单、润色自动发出、角色拆分。acceptanceCriteria 为空。关联 AC-030～043 的 Mock 可观察行为由 technicalChecks 覆盖；业务 AC 由 T-026/T-027 真实验收。不代替 T-021 用户门禁。",
+      "source_feature": "F-005",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "已转接会话右侧工作台：可手选业务线 digital_3c/apparel_beauty；选退换货出现售后方式/原因/数量，选开发票出现抬头/税号且不要求退货数量（AC-041 Mock）。未选四类时「确认工单」禁用；售前仍可润色与发送。对照 UI-03 与原型 03-agent。带 [Mock]。",
+        "选类型后表单顶可见「正在根据对话补全…」，数秒后预填或待补全；坐席手改字段后 Mock 再次抽取不得覆盖手改（agent_edited）。点确认后状态「已确认」，类型控件不可改，字段与业务线仍可手改；未点确认刷新仍为草稿。未转接会话列表不出现、无填单区。",
+        "知识区只给坐席：有推送卡片或空态「当前没有可推送的政策或流程」；员工端对话不因推送多出一条。未选业务线时知识区说明「未指定业务线，不套用单一口径」。点润色后输入区出现整理稿且员工端尚无该条；发送走 API-012 Mock 的当前文本；改回原稿再发送则员工看到原稿。窄屏工作台在对话下方。不得把知识正文自动填入发送。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-004"
+      ],
+      "priority": 15,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-005 转人工后按标准工单智能填单并确认"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-006 按当前会话为坐席推送知识"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-007 坐席回复一键润色后确认发出"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-008 按业务线与工单类型使用差异化提示口径"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-012 客服回复"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-013 读取工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-014 编辑工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-015 确认工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-016 坐席知识推送"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-017 话术润色预览"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 工单与坐席辅助（2026-09-22）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 共用：工单抽取合并（API-014 触发 / API-010 已转人工副作用）"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-006 未确认工单何时根据对话抽取"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-007 已确认工单如何再次允许更新"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "三、全局组件与状态"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-03 客服端"
+        },
+        {
+          "path": "docs/prototypes/03-agent/index.html",
+          "section": "03-agent"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/pages/AgentInboxPage.tsx",
+        "frontend/src/components/agent/",
+        "frontend/src/hooks/useAgentInbox.ts",
+        "frontend/src/hooks/useTicket.ts",
+        "frontend/src/services/agentInboxService.ts",
+        "frontend/src/services/ticketService.ts",
+        "frontend/src/services/agentKnowledgeService.ts",
+        "frontend/src/services/polishService.ts",
+        "frontend/src/mocks/agentInbox.ts",
+        "frontend/src/mocks/tickets.ts",
+        "frontend/src/types/api.ts"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-22 Developer daec6fd7-716a-46ea-810c-01923254966c。2026-09-22 Tester 5ca5053c-2b47-4e1c-9092-36d532880749 PASS（前端阶段/Mock）。TC-01～03。报告 .sdd/test-reports/test-T-020.md。业务 AC 仍由 T-026/T-027。不代替 T-021 门禁。 2026-09-23 Planner：旧四类/`extracted|incomplete` Mock 契约已由确认方案作废，本任务保持 passed，重做见 T-031。"
+    },
+    {
+      "id": "T-021",
+      "title": "前端：电商客服增量 Mock 收口与用户门禁",
+      "type": "frontend",
+      "description": "在 T-019、T-020 之上承担本轮唯一前端 Mock 收口与唯一 user_gate。复用 T-001～T-005、T-015、T-017、T-019、T-020 稳定证据，只补测跨页与本增量：登录→知识库主流程仍成立→员工端电商空态与提问/转人工→客服工作台填单确认、知识只给坐席、润色后发送回到员工端。Tester 通过后由编排器将 user_gate 置 awaiting_user，停止新派发，待用户验收本轮 Mock；已确认且未变的百炼配置只核对状态，不要求重填密钥。T-017 门禁已 passed，不得当作本轮 Mock 已放行。acceptanceCriteria 为空。业务 AC 由 T-025～T-027 真实验收。",
+      "source_feature": "F-005",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "浏览器按 ui-style 第五节走通四页 Mock 主流程与本增量关键失败：员工空态为购物问题；未转接无填单；未选售后四类不能确认仍可润色发送；确认后不能改类型；知识推送不出现在员工对话；润色不自动发出。",
+        "1440 与窄于 1024：客服左列/工作台按 UI-03 例外收窄；对话输入仍钉底；确认工单与发送不是并排两个同级主按钮。三个业务页顶栏用户名与退出一致。",
+        "复用前序稳定证据，只补测跨页与本任务改动；全部 Mock 仍带 [Mock] 且信封未偏离 §二。本 PASS 只表示前端 Mock 阶段通过，不计业务 AC 完成。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-017",
+        "T-019",
+        "T-020"
+      ],
+      "priority": 16,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "用户目标与完整流程"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "一、用户要完成什么"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > 接口索引"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "五、使用与验收"
+        },
+        {
+          "path": "docs/prototypes/01-login/index.html",
+          "section": "01-login"
+        },
+        {
+          "path": "docs/prototypes/02-employee/index.html",
+          "section": "02-employee"
+        },
+        {
+          "path": "docs/prototypes/03-agent/index.html",
+          "section": "03-agent"
+        },
+        {
+          "path": "docs/prototypes/04-knowledge/index.html",
+          "section": "04-knowledge"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/mocks/index.ts",
+        "frontend/src/services/mockAdapter.ts"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-22 Developer 2d8455b9-66ed-49bb-961c-00bc1df978be。2026-09-22 Tester 19eb8e7e-dc92-4dbd-ae24-92bcb1f93d7d PASS（前端阶段/Mock）。TC-01～03。报告 .sdd/test-reports/test-T-021.md。user_gate → awaiting_user。本 PASS 不等于用户已放行。业务 AC 仍由 T-025～T-027。 2026-09-23 Planner：本轮新增前端后，唯一 user_gate 迁至 T-035；本任务保持 passed/retry_count。原门禁证据归档（T-021 不再持有 user_gate 键）：{\"kind\": \"frontend_mock_review\", \"frontend_task_ids\": [\"T-001\", \"T-002\", \"T-003\", \"T-004\", \"T-005\", \"T-015\", \"T-017\", \"T-019\", \"T-020\", \"T-021\"], \"required_services\": [\"阿里云百炼 Chat\", \"阿里云百炼 Embedding\"], \"status\": \"awaiting_user\", \"user_confirmation\": null, \"configuration_confirmation\": null, \"rework_task_ids\": []}。不把本任务 passed 或原 awaiting_user 当作本轮 Mock 已放行。"
+    },
+    {
+      "id": "T-022",
+      "title": "后端：电商标签 v2.0 同步与改写分类/入库打标",
+      "type": "backend",
+      "description": "把 docs/tag-taxonomy.json v2.0 同步为 backend/src/resources/tag-taxonomy.json 同源副本；改写 ingest_tag_faq.md 与 rewrite_classify.md（及 small_talk.md/answer.md 中与电商口径冲突的约束）。合法 object_types/request_types 仅 v2.0；禁止再使用 v1.0 的 hardware/software/account/network/resource 等。API-010 未转人工：3C 与服饰分块不得互为召回依据；requires_live_data 仅实时订单/物流/库存/支付；out_of_scope 为超出电商知识；上述与无知识均走固定兜底，不调工具、不插入 tickets。无 Key：本地可测标签副本、非法 code 丢弃、bot 路径不建单、兜底常量；智能分支待 Key。业务 AC 由 T-025 真实验收。",
+      "source_feature": "F-003",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "backend/src/resources/tag-taxonomy.json 的 version 为 2.0，object_types 含 product_3c/product_fashion 等，不含 hardware/software/account。与 docs/tag-taxonomy.json 同源。",
+        "ingest_tag_faq.md 与 rewrite_classify.md 写入 v2.0 classification_rules 同义约束：3C/服饰不混用；未转人工不建单、不查实时订单物流库存支付。pytest：对象标签过滤禁止 3C 问题命中仅服饰块；bot 会话发消息不插入 tickets。",
+        "fallback_reply 只从 config 读取；requires_live_data/out_of_scope/无分块映射为同一固定兜底原文。无 Key 不阻塞本任务本地单测；不把假客户端当真实百炼通过。"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat",
+        "阿里云百炼 Embedding"
+      ],
+      "dependencies": [
+        "T-007",
+        "T-009"
+      ],
+      "priority": 17,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-001 未转人工时的提问回答（FAQ、闲聊、标签检索）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 共享结构"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "四、模型选型与提示词设计 > 提示词文件（用户问题只作运行时输入）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 共用：余弦检索"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-010 提问状态机"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-010"
+        },
+        {
+          "path": "docs/tag-taxonomy.json",
+          "section": "version"
+        },
+        {
+          "path": "docs/tag-taxonomy.json",
+          "section": "object_types"
+        },
+        {
+          "path": "docs/tag-taxonomy.json",
+          "section": "classification_rules"
+        },
+        {
+          "path": "docs/tag-taxonomy.json",
+          "section": "query_output"
+        },
+        {
+          "path": "docs/tag-taxonomy.json",
+          "section": "processing_statuses"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/resources/tag-taxonomy.json",
+        "backend/src/prompts/ingest_tag_faq.md",
+        "backend/src/prompts/rewrite_classify.md",
+        "backend/src/prompts/small_talk.md",
+        "backend/src/prompts/answer.md",
+        "backend/src/services/qa.py",
+        "backend/src/services/ingest.py",
+        "backend/src/models/document.py",
+        "backend/tests/test_qa.py",
+        "backend/tests/test_taxonomy.py",
+        "backend/tests/test_documents.py"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-22 Developer 216d07ba-5543-4ad2-b9fb-de788596311d。2026-09-22 Tester 49a50c2e-50fd-46b1-86bf-fb5f50a5bf9c PASS（后端阶段）。TC-01～03。报告 .sdd/test-reports/test-T-022.md。业务 AC 仍由 T-025。Fake LLM 不当真实百炼。"
+    },
+    {
+      "id": "T-023",
+      "title": "后端：工单草稿、异步抽取与确认 API-013～015",
+      "type": "backend",
+      "description": "新增 tickets 表与 tickets 路由：API-013 读/建空草稿（GET 永不调模型）；API-014 改业务线/类型/字段；API-015 确认只写本系统 SQLite。API-011 转接成功时若无工单行则插入空草稿，不改 API-011 响应体。草稿且已选售后四类时，改类型或 API-010 已转人工新消息按 D-006=B 投递后台抽取：extract_status=extracting，不覆盖 agent_edited；金额/税号/电话/地址须能在会话原文找到否则 incomplete。确认后不再抽取，仍可手改字段和业务线，PATCH ticket_type 返回 409（D-007=A）。未选四类或未选业务线确认 409；未转人工 409。不对接 OMS、不建销售单、无外部工单号。无 Key：可手填后确认；抽取失败标 failed 并保留字段。业务 AC 由 T-026 真实验收。",
+      "source_feature": "F-005",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "pytest：handed_off 会话 GET API-013 200 且可建 draft；bot 会话 409。未选类型或未选业务线 POST confirm 为 409「请先选择售后工单类型」或「请先选择业务线」。确认后 PATCH ticket_type 409，PATCH 字段/业务线 200。",
+        "抽取为后台任务：GET 立即返回；agent_edited 不被后一次抽取覆盖；后说覆盖 extracted/incomplete（金额 99 再 88）。确认后再发新消息不投递抽取。extracting 超时按 ingest_stale_seconds 标 failed，字段保持。",
+        "提示词仅 ticket/extract_*.md 与 line_*.md；禁止 Plugin/OMS。无 Key 时手填确认仍 200；不把空抽取当真实模型通过。curl/pytest 对照 §二 TicketPublic 信封。"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat"
+      ],
+      "dependencies": [
+        "T-008",
+        "T-009"
+      ],
+      "priority": 17,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-005 转人工后按标准工单智能填单并确认"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-008 按业务线与工单类型使用差异化提示口径"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-013 读取工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-014 编辑工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-015 确认工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 工单与坐席辅助（2026-09-22）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 持久化（SQLite）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "四、模型选型与提示词设计 > 提示词文件（用户问题只作运行时输入）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 共用：工单抽取合并（API-014 触发 / API-010 已转人工副作用）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-013 读工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-014 编辑工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-015 确认工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-013～015 工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-006 未确认工单何时根据对话抽取"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-007 已确认工单如何再次允许更新"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/main.py",
+        "backend/src/api/routes/__init__.py",
+        "backend/src/api/routes/tickets.py",
+        "backend/src/api/routes/conversations.py",
+        "backend/src/db/models.py",
+        "backend/src/models/ticket.py",
+        "backend/src/repositories/ticket_repository.py",
+        "backend/src/services/ticket.py",
+        "backend/src/services/handoff.py",
+        "backend/src/prompts/ticket/extract_common.md",
+        "backend/src/prompts/ticket/extract_return_exchange.md",
+        "backend/src/prompts/ticket/extract_address_change.md",
+        "backend/src/prompts/ticket/extract_invoice.md",
+        "backend/src/prompts/ticket/extract_complaint.md",
+        "backend/src/prompts/ticket/line_digital_3c.md",
+        "backend/src/prompts/ticket/line_apparel_beauty.md",
+        "backend/tests/test_tickets.py",
+        "backend/tests/test_conversations.py"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-22 Developer 496d146d-e430-47a2-bb24-137fa9ec5f59。2026-09-22 Tester def15ba1-d7ad-4aa0-892c-6c252408eda8 PASS（后端阶段）。TC-01～03。报告 .sdd/test-reports/test-T-023.md。业务 AC 仍由 T-026。Fake LLM 不当真实抽取。 2026-09-23 Planner：旧四类/后说覆盖先说/缺项可确认契约已作废，本任务保持 passed，重做见 T-038。"
+    },
+    {
+      "id": "T-024",
+      "title": "后端：坐席知识推送 API-016 与润色预览 API-017",
+      "type": "backend",
+      "description": "在 T-023 已挂载的 conversations 路由上新增 API-016（坐席侧召回，不写 messages）与 API-017（润色预览，不发送），保留转接建草稿与 API-010 抽取投递，不改 API-010/011/012 成功失败语义。API-016 按已保存的工单类型/业务线过滤 ready 分块，3C/服饰口径不得混用；空结果 empty_message 固定「当前没有可推送的政策或流程」，禁止编造条款。API-017 拼 ticket/polish.md 与可选 line 片段，禁止新增赔付/改价/具体退款额/「一定全额退」。真正发出仍只通过既有 API-012 的 content。未转人工 409。前端不得 3 秒轮询 API-016。无 Key：016/017 按 §六 502，原稿仍可 API-012。业务 AC 由 T-027 真实验收。",
+      "source_feature": "F-005",
+      "acceptanceCriteria": [],
+      "technicalChecks": [
+        "pytest：handed_off GET API-016 不插入 messages；空库 200 且 empty_message 为固定原文。bot 会话 409。改 business_line 后下一次 016 口径变化（3C 保修块不得作为服饰退货当前依据）。",
+        "POST API-017 不写 messages、不调用 API-012；响应含 original_content/polished_content。content 空 400。Chat 失败 502「服务暂时不可用，请稍后重试。」随后 API-012 仍能发原稿。",
+        "config 增加 agent_knowledge_top_k 默认 3；.env.example 仅占位不含真实密钥。禁止润色自动发送、禁止 OMS。无 Key 不阻塞 012 原样回复与本任务失败路径单测。"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat",
+        "阿里云百炼 Embedding"
+      ],
+      "dependencies": [
+        "T-022",
+        "T-023"
+      ],
+      "priority": 18,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-006 按当前会话为坐席推送知识"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-007 坐席回复一键润色后确认发出"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-008 按业务线与工单类型使用差异化提示口径"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-012 客服回复"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-016 坐席知识推送"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-017 话术润色预览"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 工单与坐席辅助（2026-09-22）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "四、模型选型与提示词设计 > 提示词文件（用户问题只作运行时输入）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 共用：余弦检索"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-016 知识推送"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-017 润色预览"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-016"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-017"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计 > 配置表"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计 > 外部服务清单"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/api/routes/conversations.py",
+        "backend/src/services/agent_knowledge.py",
+        "backend/src/services/polish.py",
+        "backend/src/prompts/ticket/polish.md",
+        "backend/src/models/ticket.py",
+        "backend/src/db/session.py",
+        "backend/tests/test_agent_knowledge.py",
+        "backend/tests/test_polish.py",
+        "backend/.env.example"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "2026-09-22 Developer ca411354-6c79-4c6f-a84a-7f2367ffc08a。2026-09-22 Tester cbad0e17-ab65-400f-aed9-a50787b7e969 PASS（后端阶段）。TC-01～03。报告 .sdd/test-reports/test-T-024.md。业务 AC 仍由 T-027。Fake LLM 不当真实百炼。 2026-09-23 Planner：API-016/017 须按主答案/溯源/can_adopt 重写，本任务保持 passed，重做见 T-039。"
+    },
+    {
+      "id": "T-025",
+      "title": "联调：电商知识问答变更验收",
+      "type": "integration",
+      "description": "前端门禁 T-035 通过后关闭 Mock，真实 API-010 + 已 ready 且用户可见的电商标签知识。验收本轮 REQ-001 电商问答变更（含与兜底绑定的 AC-015）。物流异常轨迹核对不在本任务（见 T-046 AC-085）。必须证明请求经过后端与百炼/向量，不能用 Mock 或 T-012 旧 IT 证据通过。缺 Key 时先完成不依赖模型的准备（空态文案、bot 不建单），智能 AC 保持未验。不验收工单填单。",
+      "source_feature": "F-003",
+      "acceptanceCriteria": [
+        "[AC-001] 已登录、知识库已有对应标签的知识、会话未转人工、补全后的问题不能被 FAQ 命中且属于电商咨询 → 员工提交该问题 → 员工看到基于匹配标签范围内知识的回答，且未进入等待客服状态",
+        "[AC-012] 会话未转人工，消息为闲聊且不能被 FAQ 命中 → 员工提交该消息 → 员工看到一条直接回复，答案不依赖知识库分块",
+        "[AC-013] 存在至少两类不同对象标签的知识分块 → 员工提一个只属于其中一类对象的电商问题（FAQ 未命中）→ 回答所依据的知识应来自标签匹配后的范围，而不是把另一类对象的知识当作依据",
+        "[AC-014] 超出电商知识范围、只问包裹现在到哪、询问库存或支付是否成功，或用户可见范围内没有可用知识 → 员工看到固定文案「抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。」看不到编造的位置或支付结果；系统不自动转人工、不建工单",
+        "[AC-015] 出现 AC-014 的情形时 → 系统不编造实时物流、库存或支付状态",
+        "[AC-016] 一条消息包含至少两个可独立处理的电商问题，且均可检索回答 → 员工看到同一次回复中按问题分段说明，而不是多条独立系统消息",
+        "[AC-019] 当前问法不清楚（例如只说“能不能退”，且当前会话也补全不出商品或订单），且该问题链路未满 5 轮 → 员工看到反问，而不是兜底原文，也不是猜测后的知识回答；该轮的原问与改写结果出现在本会话记录中",
+        "[AC-021] 同一会话中员工用简短指代追问（例如上一轮在谈某款连衣裙，本轮只说“能退吗”）→ 系统按补全后的该商品退货问题处理，而不是当成全新的、无对象的问题直接兜底；改写结果写入会话记录"
+      ],
+      "technicalChecks": [
+        "AC-013 分别灌入 3C 商品文档与服饰退换货政策，只问其中一类；AC-016 一次发送 3C 规格与服饰退货时限，同一次回复分段。每条 AC 附真实 HTTP/会话记录。",
+        "AC-014/015：只问包裹现在到哪、库存、支付、超范围各一例；兜底原文与 config.fallback_reply 完全一致；查调用日志无工单/实时查询工具；bot 会话 tickets 表无行。已有工单进度见 T-052，物流异常轨迹见 T-046。",
+        "员工端空态为「描述你的购物问题」。前端不再展示 [Mock]。缺 Key 时智能 AC 记未验，不得用 Mock 通过。依赖 T-035 门禁，不抢跑。"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat",
+        "阿里云百炼 Embedding"
+      ],
+      "dependencies": [
+        "T-035",
+        "T-022",
+        "T-037"
+      ],
+      "priority": 26,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-001 未转人工时的提问回答（FAQ、闲聊、标签检索）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 共用：余弦检索"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-010 提问状态机"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-010"
+        },
+        {
+          "path": "docs/tag-taxonomy.json",
+          "section": "classification_rules"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-02 员工端"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "Tester 2a4a83f6-eee6-4f21-92c9-5bd09bd9b2ff 2026-09-23 PASS: AC-001/012/013/014/015/016/019/021. Report .sdd/test-reports/test-T-025.md. Verified memory retrieve 05dd24ee188dad98 on 8111 pid 25420, not restarted. Disk retrieve was already e575872d05b29cfa from T-045 fix in progress."
+    },
+    {
+      "id": "T-026",
+      "title": "联调：转人工后工单预填与确认",
+      "type": "integration",
+      "description": "前端门禁 T-035 通过后关闭 Mock，真实 API-013～015（及转接后 API-010 抽取副作用）。验收 REQ-005 四态填单确认与 AC-041。按 D-008：冲突保留原值，不得再按旧契约「后说覆盖」。必须走真实后端与页面，不能用 Mock 通过。无 Key：可手填确认 AC-033/034/043 的确认禁用与未转人工 409；依赖抽取预填的 AC-030～032 记未验。订单中心多条/零条、费用争议截图、物流轨迹由 T-046 验收。",
+      "source_feature": "F-005",
+      "acceptanceCriteria": [
+        "[AC-030] 已转人工，用户已说清订单号、商品、退货原因和金额，且这些信息互相不冲突 → 对应字段显示为已填，并能对照会话原文；坐席补上工单类型（若尚未预填）和业务线后一键确认 → 再打开仍是这些已确认值",
+        "[AC-031] 会话只提到要改地址但没有新地址 → 新地址标为缺失，不出现编造地址 → 用户后来说出完整新地址且与已有值不冲突 → 未确认草稿中的新地址变为已填，其他已填字段保持不变",
+        "[AC-032] 未确认草稿中金额已是用户说过的 99 元，用户后来说 88 元 → 金额仍显示 99 元并标为冲突，不自动变成 88 元 → 坐席选 88 元或手改成 80 元后，草稿才变成坐席选定的值",
+        "[AC-033] 坐席未点确认 → 该会话没有已确认工单；刷新或离开再回来仍是草稿",
+        "[AC-034] 未转人工的会话 → 客服端不出现可确认的工单填单区，也不能为该会话确认工单",
+        "[AC-041] 工单类型为开发票时，表单出现抬头/税号等发票字段，不要求填写退货数量；类型为退换货时出现售后方式与原因，不要求填写税号"
+      ],
+      "technicalChecks": [
+        "浏览器：未转接无填单区；已转接六类字段键与 API-013 一致；字段四态可区分。确认后刷新仍为已确认；未确认离开再回来仍为 draft。确认后新员工消息不改已确认值（D-007=A）；手改金额不被后续抽取覆盖。",
+        "AC-032 必须保留 99 并标冲突，禁止再按旧契约改成 88。同一会话切换发票/退换货对照字段键（AC-041）。GET 在 extracting 时不长时间阻塞。工单只存在本系统 SQLite。",
+        "缺 Key 时 AC-030～032 记未验；AC-033/034/041 可用手填构造。不得用 Mock 通过。依赖 T-035 门禁与 T-038 新契约。"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat"
+      ],
+      "dependencies": [
+        "T-035",
+        "T-038"
+      ],
+      "priority": 26,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-005 转人工后按标准工单智能填单并确认"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-008 按业务线、工单类型和场景选用提示模板"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-013 读取工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 共用：增量抽取与订单匹配（D-006=B，D-008）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-013～015"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-013～015"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-006 未确认工单何时根据对话抽取"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-007 已确认工单如何再次允许更新"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-008 未确认草稿的槽位四态与冲突保留"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-03 客服端"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/services/ticket.py",
+        "backend/src/prompts/ticket/extract_common.md",
+        "backend/tests/test_ticket_extract.py"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "PASS in main-chat degraded mode (user chose c): developer and tester were the same agent, NOT independent acceptance. Fixed AC-032 false conflict (value normalization in _merge_slot, latest-value rule in extract_common.md). Real Bailian browser run 21/21 PASS on 8112/5222 t026.db. Report .sdd/test-reports/test-T-026.md. No experience entry (needs independent tester retest). Independent retest recommended when tester agent is usable."
+    },
+    {
+      "id": "T-027",
+      "title": "联调：坐席知识推送、润色发出与未选类型",
+      "type": "integration",
+      "description": "前端门禁 T-035 通过后关闭 Mock，真实 API-016、API-017、API-012 与未选类型时的 API-015。验收 REQ-006/007 主路径与 AC-042、AC-043。知识推送须含主答案/摘要/来源/生效时间/适用品类，不得出现在员工消息；润色须对比原稿与润色稿，can_adopt=false 时不能直接采用；未选六类不能确认但仍可润色并发送。过期政策、坐席搜索、时效不变、愤怒语气、售前模板、当次反馈由 T-047 验收。缺 Key 时 AC-043 的确认失败与 API-012 原样发送仍可验；推送/润色智能 AC 记未验。",
+      "source_feature": "F-005",
+      "acceptanceCriteria": [
+        "[AC-035] 知识库已有在生效期内的「服饰美妆七天无理由退货」文档，并写明来源、生效时间和适用品类；会话为服饰退货且已转人工 → 坐席看到该政策的主答案和摘要，以及来源、生效时间、适用品类；用户侧对话中没有自动多出这条消息",
+        "[AC-036] 知识库没有投诉升级政策 → 推送区说明当前没有可依据的政策，不出现捏造的升级时限",
+        "[AC-037] 同一退货会话的业务线从 3C 改为服饰美妆 → 推送改为服饰相关政策，不再把 3C 保修口径当作当前依据",
+        "[AC-038] 坐席输入「你这个退不了，超时间了」并点润色，且会话中的政策就是超过 7 天无理由 → 坐席看到原稿与润色稿的对比，润色稿仍表达已超过 7 天、不能直接退货，并说明可以继续看其他办法；员工端此时还没有这条 → 坐席采用并发送 → 员工看到的是发出的那一稿",
+        "[AC-039] 原稿或会话未承诺退款 → 润色稿不出现具体退款金额或「一定全额退」；若生成稿出现这类承诺，界面给出合规风险，并且不能直接采用该稿",
+        "[AC-040] 坐席点润色后选择放弃，再发送 → 员工看到的是原稿，不是润色稿",
+        "[AC-042] 业务线为 3C 数码的投诉润色，不套用服饰「七天无理由」口径；业务线为服饰美妆的退货知识推送，不把 3C 质保年限当作当前依据",
+        "[AC-043] 已转人工、工单类型未形成可确认的一类 → 不能确认正式工单；知识推送与话术润色仍可用，发出的回复出现在用户侧"
+      ],
+      "technicalChecks": [
+        "对照客服知识区与员工 API-009：推送正文不得成为用户消息。AC-036 empty_message 为「当前没有可推送的政策或流程」。切换业务线后下一轮 016 口径变化。每条推送含 main_answer/summary/source/effective_from/effective_to/applicable_category。",
+        "润色后员工端无新消息；对比区可见原稿与润色稿。API-012 发出坐席确认稿。AC-039 抽检 can_adopt=false 时不能点采用。未选类型时确认失败，仍能润色并发送一条可见回复。",
+        "缺 Key 时智能推送/润色记未验；AC-043 确认失败与 012 发送仍须真实接口证据。不得用 Mock 通过。依赖 T-035 与 T-039。"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat",
+        "阿里云百炼 Embedding"
+      ],
+      "dependencies": [
+        "T-035",
+        "T-039"
+      ],
+      "priority": 26,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-006 按当前会话为坐席推送知识"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-007 坐席回复润色对比后确认发出"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-008 按业务线、工单类型和场景选用提示模板"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-005 转人工后按标准工单智能填单并确认"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-016 坐席知识推送与搜索"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-017 话术润色预览"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-016 / API-017"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-016 / API-017"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-03 客服端"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/prompts/ticket/polish.md",
+        "backend/src/prompts/ticket/line_digital_3c.md",
+        "backend/src/services/polish.py",
+        "backend/tests/test_polish.py"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "Main-chat degraded mode (user chose c), NOT independent acceptance. Browser 22/22 PASS on 8113/5223 with real Bailian, no Mock (twice before fix, once after). Polish quality fix (user 1.A): polish.md / line_digital_3c.md / polish.py boundary + role labels, new unit test. Real probe x5: follow-up repeat 3/5->0/5; 3C complaint new policy 3/5->0/5, adoptable 5/5; AC-038 kept. Unrelated stale tests: test_tickets urgency, test_qa no-'工单' assertion. Report .sdd/test-reports/test-T-027.md. Independent tester retest recommended."
+    },
+    {
+      "id": "T-029",
+      "title": "前端：按角色登录、导航分权与占位管理页 Mock",
+      "type": "frontend",
+      "description": "在已通过的登录外壳（T-001）上按 API-001/002 加法字段 role 做 Mock：十个身份账号进入被允许的页面；员工进员工端，一线坐席进客服端，管理进知识库/模板/工单列表；坐席侧栏无模板与灰度入口。为 /tickets、/templates 提供可编译占位页，由 T-033/T-034 替换。JWT 仍存 access_token。acceptanceCriteria 为空。关联 AC-009 角色分流与 AC-061 的 Mock 由 technicalChecks 覆盖；业务 AC 由 T-048 真实验收。不代替 T-035 用户门禁。不写入任何密钥。",
+      "source_feature": "F-001",
+      "technicalChecks": [
+        "Mock 登录：employee 进 /employee；frontline_agent 进 /agent 且看不到模板/灰度导航；admin 能进知识库并看到工单列表与模板入口。错误密码仍留登录页。带 [Mock]。",
+        "对照 UI-01 与外壳：顶栏已登录用户名+退出；身份不对的路由不能使用该页能力。占位 /tickets、/templates 可编译。type-check/lint 按改动通过。",
+        "本 PASS 不计业务 AC 完成。"
+      ],
+      "dependencies": [
+        "T-001"
+      ],
+      "priority": 22,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-004 按身份登录、已登录状态与退出"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > 身份与页面"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-001 登录"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-002 恢复登录态"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-01 登录"
+        },
+        {
+          "path": "docs/prototypes/01-login/index.html",
+          "section": "01-login"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/pages/LoginPage.tsx",
+        "frontend/src/pages/TicketListPage.tsx",
+        "frontend/src/pages/TemplateAdminPage.tsx",
+        "frontend/src/components/AppShell.tsx",
+        "frontend/src/router/index.tsx",
+        "frontend/src/stores/",
+        "frontend/src/types/auth.ts",
+        "frontend/src/mocks/auth.ts",
+        "frontend/src/services/authService.ts"
+      ],
+      "acceptanceCriteria": [],
+      "externalServices": [],
+      "retry_count": 0,
+      "notes": "Tester f97c700b-d7d8-4a45-9a48-eec5b4f8001f PASS (Mock). Report .sdd/test-reports/test-T-029.md. Business AC remains T-048.",
+      "status": "passed"
+    },
+    {
+      "id": "T-030",
+      "title": "前端：知识库可见范围与政策生效时间 Mock",
+      "type": "frontend",
+      "description": "在已通过的知识库页（T-017）上为已完成文档增加可见范围（用户可见 / 仅坐席可见 / 高风险仅人工）和政策生效起止时间 Mock，对齐 API-005/006。保存用次按钮，不新造主色。不重做上传/筛选/分块。acceptanceCriteria 为空。关联 AC-053、AC-059、AC-060 的 Mock 由 technicalChecks 覆盖；业务 AC 由 T-045 真实验收。不代替 T-035 门禁。",
+      "source_feature": "F-002",
+      "technicalChecks": [
+        "已完成文档详情可保存可见范围与生效起止时间；清空后再次打开为空。入库中不可改。对照 UI-04 例外。带 [Mock]。",
+        "三项范围文案为中文业务名。type-check/lint 按改动通过。本 PASS 不计业务 AC。"
+      ],
+      "dependencies": [
+        "T-017"
+      ],
+      "priority": 22,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-002 知识文档入库、查看分块预览与实时改标签/FAQ"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-005 文档详情"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-006 修改标签、FAQ、可见范围与生效时间"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-003～006"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-04 知识库"
+        },
+        {
+          "path": "docs/prototypes/04-knowledge/index.html",
+          "section": "04-knowledge"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/pages/KnowledgePage.tsx",
+        "frontend/src/hooks/useDocuments.ts",
+        "frontend/src/services/documentService.ts",
+        "frontend/src/mocks/documents.ts",
+        "frontend/src/types/document.ts",
+        "frontend/src/components/knowledge/"
+      ],
+      "acceptanceCriteria": [],
+      "externalServices": [],
+      "retry_count": 0,
+      "notes": "Tester 804bc62a-d0d4-4dcd-a139-bddd5288175d PASS (Mock). Report .sdd/test-reports/test-T-030.md. Business AC remains T-045.",
+      "status": "passed"
+    },
+    {
+      "id": "T-031",
+      "title": "前端：客服工单四态六类、订单候选、润色对比与反馈 Mock",
+      "type": "frontend",
+      "description": "按确认契约重做客服工作台 Mock（不沿用 T-020 的四类/`extracted|incomplete`）：六类工单、字段四态（已填/待确认/缺失/冲突，绿黄红语义色）、订单号一条自动填、多条只列候选且不预选、零条缺失；费用争议证据上传；润色通过时对比原稿与润色稿（采用/修改/放弃），不通过时 can_adopt=false 只显示合规风险；当次反馈入口无保存模板。Mock 对齐 API-013～019、012。确认与发送分区。acceptanceCriteria 为空。关联 AC-030～047、057、058、062、083 的 Mock 由 technicalChecks 覆盖；业务 AC 由 T-026/T-046/T-047 真实验收。不代替 T-035 门禁。",
+      "source_feature": "F-005",
+      "technicalChecks": [
+        "已转接工作台：六类切换字段键正确；未选类型或业务线时确认禁用；四态可一眼区分。订单号两条候选不预选；零条为缺失且无编造单号。带 [Mock]。对照 UI-03。",
+        "金额 99 后再说 88 仍显示 99 并标冲突。费用争议无截图不能确认。润色通过出现对比；不合规不能直接采用。放弃后发送为原稿。坐席可提交无用反馈，无模板编辑入口。",
+        "未转接无填单区。窄屏工作台在对话下方。不得把知识正文自动填入发送。本 PASS 不计业务 AC。"
+      ],
+      "dependencies": [
+        "T-020"
+      ],
+      "priority": 22,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-005 转人工后按标准工单智能填单并确认"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-006 按当前会话为坐席推送知识"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-007 坐席回复润色对比后确认发出"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-008 按业务线、工单类型和场景选用提示模板"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-013 读取工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-014 编辑工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-015 确认工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-016 坐席知识推送与搜索"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-017 话术润色预览"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-018 工单附件（证据截图）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-019 坐席当次反馈"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 工单字段"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-008 未确认草稿的槽位四态与冲突保留"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-03 客服端"
+        },
+        {
+          "path": "docs/prototypes/03-agent/index.html",
+          "section": "03-agent"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/pages/AgentInboxPage.tsx",
+        "frontend/src/components/agent/",
+        "frontend/src/hooks/useAgentInbox.ts",
+        "frontend/src/hooks/useTicket.ts",
+        "frontend/src/services/ticketService.ts",
+        "frontend/src/services/agentKnowledgeService.ts",
+        "frontend/src/services/polishService.ts",
+        "frontend/src/mocks/agentInbox.ts",
+        "frontend/src/mocks/tickets.ts",
+        "frontend/src/types/ticket.ts"
+      ],
+      "acceptanceCriteria": [],
+      "externalServices": [],
+      "retry_count": 0,
+      "notes": "Tester f2005d36-a011-4cba-b0e2-bb1cd8ebbae4 PASS (Mock). Report .sdd/test-reports/test-T-031.md. Two experience candidates verified, pending orchestrator write.",
+      "status": "passed"
+    },
+    {
+      "id": "T-032",
+      "title": "前端：员工端工单进度消息 Mock",
+      "type": "frontend",
+      "description": "在员工端对话 Mock（T-019）上增加 kind=ticket_progress 进度说明气泡，对齐 API-009/010。已转人工后询问已有工单进度可出现系统进度回复；无工单时不编造到账。acceptanceCriteria 为空。关联 AC-071、AC-075 的 Mock 由 technicalChecks 覆盖；业务 AC 由 T-052 真实验收。不代替 T-035 门禁。",
+      "source_feature": "F-008",
+      "technicalChecks": [
+        "Mock：原会话出现用户能读到的进度说明气泡（业务文案，不用内部枚举名）。已有退款进度时问「我的退款到哪了」展示与草稿一致的进度；无工单时不出现编造到账。带 [Mock]。对照 UI-02。",
+        "已转人工后普通新问题仍无 FAQ/AI 自动回，进度询问为例外。本 PASS 不计业务 AC。"
+      ],
+      "dependencies": [
+        "T-019"
+      ],
+      "priority": 22,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-011 退货和开票联动，并把进度告诉用户"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-003 员工触发转人工，客服接管并回复"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-007 / API-008 / API-009"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-010 状态机"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-02 员工端"
+        },
+        {
+          "path": "docs/prototypes/02-employee/index.html",
+          "section": "02-employee"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/pages/EmployeeChatPage.tsx",
+        "frontend/src/components/chat/MessageBubble.tsx",
+        "frontend/src/hooks/useConversation.ts",
+        "frontend/src/services/conversationService.ts",
+        "frontend/src/mocks/conversations.ts",
+        "frontend/src/types/conversation.ts"
+      ],
+      "acceptanceCriteria": [],
+      "externalServices": [],
+      "retry_count": 0,
+      "notes": "Tester 7244e708-62b6-412b-a026-935c046b381c PASS (Mock). Report .sdd/test-reports/test-T-032.md. Business AC remains T-052.",
+      "status": "passed"
+    },
+    {
+      "id": "T-033",
+      "title": "前端：管理端工单列表与处理状态 Mock",
+      "type": "frontend",
+      "description": "替换 T-029 的工单列表占位为 UI-05 Mock：按类型、状态、紧急程度筛选，按订单号、用户、工单号、时间检索；列含工单号、类型、紧急程度、状态、处理人、更新时间。VIP 行 Warning 浅底，高风险 Danger 文字。一线坐席打不开本页。Mock 对齐 API-020～023。acceptanceCriteria 为空。关联 AC-067～069、076、077 的 Mock 由 technicalChecks 覆盖；业务 AC 由 T-050 真实验收。不代替 T-035 门禁。",
+      "source_feature": "F-007",
+      "technicalChecks": [
+        "admin 打开列表可见筛选与表格；无数据文案「当前没有符合条件的工单」。VIP/高风险视觉对照 UI-05。坐席账号打不开本页。带 [Mock]。",
+        "可演示待处理/处理中/挂起/已完成/已关闭。点行只读进度，不编辑模板。本 PASS 不计业务 AC。"
+      ],
+      "dependencies": [
+        "T-029"
+      ],
+      "priority": 23,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-010 确认后自动分配、按紧急程度打标，并按类型计时"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-020 工单列表"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-021 认领工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-022 处理工单状态与紧急程度上调"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-023 主管同意高风险降级"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-05 管理端工单列表"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/pages/TicketListPage.tsx",
+        "frontend/src/hooks/useTicketList.ts",
+        "frontend/src/services/ticketListService.ts",
+        "frontend/src/mocks/ticketList.ts",
+        "frontend/src/types/ticketList.ts"
+      ],
+      "acceptanceCriteria": [],
+      "externalServices": [],
+      "retry_count": 0,
+      "notes": "Tester 4d0b0ca2-5c94-4b5a-9952-0d0a48a72f24 PASS (Mock). Report .sdd/test-reports/test-T-033.md. Preview http://127.0.0.1:5293/. Business AC remains T-050.",
+      "status": "passed"
+    },
+    {
+      "id": "T-034",
+      "title": "前端：管理端模板版本、灰度、评测与金额线 Mock",
+      "type": "frontend",
+      "description": "替换 T-029 的模板占位为 UI-06 Mock：按业务线、工单类型、场景编辑，预览代入、版本对比、约 5% 灰度、回滚、评测集与告警；评测不足 5000 灰度禁用。坐席无入口。另含大额订单金额线读写（API-034/035）。Mock 对齐 API-024～035。acceptanceCriteria 为空。关联 AC-063～066、061 的 Mock 由 technicalChecks 覆盖；业务 AC 由 T-048/T-049 真实验收。不代替 T-035 门禁。",
+      "source_feature": "F-006",
+      "technicalChecks": [
+        "admin：保存出现新版本号与修改人/时间/内容；预览只渲染占位不发回复；无评测集时灰度按钮禁用并写明原因；回滚后提示新会话将使用该版本；告警 Danger 文字。对照 UI-06。带 [Mock]。",
+        "坐席打不开编辑和发布。金额线可保存或清空。主按钮只有「保存新版本」。本 PASS 不计业务 AC。"
+      ],
+      "dependencies": [
+        "T-029"
+      ],
+      "priority": 23,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-009 管理端维护提示模板的版本、灰度、回滚和评测"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-010 确认后自动分配、按紧急程度打标，并按类型计时"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-024～API-028 模板只读、保存、预览、版本"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-029 / API-030 灰度与回滚"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-031 / API-032 / API-033 评测、指标、告警"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-034 / API-035 工作区设置"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-010 检索融合权重与合规拦截告警阈值"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-06 管理端模板"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/pages/TemplateAdminPage.tsx",
+        "frontend/src/hooks/usePromptTemplates.ts",
+        "frontend/src/services/templateService.ts",
+        "frontend/src/services/workspaceSettingsService.ts",
+        "frontend/src/mocks/templates.ts",
+        "frontend/src/types/template.ts"
+      ],
+      "acceptanceCriteria": [],
+      "externalServices": [],
+      "retry_count": 0,
+      "notes": "Tester 99c5cc25-72cd-4e4b-a2f4-f812d840b94d PASS (Mock). Report .sdd/test-reports/test-T-034.md. Business AC remains T-048/T-049.",
+      "status": "passed"
+    },
+    {
+      "id": "T-035",
+      "title": "前端：确认方案 Mock 收口与用户门禁",
+      "type": "frontend",
+      "description": "在 T-029～T-034 之上承担本轮唯一前端 Mock 收口与唯一 user_gate。复用 T-001～T-005、T-015、T-017、T-019～T-021 稳定证据，只补测跨页与本增量：按角色登录→知识库可见范围/生效时间→员工端进度消息→客服四态六类填单/润色对比/反馈→管理端列表与模板。Tester 通过后由编排器将 user_gate 置 awaiting_user，停止新派发，待用户验收本轮 Mock；已确认且未变的百炼配置只核对字段是否非空，不要求重填、不把密钥写入任务或报告。T-021 门禁已迁走，不得当作本轮 Mock 已放行。acceptanceCriteria 为空。业务 AC 由 T-025～T-027、T-045～T-052 真实验收。",
+      "source_feature": "F-005",
+      "technicalChecks": [
+        "浏览器按 ui-style 第五节与 UI-05/UI-06 走通全页 Mock 主流程与本增量关键失败：坐席打不开模板；未选六类不能确认；冲突保留原值；订单多条不预选；润色不合规不能采用；知识推送不出现在员工对话；无评测集不能灰度。",
+        "1440 与窄于 1024：客服工作台按 UI-03 收窄；管理端表格无整页溢出；对话输入仍钉底。全部 Mock 仍带 [Mock] 且信封未偏离 §二。",
+        "复用前序稳定证据，只补测跨页与本任务改动。本 PASS 只表示前端 Mock 阶段通过，不计业务 AC 完成。"
+      ],
+      "dependencies": [
+        "T-021",
+        "T-029",
+        "T-030",
+        "T-031",
+        "T-032",
+        "T-033",
+        "T-034"
+      ],
+      "priority": 24,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "用户目标与完整流程"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "一、用户要完成什么"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > 接口索引"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "五、使用与验收"
+        },
+        {
+          "path": "docs/prototypes/01-login/index.html",
+          "section": "01-login"
+        },
+        {
+          "path": "docs/prototypes/02-employee/index.html",
+          "section": "02-employee"
+        },
+        {
+          "path": "docs/prototypes/03-agent/index.html",
+          "section": "03-agent"
+        },
+        {
+          "path": "docs/prototypes/04-knowledge/index.html",
+          "section": "04-knowledge"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/tech-stack.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/frontend/mock.md",
+        "specification/default/frontend/style.md",
+        "specification/default/frontend/acceptance.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/mocks/index.ts",
+        "frontend/src/services/mockAdapter.ts"
+      ],
+      "user_gate": {
+        "kind": "frontend_mock_review",
+        "frontend_task_ids": [
+          "T-001",
+          "T-002",
+          "T-003",
+          "T-004",
+          "T-005",
+          "T-015",
+          "T-017",
+          "T-019",
+          "T-020",
+          "T-021",
+          "T-029",
+          "T-030",
+          "T-031",
+          "T-032",
+          "T-033",
+          "T-034",
+          "T-035"
+        ],
+        "required_services": [
+          "阿里云百炼 Chat",
+          "阿里云百炼 Embedding"
+        ],
+        "status": "passed",
+        "user_confirmation": "2026-09-23 user said 可以的 for the mock at http://127.0.0.1:5199/.",
+        "configuration_confirmation": "2026-09-23 backend/.env llm_api_key, llm_base_url, llm_model are non-placeholder. Do not refill. Values not stored.",
+        "rework_task_ids": []
+      },
+      "acceptanceCriteria": [],
+      "externalServices": [],
+      "retry_count": 0,
+      "notes": "Tester c17efeca-b2c7-4cf3-9563-8c2818b9f0e1 PASS (Mock). Report .sdd/test-reports/test-T-035.md. user_gate awaiting_user. Preview http://127.0.0.1:5199/ user_gate passed 2026-09-23.",
+      "status": "passed"
+    },
+    {
+      "id": "T-036",
+      "title": "后端：十角色种子、require_roles 与会话 role 字段",
+      "type": "backend",
+      "description": "在已通过的登录（T-006）上为 users 增加 role 与 last_seen_at；启动种子十个角色账号，密码只来自配置键 seed_password 的哈希，不把口令或百炼密钥写入任务。API-001/002 响应加法 username/role；API-002 刷新在岗心跳。实现 require_roles，无权限 403 FORBIDDEN。main.py 挂载空的 ticket_queue/prompt_templates/evaluation_sets/workspace_settings 路由模块供后续填充，避免并行改 main.py。旧共享账号补 role=employee，不删行。业务 AC 由 T-048 真实验收。",
+      "source_feature": "F-001",
+      "technicalChecks": [
+        "pytest：十个用户名可登录且 role 与 §二身份表一致；错误密码 401。缺 Token 访问业务 401。坐席调模板路由 403（可先对空模块断言）。",
+        ".env.example 列出 seed_password 与 §七字段名占位，不含真实密钥。API-002 成功更新 last_seen_at。",
+        "无 Key 不阻塞本任务。"
+      ],
+      "dependencies": [
+        "T-006"
+      ],
+      "priority": 22,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-004 按身份登录、已登录状态与退出"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > 身份与页面"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-001 登录"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-002 恢复登录态"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-001 / API-002"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计 > 配置表"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/main.py",
+        "backend/src/api/deps.py",
+        "backend/src/api/routes/sessions.py",
+        "backend/src/api/routes/ticket_queue.py",
+        "backend/src/api/routes/prompt_templates.py",
+        "backend/src/api/routes/evaluation_sets.py",
+        "backend/src/api/routes/workspace_settings.py",
+        "backend/src/services/auth.py",
+        "backend/src/db/models.py",
+        "backend/src/models/session.py",
+        "backend/src/repositories/user_repository.py",
+        "backend/tests/test_sessions.py",
+        "backend/tests/test_roles.py",
+        "backend/.env.example"
+      ],
+      "acceptanceCriteria": [],
+      "externalServices": [],
+      "retry_count": 0,
+      "notes": "Tester 27d7dfea-a515-474b-af1e-e2efe7b8c2cf PASS. Report .sdd/test-reports/test-T-036.md. Business AC remains T-048.",
+      "status": "passed"
+    },
+    {
+      "id": "T-037",
+      "title": "后端：文档可见范围、生效时间与用户侧召回过滤",
+      "type": "backend",
+      "description": "API-005/006 加法 visibility、effective_from、effective_to；ready 且未写可见范围时默认 user_visible。抽出共用召回（D-010）：未转人工只要用户可见；政策类缺日期或过期不作为当前依据。qa 改用该召回，不重做入库切块。业务 AC 由 T-045 真实验收。",
+      "source_feature": "F-002",
+      "technicalChecks": [
+        "pytest：PATCH 可见范围与生效时间后 GET 详情一致；清空为 null。仅坐席可见文档不进入未转人工召回；用户可见文档可召回。",
+        "缺生效时间的政策类不进入当前依据。默认旧文档 user_visible。无 Key 不阻塞本地过滤单测。"
+      ],
+      "dependencies": [
+        "T-007",
+        "T-022",
+        "T-036"
+      ],
+      "priority": 23,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-002 知识文档入库、查看分块预览与实时改标签/FAQ"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-005 文档详情"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-006 修改标签、FAQ、可见范围与生效时间"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 共用：召回（D-010）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-003～006"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-010 检索融合权重与合规拦截告警阈值"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/api/routes/documents.py",
+        "backend/src/models/document.py",
+        "backend/src/repositories/document_repository.py",
+        "backend/src/services/ingest.py",
+        "backend/src/services/retrieve.py",
+        "backend/src/services/qa.py",
+        "backend/tests/test_documents.py",
+        "backend/tests/test_retrieve.py",
+        "backend/src/db/models.py",
+        "backend/src/db/session.py"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat",
+        "阿里云百炼 Embedding"
+      ],
+      "acceptanceCriteria": [],
+      "retry_count": 0,
+      "notes": "Tester 7f0e9e6e-5778-47e1-aa49-460500158421 PASS. Report .sdd/test-reports/test-T-037.md. Business AC remains T-045.",
+      "status": "passed"
+    },
+    {
+      "id": "T-038",
+      "title": "后端：工单四态六类契约、增量抽取与 EXT-003/007",
+      "type": "backend",
+      "description": "按确认方案重写 API-013～015（不沿用 T-023 旧四类与 extracted|incomplete、后说覆盖）。GET 永不调模型或适配器；草稿增量抽取走 D-008 四态；确认时低置信/缺失/冲突/未选六类或业务线/费用争议无截图均 409。订单号走 EXT-003（空地址则进程内 Mock）：一条已填，多条只列候选，零条或失败缺失且不编造。物流异常走 EXT-007；轨迹失败责任方/补偿保持缺失。确认成功后本任务只落到 pending+ticket_no，分配由 T-042、联动由 T-041。业务 AC 由 T-026/T-046 真实验收。",
+      "source_feature": "F-005",
+      "technicalChecks": [
+        "pytest：handed_off GET 200 空草稿；bot 409。未选类型/业务线 confirm 409。必填缺失、candidate、conflict 均挡住确认并指出字段。确认后 PATCH ticket_type 409。",
+        "D-008：99 后再抽 88 仍为 99+conflict。agent_edited 不被覆盖。EXT-003 一条 auto_filled、两条 candidates 不预选、零条/失败 missing+暂未查到。轨迹失败 PATCH 责任方 409。",
+        "空 order_center_base_url / logistics_base_url 用进程内 Mock，不编造真实外部凭证。无百炼 Key 时可手填确认；不把假客户端当真实抽取通过。"
+      ],
+      "dependencies": [
+        "T-023",
+        "T-036"
+      ],
+      "priority": 23,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-005 转人工后按标准工单智能填单并确认"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-013 读取工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-014 编辑工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-015 确认工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > EXT-003～007 可替换业务适配器"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 工单字段"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 共用：增量抽取与订单匹配（D-006=B，D-008）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-013～015"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-013～015"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-008 未确认草稿的槽位四态与冲突保留"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-009 外部订单/仓储/财务/会员/物流用可替换适配器"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/api/routes/tickets.py",
+        "backend/src/services/ticket.py",
+        "backend/src/models/ticket.py",
+        "backend/src/repositories/ticket_repository.py",
+        "backend/src/prompts/ticket/",
+        "backend/src/integrations/adapters/order.py",
+        "backend/src/integrations/adapters/logistics.py",
+        "backend/tests/test_tickets.py",
+        "backend/tests/test_ticket_extract.py"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat",
+        "订单中心适配器",
+        "物流轨迹适配器"
+      ],
+      "acceptanceCriteria": [],
+      "retry_count": 0,
+      "notes": "Tester 1c714a02-b4ec-42a8-9ad9-08f63b297e0f PASS. Report .sdd/test-reports/test-T-038.md. Real adapters remain T-046. Assignment remains T-042.",
+      "status": "passed"
+    },
+    {
+      "id": "T-039",
+      "title": "后端：坐席知识溯源、合规润色 can_adopt 与模板选用",
+      "type": "backend",
+      "description": "重写 API-016/017：每条推送含主答案、摘要、来源、生效时间、适用品类、可见范围；过期或未填生效时间的政策不作为当前依据；坐席可含仅坐席/高风险仅人工，不写 messages。API-017 返回 compliance_passed 与 can_adopt；不合规 200 但 can_adopt=false。按业务线×类型×场景选用已发布模板（无类型则售前/行程中）。真正发出仍只 API-012。业务 AC 由 T-027/T-047 真实验收。",
+      "source_feature": "F-005",
+      "technicalChecks": [
+        "pytest：016 空库 empty_message 固定原文且不插 messages。过期政策不出现。3C/服饰不混用。查询 q 为搜索，同样字段齐全。",
+        "017 不写 messages；不合规 can_adopt=false。未转人工 409。无 Key 时 502 路径可测，原稿仍可 API-012。"
+      ],
+      "dependencies": [
+        "T-024",
+        "T-037",
+        "T-038"
+      ],
+      "priority": 24,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-006 按当前会话为坐席推送知识"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-007 坐席回复润色对比后确认发出"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-008 按业务线、工单类型和场景选用提示模板"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-016 坐席知识推送与搜索"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-017 话术润色预览"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 共用：召回（D-010）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-016 / API-017"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "四、模型选型与提示词设计"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/api/routes/conversations.py",
+        "backend/src/services/agent_knowledge.py",
+        "backend/src/services/polish.py",
+        "backend/src/prompts/ticket/polish.md",
+        "backend/tests/test_agent_knowledge.py",
+        "backend/tests/test_polish.py"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat",
+        "阿里云百炼 Embedding"
+      ],
+      "acceptanceCriteria": [],
+      "retry_count": 0,
+      "notes": "Tester 01884626-9045-45f8-9067-8f9c7d4dfaa1 PASS. Report .sdd/test-reports/test-T-039.md. Business AC remains T-027/T-047.",
+      "status": "passed"
+    },
+    {
+      "id": "T-040",
+      "title": "后端：工单证据附件 API-018 与当次反馈 API-019",
+      "type": "backend",
+      "description": "在 T-038 的 tickets 路由上增加 API-018 证据截图（png/jpg/jpeg/webp）；费用争议无附件时 API-015 409。在 T-039 的 conversations 路由上增加 API-019 当次反馈，不改模板正文。一线坐席可反馈，员工 403。业务 AC 由 T-046/T-047 真实验收。",
+      "source_feature": "F-005",
+      "technicalChecks": [
+        "pytest：费用争议无附件 confirm 409；补上合法图片后可确认。非法扩展名 400「请重新上传」。",
+        "API-019 200 且模板正文不变。员工 403。附件写入 backend/data/ 下工单附件目录。"
+      ],
+      "dependencies": [
+        "T-038",
+        "T-039"
+      ],
+      "priority": 25,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-005 转人工后按标准工单智能填单并确认"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-008 按业务线、工单类型和场景选用提示模板"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-018 工单附件（证据截图）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-019 坐席当次反馈"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-018～023"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-018～023"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/api/routes/tickets.py",
+        "backend/src/api/routes/conversations.py",
+        "backend/src/services/ticket_attachments.py",
+        "backend/src/models/ticket_attachment.py",
+        "backend/tests/test_ticket_attachments.py",
+        "backend/tests/test_result_feedbacks.py"
+      ],
+      "acceptanceCriteria": [],
+      "externalServices": [],
+      "retry_count": 0,
+      "notes": "Tester 846a7ae7-ca3c-4c57-9022-125b396f5172 PASS. Report .sdd/test-reports/test-T-040.md. Business AC remains T-046/T-047.",
+      "status": "passed"
+    },
+    {
+      "id": "T-041",
+      "title": "后端：EXT-004/005 联动、进度回写与工单进度问答",
+      "type": "backend",
+      "description": "在 T-042 确认分配之后增加联动：退换货调 EXT-004、开发票调 EXT-005（空地址进程内 Mock：可构造接受/拒绝）。失败时坐席看到失败说明，工单不显示已生成退货单或已开票。状态变化向原会话写入用户可见 kind=ticket_progress。API-010 询问已有工单进度时按最新 progress 回答（已转人工也不走 waiting）；无工单不编造。修改地址/投诉/费用争议/物流异常本轮不发起仓储财务。本任务在 T-042 之后写 ticket.py 的联动钩子，避免与分配并行抢写。业务 AC 由 T-052 真实验收。",
+      "source_feature": "F-008",
+      "technicalChecks": [
+        "pytest：退货/开票各一次 accepted 与失败；失败进度无「已生成退货单」「已开票」。原会话 messages 增加 ticket_progress。",
+        "有回写进度时员工问退款到哪了返回一致陈述；无工单不编造到账。空 warehouse/finance URL 用 Mock，不写真实凭证。"
+      ],
+      "dependencies": [
+        "T-037",
+        "T-042"
+      ],
+      "priority": 25,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-011 退货和开票联动，并把进度告诉用户"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > EXT-003～007 可替换业务适配器"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-010 状态机"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 技术时序：确认、联动与进度"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > 适配器"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-009 外部订单/仓储/财务/会员/物流用可替换适配器"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/integrations/adapters/warehouse.py",
+        "backend/src/integrations/adapters/finance.py",
+        "backend/src/services/fulfillment.py",
+        "backend/src/services/qa.py",
+        "backend/src/services/ticket.py",
+        "backend/tests/test_fulfillment.py",
+        "backend/tests/test_ticket_progress.py",
+        "backend/src/models/conversation.py"
+      ],
+      "externalServices": [
+        "仓储适配器",
+        "财务适配器"
+      ],
+      "acceptanceCriteria": [],
+      "retry_count": 0,
+      "notes": "Tester fa318b66-f4b5-4bb0-92da-6f258a9a529f PASS. Report .sdd/test-reports/test-T-041.md. Business AC remains T-052.",
+      "status": "passed"
+    },
+    {
+      "id": "T-042",
+      "title": "后端：确认后分配、紧急程度、认领、SLA 与 EXT-006",
+      "type": "backend",
+      "description": "API-015 成功后打紧急程度、入队、自动分配（普通/VIP 优先/高风险），写入 ticket_no；实现 API-020～023。EXT-006 空地址 Mock：无会员数据不标 VIP。一线坐席上调立即改派；下调高风险须 API-023。SLA 数字只转录 PRD/tech-spec 时效档；VIP 不自动关闭；升级无人在岗则 upgrade_undelivered，处理人展示不空。业务 AC 由 T-050/T-051 真实验收。",
+      "source_feature": "F-007",
+      "technicalChecks": [
+        "pytest：普通退换货确认后处理人为售后专员、状态处理中。消协或连续三诉 → 高风险给高级售后专员。VIP 与普通不同队列。一线坐席认领 403。",
+        "下调高风险未审批保持高风险。冻结时间验证修改地址 1.5h 预警/2h 升级且未满预警后 24h 不可关。VIP 到点只升级不关闭。无人在岗不把处理人置空。",
+        "金额线未配置时不因金额单独升高风险。sla_rules 数字与 PRD 一致。空 member_base_url 用 Mock。"
+      ],
+      "dependencies": [
+        "T-036",
+        "T-038",
+        "T-044"
+      ],
+      "priority": 24,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-010 确认后自动分配、按紧急程度打标，并按类型计时"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-015 确认工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-020 工单列表"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-021 认领工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-022 处理工单状态与紧急程度上调"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-023 主管同意高风险降级"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 时效档（只转录 PRD，禁止改数字）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-013～015"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 用户流程图：确认后状态、升级与关闭"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-018～023"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/api/routes/ticket_queue.py",
+        "backend/src/services/assign.py",
+        "backend/src/services/sla.py",
+        "backend/src/integrations/adapters/member.py",
+        "backend/src/services/ticket.py",
+        "backend/tests/test_assign.py",
+        "backend/tests/test_sla.py",
+        "backend/tests/test_ticket_queue.py"
+      ],
+      "externalServices": [
+        "会员适配器"
+      ],
+      "acceptanceCriteria": [],
+      "retry_count": 0,
+      "notes": "Tester 20ac9393-6c1c-4c6f-bc2a-892de741f3fc PASS. Report .sdd/test-reports/test-T-042.md. Business AC remains T-050/T-051. test_tickets.py assertions still stale.",
+      "status": "passed"
+    },
+    {
+      "id": "T-043",
+      "title": "后端：提示模板版本、灰度、回滚、评测与告警",
+      "type": "backend",
+      "description": "实现 API-024～033。一线坐席打开正文/保存/灰度/回滚/评测为 403。每次保存新版本；预览只替换占位不走发出坐席回复的模型路径。评测集 item_count<5000 时 API-029 409。回滚后新打开会话用稳定版。告警阈值用 D-010 配置键名，不把密钥写入任务。业务 AC 由 T-049 真实验收。",
+      "source_feature": "F-006",
+      "technicalChecks": [
+        "pytest：保存产生 version/editor/edited_at/change_summary；versions 能 diff。preview 不调用发出路径。frontline_agent 403。",
+        "无评测集或 <5000 灰度 409；>=5000 可 gray_percent 默认 5。rollback 后新会话不用灰度版。构造拦截率升高出现 alerts。",
+        ".env.example 仅 template_gray_percent/eval_min_items/alert_* 字段名。无 Key 时预览可用本地占位替换。"
+      ],
+      "dependencies": [
+        "T-036"
+      ],
+      "priority": 23,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-009 管理端维护提示模板的版本、灰度、回滚和评测"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-024～API-028 模板只读、保存、预览、版本"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-029 / API-030 灰度与回滚"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-031 / API-032 / API-033 评测、指标、告警"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-024～035"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-024～035"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-010 检索融合权重与合规拦截告警阈值"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计 > 配置表"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/api/routes/prompt_templates.py",
+        "backend/src/api/routes/evaluation_sets.py",
+        "backend/src/services/templates.py",
+        "backend/src/models/prompt_template.py",
+        "backend/tests/test_prompt_templates.py",
+        "backend/tests/test_evaluation_sets.py"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat"
+      ],
+      "acceptanceCriteria": [],
+      "retry_count": 0,
+      "notes": "Tester 99465f3f-a470-4c74-af80-b3cf6ca48cce PASS. Report .sdd/test-reports/test-T-043.md. Business AC remains T-049.",
+      "status": "passed"
+    },
+    {
+      "id": "T-044",
+      "title": "后端：工作区大额订单金额线 API-034/035",
+      "type": "backend",
+      "description": "实现 API-034 GET 与 API-035 PATCH high_risk_amount_threshold；未配置为 null，不因金额单独升高风险。仅 admin 可写；主管只读。不写入密钥。业务 AC 随 T-050 金额线分支验收。",
+      "source_feature": "F-007",
+      "technicalChecks": [
+        "pytest：admin PATCH 数值后 GET 一致；PATCH null 后不因金额升 VIP/高风险。frontline_agent PATCH 403。主管 GET 200。",
+        ".env.example 不增加密钥字段。"
+      ],
+      "dependencies": [
+        "T-036"
+      ],
+      "priority": 23,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-010 确认后自动分配、按紧急程度打标，并按类型计时"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-034 / API-035 工作区设置"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-024～035"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-024～035"
+        }
+      ],
+      "rules_files": [
+        "specification/default/backend/tech-stack.md",
+        "specification/default/backend/layers.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/backend/error-handling.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/shared/naming.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/api/routes/workspace_settings.py",
+        "backend/src/services/workspace_settings.py",
+        "backend/src/models/workspace.py",
+        "backend/tests/test_workspace_settings.py"
+      ],
+      "acceptanceCriteria": [],
+      "externalServices": [],
+      "retry_count": 0,
+      "notes": "Tester 1cff0414-f5ca-4f95-a114-1aed883acd0f PASS. Report .sdd/test-reports/test-T-044.md. Ticket tagging remains T-042/T-050.",
+      "status": "passed"
+    },
+    {
+      "id": "T-045",
+      "title": "联调：知识可见范围、生效时间与用户侧过滤",
+      "type": "integration",
+      "description": "前端门禁通过后关闭 Mock，真实 API-006 与 API-010/016。验收 AC-053、AC-059、AC-060。缺 Key 时保存可见范围/生效时间仍可验；依赖回答的智能 AC 记未验。不得用 Mock 通过。",
+      "source_feature": "F-002",
+      "acceptanceCriteria": [
+        "[AC-053] 入库已完成的文档 → 填写生效开始和结束时间并保存 → 再次打开仍显示这两个时间；清空后保存，再次打开为空",
+        "[AC-059] 入库完成后把一篇文档标为「仅坐席可见」并保存 → 未转人工的员工提问不能用这篇文档回答；已转人工的坐席推送或搜索可以看见它。把另一篇标为「用户可见」 → 未转人工的对应问题可以答出对客话术，回答里不出现仅坐席可见文档中的内部步骤",
+        "[AC-060] 文档标为「高风险仅人工」 → 未转人工的自动回答不使用它；坐席侧可以打开并看到完整内容，该内容不会自动发给用户"
+      ],
+      "technicalChecks": [
+        "浏览器保存、离开、再打开对照生效时间。两篇文档分别问员工端与坐席端。高风险内容不出现在员工消息。",
+        "前端无 [Mock]。缺 Key 时 AC-059/060 智能回答记未验，保存字段仍须真实接口证据。"
+      ],
+      "dependencies": [
+        "T-035",
+        "T-030",
+        "T-037"
+      ],
+      "priority": 26,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-002 知识文档入库、查看分块预览与实时改标签/FAQ"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 共用：召回（D-010）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-003～006"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-04 知识库"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/components/agent/KnowledgePanel.tsx",
+        "frontend/src/hooks/useTicket.ts",
+        "backend/src/services/agent_knowledge.py",
+        "backend/src/services/retrieve.py",
+        "backend/tests/test_agent_knowledge.py"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat",
+        "阿里云百炼 Embedding"
+      ],
+      "retry_count": 1,
+      "notes": "曾 FAIL：坐席搜索高风险文档后右栏仍是默认两张卡片，按文件名搜索为空。Fix b9799d9b-b415-4613-9b27-ff8b57dd91f6。复验 33229157-3da6-4927-80a9-df0c052463dc 2026-09-23 PASS：AC-060 修复，AC-053/059 抽查无回退。报告 .sdd/test-reports/test-T-045.md。不新增经验：用户结果已验证，两条改动未做 A/B，根因拆分仍是推测。",
+      "status": "passed"
+    },
+    {
+      "id": "T-046",
+      "title": "联调：订单匹配、增量槽位、费用争议与物流轨迹",
+      "type": "integration",
+      "description": "前端门禁通过后关闭 Mock，真实 API-013～015、018 与 EXT-003/007 Mock 适配器。验收订单一条/多条/零条、增量补字段、手改不被覆盖、确认后不改类型、费用争议截图、物流已签收与查不到轨迹。无真实订单中心凭证时用适配器 Mock，不得编造单号或把用户说法写成已核实丢件。缺百炼 Key 时手填/适配器路径可验，抽取智能记未验。",
+      "source_feature": "F-005",
+      "acceptanceCriteria": [
+        "[AC-044] 已转人工，用户说「我昨天买的那个蓝色手机要退」，原文没有订单号；订单中心按该用户、昨天、蓝色手机只命中一条 → 商品在识别清楚时为已填，订单号自动填入该条并标为高置信；退换原因仍为缺失。命中的订单号能对上订单中心返回的那一条",
+        "[AC-057] 同一句话，订单中心返回两笔蓝色手机订单 → 订单号不自动填入其中任何一笔，两笔都作为候选列出；坐席选定一笔后，订单号才变成已填",
+        "[AC-058] 同一句话，订单中心返回零条，或暂时无法查询 → 订单号为缺失，不出现编造单号；无法查询时能看到暂未查到的说明",
+        "[AC-045] 承接 AC-044 的未确认草稿，用户接着说「因为屏幕有划痕」 → 「退换原因」补上该说法，商品等已经已填的字段不被清空或改写",
+        "[AC-046] 坐席把商品手改为「黑色手机」后，用户又说「是蓝色的」 → 商品仍保持「黑色手机」并标冲突，不自动改回蓝色；坐席选定后才变化",
+        "[AC-047] 工单已确认后，用户又补充新的原因或金额 → 已确认字段不自动变化；坐席仍可手改除工单类型以外的内容；尝试把工单类型改成另一类时不被接受",
+        "[AC-083] 费用争议草稿里订单号、商品、争议类型、用户主张金额、平台核算金额和差异原因都已有，但没有证据截图 → 不能确认。补上截图后才能确认。润色或回答里不出现模型新编的赔付金额，要能看到主张金额、核算金额和差异原因",
+        "[AC-085] 用户说快递丢了，物流轨迹显示已签收 → 回答或工单说明里同时写明用户说法和已签收，不把丢件当成已确定事实，也不据此自动填责任方。轨迹暂时查不到 → 责任方和补偿方案为缺失，回复说明暂时不能判断，不编造责任方"
+      ],
+      "technicalChecks": [
+        "浏览器对照面板与 API-013：一条/两条/零条/失败各一例。AC-045/046 两轮对照同一草稿。确认后再发消息字段不变，改类型 409。",
+        "缺截图 confirm 失败，补图后成功。已签收与查不到轨迹各测一次。不得用前端 Mock 通过。"
+      ],
+      "dependencies": [
+        "T-035",
+        "T-038",
+        "T-040"
+      ],
+      "priority": 26,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-005 转人工后按标准工单智能填单并确认"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-013 读取工单"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 共用：增量抽取与订单匹配（D-006=B，D-008）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > 适配器"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-03 客服端"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "frontend/src/services/ticketService.ts",
+        "backend/src/prompts/ticket/extract_common.md",
+        "backend/src/prompts/ticket/extract_logistics_exception.md",
+        "backend/src/models/ticket.py",
+        "backend/src/services/ticket.py",
+        "backend/tests/test_ticket_extract.py"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat",
+        "订单中心适配器",
+        "物流轨迹适配器"
+      ],
+      "retry_count": 0,
+      "notes": "Main-chat degraded mode (user chose c / 2.A), NOT independent acceptance. Browser 24/24 PASS twice on 8114/5224 (t046.db, CDP 9564), real Bailian, frontend Mock off; order center + logistics via real Http*Adapter to isolated stand-in 8134 (no real credentials). Fixed: evidence upload sent FormData as JSON (400) -> Content-Type override; extraction dropped '昨天' time_range -> extract_common rule (probe 5/5); logistics note missing in real mode -> LogisticsSnapshotPublic.note + '用户称' summary. Observation for T-047 AC-050: polish drops claimed 200 amount. Report .sdd/test-reports/test-T-046.md. Independent tester retest recommended.",
+      "status": "passed"
+    },
+    {
+      "id": "T-047",
+      "title": "联调：知识溯源搜索、润色时效语气、售前模板与当次反馈",
+      "type": "integration",
+      "description": "前端门禁通过后关闭 Mock。验收 AC-048、049、050、051、052、062。过期政策不得作为当前依据；搜索结果字段与推送一致；润色不改时效、愤怒不用轻快语气；未形成类型不能确认；坐席反馈到达管理端且无模板编辑入口。缺 Key 时反馈与确认禁用仍可验，智能推送/润色记未验。",
+      "source_feature": "F-005",
+      "acceptanceCriteria": [
+        "[AC-048] 同一知识库里有一篇已过期的退货政策，和一篇在生效期内的退货政策 → 已转人工的退货会话只推送在生效期内的那篇；过期篇不出现在当前依据里",
+        "[AC-049] 坐席在推送区按「退货流程」搜索 → 看到的每条结果同样有主答案、摘要、来源、生效时间和适用品类，并按相关度排列；点开能看到详情；这些结果不出现在用户侧",
+        "[AC-050] 原稿写明「超过 7 天」 → 润色稿仍是超过 7 天，不能改成仍可退，也不能改成 15 天或其他时效",
+        "[AC-051] 当前会话里用户在表达愤怒 → 润色稿不用轻快语气，而是说明限制和下一步",
+        "[AC-052] 未形成可确认的工单类型、业务线已选为服饰美妆的售前会话 → 润色和推送使用服饰售前口径，不出现退换货工单的必填项，也不能确认工单",
+        "[AC-062] 坐席在当次润色结果上提交「无用」和一句说明 → 管理端能看到这条反馈，模板正文没有变化；坐席仍可改回复后发送。坐席界面没有保存模板的入口"
+      ],
+      "technicalChecks": [
+        "两篇生效时间一前一后对照推送列表。搜索后对照侧边栏与员工消息。AC-050/051 对照对比区。AC-052 确认按钮不可用。反馈出现在管理端。",
+        "不得用 Mock 通过。缺 Key 时智能项记未验。"
+      ],
+      "dependencies": [
+        "T-035",
+        "T-039",
+        "T-040",
+        "T-043"
+      ],
+      "priority": 26,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-006 按当前会话为坐席推送知识"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-007 坐席回复润色对比后确认发出"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-008 按业务线、工单类型和场景选用提示模板"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-016 / API-017"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-03 客服端"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-06 管理端模板"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/services/templates.py",
+        "backend/src/services/polish.py",
+        "backend/src/prompts/ticket/polish.md",
+        "backend/tests/test_result_feedbacks.py",
+        "backend/tests/test_polish.py"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat",
+        "阿里云百炼 Embedding"
+      ],
+      "retry_count": 0,
+      "notes": "主会话降级联调（无子代理），开发与验收同一代理，非独立验收。浏览器第 2/3/4 轮 22/22 PASS，报告 .sdd/test-reports/test-T-047.md。",
+      "status": "passed"
+    },
+    {
+      "id": "T-048",
+      "title": "联调：按身份进入页面且坐席打不开模板配置",
+      "type": "integration",
+      "description": "前端门禁通过后关闭 Mock，真实 API-001/002 与角色分权。验收 AC-061。登录分流可对照已通过的 T-010，但须用本轮十角色种子与 403 行为，不能只用旧共享账号证据。不要求重验错密码全文，除非本轮改动触及。",
+      "source_feature": "F-001",
+      "acceptanceCriteria": [
+        "[AC-061] 使用坐席身份打开模板配置或工单管理中的灰度发布 → 不能修改模板，也不能发布；使用管理身份可以打开模板配置"
+      ],
+      "technicalChecks": [
+        "frontline_agent 打不开模板编辑/灰度；admin 可以打开。接口 403 与页面一致。前端无 [Mock]。",
+        "不把密钥写入报告。"
+      ],
+      "dependencies": [
+        "T-035",
+        "T-036",
+        "T-043"
+      ],
+      "priority": 26,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-004 按身份登录、已登录状态与退出"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > 身份与页面"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > API-024～035"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-06 管理端模板"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [],
+      "externalServices": [],
+      "retry_count": 0,
+      "notes": "Tester b186d90f-3e5e-4b71-bd70-d13bded8d34d PASS AC-061. Report .sdd/test-reports/test-T-048.md.",
+      "status": "passed"
+    },
+    {
+      "id": "T-049",
+      "title": "联调：模板版本、预览、灰度回滚与合规告警",
+      "type": "integration",
+      "description": "前端门禁通过后关闭 Mock，真实 API-024～033。验收 AC-063～066。无评测集时灰度不可用。评测集可用本地导入构造，不把密钥写入任务。缺百炼 Key 时预览若依赖模型则记未验，版本保存/403/评测门禁仍须真实接口证据。",
+      "source_feature": "F-006",
+      "acceptanceCriteria": [
+        "[AC-063] 管理端修改一篇退货售后模板并保存 → 出现新版本号，能看到修改人、修改时间和修改内容；与上一版本对比时能看出正文差异",
+        "[AC-064] 管理端输入一句测试说法并预览 → 看到占位已经换成这句测试里的情绪、订单或政策内容后的模板，模型尚未被要求发出坐席回复",
+        "[AC-065] 已有不少于 5000 条评测集 → 管理端把新版本设为约 5% 会话使用，并看到新旧版本的抽取准确率、采纳率、合规拦截率 → 执行回滚 → 之后新打开的会话不再使用刚灰度的版本。没有评测集时，灰度发布不可用",
+        "[AC-066] 某个正在使用的模板被标出合规拦截率突然升高 → 管理端能看到针对该模板的告警"
+      ],
+      "technicalChecks": [
+        "保存后打开版本记录和对比。预览一则含订单和政策的测试说法且无坐席发出调用。有评测集走灰度再回滚；清空后再试发布应不可用。",
+        "用一小组连续触发合规拦截的结果检查告警。不得用 Mock 通过。"
+      ],
+      "dependencies": [
+        "T-035",
+        "T-043"
+      ],
+      "priority": 26,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-009 管理端维护提示模板的版本、灰度、回滚和评测"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-024～API-028 模板只读、保存、预览、版本"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > API-029 / API-030 灰度与回滚"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-024～035"
+        },
+        {
+          "path": "docs/decisions.md",
+          "section": "D-010 检索融合权重与合规拦截告警阈值"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-06 管理端模板"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/models/prompt_template.py",
+        "backend/src/services/templates.py",
+        "backend/src/services/polish.py",
+        "backend/src/services/handoff.py",
+        "backend/src/api/routes/evaluation_sets.py",
+        "backend/src/api/routes/prompt_templates.py",
+        "backend/tests/test_prompt_templates.py",
+        "backend/tests/test_polish.py",
+        "frontend/src/types/template.ts",
+        "frontend/src/mocks/templates.ts",
+        "frontend/src/services/templateService.ts",
+        "frontend/src/pages/TemplateAdminPage.tsx",
+        "docs/tech-spec.md"
+      ],
+      "externalServices": [
+        "阿里云百炼 Chat"
+      ],
+      "retry_count": 0,
+      "notes": "主会话降级联调（无子代理），开发与验收同一代理，非独立验收。用户选 A：补真实评测指标（采纳/修改/抽取准确率/投诉率，按版本分开，无数据显示暂无数据）。 主会话降级联调 PASS（非独立验收）。证据 .sdd/tmp-t049/evidence/t049-browser-evidence-r4.json；报告 .sdd/test-reports/test-T-049.md。用户选 A：真实指标+暂无数据；新增 GET /api/evaluation-sets/current。",
+      "status": "passed"
+    },
+    {
+      "id": "T-050",
+      "title": "联调：自动分配、紧急程度、列表筛选与普通/VIP 时效",
+      "type": "integration",
+      "description": "前端门禁通过后关闭 Mock，真实 API-015、020～023、034 与 SLA 循环。验收 AC-067～069、076～081。可用测试时钟或配置缩短扫描，但对照的时限数字必须与 PRD 一致，不得改产品数字。会员数据用 EXT-006 Mock。缺百炼 Key 不阻塞手填确认后的分配/列表。",
+      "source_feature": "F-007",
+      "acceptanceCriteria": [
+        "[AC-067] 一线坐席确认一张资料完整、非高风险的退换货工单 → 列表中能看到工单号、类型和订单号，处理人是售后专员，状态为处理中",
+        "[AC-068] 列表里已有不同状态、类型和时间的工单 → 按类型、状态、订单号、用户、工单号或时间范围筛选 → 只看到符合条件的工单",
+        "[AC-069] 一张处理中的工单被标为挂起 → 状态变为挂起，并能看到在等用户补充或等仓储确认；之后回写处理结果 → 状态变为已完成；用户确认已经解决 → 状态变为已关闭",
+        "[AC-076] 会话里出现「消协」或连续三次投诉的用户 → 确认后的工单为高风险，处理人是高级售后专员，不是一线坐席，也不是普通售后专员",
+        "[AC-077] 一线坐席把普通工单调成高风险 → 立即变为高风险并改派给高级售后专员。一线坐席再把它调回普通 → 在主管同意前仍是高风险；主管同意后才变为普通",
+        "[AC-078] 一张普通的修改地址工单 → 确认后 1 小时 30 分钟处理人收到预警，满 2 小时主管收到升级，此时还不能关闭；预警发出后未满 24 小时不能自动关闭",
+        "[AC-079] 一张普通投诉工单已过处理时限并已向用户发出关闭预告 → 用户又发来一句还在等 → 工单不自动关闭。用户没有再说话，并且预告之后已满 72 小时 → 状态变为已关闭",
+        "[AC-080] 同时有一张普通退换货和一张 VIP 退换货待分配 → VIP 先被分给售后专员的优先队列，普通工单不在这个队列里。VIP 退换货在满 3 小时时预警，满 4 小时升级给在岗的售后主管，工单不关闭；售后主管无人在岗时，处理人仍显示售后主管并标明升级未送达，不能变成无人认领。VIP 投诉在满 3 小时时预警，满 4 小时升级给客服负责人。VIP 费用争议在满 1 小时 30 分钟时预警，满 2 小时升级给高级售后专员。VIP 修改地址在满 20 分钟时预警，满 30 分钟升级给主管。这三张都不关闭",
+        "[AC-081] 普通的物流延迟工单满 20 小时预警，满 24 小时仍不关闭，预警满 24 小时后才可关闭。普通的丢件工单满 36 小时预警，处理时限是 48 小时。地址异常工单的处理时限是 12 小时，不按修改地址的 2 小时计算"
+      ],
+      "technicalChecks": [
+        "确认后打开列表对照处理人和状态。每个筛选项至少一次。挂起→完成→关闭三步刷新。两种高风险来源各一张。先升级再未审批/已审批降级。",
+        "用测试时钟对照 AC-078～081 与 AC-080 的时间点，数字必须与 PRD 一致。VIP 不关闭。不得用 Mock 通过。"
+      ],
+      "dependencies": [
+        "T-035",
+        "T-042",
+        "T-044"
+      ],
+      "priority": 26,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-010 确认后自动分配、按紧急程度打标，并按类型计时"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 时效档（只转录 PRD，禁止改数字）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 用户流程图：确认后状态、升级与关闭"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-05 管理端工单列表"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [],
+      "externalServices": [
+        "会员适配器"
+      ],
+      "retry_count": 0,
+      "notes": "主会话降级联调（无子代理）PASS 自验，非独立验收。Report .sdd/test-reports/test-T-050.md. probe+browser r6.",
+      "status": "passed"
+    },
+    {
+      "id": "T-051",
+      "title": "联调：VIP 物流异常升级与立即二级",
+      "type": "integration",
+      "description": "前端门禁通过后关闭 Mock。验收 AC-088、AC-089。VIP 物流不自动关闭；一级/二级对象与 2 小时等待、立即二级四条件按 PRD。无人在岗须标明升级未送达。可用测试时钟，不得改产品小时数。",
+      "source_feature": "F-007",
+      "acceptanceCriteria": [
+        "[AC-088] VIP 物流延迟在满 9 小时时预警，满 12 小时升级给在岗的物流售后专员或高级客服，工单不关闭。VIP 丢件在满 16 小时时预警，处理时限是 24 小时。VIP 地址异常在满 4.5 小时时预警，处理时限是 6 小时。这三张都不关闭。若 VIP 物流延迟已经写了补偿方案，满 12 小时还要同时升到在岗的客服主管或售后负责人，不能只停在一级，也不能变成无人认领。不涉及赔付时，一级后再过 2 小时仍未完成才升到二级；未满 2 小时不升",
+        "[AC-089] 不涉及赔付的 VIP 物流异常已经升到一级后，出现下列任一情况 → 立即升到在岗的客服主管或售后负责人，不等满 2 小时，工单不关闭：会话里已有威胁投诉、曝光或找消协；用户明确说不接受一级方案；一级处理人标明权限不够或需要主管审批；距离该单 VIP 处理时限已不足 2 小时"
+      ],
+      "technicalChecks": [
+        "三种 VIP 异常各看预警时间和一级升级对象；补偿方案与等待 2 小时各看二级。四种立即二级各一次，确认没有进入 2 小时等待。工单不关闭、处理人不空。",
+        "不得用 Mock 通过。"
+      ],
+      "dependencies": [
+        "T-035",
+        "T-042"
+      ],
+      "priority": 26,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-010 确认后自动分配、按紧急程度打标，并按类型计时"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "三、接口请求数据的类型选型 > 时效档（只转录 PRD，禁止改数字）"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 用户流程图：确认后状态、升级与关闭"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-05 管理端工单列表"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [],
+      "externalServices": [
+        "会员适配器",
+        "物流轨迹适配器"
+      ],
+      "retry_count": 0,
+      "notes": "主会话降级联调（无子代理）PASS 自验，非独立验收。Report .sdd/test-reports/test-T-051.md. probe PASS.",
+      "status": "passed"
+    },
+    {
+      "id": "T-052",
+      "title": "联调：退货开票联动与用户可见进度",
+      "type": "integration",
+      "description": "前端门禁通过后关闭 Mock，真实确认副作用 EXT-004/005 Mock 与 API-010 ticket_progress。验收 AC-070、071、075。无真实仓储/财务凭证时用适配器 Mock 构造接受/失败，不得把失败显示成已生成退货单或已开票。",
+      "source_feature": "F-008",
+      "acceptanceCriteria": [
+        "[AC-070] 确认一张退换货工单且仓储接受 → 工单上能看到已经发起退货；仓储不接受或暂时失败 → 坐席看到失败说明，看不到「已生成退货单」。开发票工单对财务开票做同样两类验证",
+        "[AC-071] 仓储或财务把处理结果回写后 → 坐席打开该工单能看到新的进度；原会话里同时出现一条用户能读到的进度说明",
+        "[AC-075] 已有一张带回写进度的退款相关工单，用户在原会话问「我的退款到哪了」 → 用户看到的回答与工单上的最新进度一致，坐席不需要先打开工单。没有这张工单时，回答不出现编造的到账进度"
+      ],
+      "technicalChecks": [
+        "退货和开票各做一次成功、一次失败。回写后分别打开工单和原会话。有工单和无工单各问一次进度。前端无 [Mock]。",
+        "已转人工问进度不进入 FAQ/AI。不得用前端 Mock 通过。"
+      ],
+      "dependencies": [
+        "T-035",
+        "T-041",
+        "T-032"
+      ],
+      "priority": 26,
+      "context_files": [
+        {
+          "path": "docs/PRD.md",
+          "section": "REQ-011 退货和开票联动，并把进度告诉用户"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > API-010 状态机"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计 > 技术时序：确认、联动与进度"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "六、接口失败异常设计 > 适配器"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-02 员工端"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计 > UI-03 客服端"
+        }
+      ],
+      "rules_files": [
+        "specification/default/frontend/acceptance.md",
+        "specification/default/frontend/api-client.md",
+        "specification/default/backend/workflow.md",
+        "specification/default/backend/api-design.md",
+        "specification/default/shared/env-policy.md",
+        "specification/default/shared/security.md"
+      ],
+      "write_scope": [
+        "backend/src/api/routes/ticket_queue.py",
+        "backend/src/services/assign.py",
+        "backend/tests/test_ticket_queue.py",
+        "frontend/src/components/agent/TicketWorkbench.tsx",
+        "frontend/src/pages/TicketListPage.tsx",
+        "frontend/src/services/ticketListService.ts",
+        "frontend/src/types/ticketList.ts",
+        "frontend/src/mocks/ticketList.ts"
+      ],
+      "externalServices": [
+        "仓储适配器",
+        "财务适配器"
+      ],
+      "retry_count": 1,
+      "notes": "曾 FAIL：坐席打开工单看不到进度，列表无 id，GET /api/tickets/{id} 为 405。Fix 01109886-c0da-474b-90a3-03df679b4d0f。复验 e3789cbd-2333-4d55-8f97-2228d495116d 2026-09-23 PASS：AC-070/071/075。报告 .sdd/test-reports/test-T-052.md。已沉淀「隔离 uvicorn 不热加载」。",
+      "status": "passed"
+    },
+    {
+      "id": "T-028",
+      "title": "刷新页面功能导航（确认后工单与管理端增量）",
+      "type": "delivery",
+      "description": "按 harness-core/protocols/project-delivery.md 从当前源码刷新 docs/project-console.html（建议 docs/project-map.json），覆盖本轮角色分权、知识可见范围/生效时间、工单四态六类、API-013～035、EXT-003～007、管理端模板与工单列表、退货开票进度。不改业务代码、不改原任务状态、不复用 T-014。DEL-001～005 为框架交付例外，不计入业务 AC。依赖本轮门禁之后的真实联调全部通过后再执行。",
+      "source_feature": "F-DELIVERY",
+      "acceptanceCriteria": [
+        "[DEL-001] 页面按实际页面/入口组织，功能卡片能导航与展开，桌面和窄屏无遮挡/整页溢出，不再展示旧六区管理看板。",
+        "[DEL-002] 每项功能说明触发、输入输出与带分支的前后端流程；接口 method/URL、请求响应字段及类型与代码对应，共享接口引用可到达。",
+        "[DEL-003] 核对关键算法的步骤、条件、参数单位/默认值/位置/影响、结果选择及异常；工具/Agent仅按实际存在的调用与观察循环呈现，不编造能力。",
+        "[DEL-004] 功能、接口和算法有可定位的实现来源及核对状态；设计、源码默认值、运行验证边界清晰。实际浏览器导航、展开、来源查看和路径复制/失败手选可用，无业务或付费调用。",
+        "[DEL-005] README 的刷新方式有效；隔离样例中源变更/缺失/解析错误明确反映，过期算法不继续标已核对；仅写导航产物，不改业务代码或原任务状态。"
+      ],
+      "technicalChecks": [
+        "浏览器检查页面导航、功能展开、接口跳转与路径复制、窄屏布局；客服端填单/知识/润色按实际页面组织，不以任务编号分组。",
+        "按源码核对工单异步抽取（D-006=B）、确认后不重抽（D-007=A）、v2.0 标签过滤、润色不写 messages、API-012 仍发出 content；参数默认值来自 config 定义而非猜测 .env。",
+        "百炼仅作为 httpx 外部调用呈现，不编造 OMS/Plugin/工单工具；隔离样例验证刷新与来源缺失提示。T-014 产物可作对照，本任务须按本轮源码重新核对。"
+      ],
+      "externalServices": [],
+      "dependencies": [
+        "T-025",
+        "T-026",
+        "T-027",
+        "T-035",
+        "T-036",
+        "T-037",
+        "T-038",
+        "T-039",
+        "T-040",
+        "T-041",
+        "T-042",
+        "T-043",
+        "T-044",
+        "T-045",
+        "T-046",
+        "T-047",
+        "T-048",
+        "T-049",
+        "T-050",
+        "T-051",
+        "T-052"
+      ],
+      "priority": 27,
+      "context_files": [
+        {
+          "path": ".sdd/project.json",
+          "section": "id"
+        },
+        {
+          "path": ".sdd/tasks.json",
+          "section": "tasks"
+        },
+        {
+          "path": "docs/PRD.md",
+          "section": "界面约定"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "二、前后端怎么分工，接口怎么拆 > 接口索引"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "五、接口逻辑算法设计"
+        },
+        {
+          "path": "docs/tech-spec.md",
+          "section": "七、项目本地层级设计"
+        },
+        {
+          "path": "docs/ui-style.md",
+          "section": "四、界面清单与页面设计"
+        },
+        {
+          "path": "frontend/src/pages/LoginPage.tsx",
+          "section": "LoginPage"
+        },
+        {
+          "path": "frontend/src/pages/EmployeeChatPage.tsx",
+          "section": "EmployeeChatPage"
+        },
+        {
+          "path": "frontend/src/pages/AgentInboxPage.tsx",
+          "section": "AgentInboxPage"
+        },
+        {
+          "path": "frontend/src/pages/KnowledgePage.tsx",
+          "section": "KnowledgePage"
+        },
+        {
+          "path": "frontend/src/pages/TicketListPage.tsx",
+          "section": "TicketListPage"
+        },
+        {
+          "path": "frontend/src/pages/TemplateAdminPage.tsx",
+          "section": "TemplateAdminPage"
+        },
+        {
+          "path": "frontend/src/services/",
+          "section": "API client"
+        },
+        {
+          "path": "backend/src/api/routes/sessions.py",
+          "section": "API-001 / API-002"
+        },
+        {
+          "path": "backend/src/api/routes/documents.py",
+          "section": "API-003～006"
+        },
+        {
+          "path": "backend/src/api/routes/conversations.py",
+          "section": "API-007～012、API-016、API-017、API-019"
+        },
+        {
+          "path": "backend/src/api/routes/tickets.py",
+          "section": "API-013～015、018"
+        },
+        {
+          "path": "backend/src/api/routes/ticket_queue.py",
+          "section": "API-020～023"
+        },
+        {
+          "path": "backend/src/api/routes/prompt_templates.py",
+          "section": "API-024～031、033"
+        },
+        {
+          "path": "backend/src/api/routes/evaluation_sets.py",
+          "section": "API-032"
+        },
+        {
+          "path": "backend/src/api/routes/workspace_settings.py",
+          "section": "API-034、035"
+        },
+        {
+          "path": "backend/src/services/ticket.py",
+          "section": "工单抽取与确认"
+        },
+        {
+          "path": "backend/src/services/assign.py",
+          "section": "分配与紧急程度"
+        },
+        {
+          "path": "backend/src/services/sla.py",
+          "section": "时效预警升级关闭"
+        },
+        {
+          "path": "backend/src/integrations/adapters/",
+          "section": "EXT-003～007"
+        },
+        {
+          "path": "backend/src/integrations/bailian.py",
+          "section": "EXT-001 / EXT-002"
+        }
+      ],
+      "rules_files": [],
+      "write_scope": [
+        "docs/project-console.html",
+        "docs/project-map.json",
+        "README.md"
+      ],
+      "status": "passed",
+      "retry_count": 0,
+      "notes": "主会话降级交付 PASS 自验，非独立验收。Report .sdd/test-reports/test-T-028.md. Browser DEL-001～005 PASS on 8767/CDP9570."
+    }
+  ]
+}

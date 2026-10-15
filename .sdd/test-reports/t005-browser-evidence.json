@@ -1,0 +1,1012 @@
+{
+  "mock": true,
+  "viewport": "1440x900",
+  "steps": [],
+  "wrongPassword": {
+    "pathname": "/login",
+    "formAlert": "[Mock] 用户名或密码错误",
+    "tokenPresent": false,
+    "pageHasMock": true,
+    "screenshot": "t005-wrong-password.png"
+  },
+  "employeeShell": {
+    "pathname": "/employee",
+    "title": "员工端",
+    "topbarUser": "已登录：[Mock] it-help",
+    "logoutText": "退出",
+    "nav": [
+      {
+        "text": "员工端",
+        "href": "/employee",
+        "ariaCurrent": "page",
+        "className": "active",
+        "active": true
+      },
+      {
+        "text": "客服端",
+        "href": "/agent",
+        "ariaCurrent": null,
+        "className": "",
+        "active": false
+      },
+      {
+        "text": "知识库",
+        "href": "/knowledge",
+        "ariaCurrent": null,
+        "className": "",
+        "active": false
+      }
+    ],
+    "activeNav": [
+      "员工端"
+    ],
+    "activeCount": 1,
+    "pageHasMock": true,
+    "layout": {
+      "topbarHeight": "56px",
+      "topbarTop": 0,
+      "topbarBottom": 56,
+      "sidebarFlex": "column",
+      "sidebarWidth": 220,
+      "sidebarHeight": 844,
+      "viewport": {
+        "w": 1440,
+        "h": 900
+      }
+    },
+    "screenshot": "t005-employee-shell.png"
+  },
+  "agentEmptyWait": {
+    "firstRowCount": 0,
+    "empty": [
+      "还没有需要人工处理的对话",
+      "还没有需要人工处理的对话"
+    ],
+    "rowCount": 0,
+    "demoAppeared": false,
+    "waitedMs": 3672,
+    "shell": {
+      "pathname": "/agent",
+      "title": "客服端",
+      "topbarUser": "已登录：[Mock] it-help",
+      "logoutText": "退出",
+      "nav": [
+        {
+          "text": "员工端",
+          "href": "/employee",
+          "ariaCurrent": null,
+          "className": "",
+          "active": false
+        },
+        {
+          "text": "客服端",
+          "href": "/agent",
+          "ariaCurrent": "page",
+          "className": "active",
+          "active": true
+        },
+        {
+          "text": "知识库",
+          "href": "/knowledge",
+          "ariaCurrent": null,
+          "className": "",
+          "active": false
+        }
+      ],
+      "activeNav": [
+        "客服端"
+      ],
+      "activeCount": 1,
+      "pageHasMock": true,
+      "layout": {
+        "topbarHeight": "56px",
+        "topbarTop": 0,
+        "topbarBottom": 56,
+        "sidebarFlex": "column",
+        "sidebarWidth": 220,
+        "sidebarHeight": 844,
+        "viewport": {
+          "w": 1440,
+          "h": 900
+        }
+      }
+    },
+    "screenshot": "t005-agent-empty.png"
+  },
+  "knowledgeShell": {
+    "pathname": "/knowledge",
+    "title": "知识库",
+    "topbarUser": "已登录：[Mock] it-help",
+    "logoutText": "退出",
+    "nav": [
+      {
+        "text": "员工端",
+        "href": "/employee",
+        "ariaCurrent": null,
+        "className": "",
+        "active": false
+      },
+      {
+        "text": "客服端",
+        "href": "/agent",
+        "ariaCurrent": null,
+        "className": "",
+        "active": false
+      },
+      {
+        "text": "知识库",
+        "href": "/knowledge",
+        "ariaCurrent": "page",
+        "className": "active",
+        "active": true
+      }
+    ],
+    "activeNav": [
+      "知识库"
+    ],
+    "activeCount": 1,
+    "pageHasMock": true,
+    "layout": {
+      "topbarHeight": "56px",
+      "topbarTop": 0,
+      "topbarBottom": 56,
+      "sidebarFlex": "column",
+      "sidebarWidth": 220,
+      "sidebarHeight": 844,
+      "viewport": {
+        "w": 1440,
+        "h": 900
+      }
+    }
+  },
+  "nonMd": {
+    "beforeCount": 1,
+    "afterCount": 1,
+    "uploadError": "[Mock] 请重新上传",
+    "filenames": [
+      "[Mock] vpn-faq.md"
+    ],
+    "screenshot": "t005-non-md.png"
+  },
+  "ingesting": {
+    "statuses": [
+      "入库中",
+      "已完成 · 4 块"
+    ],
+    "hasChunks": false,
+    "hasEditForm": false,
+    "saveButtons": [],
+    "screenshot": "t005-ingesting.png"
+  },
+  "leaveAndBack": {
+    "backMs": 39,
+    "statuses": [
+      "入库中",
+      "已完成 · 4 块"
+    ],
+    "hasChunks": false,
+    "hasEditForm": false,
+    "screenshot": "t005-ingesting-back.png"
+  },
+  "readyChunks": {
+    "statuses": [
+      "已完成 · 3 块",
+      "已完成 · 4 块"
+    ],
+    "chunkCount": 3,
+    "chunksReadonly": true,
+    "hasEditForm": true,
+    "screenshot": "t005-ready.png"
+  },
+  "branches": {
+    "vague": {
+      "tag": "反问",
+      "hasRewrite": true
+    },
+    "faq": {
+      "tag": "FAQ",
+      "text": "[Mock] 请检查是否在安全模式启动，并尝试用公司提供的安装包修复 Office。"
+    },
+    "talk": {
+      "tag": "闲聊"
+    },
+    "knowledge": {
+      "tag": "知识问答",
+      "text": "[Mock] 1. VPN：先确认账号未被锁定，再检查是否使用了过期的配置文件并重新导入。\n2. 打印机：请确认默认打印机、驱动和网络连通后再重试打印。"
+    },
+    "fallback": {
+      "tag": "兜底",
+      "text": "[Mock] 抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+    },
+    "conversationId": "b6cca0b4-62dd-49c5-abaa-8e94c2c722ab",
+    "screenshot": "t005-branches.png"
+  },
+  "afterHandoff": {
+    "statusText": "[Mock] 已转人工，等待客服",
+    "transferDisabled": true,
+    "conversationId": "b6cca0b4-62dd-49c5-abaa-8e94c2c722ab",
+    "otherBefore": 5,
+    "otherAfter": 5,
+    "lastEmployee": {
+      "side": "employee",
+      "tag": null,
+      "text": "[Mock] 转人工后再问 Outlook 打不开",
+      "rewrite": null
+    },
+    "lastOther": {
+      "side": "other",
+      "tag": "兜底",
+      "text": "[Mock] 抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "rewrite": null
+    },
+    "screenshot": "t005-after-handoff.png"
+  },
+  "agentSameSession": {
+    "rowCount": 1,
+    "rows": [
+      {
+        "title": "[Mock] 转人工后再问 Outlook 打不开",
+        "meta": "2026/9/13 00:41:01 · 已转人工",
+        "selected": true
+      }
+    ],
+    "hasRewrite": true,
+    "previewHasOutlook": true,
+    "messagesHaveRewrite": true,
+    "tags": [
+      null,
+      "反问",
+      null,
+      "FAQ",
+      null,
+      "闲聊",
+      null,
+      "知识",
+      null,
+      "兜底",
+      null,
+      "等待客服"
+    ],
+    "shell": {
+      "pathname": "/agent",
+      "title": "客服端",
+      "topbarUser": "已登录：[Mock] it-help",
+      "logoutText": "退出",
+      "nav": [
+        {
+          "text": "员工端",
+          "href": "/employee",
+          "ariaCurrent": null,
+          "className": "",
+          "active": false
+        },
+        {
+          "text": "客服端",
+          "href": "/agent",
+          "ariaCurrent": "page",
+          "className": "active",
+          "active": true
+        },
+        {
+          "text": "知识库",
+          "href": "/knowledge",
+          "ariaCurrent": null,
+          "className": "",
+          "active": false
+        }
+      ],
+      "activeNav": [
+        "客服端"
+      ],
+      "activeCount": 1,
+      "pageHasMock": true,
+      "layout": {
+        "topbarHeight": "56px",
+        "topbarTop": 0,
+        "topbarBottom": 56,
+        "sidebarFlex": "column",
+        "sidebarWidth": 220,
+        "sidebarHeight": 844,
+        "viewport": {
+          "w": 1440,
+          "h": 900
+        }
+      }
+    },
+    "screenshot": "t005-agent-same-session.png"
+  },
+  "agentReply": {
+    "agentBubbles": [
+      {
+        "tag": "客服",
+        "text": "[Mock] 已帮你报修，工单稍后代登",
+        "rewrite": null,
+        "user": false
+      }
+    ],
+    "screenshot": "t005-agent-reply.png"
+  },
+  "employeeSeesReply": {
+    "pollMs": 2,
+    "agentBubbles": [
+      {
+        "side": "other",
+        "tag": "客服",
+        "text": "[Mock] 已帮你报修，工单稍后代登",
+        "rewrite": null
+      }
+    ],
+    "statusText": "[Mock] 已转人工，等待客服",
+    "screenshot": "t005-employee-sees-reply.png"
+  },
+  "layout1440": {
+    "shell": {
+      "pathname": "/employee",
+      "title": "员工端",
+      "topbarUser": "已登录：[Mock] it-help",
+      "logoutText": "退出",
+      "nav": [
+        {
+          "text": "员工端",
+          "href": "/employee",
+          "ariaCurrent": "page",
+          "className": "active",
+          "active": true
+        },
+        {
+          "text": "客服端",
+          "href": "/agent",
+          "ariaCurrent": null,
+          "className": "",
+          "active": false
+        },
+        {
+          "text": "知识库",
+          "href": "/knowledge",
+          "ariaCurrent": null,
+          "className": "",
+          "active": false
+        }
+      ],
+      "activeNav": [
+        "员工端"
+      ],
+      "activeCount": 1,
+      "pageHasMock": true,
+      "layout": {
+        "topbarHeight": "56px",
+        "topbarTop": 0,
+        "topbarBottom": 56,
+        "sidebarFlex": "column",
+        "sidebarWidth": 220,
+        "sidebarHeight": 844,
+        "viewport": {
+          "w": 1440,
+          "h": 900
+        }
+      }
+    },
+    "chat": {
+      "pathname": "/employee",
+      "statusText": "[Mock] 已转人工，等待客服",
+      "transferText": "已转人工",
+      "transferDisabled": true,
+      "messageCount": 13,
+      "messages": [
+        {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 连不上",
+          "rewrite": "改写为：[Mock] 当前问法缺少系统或设备对象，需补充后才能检索"
+        },
+        {
+          "side": "other",
+          "tag": "反问",
+          "text": "[Mock] 请问出问题的是哪套系统或设备？例如 Outlook、VPN 还是电脑硬件。",
+          "rewrite": null
+        },
+        {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] Outlook 打不开",
+          "rewrite": "改写为：[Mock] Outlook 客户端无法启动的故障排查"
+        },
+        {
+          "side": "other",
+          "tag": "FAQ",
+          "text": "[Mock] 请检查是否在安全模式启动，并尝试用公司提供的安装包修复 Office。",
+          "rewrite": null
+        },
+        {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 你好",
+          "rewrite": "改写为：[Mock] 你好"
+        },
+        {
+          "side": "other",
+          "tag": "闲聊",
+          "text": "[Mock] 你好，我是内部 IT 助手，可以直接问具体系统或设备问题。",
+          "rewrite": null
+        },
+        {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] VPN连不上而且打印机无法使用",
+          "rewrite": "改写为：[Mock] VPN 连接失败与打印机无法使用"
+        },
+        {
+          "side": "other",
+          "tag": "知识问答",
+          "text": "[Mock] 1. VPN：先确认账号未被锁定，再检查是否使用了过期的配置文件并重新导入。\n2. 打印机：请确认默认打印机、驱动和网络连通后再重试打印。",
+          "rewrite": null
+        },
+        {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 我的工单进度怎么样了",
+          "rewrite": "改写为：[Mock] 我的工单进度怎么样了"
+        },
+        {
+          "side": "other",
+          "tag": "兜底",
+          "text": "[Mock] 抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+          "rewrite": null
+        },
+        {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 转人工后再问 Outlook 打不开",
+          "rewrite": null
+        },
+        {
+          "side": "other",
+          "tag": "客服",
+          "text": "[Mock] 已帮你报修，工单稍后代登",
+          "rewrite": null
+        },
+        {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。Outlook 相关说明请不要把顶栏挤出视口。",
+          "rewrite": null
+        }
+      ],
+      "lastEmployee": {
+        "side": "employee",
+        "tag": null,
+        "text": "[Mock] 这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。Outlook 相关说明请不要把顶栏挤出视口。",
+        "rewrite": null
+      },
+      "lastOther": {
+        "side": "other",
+        "tag": "客服",
+        "text": "[Mock] 已帮你报修，工单稍后代登",
+        "rewrite": null
+      },
+      "systemTags": [
+        "反问",
+        "FAQ",
+        "闲聊",
+        "知识问答",
+        "兜底",
+        "客服"
+      ],
+      "otherCount": 6,
+      "agentBubbles": [
+        {
+          "side": "other",
+          "tag": "客服",
+          "text": "[Mock] 已帮你报修，工单稍后代登",
+          "rewrite": null
+        }
+      ],
+      "conversationId": "b6cca0b4-62dd-49c5-abaa-8e94c2c722ab",
+      "storeKeys": [
+        "52db4c8f-47a0-420f-aa58-7949844d4a55",
+        "b6cca0b4-62dd-49c5-abaa-8e94c2c722ab"
+      ],
+      "pageHasMock": true,
+      "composer": {
+        "minHeight": "88px",
+        "pinGap": 0,
+        "flexShrink": "0",
+        "bottom": 900
+      },
+      "overlap": {
+        "topbarTop": 0,
+        "topbarBottom": 56,
+        "messagesTop": 121,
+        "messagesCoversTopbar": false,
+        "composerCoversTopbar": false
+      }
+    },
+    "screenshot": "t005-layout-1440.png"
+  },
+  "layout900Employee": {
+    "shell": {
+      "pathname": "/employee",
+      "title": "员工端",
+      "topbarUser": "已登录：[Mock] it-help",
+      "logoutText": "退出",
+      "nav": [
+        {
+          "text": "员工端",
+          "href": "/employee",
+          "ariaCurrent": "page",
+          "className": "active",
+          "active": true
+        },
+        {
+          "text": "客服端",
+          "href": "/agent",
+          "ariaCurrent": null,
+          "className": "",
+          "active": false
+        },
+        {
+          "text": "知识库",
+          "href": "/knowledge",
+          "ariaCurrent": null,
+          "className": "",
+          "active": false
+        }
+      ],
+      "activeNav": [
+        "员工端"
+      ],
+      "activeCount": 1,
+      "pageHasMock": true,
+      "layout": {
+        "topbarHeight": "56px",
+        "topbarTop": 0,
+        "topbarBottom": 56,
+        "sidebarFlex": "row",
+        "sidebarWidth": 900,
+        "sidebarHeight": 48,
+        "viewport": {
+          "w": 900,
+          "h": 900
+        }
+      }
+    },
+    "chat": {
+      "pathname": "/employee",
+      "statusText": "[Mock] 已转人工，等待客服",
+      "transferText": "已转人工",
+      "transferDisabled": true,
+      "messageCount": 13,
+      "messages": [
+        {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 连不上",
+          "rewrite": "改写为：[Mock] 当前问法缺少系统或设备对象，需补充后才能检索"
+        },
+        {
+          "side": "other",
+          "tag": "反问",
+          "text": "[Mock] 请问出问题的是哪套系统或设备？例如 Outlook、VPN 还是电脑硬件。",
+          "rewrite": null
+        },
+        {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] Outlook 打不开",
+          "rewrite": "改写为：[Mock] Outlook 客户端无法启动的故障排查"
+        },
+        {
+          "side": "other",
+          "tag": "FAQ",
+          "text": "[Mock] 请检查是否在安全模式启动，并尝试用公司提供的安装包修复 Office。",
+          "rewrite": null
+        },
+        {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 你好",
+          "rewrite": "改写为：[Mock] 你好"
+        },
+        {
+          "side": "other",
+          "tag": "闲聊",
+          "text": "[Mock] 你好，我是内部 IT 助手，可以直接问具体系统或设备问题。",
+          "rewrite": null
+        },
+        {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] VPN连不上而且打印机无法使用",
+          "rewrite": "改写为：[Mock] VPN 连接失败与打印机无法使用"
+        },
+        {
+          "side": "other",
+          "tag": "知识问答",
+          "text": "[Mock] 1. VPN：先确认账号未被锁定，再检查是否使用了过期的配置文件并重新导入。\n2. 打印机：请确认默认打印机、驱动和网络连通后再重试打印。",
+          "rewrite": null
+        },
+        {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 我的工单进度怎么样了",
+          "rewrite": "改写为：[Mock] 我的工单进度怎么样了"
+        },
+        {
+          "side": "other",
+          "tag": "兜底",
+          "text": "[Mock] 抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+          "rewrite": null
+        },
+        {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 转人工后再问 Outlook 打不开",
+          "rewrite": null
+        },
+        {
+          "side": "other",
+          "tag": "客服",
+          "text": "[Mock] 已帮你报修，工单稍后代登",
+          "rewrite": null
+        },
+        {
+          "side": "employee",
+          "tag": null,
+          "text": "[Mock] 这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。Outlook 相关说明请不要把顶栏挤出视口。",
+          "rewrite": null
+        }
+      ],
+      "lastEmployee": {
+        "side": "employee",
+        "tag": null,
+        "text": "[Mock] 这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。Outlook 相关说明请不要把顶栏挤出视口。",
+        "rewrite": null
+      },
+      "lastOther": {
+        "side": "other",
+        "tag": "客服",
+        "text": "[Mock] 已帮你报修，工单稍后代登",
+        "rewrite": null
+      },
+      "systemTags": [
+        "反问",
+        "FAQ",
+        "闲聊",
+        "知识问答",
+        "兜底",
+        "客服"
+      ],
+      "otherCount": 6,
+      "agentBubbles": [
+        {
+          "side": "other",
+          "tag": "客服",
+          "text": "[Mock] 已帮你报修，工单稍后代登",
+          "rewrite": null
+        }
+      ],
+      "conversationId": "b6cca0b4-62dd-49c5-abaa-8e94c2c722ab",
+      "storeKeys": [
+        "52db4c8f-47a0-420f-aa58-7949844d4a55",
+        "b6cca0b4-62dd-49c5-abaa-8e94c2c722ab"
+      ],
+      "pageHasMock": true,
+      "composer": {
+        "minHeight": "88px",
+        "pinGap": 0,
+        "flexShrink": "0",
+        "bottom": 900
+      },
+      "overlap": {
+        "topbarTop": 0,
+        "topbarBottom": 56,
+        "messagesTop": 169,
+        "messagesCoversTopbar": false,
+        "composerCoversTopbar": false
+      }
+    },
+    "screenshot": "t005-layout-900-employee.png"
+  },
+  "layout900Agent": {
+    "shell": {
+      "pathname": "/agent",
+      "title": "客服端",
+      "topbarUser": "已登录：[Mock] it-help",
+      "logoutText": "退出",
+      "nav": [
+        {
+          "text": "员工端",
+          "href": "/employee",
+          "ariaCurrent": null,
+          "className": "",
+          "active": false
+        },
+        {
+          "text": "客服端",
+          "href": "/agent",
+          "ariaCurrent": "page",
+          "className": "active",
+          "active": true
+        },
+        {
+          "text": "知识库",
+          "href": "/knowledge",
+          "ariaCurrent": null,
+          "className": "",
+          "active": false
+        }
+      ],
+      "activeNav": [
+        "客服端"
+      ],
+      "activeCount": 1,
+      "pageHasMock": true,
+      "layout": {
+        "topbarHeight": "56px",
+        "topbarTop": 0,
+        "topbarBottom": 56,
+        "sidebarFlex": "row",
+        "sidebarWidth": 900,
+        "sidebarHeight": 48,
+        "viewport": {
+          "w": 900,
+          "h": 900
+        }
+      }
+    },
+    "agent": {
+      "pathname": "/agent",
+      "empty": [],
+      "rowCount": 1,
+      "rows": [
+        {
+          "title": "[Mock] 这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的…",
+          "meta": "2026/9/13 00:41:01 · 已转人工",
+          "selected": true
+        }
+      ],
+      "messageCount": 15,
+      "messages": [
+        {
+          "tag": null,
+          "text": "[Mock] 连不上",
+          "rewrite": "改写为：[Mock] 当前问法缺少系统或设备对象，需补充后才能检索",
+          "user": true
+        },
+        {
+          "tag": "反问",
+          "text": "[Mock] 请问出问题的是哪套系统或设备？例如 Outlook、VPN 还是电脑硬件。",
+          "rewrite": null,
+          "user": false
+        },
+        {
+          "tag": null,
+          "text": "[Mock] Outlook 打不开",
+          "rewrite": "改写为：[Mock] Outlook 客户端无法启动的故障排查",
+          "user": true
+        },
+        {
+          "tag": "FAQ",
+          "text": "[Mock] 请检查是否在安全模式启动，并尝试用公司提供的安装包修复 Office。",
+          "rewrite": null,
+          "user": false
+        },
+        {
+          "tag": null,
+          "text": "[Mock] 你好",
+          "rewrite": "改写为：[Mock] 你好",
+          "user": true
+        },
+        {
+          "tag": "闲聊",
+          "text": "[Mock] 你好，我是内部 IT 助手，可以直接问具体系统或设备问题。",
+          "rewrite": null,
+          "user": false
+        },
+        {
+          "tag": null,
+          "text": "[Mock] VPN连不上而且打印机无法使用",
+          "rewrite": "改写为：[Mock] VPN 连接失败与打印机无法使用",
+          "user": true
+        },
+        {
+          "tag": "知识",
+          "text": "[Mock] 1. VPN：先确认账号未被锁定，再检查是否使用了过期的配置文件并重新导入。\n2. 打印机：请确认默认打印机、驱动和网络连通后再重试打印。",
+          "rewrite": null,
+          "user": false
+        },
+        {
+          "tag": null,
+          "text": "[Mock] 我的工单进度怎么样了",
+          "rewrite": "改写为：[Mock] 我的工单进度怎么样了",
+          "user": true
+        },
+        {
+          "tag": "兜底",
+          "text": "[Mock] 抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+          "rewrite": null,
+          "user": false
+        },
+        {
+          "tag": null,
+          "text": "[Mock] 转人工后再问 Outlook 打不开",
+          "rewrite": null,
+          "user": true
+        },
+        {
+          "tag": "等待客服",
+          "text": "[Mock] 已转交客服，请等待回复。",
+          "rewrite": null,
+          "user": false
+        },
+        {
+          "tag": "客服",
+          "text": "[Mock] 已帮你报修，工单稍后代登",
+          "rewrite": null,
+          "user": false
+        },
+        {
+          "tag": null,
+          "text": "[Mock] 这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。这是一条用于验证长消息滚动的测试内容。Outlook 相关说明请不要把顶栏挤出视口。",
+          "rewrite": null,
+          "user": true
+        },
+        {
+          "tag": "等待客服",
+          "text": "[Mock] 已转交客服，请等待回复。",
+          "rewrite": null,
+          "user": false
+        }
+      ],
+      "hasRewrite": true,
+      "agentBubbles": [
+        {
+          "tag": "客服",
+          "text": "[Mock] 已帮你报修，工单稍后代登",
+          "rewrite": null,
+          "user": false
+        }
+      ],
+      "textareaDisabled": false,
+      "replyDisabled": true,
+      "pageHasMock": true,
+      "composer": {
+        "minHeight": "88px",
+        "pinGap": 0,
+        "flexShrink": "0"
+      }
+    },
+    "screenshot": "t005-layout-900-agent.png"
+  },
+  "layout900Kb": {
+    "shell": {
+      "pathname": "/knowledge",
+      "title": "知识库",
+      "topbarUser": "已登录：[Mock] it-help",
+      "logoutText": "退出",
+      "nav": [
+        {
+          "text": "员工端",
+          "href": "/employee",
+          "ariaCurrent": null,
+          "className": "",
+          "active": false
+        },
+        {
+          "text": "客服端",
+          "href": "/agent",
+          "ariaCurrent": null,
+          "className": "",
+          "active": false
+        },
+        {
+          "text": "知识库",
+          "href": "/knowledge",
+          "ariaCurrent": "page",
+          "className": "active",
+          "active": true
+        }
+      ],
+      "activeNav": [
+        "知识库"
+      ],
+      "activeCount": 1,
+      "pageHasMock": true,
+      "layout": {
+        "topbarHeight": "56px",
+        "topbarTop": 0,
+        "topbarBottom": 56,
+        "sidebarFlex": "row",
+        "sidebarWidth": 900,
+        "sidebarHeight": 48,
+        "viewport": {
+          "w": 900,
+          "h": 900
+        }
+      }
+    },
+    "kb": {
+      "pathname": "/knowledge",
+      "rows": [
+        {
+          "filename": "[Mock] t005-crosspage.md",
+          "statusText": "已完成 · 3 块",
+          "selected": true
+        },
+        {
+          "filename": "[Mock] vpn-faq.md",
+          "statusText": "已完成 · 4 块",
+          "selected": false
+        }
+      ],
+      "rowCount": 2,
+      "filenames": [
+        "[Mock] t005-crosspage.md",
+        "[Mock] vpn-faq.md"
+      ],
+      "statuses": [
+        "已完成 · 3 块",
+        "已完成 · 4 块"
+      ],
+      "detailText": "[Mock] 按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 80 字，保留标题路径。 本篇共 3 块（只读）。\n\n分块 1 · [Mock] T005 跨页入库\n[Mock] T005 跨页入库\n分块 2 · [Mock] T005 跨页入库 / 第一节 VPN\n[Mock] T005 跨页入库 / 第一节 VPN\nVPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。VPN 连接说明。\n分块 3 · [Mock] T005 跨页入库 / 第二节 打印机\n[Mock] T005 跨页入库 / 第二节 打印机\n打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。打印机驱动安装。\n标签与 FAQ\n\n[Mock] 当前标签：网络与远程接入 · 故障与异常排查\n\n对象标签\n硬件设备\n软件与操作系统\n账号与身份认证\n网络与远程接入\n业务系统与共享资源\n诉求标签\n故障与异常排查\n报修与维护服务\n资源申请与变更\n权限开通与调整\n操作与配置指导\n制度与流程说明\n实体\n产品\n设备\n资源\n删除\n添加实体\nFAQ\n问法 1\n答案 1\n删除 FAQ\n添加 FAQ\n保存",
+      "hasChunks": true,
+      "chunkCount": 3,
+      "chunks": [
+        {
+          "meta": "分块 1 · [Mock] T005 跨页入库",
+          "hasInput": false,
+          "contentEditable": null
+        },
+        {
+          "meta": "分块 2 · [Mock] T005 跨页入库 / 第一节 VPN",
+          "hasInput": false,
+          "contentEditable": null
+        },
+        {
+          "meta": "分块 3 · [Mock] T005 跨页入库 / 第二节 打印机",
+          "hasInput": false,
+          "contentEditable": null
+        }
+      ],
+      "hasEditForm": true,
+      "saveButtons": [
+        "保存"
+      ],
+      "uploadError": "",
+      "pageHasMock": true
+    },
+    "screenshot": "t005-layout-900-knowledge.png"
+  },
+  "assertions": {
+    "wrongPasswordStays": true,
+    "wrongPasswordText": true,
+    "wrongPasswordMock": true,
+    "employeeTopbar": true,
+    "agentTopbar": true,
+    "knowledgeTopbar": true,
+    "navExclusiveEmployee": true,
+    "navExclusiveAgent": true,
+    "navExclusiveKnowledge": true,
+    "noTimedDemo": true,
+    "nonMdImmediate": true,
+    "nonMdMock": true,
+    "ingestingNoEdit": true,
+    "leaveStillIngesting": true,
+    "readyReadonly": true,
+    "vagueClarify": true,
+    "faqTag": true,
+    "talkTag": true,
+    "knowledgeTag": true,
+    "fallbackTag": true,
+    "noAutoAfterHandoff": true,
+    "agentShowsThisSession": true,
+    "employeeSeesAgentWithin3s": true,
+    "layout1440SidebarColumn": true,
+    "layout1440Pin": true,
+    "layout900SidebarRow": true,
+    "layout900Pin": true,
+    "mockOnPages": true,
+    "longSent": true
+  },
+  "failedAssertions": []
+}

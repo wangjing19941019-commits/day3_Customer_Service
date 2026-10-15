@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>页面功能导航 · 智能客服系统</title>
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --panel: #fff;
+      --ink: #1c2430;
+      --muted: #5b6573;
+      --line: #d9d2c5;
+      --accent: #2c5f7c;
+      --ok: #2f6b4f;
+      --warn: #8a6a12;
+      --err: #8f3a3a;
+      --chip: #eef3f6;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif; }
+    body { min-height: 100vh; overflow-x: hidden; }
+    a { color: var(--accent); }
+    h1, h2, h3, h4 { line-height: 1.25; }
+    h1 { font-size: 1.35rem; margin: 0 0 .35rem; }
+    h2 { font-size: 1.15rem; margin: 0 0 .5rem; }
+    h3 { font-size: 1.02rem; margin: 0 0 .4rem; }
+    p { margin: .35rem 0; }
+    code, .path { font-family: Consolas, "Sarasa Mono SC", monospace; font-size: .86em; word-break: break-all; }
+    .wrap { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 0; max-width: 1100px; margin: 0 auto; min-height: 100vh; }
+    nav {
+      border-right: 1px solid var(--line);
+      padding: 1rem .85rem 2rem;
+      background: #f8f5ee;
+      min-width: 0;
+    }
+    nav h1 { font-size: 1rem; }
+    nav .sub { color: var(--muted); font-size: .82rem; margin-bottom: .8rem; }
+    nav a {
+      display: block;
+      text-decoration: none;
+      color: var(--ink);
+      padding: .35rem .45rem;
+      border-radius: 6px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    nav a:hover, nav a:focus-visible { background: var(--chip); outline: none; }
+    nav .sec { font-size: .75rem; letter-spacing: .04em; color: var(--muted); margin: .75rem 0 .25rem; text-transform: none; }
+    main { padding: 1rem 1.1rem 3rem; min-width: 0; overflow-x: hidden; }
+    .banner {
+      padding: .65rem .8rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      margin-bottom: .8rem;
+    }
+    .banner.warn { border-color: #e2c36b; background: #fff7dc; }
+    .banner.err { border-color: #e0a3a3; background: #fdeeee; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 .8rem; }
+    button, .linkish {
+      font: inherit;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 6px;
+      padding: .28rem .55rem;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    button:hover, button:focus-visible { border-color: var(--accent); outline: 2px solid #b9d3e3; outline-offset: 1px; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: .85rem .95rem;
+      margin: 0 0 .85rem;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+    .meta { color: var(--muted); font-size: .88rem; }
+    .flow { list-style: none; padding: 0; margin: .4rem 0 0; }
+    .flow li {
+      border-left: 3px solid var(--line);
+      padding: .35rem 0 .35rem .7rem;
+      margin-bottom: .35rem;
+    }
+    .chip {
+      display: inline-block;
+      background: var(--chip);
+      border-radius: 999px;
+      padding: .05rem .5rem;
+      font-size: .78rem;
+      margin: 0 .25rem .25rem 0;
+    }
+    .chip.ok { background: #e5f4ea; color: var(--ok); }
+    .chip.warn { background: #fff3cc; color: var(--warn); }
+    .chip.err { background: #f8e0e0; color: var(--err); }
+    details { margin-top: .45rem; border-top: 1px dashed var(--line); padding-top: .45rem; }
+    summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+    .src {
+      display: flex; flex-wrap: wrap; align-items: center; gap: .35rem;
+      margin: .3rem 0; padding: .3rem 0;
+    }
+    .copy-fail {
+      width: min(100%, 420px);
+      font: inherit;
+      font-family: Consolas, monospace;
+      font-size: .86em;
+    }
+    .kv { margin: .2rem 0; }
+    .kv b { display: inline-block; min-width: 4.5rem; color: var(--muted); font-weight: 600; }
+    @media (max-width: 720px) {
+      .wrap { grid-template-columns: 1fr; }
+      nav { border-right: 0; border-bottom: 1px solid var(--line); padding-bottom: .6rem; }
+      nav a { display: inline-block; margin: 0 .15rem .2rem 0; }
+      main { padding: .8rem .75rem 2.5rem; }
+      h1 { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav id="nav" aria-label="页面与功能"></nav>
+    <main>
+      <div id="status"></div>
+      <div class="toolbar" id="toolbar"></div>
+      <div id="app">正在载入页面功能说明…</div>
+    </main>
+  </div>
+  <script type="application/json" id="embedded-map">{"schema":"sdd-project-map/v1","project":{"id":"Customer_Service","name":"智能客服系统","generated_at":"2026-10-10T17:27:30+08:00","algorithms_checked_at":"2026-10-10T17:27:30+08:00","refresh_note":"T-028 刷新：覆盖工单列表/模板管理、API-013～035、EXT-003～007、分配与 SLA。算法 implementation_status=源码已核对 必须以 baseline_fingerprints 与 files 当前指纹一致为准。"},"warnings":["本交付只静态核对源码与配置定义（AppSettings / .env.example），未读真实 .env。","T-028 在 T-050/T-051/T-052 等联调已通过后刷新导航；本交付本身不重跑业务联调。","角色分权由 roleNav + RequireRole 实现；一线坐席无 /tickets、/templates 入口。","敏感配置 secret_key / shared_password / llm_api_key 无源码默认值，本页不展示。","列表 GET /api/tickets 会触发 SLA scan；会话 GET ticket 不扫描。"],"files":{"backend/.env.example":{"sha256":"sha256:c0b47a42f0a3e3d41fd7d08507a1bf7ebd805bac0c8a7de9216db94fbea78cf0","bytes":3058},"backend/src/api/deps.py":{"sha256":"sha256:defde0da3ab7858997bc62b8c7d93710a6c2944ae3b8c5b055277261b69aa473","bytes":1627},"backend/src/api/routes/conversations.py":{"sha256":"sha256:694b9ab81f3e03f7c90b125e142d28d35edbdcd5a7596709b1e9e05ce71e60ee","bytes":7846},"backend/src/api/routes/documents.py":{"sha256":"sha256:a3719bd26c2758bb139c2d677d8380e3ca78ca24b2cfcc2b435a89a555db05ca","bytes":4253},"backend/src/api/routes/evaluation_sets.py":{"sha256":"sha256:50d4128118f8dc346f70a71f21232681eabfe093a92f3be925508f94616783b7","bytes":1600},"backend/src/api/routes/prompt_templates.py":{"sha256":"sha256:2875e549047d25f15a2a0f292e6b3c0c171e4abd4160ca15585352d892dcffd8","bytes":6206},"backend/src/api/routes/sessions.py":{"sha256":"sha256:e898c8dcc3647a2484e79b0125b4f18a8ed4ef4bc4ff0fc489f48b8d2cef1d76","bytes":2306},"backend/src/api/routes/ticket_queue.py":{"sha256":"sha256:cc156e10c4a27d6efd43f8de03d37c65519aa259776fa73c3b48b5864ffa6607","bytes":5738},"backend/src/api/routes/tickets.py":{"sha256":"sha256:dc04c27c1a707f6092af29be5d5b8394f12bda36438e1995895612af9deb4a5b","bytes":4237},"backend/src/api/routes/workspace_settings.py":{"sha256":"sha256:f72fba2cd2f41d94b41e86de2c9c6aced3b3e3e5bb8597197135ad48eac30fc8","bytes":1240},"backend/src/db/session.py":{"sha256":"sha256:a8e2f831cd7ba9dcbae97ecec459dd7154cc5bc218628d76da13eb5189c5dd93","bytes":4541},"backend/src/integrations/adapters/finance.py":{"sha256":"sha256:38d604f53165a4f897caf6e990dde98a7c32f0522eb8b3b88f09513ae8140f43","bytes":6155},"backend/src/integrations/adapters/logistics.py":{"sha256":"sha256:2df7afd6bf22fabb4113064112c14b0424d26d6017f4f0ac98615fb05eae0bb8","bytes":5253},"backend/src/integrations/adapters/member.py":{"sha256":"sha256:6a0248298c424c26b0eae069847c1b9832f9eced344917822d6bdd913e182595","bytes":5537},"backend/src/integrations/adapters/order.py":{"sha256":"sha256:fd9a3079e8580b46922f1dfd00c20c8462fdf39ee476ab458a66fc05cb8ef300","bytes":4910},"backend/src/integrations/adapters/warehouse.py":{"sha256":"sha256:770a804a5908fc8629ee916c6ff2f73444ad5288659dfd0cea86379ae9c18b64","bytes":6208},"backend/src/integrations/bailian.py":{"sha256":"sha256:1ec82ba80700407ccc12f1542ed2c64ed3ed0eff70a89309d6d7494b0eea7f7e","bytes":6401},"backend/src/main.py":{"sha256":"sha256:a5eb1e8c34e697f3e5506d6edce48a047a97cd7964aed2080fb73e75d4036ba6","bytes":3405},"backend/src/models/conversation.py":{"sha256":"sha256:8ed3c7004c338767e5cc02d3812f28d85b4f315ae7eed31a290078628ef7eeba","bytes":1697},"backend/src/models/document.py":{"sha256":"sha256:fd9b6607e1ed35a3e9acd18479d67dc244b62cbb462e5a249587a854a33a4129","bytes":2945},"backend/src/models/message.py":{"sha256":"sha256:20da0c17eb657d36531330a4948640e49b283fd82a753bd265056401252e27fc","bytes":732},"backend/src/models/session.py":{"sha256":"sha256:6f8fffe6213bf6f157d6d76babefd71da9f9c96fdf17cd4408eb4de7ceeff02d","bytes":645},"backend/src/prompts/answer.md":{"sha256":"sha256:2c78416b092f0a8e0d3d371a32b9712ce64a37cf0032cbc9555e0afd5fa48315","bytes":866},"backend/src/prompts/ingest_tag_faq.md":{"sha256":"sha256:c6c9ab62083b061714c5c4c0cfdd19080c4d0e330853e3ff16dd83fc7aa54243","bytes":1901},"backend/src/prompts/rewrite_classify.md":{"sha256":"sha256:32173b93df21002ddb1cb496bd87295e1ceaeef2f7f64ce2effce288260c9ba4","bytes":3274},"backend/src/prompts/small_talk.md":{"sha256":"sha256:39e7af50048ecd83445a37581a0eb133c6d3b6611fb35eee9c0a7b2b64c01809","bytes":451},"backend/src/repositories/conversation_repository.py":{"sha256":"sha256:536db1e0e28d86d3cf2404a1df2cf1cb20ee086e77e993a01d1e53c76d6837d5","bytes":4792},"backend/src/repositories/document_repository.py":{"sha256":"sha256:8865b21842de8a6debefe90f437c7a1d0cc7eddde63f2e391e044895eccc3c90","bytes":5871},"backend/src/resources/tag-taxonomy.json":{"sha256":"sha256:985c9b6ecf17fb3032766ca40fb0ce80d3ce202e00e96e7c29d90ecee1d7b85e","bytes":6588},"backend/src/services/assign.py":{"sha256":"sha256:9dc038bbad75ea299e4c4291b89ab8993699b4f0969fc31d29d3c2c5defd3ed7","bytes":24453},"backend/src/services/auth.py":{"sha256":"sha256:3dbad830a8a4f8d4f897ee2ca5ec48658508fb11d2788c4bb39e1f091fe2e99f","bytes":4909},"backend/src/services/fulfillment.py":{"sha256":"sha256:b95a5d2004a2184a45e731a01a7393f915a228bcae0475989f1b0a99fec23a61","bytes":8411},"backend/src/services/handoff.py":{"sha256":"sha256:ae4dfe71de820f5c3c8525011a1daf017bb8f0b5658a37e06e8cd7153816c995","bytes":5470},"backend/src/services/ingest.py":{"sha256":"sha256:4c9aa8b3b3121ae0821f5f7aa5c537a54b17c412b453672f7691f9768404de4b","bytes":25030},"backend/src/services/polish.py":{"sha256":"sha256:9c4e1fd8779dc33f798aef3daf6abab72d123c7dbce0be9c5e06843f24e6b145","bytes":14413},"backend/src/services/qa.py":{"sha256":"sha256:3dc30c1e55914fb46d60c624c97f8290cb21535c27533921b306ce62aa82222d","bytes":22099},"backend/src/services/sla.py":{"sha256":"sha256:a32693c317ef16f6f9ef04331156b213bae646bde74946d9c433ea6f1bda4167","bytes":20592},"backend/src/services/templates.py":{"sha256":"sha256:d7b291cbfe3728321cf1c3e1a798019796864762f634b25f5237ef5e3a9e4068","bytes":35986},"backend/src/services/ticket.py":{"sha256":"sha256:c7e76cd0fffbbbd14eaf9f0c8aeb716c4d9e3eea43cf69a65a0d2a3460ac7e6d","bytes":41224},"backend/src/utils/text.py":{"sha256":"sha256:70da8a8a418bb6db838a1c87b704a7a6bc2a29b6be5f68cf987406dc41161489","bytes":9348},"docs/PRD.md":{"sha256":"sha256:979f95732fa12415367b34073934047ef3feddae8484d257cea8693702a89eb3","bytes":82076},"docs/tech-spec.md":{"sha256":"sha256:3886660e8a196af383213b180f96cda971ba0cb4a3efad40e3761dd44b0ba8b0","bytes":76502},"frontend/.env.example":{"sha256":"sha256:e48886f43391db4bd741be3b6b2dcf4a39fedc2ded02dd90a05a757bedba158c","bytes":497},"frontend/src/components/AppShell.tsx":{"sha256":"sha256:4e164884ef4e9a04e207630924e253e81cffd5a93c00ba7078caab4433fa04bb","bytes":1625},"frontend/src/components/agent/TicketWorkbench.tsx":{"sha256":"sha256:94434af31f5298603f0c4adcc71f8564b03b7504f79f8e630ccbfea5041ef9d7","bytes":12472},"frontend/src/components/chat/ChatComposer.tsx":{"sha256":"sha256:9f0fb908a462dc287fd3dec80f03235baa3b7f9614c4883f33d5662e434b424c","bytes":1318},"frontend/src/components/chat/ChatStatusBar.tsx":{"sha256":"sha256:c54f9a20838d51b37c466e98eb2286f9858c9759cd5c997d10a4a88bb32ccf49","bytes":759},"frontend/src/components/knowledge/IngestStatusFilter.tsx":{"sha256":"sha256:3e7ee88eaa9919aafbf68a2e655449de2c6b12ef355448dd1e19914944a077f4","bytes":1200},"frontend/src/hooks/useAgentInbox.ts":{"sha256":"sha256:93ecc8a45bbe4e99ce33aa089b0c81efeb30c73fe4ade8d5a0e8b343de200ed1","bytes":7310},"frontend/src/hooks/useConversation.ts":{"sha256":"sha256:bf34da9de0fb654dd4fd31de7d31d447e01d80adb86f76c65421cf409b669e3b","bytes":3817},"frontend/src/hooks/useDocuments.ts":{"sha256":"sha256:6caecd30c27a74005e4f7178c6a7cf0e1ca3de03e43d544bbd44959f9dfd94e5","bytes":8113},"frontend/src/hooks/useTicketList.ts":{"sha256":"sha256:4c8a3c8517af5a06247f2b7143896f239803548520c907d7f43bcf99b280f0ae","bytes":5557},"frontend/src/mocks/documents.ts":{"sha256":"sha256:0bcb36a36413e6ce26337db57760c2845016f03ee12b24573002ebd9b32e5e9d","bytes":29182},"frontend/src/pages/AgentInboxPage.tsx":{"sha256":"sha256:80683bfb6a0947ff4cc41d71407809bb830918fc08432b8de32ad1c78c1abfeb","bytes":11025},"frontend/src/pages/EmployeeChatPage.tsx":{"sha256":"sha256:e863d070be5b2a6146c2011e2d4bda24148235306fd0ac78aed9e38059d1a441","bytes":1450},"frontend/src/pages/KnowledgePage.tsx":{"sha256":"sha256:56f02a4e8e4f4a3ca0c2d7da27917f88d67a8f2ccccc1284c90492a856fdb229","bytes":18485},"frontend/src/pages/LoginPage.tsx":{"sha256":"sha256:d4d487a663bc3f2dfdc3d238b920bb11c841c603991fa2841ff71543f025742d","bytes":3477},"frontend/src/pages/TemplateAdminPage.tsx":{"sha256":"sha256:bb0c15a4ccb527abf237faed80458ca32160707dedc558022cfe3db62fd55a17","bytes":20162},"frontend/src/pages/TicketListPage.tsx":{"sha256":"sha256:6cdc349eb780d450d9c50055256b629d80eafc4c6a03db30a77b5e442989240a","bytes":17919},"frontend/src/router/index.tsx":{"sha256":"sha256:ac3d5f4ab8542d70a1e212f6ab61b7c3c3e0e3796c5982fc4761537a8a112482","bytes":2782},"frontend/src/services/agentInboxService.ts":{"sha256":"sha256:5b433ca9967a875a12208573fbbc0771d713b38ad0c51601cb36129edcc6bde0","bytes":3750},"frontend/src/services/api.ts":{"sha256":"sha256:098eac22a95125cf429a227d448c36a85facb1f364fc072a0a1e6c9f1300e58d","bytes":1017},"frontend/src/services/authService.ts":{"sha256":"sha256:3ea9e233edc1f4956bba201bde7fe33391a29819c9518b87a12ab5d165643c8f","bytes":1587},"frontend/src/services/conversationService.ts":{"sha256":"sha256:9e3301b2bb1f054b93c834d1219b8934d718f628cc29cb254f15c0ff391c2a70","bytes":3878},"frontend/src/services/documentService.ts":{"sha256":"sha256:7e1d96e1808adddff154eaf025460f73b36dbef97229b75927d4b5dfdd8b740f","bytes":4620},"frontend/src/services/ticketListService.ts":{"sha256":"sha256:59d65537ecb410781134a5c4dfbba996d100d22b0c7b1c34f722252dcc092f19","bytes":5896},"frontend/src/services/ticketService.ts":{"sha256":"sha256:1820630390bfecf8314bdbb72eaf75d07819e778351d3835b965236982f91419","bytes":2779},"frontend/src/stores/AuthProvider.tsx":{"sha256":"sha256:54c7f9072d1438705bbed8e91d3536ea30c0f7175f10a7eb60f7d3f0f14666e3","bytes":2401},"frontend/src/stores/roleNav.ts":{"sha256":"sha256:67f5020e5109696ae3fe59fb0f2cf126eeaf136ff19bc42f82434a38484978fb","bytes":1792},"frontend/src/stores/useAuth.ts":{"sha256":"sha256:b9b6db413c6c69034c08bbd4f8d03d2cd93acc2ca2e9ba820a9cd9fddd32bfd7","bytes":303},"frontend/src/utils/authStorage.ts":{"sha256":"sha256:afc5c3114c36f7b96551445a3e12baebf99d63b2de31fb1bcd3b02ff2e6f2ca8","bytes":356},"frontend/src/utils/mockFlag.ts":{"sha256":"sha256:ed50e99695b16badbe0ef1ce831bdee3b5cc9d26b7ec1f105ee7bbfd7638c299","bytes":333},"frontend/vite.config.ts":{"sha256":"sha256:4e4ce09442b95e959ced06bf1d97ed277ea703b660af24712825513697c28f56","bytes":668}},"pages":[{"id":"page-login","name":"登录","route":"/login","purpose":"未登录访客输入账号。成功后按角色进入默认首页（员工/坐席/管理等）；失败留在本页。已登录访问本页会按角色跳转。","implementation_status":"源码已核对","features":["feat-login","feat-restore"],"sources":[{"path":"frontend/src/pages/LoginPage.tsx","symbol":"LoginPage"},{"path":"frontend/src/router/index.tsx","symbol":"AppRoutes"}]},{"id":"page-employee","name":"员工端","route":"/employee","purpose":"已登录员工在本标签页会话里提问、看反问/FAQ/闲聊/知识/兜底/客服回复，并在未转人工时点「转人工」。会话 id 记在 sessionStorage 键 conversation_id。","implementation_status":"源码已核对","features":["feat-ask","feat-handoff","feat-logout"],"sources":[{"path":"frontend/src/pages/EmployeeChatPage.tsx","symbol":"EmployeeChatPage"},{"path":"frontend/src/hooks/useConversation.ts","symbol":"useConversation"},{"path":"frontend/src/components/AppShell.tsx","symbol":"AppShell"}]},{"id":"page-agent","name":"客服端","route":"/agent","purpose":"左侧已转人工会话；右侧对话、知识推送、润色与工单填单确认（TicketWorkbench）。顶栏按角色导航；退出见 AppShell。","implementation_status":"源码已核对","features":["feat-agent-inbox","feat-ticket-workbench","feat-polish"],"sources":[{"path":"frontend/src/pages/AgentInboxPage.tsx","symbol":"AgentInboxPage"},{"path":"frontend/src/hooks/useAgentInbox.ts","symbol":"useAgentInbox"}]},{"id":"page-knowledge","name":"知识库","route":"/knowledge","purpose":"知识库上传、可见范围与生效时间；入库完成后可编辑元数据。按角色控制入口。","implementation_status":"源码已核对","features":["feat-kb-ingest","feat-kb-edit"],"sources":[{"path":"frontend/src/pages/KnowledgePage.tsx","symbol":"KnowledgePage"},{"path":"frontend/src/hooks/useDocuments.ts","symbol":"useDocuments"}]},{"id":"page-tickets","name":"工单列表","route":"/tickets","purpose":"管理端/售后角色按类型、状态、紧急程度、订单号、用户、工单号、时间筛选工单；点行查看只读进度与挂起/完成/关闭/紧急程度上调；一线坐席无入口。","implementation_status":"源码已核对","features":["feat-ticket-list","feat-ticket-actions"],"sources":[{"path":"frontend/src/pages/TicketListPage.tsx","symbol":"TicketListPage"},{"path":"frontend/src/hooks/useTicketList.ts","symbol":"useTicketList"},{"path":"frontend/src/router/index.tsx","symbol":"AppRoutes"},{"path":"frontend/src/stores/roleNav.ts","symbol":"allowedRolesForPath"}]},{"id":"page-templates","name":"模板管理","route":"/templates","purpose":"管理员维护提示模板版本、预览占位、灰度与回滚、评测集导入与合规告警；可读写金额线。坐席无入口。","implementation_status":"源码已核对","features":["feat-template-admin","feat-eval-gray","feat-amount-threshold"],"sources":[{"path":"frontend/src/pages/TemplateAdminPage.tsx","symbol":"TemplateAdminPage"},{"path":"frontend/src/services/templateAdminService.ts","symbol":"templateAdminService"},{"path":"frontend/src/stores/roleNav.ts","symbol":"allowedRolesForPath"}]}],"features":[{"id":"feat-login","name":"提交账号登录","page_id":"page-login","trigger":"在登录卡填写用户名和密码后点「登录」。","input":"username、password（前端先 trim；空值本页拦截，不发请求）。","output":"成功：JWT 写入 localStorage 键 access_token，进入 /employee，顶栏「已登录：用户名」。失败：留在 /login，表单下方失败说明；Mock 开启时文案带 [Mock]。","api_ids":["api-001"],"module_ids":["mod-auth","mod-axios"],"implementation_status":"源码已核对","design_diff":"PRD/tech-spec 演示账号 it-help；密码只存在配置定义，本导航不写出。","sources":[{"path":"frontend/src/pages/LoginPage.tsx","symbol":"onSubmit"},{"path":"frontend/src/stores/AuthProvider.tsx","symbol":"login"},{"path":"frontend/src/services/authService.ts","symbol":"createSession"},{"path":"backend/src/api/routes/sessions.py","symbol":"login"}],"flow":[{"step":"1","actor":"访客","action":"打开 /login，看到「当前未登录」","data":"无 Token 时 AuthProvider 状态 anonymous","branch":"已登录则 LoginPage Navigate 到 /employee。"},{"step":"2","actor":"前端 LoginPage","action":"校验非空后调用 login(username, password)","data":"JSON {username, password}","branch":"空用户名「请输入用户名」；空密码「请输入密码」；不发 HTTP。"},{"step":"3","actor":"前端 authService","action":"POST sessions（相对 VITE_API_BASE_URL）","data":"无 Authorization。Mock 开则走 mockAdapter。","branch":"成功 unwrap data；失败抛 envelope.error。"},{"step":"4","actor":"后端 login","action":"authenticate + create_access_token","data":"bcrypt 核验；JWT HS256，exp=现在+jwt_expire_minutes","branch":"无共享账号且配置无密码 → 500 服务暂时不可用；错账号/错密码 → 401 用户名或密码错误，不区分哪一项；空字段 400。"},{"step":"5","actor":"前端 AuthProvider","action":"setAccessToken 并 Navigate /employee","data":"access_token 存 localStorage","branch":"无独立登出接口。"}]},{"id":"feat-restore","name":"刷新恢复登录态","page_id":"page-login","trigger":"打开站点或刷新；localStorage 已有 access_token。","input":"Authorization: Bearer <jwt>。","output":"有效：保持已登录，受保护路由可进。无效/过期：清 token，回到 /login。","api_ids":["api-002"],"module_ids":["mod-auth","mod-axios"],"implementation_status":"源码已核对","sources":[{"path":"frontend/src/stores/AuthProvider.tsx","symbol":"restore"},{"path":"frontend/src/services/authService.ts","symbol":"fetchCurrentSession"},{"path":"backend/src/api/routes/sessions.py","symbol":"current_session"},{"path":"backend/src/api/deps.py","symbol":"get_current_user"}],"flow":[{"step":"1","actor":"前端 AuthProvider","action":"启动时读 access_token","data":"localStorage 键 access_token","branch":"无 token → anonymous，不请求 API-002。"},{"step":"2","actor":"前端","action":"GET sessions/current","data":"Bearer JWT","branch":"401 拦截器清 token 并 emitAuthUnauthorized。"},{"step":"3","actor":"后端 get_current_user","action":"解码 JWT 并查用户","data":"sub=username","branch":"缺头/解码失败/用户不存在 → 401 请先登录。"},{"step":"4","actor":"前端 RequireAuth","action":"未登录访问 /employee /agent /knowledge 转到 /login","data":"无","branch":"loading 时显示「正在恢复登录状态…」。"}]},{"id":"feat-logout","name":"顶栏退出","page_id":"page-employee","trigger":"已登录顶栏点「退出」。","input":"无请求体。","output":"丢弃 JWT，回到 /login，显示当前未登录。","api_ids":[],"module_ids":["mod-axios"],"implementation_status":"源码已核对","design_diff":"tech-spec：无独立登出接口。源码一致，仅前端 clearAccessToken。","sources":[{"path":"frontend/src/components/AppShell.tsx","symbol":"onLogout"},{"path":"frontend/src/stores/AuthProvider.tsx","symbol":"logout"},{"path":"frontend/src/utils/authStorage.ts","symbol":"clearAccessToken"}],"flow":[{"step":"1","actor":"已登录用户","action":"点退出","data":"无 HTTP","branch":"员工端/客服端/知识库共用 AppShell。"},{"step":"2","actor":"前端","action":"logout + navigate /login","data":"删除 access_token","branch":"后端会话不主动作废，靠 JWT 过期与后续 401。"}]},{"id":"feat-ask","name":"员工提问（状态机）","page_id":"page-employee","trigger":"输入区输入后点「发送」或 Enter（Shift+Enter 换行）。","input":"消息正文 1～4000 字；本标签页 conversation_id。","output":"一条系统回复：clarification / faq / small_talk / knowledge / fallback；已转人工则为 waiting_for_agent（连发不重复刷屏）。员工消息可见 rewritten_content。失败：「服务暂时不可用，请稍后重试。」（502）。","api_ids":["api-007","api-009","api-010"],"module_ids":["mod-qa","mod-bailian-chat","mod-bailian-embed","mod-cosine"],"implementation_status":"源码已核对","sources":[{"path":"frontend/src/hooks/useConversation.ts","symbol":"loadOrCreate / send"},{"path":"frontend/src/services/conversationService.ts","symbol":"createConversation / sendEmployeeMessage"},{"path":"backend/src/services/qa.py","symbol":"QaService.post_message"}],"flow":[{"step":"1","actor":"前端 useConversation","action":"读 sessionStorage conversation_id；有则 GET 详情，404 则 POST 创建","data":"API-007/009","branch":"关标签页后新开会话（D-001）。"},{"step":"2","actor":"员工","action":"发送正文","data":"POST .../messages {content}，timeout 60000ms","branch":"空串不发送；sending 中忽略。"},{"step":"3","actor":"后端 QaService","action":"保存员工消息后走状态机","data":"见 alg-qa-state","branch":"handed_off 不调 LLM/FAQ/向量；bot 才改写分类。"},{"step":"4","actor":"前端 MessageList","action":"渲染整轮 conversation + reply","data":"kind 标签；员工气泡展示改写","branch":"已转人工后约 3 秒轮询 API-009 看客服回复。"}]},{"id":"feat-handoff","name":"员工转人工","page_id":"page-employee","trigger":"状态栏点「转人工」（未转接时可点）。","input":"当前 conversation_id。","output":"会话 status=handed_off；按钮变为「已转人工」并禁用；之后员工再发消息不再自动回答。","api_ids":["api-011"],"module_ids":["mod-handoff"],"implementation_status":"源码已核对","sources":[{"path":"frontend/src/components/chat/ChatStatusBar.tsx","symbol":"ChatStatusBar"},{"path":"frontend/src/hooks/useConversation.ts","symbol":"transfer"},{"path":"backend/src/services/handoff.py","symbol":"HandoffService.transfer"}],"flow":[{"step":"1","actor":"员工","action":"点转人工","data":"POST .../transfer，无 body","branch":"已 handed_off 时按钮 disabled，不发请求。"},{"step":"2","actor":"后端","action":"mark_handed_off","data":"只改 status 与 updated_at","branch":"已是 handed_off 则幂等返回同一会话。"},{"step":"3","actor":"前端","action":"刷新会话并开始轮询详情","data":"VITE_POLL_INTERVAL_MS 默认 3000","branch":"发送中暂停覆盖轮询结果。"}]},{"id":"feat-agent-inbox","name":"客服查看已转接会话并回复","page_id":"page-agent","trigger":"进入 /agent；点左侧会话；在底部输入回复。","input":"列表 page=1 page_size=20；回复 content 1～4000 字。","output":"左侧仅 handed_off；空则「还没有需要人工处理的对话」。回复后右侧出现 kind=agent 消息。对 bot 会话调回复会 409。","api_ids":["api-008","api-009","api-012"],"module_ids":["mod-handoff"],"implementation_status":"源码已核对","sources":[{"path":"frontend/src/hooks/useAgentInbox.ts","symbol":"useAgentInbox"},{"path":"frontend/src/services/agentInboxService.ts","symbol":"fetchHandedOffConversations / sendAgentReply"},{"path":"backend/src/api/routes/conversations.py","symbol":"list_handed_off_conversations / create_agent_reply"}],"flow":[{"step":"1","actor":"前端","action":"定时 GET /api/conversations","data":"仅 handed_off，updated_at 降序","branch":"默认选中第一项或保持当前项。"},{"step":"2","actor":"前端","action":"GET 会话详情","data":"含改写记录","branch":"发送中不刷新详情。"},{"step":"3","actor":"客服","action":"POST .../replies {content}","data":"不经 LLM","branch":"status!=handed_off → 409 会话尚未转人工，无法以客服身份回复。"}]},{"id":"feat-kb-ingest","name":"上传入库与列表筛选","page_id":"page-knowledge","trigger":"选择文件点「上传」；或改「全部/入库中/已完成/请重新上传」。","input":"原文件 .md/.txt/.pdf；列表 page=1 page_size=20；可选 ingest_status。","output":"立刻一条 ingesting（HTTP 202）；非法扩展名/空文件/抽不出文字的 PDF 立刻「请重新上传」且列表无新行。后台先转 Markdown 再切块。筛空文案「当前没有该状态的文档」。","api_ids":["api-003","api-004"],"module_ids":["mod-ingest","mod-chunk","mod-bailian-chat","mod-bailian-embed"],"implementation_status":"源码已核对","sources":[{"path":"frontend/src/hooks/useDocuments.ts","symbol":"uploadFile / setIngestFilter"},{"path":"frontend/src/services/documentService.ts","symbol":"uploadDocument / listDocuments"},{"path":"backend/src/services/ingest.py","symbol":"accept_upload / run_ingest_job"}],"flow":[{"step":"1","actor":"前端","action":"multipart POST /api/documents","data":"字段名 file；原文件名","branch":"未选文件本页「请选择文件」。当前筛选为 ready/failed 时上传成功后切到全部。"},{"step":"2","actor":"后端 accept_upload","action":"校验后缀/大小/可读后落盘并建 ingesting 行，BackgroundTasks 投递 run_ingest_job","data":"立刻返回 DocumentPublic","branch":"失败 400 请重新上传，不建行。客户端断开不影响后台。"},{"step":"3","actor":"后台 run_ingest_job","action":"先 convert_file_to_markdown，再 chunk_markdown(800,160)，再打标/嵌入","data":"见 alg-chunk、alg-ingest","branch":"任一步失败 mark_failed+删临时文件；无 Key 亦失败。"},{"step":"4","actor":"前端","action":"GET 列表，存在 ingesting 时按 3 秒轮询","data":"query ingest_status 仅 ingesting|ready|failed；不传=全部","branch":"ready/failed 筛选不为进度轮询。"}]},{"id":"feat-kb-edit","name":"分块预览与改标签/FAQ","page_id":"page-knowledge","trigger":"在列表点选已完成文档；改标签/FAQ 后点「保存」。","input":"document_id；可选 object_types、request_types、entities、faqs。","output":"只读分块（position、heading_path、content）+ 切块说明。保存后立即用于后续提问。入库中/失败不可改。","api_ids":["api-005","api-006"],"module_ids":["mod-ingest","mod-bailian-embed"],"implementation_status":"源码已核对","sources":[{"path":"frontend/src/pages/KnowledgePage.tsx","symbol":"onSave"},{"path":"backend/src/services/ingest.py","symbol":"get_document / update_document"}],"flow":[{"step":"1","actor":"前端","action":"GET /api/documents/{id}","data":"ready 才有 chunks/faqs；否则 chunks=[]","branch":"ingesting 提示完成后才能改；failed 显示请重新上传。"},{"step":"2","actor":"用户","action":"PATCH 标签与 FAQ","data":"改标签不重切不重嵌入；FAQ 问法变化才重新 embeddings","branch":"ingesting → 409 文档仍在入库中；failed → 409 请重新上传；标签不在体系内 400；嵌入失败 502。"}]},{"id":"feat-ticket-workbench","name":"客服填单确认工单","page_id":"page-agent","trigger":"在已转人工会话中选择工单类型与业务线，补全字段后点确认。","input":"ticket_type、business_line、字段值；费用争议需图片附件。","output":"确认后生成 ticket_no、紧急程度、队列与 SLA；退换货/开票触发仓储或财务联动进度。","api_ids":["api-013","api-014","api-015","api-018"],"module_ids":["mod-ticket","mod-assign","mod-fulfillment","mod-adapters"],"implementation_status":"源码已核对","design_diff":"抽取为异步（D-006=B）；确认后不因员工续聊自动重抽（D-007=A）。","sources":[{"path":"frontend/src/components/agent/TicketWorkbench.tsx","symbol":"TicketWorkbench"},{"path":"frontend/src/services/ticketService.ts","symbol":"confirmTicket"},{"path":"backend/src/api/routes/tickets.py","symbol":"confirm_ticket"},{"path":"backend/src/services/ticket.py","symbol":"confirm"}],"flow":[{"step":"1","actor":"坐席","action":"PATCH 会话工单字段并等待抽取 ready","data":"API-014 fields / extract_status","branch":"缺失必填或费用无附件 → can_confirm=false"},{"step":"2","actor":"后端","action":"POST confirm：落 ticket_no、分配、SLA，副作用写进度","data":"API-015；AssignService + SlaService + fulfillment","branch":"VIP/高风险改队列与角色；失败进度不显示已生成退货单/已开票"}]},{"id":"feat-polish","name":"坐席润色与合规","page_id":"page-agent","trigger":"在客服端输入草稿后请求润色，再选择发出。","input":"草稿 content、会话上下文、绑定模板版本。","output":"润色稿与合规拦截说明；发出走 API-012，去向记 adopted/modified。","api_ids":["api-016","api-017","api-012"],"module_ids":["mod-polish","mod-bailian-chat"],"implementation_status":"源码已核对","design_diff":"润色结果不写 messages；发出仍提交 content。","sources":[{"path":"backend/src/services/polish.py","symbol":"polish"},{"path":"backend/src/api/routes/conversations.py","symbol":"polish_reply"}],"flow":[{"step":"1","actor":"前端","action":"POST polish","data":"草稿与模板占位","branch":"合规失败返回拦截原因，不可直接采用违规稿"},{"step":"2","actor":"坐席","action":"确认后 POST replies 发出","data":"API-012 content","branch":"按发出内容相对润色稿记 adopted/modified"}]},{"id":"feat-ticket-list","name":"筛选与浏览工单列表","page_id":"page-tickets","trigger":"有权限角色打开 /tickets，设置筛选条件后点筛选或点状态快捷按钮。","input":"ticket_type/status/urgency/order_no/user_query/ticket_no/time_from/time_to。","output":"分页列表：工单号、类型、紧急程度、状态、处理人、更新时间；VIP 浅底、高风险 Danger 字色。","api_ids":["api-020"],"module_ids":["mod-assign","mod-sla"],"implementation_status":"源码已核对","design_diff":"列表 GET 会触发 SlaService.scan。","sources":[{"path":"frontend/src/pages/TicketListPage.tsx","symbol":"TicketListPage"},{"path":"backend/src/api/routes/ticket_queue.py","symbol":"list_tickets"},{"path":"backend/src/services/assign.py","symbol":"list_tickets"}],"flow":[{"step":"1","actor":"前端","action":"GET /api/tickets","data":"查询参数与分页","branch":"员工角色 403；draft 不出现"},{"step":"2","actor":"后端","action":"先 scan SLA 再过滤排序","data":"fields_json._meta.sla / urgency / queue","branch":"筛选项为空表示不限"}]},{"id":"feat-ticket-actions","name":"挂起完成关闭与紧急程度上调","page_id":"page-tickets","trigger":"选中工单后点挂起/完成/关闭，或上调 VIP/高风险；主管可审批下调。","input":"status、hold_reason、urgency、urgency-approvals.approved。","output":"状态与处理人即时更新；高风险立即改派高级售后；下调高风险须主管同意。","api_ids":["api-021","api-022","api-023"],"module_ids":["mod-assign"],"implementation_status":"源码已核对","design_diff":null,"sources":[{"path":"frontend/src/hooks/useTicketList.ts","symbol":"patchSelected"},{"path":"backend/src/api/routes/ticket_queue.py","symbol":"patch_ticket"},{"path":"backend/src/services/assign.py","symbol":"patch_ticket"}],"flow":[{"step":"1","actor":"处理人","action":"PATCH /api/tickets/{id}","data":"status/hold_reason 或 urgency","branch":"一线下调高风险 → 409，需 API-023"},{"step":"2","actor":"主管","action":"POST urgency-approvals","data":"approved + target_urgency","branch":"同意后回普通队列"}]},{"id":"feat-template-admin","name":"保存模板版本与预览","page_id":"page-templates","trigger":"管理员编辑正文后保存新版本，或预览占位替换。","input":"模板正文、change_summary；预览用演示字段。","output":"新 version/editor/edited_at；预览只替换占位、不发回复。","api_ids":["api-024","api-025","api-026","api-027","api-028"],"module_ids":["mod-templates"],"implementation_status":"源码已核对","design_diff":null,"sources":[{"path":"frontend/src/pages/TemplateAdminPage.tsx","symbol":"TemplateAdminPage"},{"path":"backend/src/api/routes/prompt_templates.py","symbol":"save_template"},{"path":"backend/src/services/templates.py","symbol":"save"}],"flow":[{"step":"1","actor":"管理员","action":"PATCH 保存","data":"产生新版本元数据","branch":"坐席 403"},{"step":"2","actor":"管理员","action":"POST preview","data":"本地占位替换","branch":"不调用发出坐席回复路径"}]},{"id":"feat-eval-gray","name":"评测集与灰度回滚","page_id":"page-templates","trigger":"导入评测集后发布灰度，或回滚到稳定版。","input":"评测集文件；gray_percent（默认约 5%）。","output":"item_count≥5000 才可灰度；指标分稳定/灰度；回滚后新会话用稳定版。","api_ids":["api-029","api-030","api-031","api-032","api-032a","api-033"],"module_ids":["mod-templates"],"implementation_status":"源码已核对","design_diff":"另有 GET /api/evaluation-sets/current（api-032a）供管理端读当前条数。","sources":[{"path":"backend/src/api/routes/evaluation_sets.py","symbol":"import_evaluation_set"},{"path":"backend/src/api/routes/prompt_templates.py","symbol":"release_gray"},{"path":"backend/src/services/templates.py","symbol":"metrics"}],"flow":[{"step":"1","actor":"管理员","action":"导入评测集","data":"item_count","branch":"<5000 灰度 409"},{"step":"2","actor":"系统","action":"按会话桶绑定稳定/灰度版并汇总指标","data":"采纳/修改/抽取准确率/拦截率","branch":"无样本前端展示「暂无数据」"}]},{"id":"feat-amount-threshold","name":"大额订单金额线","page_id":"page-templates","trigger":"管理员在工作区设置读写 high_risk_amount_threshold。","input":"金额阈值或 null。","output":"未配置时不因金额单独升高风险。","api_ids":["api-034","api-035"],"module_ids":["mod-assign"],"implementation_status":"源码已核对","design_diff":null,"sources":[{"path":"backend/src/api/routes/workspace_settings.py","symbol":"patch_settings"},{"path":"backend/src/services/assign.py","symbol":"compute_urgency"}],"flow":[{"step":"1","actor":"管理员","action":"PATCH workspace-settings","data":"high_risk_amount_threshold","branch":"坐席写 403；主管只读 GET"}]}],"apis":[{"id":"api-001","name":"登录","method":"POST","url":"/api/sessions","user_path":true,"request":{"path_params":[],"query":[],"headers":"无需 Token；Content-Type application/json","body":"SessionCreate：username string 必填非空；password string 必填非空（strip）"},"response":{"success_http":"200","success_shape":"JSON 信封，data 为 SessionPublic","success_fields":[{"name":"data.access_token","type":"string","note":"JWT，本页不展示取值"},{"name":"data.token_type","type":"string","value":"bearer"},{"name":"data.username","type":"string"}],"process_down":"后端未启动时前端连不上；不是登录校验失败。"},"algorithm":"alg-login","module_ids":["mod-auth"],"implementation_status":"源码已核对","runtime_verification":"本交付未启动登录联调、未读真实密码。失败：400 请输入用户名和密码；401 用户名或密码错误；共享账号未初始化 500 服务暂时不可用。","sources":[{"path":"backend/src/api/routes/sessions.py","symbol":"login"},{"path":"backend/src/models/session.py","symbol":"SessionCreate / SessionPublic"},{"path":"frontend/src/services/authService.ts","symbol":"createSession"}]},{"id":"api-002","name":"恢复登录态","method":"GET","url":"/api/sessions/current","user_path":true,"request":{"path_params":[],"query":[],"headers":"Authorization: Bearer <jwt>","body":"无"},"response":{"success_http":"200","success_shape":"JSON 信封，data.username","success_fields":[{"name":"data.username","type":"string"}],"process_down":"无 token 时前端不调用。"},"algorithm":"alg-login","module_ids":["mod-auth"],"implementation_status":"源码已核对","runtime_verification":"401 请先登录。本交付未跑真实恢复。","sources":[{"path":"backend/src/api/routes/sessions.py","symbol":"current_session"},{"path":"backend/src/api/deps.py","symbol":"get_current_user"}]},{"id":"api-003","name":"上传并受理后台入库","method":"POST","url":"/api/documents","user_path":true,"request":{"path_params":[],"query":[],"headers":"Bearer JWT；multipart/form-data，字段 file","body":"原文件字节；扩展名须 .md / .txt / .pdf"},"response":{"success_http":"202","success_shape":"JSON 信封，data 为 DocumentPublic，ingest_status=ingesting，chunks=[]","success_fields":[{"name":"data.id","type":"string uuid"},{"name":"data.filename","type":"string","note":"用户原名"},{"name":"data.ingest_status","type":"string","value":"ingesting"},{"name":"data.chunk_count","type":"int","value":"0（未 ready）"}],"process_down":"受理成功后后台继续；无 Key 或转换失败稍后变为 failed。"},"algorithm":"alg-ingest","module_ids":["mod-ingest","mod-chunk"],"implementation_status":"源码已核对","design_diff":"tech-spec 建议 Axios 15000ms；源码沿用 api.ts 默认 10000ms。","runtime_verification":"本交付未上传真实文件。400 请重新上传 VALIDATION_ERROR。","sources":[{"path":"backend/src/api/routes/documents.py","symbol":"upload_document"},{"path":"backend/src/services/ingest.py","symbol":"accept_upload / run_ingest_job"}]},{"id":"api-004","name":"知识库文档列表","method":"GET","url":"/api/documents","user_path":true,"request":{"path_params":[],"query":[{"name":"page","type":"int","note":"默认 1，ge=1"},{"name":"page_size","type":"int","note":"默认 20，1～100"},{"name":"ingest_status","type":"string|省略","note":"仅 ingesting|ready|failed；不传不过滤"}],"headers":"Bearer JWT","body":"无"},"response":{"success_http":"200","success_shape":"分页信封 PaginatedResponse[DocumentListItem[]]，按 updated_at 降序","success_fields":[{"name":"data[].filename","type":"string"},{"name":"data[].ingest_status","type":"ingesting|ready|failed"},{"name":"data[].updated_at","type":"datetime ISO"},{"name":"pagination.total_items","type":"int","note":"过滤后总数"}]},"algorithm":"alg-stale-ingest","module_ids":["mod-ingest"],"implementation_status":"源码已核对","runtime_verification":"非法 ingest_status → 400 入库状态筛选无效 VALIDATION_ERROR。本交付未查库。","sources":[{"path":"backend/src/api/routes/documents.py","symbol":"list_documents"},{"path":"backend/src/models/document.py","symbol":"parse_ingest_status_query"},{"path":"backend/src/repositories/document_repository.py","symbol":"list_page"}]},{"id":"api-005","name":"文档详情与分块预览","method":"GET","url":"/api/documents/{document_id}","user_path":true,"request":{"path_params":[{"name":"document_id","type":"string"}],"query":[],"headers":"Bearer JWT","body":"无"},"response":{"success_http":"200","success_shape":"JSON，data 为 DocumentPublic","success_fields":[{"name":"data.chunks[].position","type":"int","note":"ready 才有；否则 []"},{"name":"data.chunks[].heading_path","type":"string","note":"无标题则为空串"},{"name":"data.chunks[].content","type":"string"},{"name":"data.faqs","type":"FaqItem[]","note":"仅 ready"}]},"algorithm":"alg-chunk","module_ids":["mod-ingest"],"implementation_status":"源码已核对","runtime_verification":"404 文档不存在。本交付未读上传内容。","sources":[{"path":"backend/src/api/routes/documents.py","symbol":"get_document"},{"path":"backend/src/services/ingest.py","symbol":"to_document_public"}]},{"id":"api-006","name":"修改标签与 FAQ","method":"PATCH","url":"/api/documents/{document_id}","user_path":true,"request":{"path_params":[{"name":"document_id","type":"string"}],"query":[],"headers":"Bearer JWT；application/json","body":"DocumentUpdate：object_types / request_types / entities / faqs 均可选"},"response":{"success_http":"200","success_shape":"JSON，data 为更新后 DocumentPublic；分块正文不变","success_fields":[{"name":"data.object_types","type":"string[]"},{"name":"data.faqs","type":"FaqItem[]"}]},"algorithm":"alg-ingest","module_ids":["mod-ingest","mod-bailian-embed"],"implementation_status":"源码已核对","runtime_verification":"ingesting 409；failed 409；体系外标签 400；百炼嵌入失败 502。本交付未保存。","sources":[{"path":"backend/src/api/routes/documents.py","symbol":"update_document"},{"path":"backend/src/services/ingest.py","symbol":"update_document / _build_replaced_faqs"}]},{"id":"api-007","name":"创建员工会话","method":"POST","url":"/api/conversations","user_path":true,"request":{"path_params":[],"query":[],"headers":"Bearer JWT","body":"无"},"response":{"success_http":"200","success_shape":"JSON，data 为 ConversationPublic，status=bot，messages=[]","success_fields":[{"name":"data.id","type":"string"},{"name":"data.status","type":"string","value":"bot"},{"name":"data.clarification_round","type":"int","value":"0"}]},"algorithm":"alg-handoff","module_ids":["mod-handoff"],"implementation_status":"源码已核对","runtime_verification":"本交付未创建会话。","sources":[{"path":"backend/src/api/routes/conversations.py","symbol":"create_conversation"},{"path":"backend/src/services/handoff.py","symbol":"create_conversation"}]},{"id":"api-008","name":"已转人工会话列表","method":"GET","url":"/api/conversations","user_path":true,"request":{"path_params":[],"query":[{"name":"page","type":"int","note":"默认 1"},{"name":"page_size","type":"int","note":"默认 20"}],"headers":"Bearer JWT","body":"无"},"response":{"success_http":"200","success_shape":"分页信封，仅 status=handed_off，updated_at 降序","success_fields":[{"name":"data[].id","type":"string"},{"name":"data[].preview","type":"string","note":"最近非 waiting 消息"},{"name":"data[].waiting_for_agent","type":"boolean"}]},"algorithm":"alg-handoff","module_ids":["mod-handoff"],"implementation_status":"源码已核对","runtime_verification":"bot 会话不会出现。本交付未拉列表。","sources":[{"path":"backend/src/api/routes/conversations.py","symbol":"list_handed_off_conversations"},{"path":"backend/src/repositories/conversation_repository.py","symbol":"list_handed_off"}]},{"id":"api-009","name":"会话详情","method":"GET","url":"/api/conversations/{conversation_id}","user_path":true,"request":{"path_params":[{"name":"conversation_id","type":"string"}],"query":[],"headers":"Bearer JWT","body":"无"},"response":{"success_http":"200","success_shape":"JSON，含全部消息及 rewritten_content","success_fields":[{"name":"data.messages[].kind","type":"MessageKind"},{"name":"data.messages[].rewritten_content","type":"string|null"},{"name":"data.status","type":"bot|handed_off"}]},"algorithm":"alg-handoff","module_ids":["mod-handoff"],"implementation_status":"源码已核对","runtime_verification":"404 会话不存在。","sources":[{"path":"backend/src/api/routes/conversations.py","symbol":"get_conversation"}]},{"id":"api-010","name":"员工发消息","method":"POST","url":"/api/conversations/{conversation_id}/messages","user_path":true,"request":{"path_params":[{"name":"conversation_id","type":"string"}],"query":[],"headers":"Bearer JWT；application/json","body":"MessageCreate.content string 1～4000，strip 后非空"},"response":{"success_http":"200","success_shape":"JSON，data.conversation + data.reply（MessagePublic）","success_fields":[{"name":"data.reply.kind","type":"clarification|faq|small_talk|knowledge|fallback|waiting_for_agent"},{"name":"data.reply.content","type":"string"},{"name":"data.conversation.clarification_round","type":"int"}]},"algorithm":"alg-qa-state","module_ids":["mod-qa","mod-bailian-chat","mod-bailian-embed"],"implementation_status":"源码已核对","runtime_verification":"改写/生成/嵌入失败 → 502 服务暂时不可用，请稍后重试。本交付未调百炼。","sources":[{"path":"backend/src/api/routes/conversations.py","symbol":"create_employee_message"},{"path":"backend/src/services/qa.py","symbol":"QaService.post_message"},{"path":"frontend/src/services/conversationService.ts","symbol":"sendEmployeeMessage"}]},{"id":"api-011","name":"转人工","method":"POST","url":"/api/conversations/{conversation_id}/transfer","user_path":true,"request":{"path_params":[{"name":"conversation_id","type":"string"}],"query":[],"headers":"Bearer JWT","body":"无"},"response":{"success_http":"200","success_shape":"JSON，data.status=handed_off","success_fields":[{"name":"data.status","type":"string","value":"handed_off"}]},"algorithm":"alg-handoff","module_ids":["mod-handoff"],"implementation_status":"源码已核对","runtime_verification":"幂等。404 会话不存在。不经 AI。","sources":[{"path":"backend/src/api/routes/conversations.py","symbol":"transfer_conversation"},{"path":"backend/src/services/handoff.py","symbol":"transfer"}]},{"id":"api-012","name":"客服回复","method":"POST","url":"/api/conversations/{conversation_id}/replies","user_path":true,"request":{"path_params":[{"name":"conversation_id","type":"string"}],"query":[],"headers":"Bearer JWT；application/json","body":"AgentReplyCreate.content 1～4000"},"response":{"success_http":"200","success_shape":"JSON，data.conversation + data.reply（kind=agent）","success_fields":[{"name":"data.reply.role","type":"string","value":"agent"},{"name":"data.reply.kind","type":"string","value":"agent"}]},"algorithm":"alg-handoff","module_ids":["mod-handoff"],"implementation_status":"源码已核对","runtime_verification":"未转接 409。不经 AI。","sources":[{"path":"backend/src/api/routes/conversations.py","symbol":"create_agent_reply"},{"path":"backend/src/services/handoff.py","symbol":"agent_reply"}]},{"id":"ext-001","name":"百炼 Chat Completions（内部）","method":"POST","url":"{llm_base_url}/chat/completions","user_path":false,"request":{"path_params":[],"query":[],"headers":"Authorization Bearer <llm_api_key>（密钥不展示）；Content-Type application/json","body":"model、messages、temperature；json_object 时 response_format={type:json_object}"},"response":{"success_http":"200","success_shape":"JSON，读取 choices[0].message.content 字符串","success_fields":[{"name":"choices[0].message.content","type":"string"}],"process_down":"超时/429 按 llm_max_retries 再试；其它 ≥400 立即失败。"},"algorithm":"alg-qa-state","module_ids":["mod-bailian-chat"],"implementation_status":"源码已核对","runtime_verification":"本交付未调用。被入库打标、改写分类、闲聊、知识回答使用。不是 Agent 工具。","sources":[{"path":"backend/src/integrations/bailian.py","symbol":"BailianClient.chat_completions"}]},{"id":"ext-002","name":"百炼 Embeddings（内部）","method":"POST","url":"{llm_base_url}/embeddings","user_path":false,"request":{"path_params":[],"query":[],"headers":"Authorization Bearer <llm_api_key>（密钥不展示）","body":"model、input 批次、dimensions、encoding_format=float；每批 embedding_batch_size 默认 10"},"response":{"success_http":"200","success_shape":"JSON data[].embedding float[]，按下标写回","success_fields":[{"name":"data[].embedding","type":"float[]"},{"name":"data[].index","type":"int"}]},"algorithm":"alg-cosine-faq","module_ids":["mod-bailian-embed"],"implementation_status":"源码已核对","runtime_verification":"本交付未调用。用于分块/FAQ/查询向量。","sources":[{"path":"backend/src/integrations/bailian.py","symbol":"BailianClient.embeddings"}]},{"id":"api-013","name":"读取会话工单","method":"GET","url":"/api/conversations/{conversation_id}/ticket","user_path":true,"request":{"path_params":["conversation_id"],"query":[],"headers":"Authorization Bearer","body":"无"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"TicketPublic","note":"含 fields/progress/sla/hold_reason/order_no"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-ticket-extract","module_ids":["mod-ticket"],"implementation_status":"源码已核对","runtime_verification":"联调 T-046/T-050 已真实调用；本交付未再打业务口。","sources":[{"path":"backend/src/api/routes/tickets.py","symbol":"get_ticket"}]},{"id":"api-014","name":"更新会话工单字段","method":"PATCH","url":"/api/conversations/{conversation_id}/ticket","user_path":true,"request":{"path_params":["conversation_id"],"query":[],"headers":"Authorization Bearer","body":"ticket_type / business_line / fields"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data.extract_status","type":"string"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-ticket-extract","module_ids":["mod-ticket"],"implementation_status":"源码已核对","runtime_verification":"字段枚举非法 → 400 工单字段无效。","sources":[{"path":"backend/src/api/routes/tickets.py","symbol":"patch_ticket"}]},{"id":"api-015","name":"确认工单","method":"POST","url":"/api/conversations/{conversation_id}/ticket/confirm","user_path":true,"request":{"path_params":["conversation_id"],"query":[],"headers":"Authorization Bearer","body":"无"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data.ticket_no","type":"string"},{"name":"data.urgency","type":"string"},{"name":"data.assigned_display","type":"string"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-assign-sla","module_ids":["mod-ticket","mod-assign","mod-sla","mod-fulfillment"],"implementation_status":"源码已核对","runtime_verification":"T-050/T-051/T-052 已真实确认。","sources":[{"path":"backend/src/api/routes/tickets.py","symbol":"confirm_ticket"}]},{"id":"api-018","name":"工单附件上传","method":"POST","url":"/api/conversations/{conversation_id}/ticket/attachments","user_path":true,"request":{"path_params":["conversation_id"],"query":[],"headers":"Authorization Bearer","body":"multipart file"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data.attachments","type":"array"}],"process_down":"后端未启动时前端连不上。"},"algorithm":null,"module_ids":["mod-ticket"],"implementation_status":"源码已核对","runtime_verification":"费用争议缺图不可确认。","sources":[{"path":"backend/src/api/routes/tickets.py","symbol":"upload_attachment"}]},{"id":"api-016","name":"知识推送","method":"GET","url":"/api/conversations/{conversation_id}/knowledge","user_path":true,"request":{"path_params":["conversation_id"],"query":[],"headers":"Authorization Bearer","body":"无"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"array","note":"坐席可见片段"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-retrieve","module_ids":["mod-qa"],"implementation_status":"源码已核对","runtime_verification":"T-047 已真实推送。","sources":[{"path":"backend/src/api/routes/conversations.py","symbol":"list_knowledge"}]},{"id":"api-017","name":"润色","method":"POST","url":"/api/conversations/{conversation_id}/polish","user_path":true,"request":{"path_params":["conversation_id"],"query":[],"headers":"Authorization Bearer","body":"content string"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data.polished","type":"string"},{"name":"data.blocked","type":"bool"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-polish","module_ids":["mod-polish","mod-bailian-chat"],"implementation_status":"源码已核对","runtime_verification":"T-047/T-049 真实百炼润色。","sources":[{"path":"backend/src/api/routes/conversations.py","symbol":"polish_reply"}]},{"id":"api-020","name":"工单列表","method":"GET","url":"/api/tickets","user_path":true,"request":{"path_params":[],"query":[],"headers":"Authorization Bearer","body":"query: type/status/urgency/order_no/user_query/ticket_no/time_from/time_to/page"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data[]","type":"TicketListItem"},{"name":"pagination","type":"object"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-assign-sla","module_ids":["mod-assign","mod-sla"],"implementation_status":"源码已核对","runtime_verification":"T-050 浏览器真实列表。","sources":[{"path":"backend/src/api/routes/ticket_queue.py","symbol":"list_tickets"}]},{"id":"api-021","name":"认领工单","method":"POST","url":"/api/tickets/{ticket_id}/claim","user_path":true,"request":{"path_params":["ticket_id"],"query":[],"headers":"Authorization Bearer","body":"无"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data.assigned_user_id","type":"int"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-assign-sla","module_ids":["mod-assign"],"implementation_status":"源码已核对","runtime_verification":"专员不能认领高风险。","sources":[{"path":"backend/src/api/routes/ticket_queue.py","symbol":"claim_ticket"}]},{"id":"api-022","name":"更新工单状态/紧急程度","method":"PATCH","url":"/api/tickets/{ticket_id}","user_path":true,"request":{"path_params":["ticket_id"],"query":[],"headers":"Authorization Bearer","body":"status / hold_reason / urgency"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data.status","type":"string"},{"name":"data.hold_reason","type":"string|null"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-assign-sla","module_ids":["mod-assign"],"implementation_status":"源码已核对","runtime_verification":"T-050 UI 挂起/完成/关闭/上调。","sources":[{"path":"backend/src/api/routes/ticket_queue.py","symbol":"patch_ticket"}]},{"id":"api-023","name":"紧急程度审批","method":"POST","url":"/api/tickets/{ticket_id}/urgency-approvals","user_path":true,"request":{"path_params":["ticket_id"],"query":[],"headers":"Authorization Bearer","body":"approved bool；target_urgency"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data.urgency","type":"string"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-assign-sla","module_ids":["mod-assign"],"implementation_status":"源码已核对","runtime_verification":"T-050 主管同意后变普通。","sources":[{"path":"backend/src/api/routes/ticket_queue.py","symbol":"approve_urgency"}]},{"id":"api-024","name":"模板列表","method":"GET","url":"/api/prompt-templates","user_path":true,"request":{"path_params":[],"query":[],"headers":"Authorization Bearer","body":"见 PromptTemplate / EvaluationSet / WorkspaceSettings 模型"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"object"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-templates","module_ids":["mod-templates"],"implementation_status":"源码已核对","runtime_verification":"T-049 管理端真实联调覆盖模板/评测/灰度；金额线见 T-044/T-050。","sources":[{"path":"backend/src/api/routes/prompt_templates.py","symbol":"模板列表"}]},{"id":"api-025","name":"模板详情","method":"GET","url":"/api/prompt-templates/{template_id}","user_path":true,"request":{"path_params":["template_id"],"query":[],"headers":"Authorization Bearer","body":"见 PromptTemplate / EvaluationSet / WorkspaceSettings 模型"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"object"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-templates","module_ids":["mod-templates"],"implementation_status":"源码已核对","runtime_verification":"T-049 管理端真实联调覆盖模板/评测/灰度；金额线见 T-044/T-050。","sources":[{"path":"backend/src/api/routes/prompt_templates.py","symbol":"模板详情"}]},{"id":"api-026","name":"保存模板新版本","method":"PATCH","url":"/api/prompt-templates/{template_id}","user_path":true,"request":{"path_params":["template_id"],"query":[],"headers":"Authorization Bearer","body":"见 PromptTemplate / EvaluationSet / WorkspaceSettings 模型"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"object"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-templates","module_ids":["mod-templates"],"implementation_status":"源码已核对","runtime_verification":"T-049 管理端真实联调覆盖模板/评测/灰度；金额线见 T-044/T-050。","sources":[{"path":"backend/src/api/routes/prompt_templates.py","symbol":"保存模板新版本"}]},{"id":"api-027","name":"模板预览","method":"POST","url":"/api/prompt-templates/{template_id}/preview","user_path":true,"request":{"path_params":["template_id"],"query":[],"headers":"Authorization Bearer","body":"见 PromptTemplate / EvaluationSet / WorkspaceSettings 模型"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"object"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-templates","module_ids":["mod-templates"],"implementation_status":"源码已核对","runtime_verification":"T-049 管理端真实联调覆盖模板/评测/灰度；金额线见 T-044/T-050。","sources":[{"path":"backend/src/api/routes/prompt_templates.py","symbol":"模板预览"}]},{"id":"api-028","name":"模板版本列表","method":"GET","url":"/api/prompt-templates/{template_id}/versions","user_path":true,"request":{"path_params":["template_id"],"query":[],"headers":"Authorization Bearer","body":"见 PromptTemplate / EvaluationSet / WorkspaceSettings 模型"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"object"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-templates","module_ids":["mod-templates"],"implementation_status":"源码已核对","runtime_verification":"T-049 管理端真实联调覆盖模板/评测/灰度；金额线见 T-044/T-050。","sources":[{"path":"backend/src/api/routes/prompt_templates.py","symbol":"模板版本列表"}]},{"id":"api-029","name":"发布灰度","method":"POST","url":"/api/prompt-templates/{template_id}/releases","user_path":true,"request":{"path_params":["template_id"],"query":[],"headers":"Authorization Bearer","body":"见 PromptTemplate / EvaluationSet / WorkspaceSettings 模型"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"object"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-templates","module_ids":["mod-templates"],"implementation_status":"源码已核对","runtime_verification":"T-049 管理端真实联调覆盖模板/评测/灰度；金额线见 T-044/T-050。","sources":[{"path":"backend/src/api/routes/prompt_templates.py","symbol":"发布灰度"}]},{"id":"api-030","name":"回滚模板","method":"POST","url":"/api/prompt-templates/{template_id}/rollback","user_path":true,"request":{"path_params":["template_id"],"query":[],"headers":"Authorization Bearer","body":"见 PromptTemplate / EvaluationSet / WorkspaceSettings 模型"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"object"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-templates","module_ids":["mod-templates"],"implementation_status":"源码已核对","runtime_verification":"T-049 管理端真实联调覆盖模板/评测/灰度；金额线见 T-044/T-050。","sources":[{"path":"backend/src/api/routes/prompt_templates.py","symbol":"回滚模板"}]},{"id":"api-031","name":"模板指标","method":"GET","url":"/api/prompt-templates/{template_id}/metrics","user_path":true,"request":{"path_params":["template_id"],"query":[],"headers":"Authorization Bearer","body":"见 PromptTemplate / EvaluationSet / WorkspaceSettings 模型"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"object"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-templates","module_ids":["mod-templates"],"implementation_status":"源码已核对","runtime_verification":"T-049 管理端真实联调覆盖模板/评测/灰度；金额线见 T-044/T-050。","sources":[{"path":"backend/src/api/routes/prompt_templates.py","symbol":"模板指标"}]},{"id":"api-032","name":"导入评测集","method":"POST","url":"/api/evaluation-sets","user_path":true,"request":{"path_params":[],"query":[],"headers":"Authorization Bearer","body":"见 PromptTemplate / EvaluationSet / WorkspaceSettings 模型"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"object"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-templates","module_ids":["mod-templates"],"implementation_status":"源码已核对","runtime_verification":"T-049 管理端真实联调覆盖模板/评测/灰度；金额线见 T-044/T-050。","sources":[{"path":"backend/src/api/routes/evaluation_sets.py","symbol":"导入评测集"}]},{"id":"api-032a","name":"当前评测集","method":"GET","url":"/api/evaluation-sets/current","user_path":true,"request":{"path_params":[],"query":[],"headers":"Authorization Bearer","body":"见 PromptTemplate / EvaluationSet / WorkspaceSettings 模型"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"object"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-templates","module_ids":["mod-templates"],"implementation_status":"源码已核对","runtime_verification":"T-049 管理端真实联调覆盖模板/评测/灰度；金额线见 T-044/T-050。","sources":[{"path":"backend/src/api/routes/evaluation_sets.py","symbol":"当前评测集"}]},{"id":"api-033","name":"模板告警","method":"GET","url":"/api/prompt-template-alerts","user_path":true,"request":{"path_params":[],"query":[],"headers":"Authorization Bearer","body":"见 PromptTemplate / EvaluationSet / WorkspaceSettings 模型"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"object"}],"process_down":"后端未启动时前端连不上。"},"algorithm":"alg-templates","module_ids":["mod-templates"],"implementation_status":"源码已核对","runtime_verification":"T-049 管理端真实联调覆盖模板/评测/灰度；金额线见 T-044/T-050。","sources":[{"path":"backend/src/api/routes/prompt_templates.py","symbol":"模板告警"}]},{"id":"api-034","name":"读取工作区设置","method":"GET","url":"/api/workspace-settings","user_path":true,"request":{"path_params":[],"query":[],"headers":"Authorization Bearer","body":"见 PromptTemplate / EvaluationSet / WorkspaceSettings 模型"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"object"}],"process_down":"后端未启动时前端连不上。"},"algorithm":null,"module_ids":["mod-assign"],"implementation_status":"源码已核对","runtime_verification":"T-049 管理端真实联调覆盖模板/评测/灰度；金额线见 T-044/T-050。","sources":[{"path":"backend/src/api/routes/workspace_settings.py","symbol":"读取工作区设置"}]},{"id":"api-035","name":"更新工作区设置","method":"PATCH","url":"/api/workspace-settings","user_path":true,"request":{"path_params":[],"query":[],"headers":"Authorization Bearer","body":"见 PromptTemplate / EvaluationSet / WorkspaceSettings 模型"},"response":{"success_http":"200","success_shape":"JSON 信封","success_fields":[{"name":"data","type":"object"}],"process_down":"后端未启动时前端连不上。"},"algorithm":null,"module_ids":["mod-assign"],"implementation_status":"源码已核对","runtime_verification":"T-049 管理端真实联调覆盖模板/评测/灰度；金额线见 T-044/T-050。","sources":[{"path":"backend/src/api/routes/workspace_settings.py","symbol":"更新工作区设置"}]},{"id":"ext-003","name":"订单中心适配器","method":"ADAPTER","url":"(进程内/HTTP 适配器，非浏览器直连)","user_path":false,"request":{"path_params":[],"query":[],"headers":"服务端配置 base_url；空则 Mock","body":"查单候选，一/二/零条"},"response":{"success_http":"n/a","success_shape":"适配器返回结构","success_fields":[],"process_down":"失败不得显示已生成退货单/已开票等成功文案"},"algorithm":"alg-adapters","module_ids":["mod-adapters"],"implementation_status":"源码已核对","runtime_verification":"T-046/T-050/T-051/T-052 用隔离 Mock 或替身验证。","sources":[{"path":"backend/src/integrations/adapters/order.py","symbol":"order"}]},{"id":"ext-004","name":"仓储适配器","method":"ADAPTER","url":"(进程内/HTTP 适配器，非浏览器直连)","user_path":false,"request":{"path_params":[],"query":[],"headers":"服务端配置 base_url；空则 Mock","body":"退货受理成功/失败"},"response":{"success_http":"n/a","success_shape":"适配器返回结构","success_fields":[],"process_down":"失败不得显示已生成退货单/已开票等成功文案"},"algorithm":"alg-adapters","module_ids":["mod-adapters"],"implementation_status":"源码已核对","runtime_verification":"T-046/T-050/T-051/T-052 用隔离 Mock 或替身验证。","sources":[{"path":"backend/src/integrations/adapters/warehouse.py","symbol":"warehouse"}]},{"id":"ext-005","name":"财务适配器","method":"ADAPTER","url":"(进程内/HTTP 适配器，非浏览器直连)","user_path":false,"request":{"path_params":[],"query":[],"headers":"服务端配置 base_url；空则 Mock","body":"开票成功/失败"},"response":{"success_http":"n/a","success_shape":"适配器返回结构","success_fields":[],"process_down":"失败不得显示已生成退货单/已开票等成功文案"},"algorithm":"alg-adapters","module_ids":["mod-adapters"],"implementation_status":"源码已核对","runtime_verification":"T-046/T-050/T-051/T-052 用隔离 Mock 或替身验证。","sources":[{"path":"backend/src/integrations/adapters/finance.py","symbol":"finance"}]},{"id":"ext-006","name":"会员适配器","method":"ADAPTER","url":"(进程内/HTTP 适配器，非浏览器直连)","user_path":false,"request":{"path_params":[],"query":[],"headers":"服务端配置 base_url；空则 Mock","body":"VIP / 投诉次数"},"response":{"success_http":"n/a","success_shape":"适配器返回结构","success_fields":[],"process_down":"失败不得显示已生成退货单/已开票等成功文案"},"algorithm":"alg-adapters","module_ids":["mod-adapters"],"implementation_status":"源码已核对","runtime_verification":"T-046/T-050/T-051/T-052 用隔离 Mock 或替身验证。","sources":[{"path":"backend/src/integrations/adapters/member.py","symbol":"member"}]},{"id":"ext-007","name":"物流轨迹适配器","method":"ADAPTER","url":"(进程内/HTTP 适配器，非浏览器直连)","user_path":false,"request":{"path_params":[],"query":[],"headers":"服务端配置 base_url；空则 Mock","body":"query_status ok/empty/failed"},"response":{"success_http":"n/a","success_shape":"适配器返回结构","success_fields":[],"process_down":"失败不得显示已生成退货单/已开票等成功文案"},"algorithm":"alg-adapters","module_ids":["mod-adapters"],"implementation_status":"源码已核对","runtime_verification":"T-046/T-050/T-051/T-052 用隔离 Mock 或替身验证。","sources":[{"path":"backend/src/integrations/adapters/logistics.py","symbol":"logistics"}]}],"algorithms":[{"id":"alg-login","subject":"共享账号登录与 JWT","implementation_status":"源码已核对","steps":["启动时 seed_shared_user：若库中无 shared_username，且配置有 shared_password，则 bcrypt.hashpw 写入哈希；已有用户则跳过。密码明文不回传。","login：authenticate 按用户名取用户，bcrypt.checkpw；失败统一 401。","create_access_token：payload {sub:username, exp:UTC+jwt_expire_minutes}，HS256，密钥来自 secret_key（无默认，不展示）。","get_current_user：HTTPBearer 取 token，jwt.decode；失败或用户不存在 → 401 请先登录。"],"branches":["配置无密码且库中无用户 → login 返回 500 服务暂时不可用。","空用户名/密码 → 400 请输入用户名和密码（校验器或 RequestValidationError）。"],"selection":"唯一共享账号，不做角色分权。","failures":"JWT 解码失败记日志并视为未登录，不泄露原因。","parameters":["p-jwt-expire","p-shared-username"],"baseline_fingerprints":{"backend/src/services/auth.py":"sha256:3dbad830a8a4f8d4f897ee2ca5ec48658508fb11d2788c4bb39e1f091fe2e99f","backend/src/api/deps.py":"sha256:defde0da3ab7858997bc62b8c7d93710a6c2944ae3b8c5b055277261b69aa473"},"sources":[{"path":"backend/src/services/auth.py","symbol":"authenticate / create_access_token / seed_shared_user"},{"path":"backend/src/api/deps.py","symbol":"get_current_user"}]},{"id":"alg-chunk","subject":"先转 Markdown，再按标题与段落切块（800 字 / 重叠 160 字）","implementation_status":"源码已核对","steps":["convert_file_to_markdown：.md 按 UTF-8 原文；.txt 分段并转义已有 ATX 标题行；.pdf 用 pypdf 抽可复制文字，章节/点号标题升为 Markdown 标题。","parse_markdown_sections：按 #{1,6} 维护标题栈，heading_path 用「 / 」连接；无标题则路径为空。","_pack_section：按空行拆段落，尽量装入 max_chars（需为标题前缀留空）。超长段落用滑动窗口 _window_split：窗口=max_chars，步长=max-overlap；overlap>=max 则 overlap 视为 0。","chunk_markdown 输出 TextChunk.position 从 1 起；空 content 丢弃。"],"branches":["PDF 加密/打不开/无词字符 → 请求期校验失败，不建行。","转换后空白或切不出块 → 后台标 failed「请重新上传」。","父标题无正文：flush(heading_only=True) 仍可留下标题路径空块，再被 content 过滤。"],"selection":"默认 CHUNK_MAX_CHARS=800、CHUNK_OVERLAP_CHARS=160（上限的 20%），来自 AppSettings 定义，不是运行时 .env 实测。","failures":"不支持的后缀 raise ValueError；请求期已先用白名单拦截。","parameters":["p-chunk-max","p-chunk-overlap","p-max-upload"],"baseline_fingerprints":{"backend/src/utils/text.py":"sha256:70da8a8a418bb6db838a1c87b704a7a6bc2a29b6be5f68cf987406dc41161489","backend/src/db/session.py":"sha256:a8e2f831cd7ba9dcbae97ecec459dd7154cc5bc218628d76da13eb5189c5dd93"},"sources":[{"path":"backend/src/utils/text.py","symbol":"convert_file_to_markdown / chunk_markdown / _window_split"},{"path":"backend/src/services/ingest.py","symbol":"run_ingest_job"}]},{"id":"alg-ingest","subject":"后台入库：打标抽 FAQ、分块继承标签、嵌入、失败回滚","implementation_status":"源码已核对","steps":["validate_upload_bytes：后缀、非空、≤max_upload_bytes；md/txt UTF-8 去空白非空；pdf 须 has_copyable_paragraph。","写原文件到 upload_dir/{id}{suffix}，documents 行 ingesting。","run_ingest_job：转 Markdown → chunk_markdown → 无有效 llm_api_key（空或 example 占位）则失败。密钥本身不展示。","tag_document：按 ingest_max_chars 切段，每段 EXT-001 JSON 打标；校验 code 落在 tag-taxonomy；对象标签为空则失败。解析失败会再调一次模型。","分块继承文档对象/诉求标签；实体名出现在块正文才写入块 entities。","EXT-002 一次嵌入「各块 content + 各 FAQ question」，同一事务 save_ready。","成功后删除临时上传文件。失败 fail_document：删 chunks/faqs，ingest_status=failed，ingest_error 固定「请重新上传」。"],"branches":["任务开始时文档已不是 ingesting 则跳过写入。","API-006 ready：改标签同步到全部分块 JSON，不重切、不改 content；FAQ 问法未变则复用旧向量。"],"selection":"ready 前 API-010 的 list_ready_* 不会命中该文档；API-005 非 ready 的 chunks 为空。","failures":"后台任意异常都标失败，不留可检索数据。","parameters":["p-ingest-max","p-embed-batch","p-llm-timeout"],"baseline_fingerprints":{"backend/src/services/ingest.py":"sha256:4c9aa8b3b3121ae0821f5f7aa5c537a54b17c412b453672f7691f9768404de4b"},"sources":[{"path":"backend/src/services/ingest.py","symbol":"run_ingest_job / tag_document / fail_document"}]},{"id":"alg-stale-ingest","subject":"过期仍为入库中的文档标失败","implementation_status":"源码已核对","steps":["cutoff = now(UTC) - ingest_stale_seconds（默认 300）。","DocumentRepository.mark_stale 把仍 ingesting 且 updated_at 早于 cutoff 的文档标 failed +「请重新上传」。"],"branches":["设计写「启动时」执行；源码在列表/详情/更新/受理上传时调用，on_startup 未调用。"],"selection":"避免页面一直停在入库中。","failures":"未记录其它失败分支。","parameters":["p-ingest-stale"],"baseline_fingerprints":{"backend/src/services/ingest.py":"sha256:4c9aa8b3b3121ae0821f5f7aa5c537a54b17c412b453672f7691f9768404de4b","backend/src/main.py":"sha256:a5eb1e8c34e697f3e5506d6edce48a047a97cd7964aed2080fb73e75d4036ba6"},"sources":[{"path":"backend/src/services/ingest.py","symbol":"fail_stale_ingesting_documents"},{"path":"backend/src/main.py","symbol":"on_startup","note":"未调用 fail_stale"}]},{"id":"alg-qa-state","subject":"提问状态机（反问 5 轮 / FAQ / 闲聊 / 知识 / 兜底）","implementation_status":"源码已核对","steps":["保存 employee_turn（original=正文）。","若 status=handed_off：不调 LLM。若上一条已是 waiting_for_agent 则只保存员工消息并复用该 waiting；否则追加「已转交客服，请等待回复。」","否则 EXT-001 改写分类（rewrite_classify.md + 最近 context_message_limit 条）。rewritten_query 空则改用原问。分类 JSON 失败会重试一次，仍失败 502。","should_clarify：全部 issue 均为 needs_clarification，或非闲聊且唯一 issue 不清。若 clarification_round < 5：+1 并返回 clarification_question（禁止检索）；否则兜底并把 round 置 0。","可处理：round=0。先用 rewritten 对全部 ready FAQ 做全局命中；命中则 kind=faq，不再闲聊/召回。","message_type=small_talk 且无 issues：EXT-001 闲聊。","对每个 ready issue：retrieval_query 或 rewritten 嵌入，标签过滤后余弦 TopK；有分块则汇总为一次 knowledge 生成。","无知识段：返回 config fallback_reply 一次。"],"branches":["设计中的 per-issue fallback 段未实现：非 ready issue 不产出文本段。","知识生成空串则改走兜底。"],"selection":"多 issue 的知识在同一条 kind=knowledge 内分段，不拆多条系统消息。","failures":"BailianError/ValueError → QaUnavailableError → HTTP 502，文案不是超范围兜底。","parameters":["p-clarify-max","p-fallback","p-context-limit","p-faq-th","p-top-k","p-min-score"],"baseline_fingerprints":{"backend/src/services/qa.py":"sha256:3dc30c1e55914fb46d60c624c97f8290cb21535c27533921b306ce62aa82222d"},"sources":[{"path":"backend/src/services/qa.py","symbol":"post_message / should_clarify / _processable_turn"}]},{"id":"alg-cosine-faq","subject":"FAQ 余弦命中（仅 ready 文档）","implementation_status":"源码已核对","steps":["list_ready_faqs：Document.ingest_status=ready，按 Document.created_at 升序、Faq.id 升序。","查询向量 = embeddings([rewritten])[0]。","score = dot(a,b)/(||a||*||b||)；任一侧空或零向量为 0。","取 score>=faq_hit_threshold（默认 0.82）的最高分；平局因 score>best_score 保留先遍历者（先入库）。"],"branches":["无 FAQ 或全未过阈 → 视为未命中，继续闲聊或召回。"],"selection":"整轮只做一次全局 FAQ，命中则结束本轮。","failures":"无向量的 FAQ 跳过。","parameters":["p-faq-th"],"baseline_fingerprints":{"backend/src/services/qa.py":"sha256:3dc30c1e55914fb46d60c624c97f8290cb21535c27533921b306ce62aa82222d","backend/src/utils/text.py":"sha256:70da8a8a418bb6db838a1c87b704a7a6bc2a29b6be5f68cf987406dc41161489","backend/src/repositories/conversation_repository.py":"sha256:536db1e0e28d86d3cf2404a1df2cf1cb20ee086e77e993a01d1e53c76d6837d5"},"sources":[{"path":"backend/src/services/qa.py","symbol":"pick_faq"},{"path":"backend/src/utils/text.py","symbol":"cosine_similarity"}]},{"id":"alg-retrieve","subject":"标签过滤 + 向量召回（禁止全库无差别）","implementation_status":"源码已核对","steps":["候选仅 ingest_status=ready 的 chunks。","对象过滤：chunk.object_types ∩ (primary ∪ related)；对象标签为空则该 issue 无候选。","若 issue.request_type 非空且过滤后仍有块：优先 request_types 含该诉求的子集；子集为空则退回对象过滤结果。","对剩余块按查询向量打分，score>=retrieve_min_score（0.55）后按分数降序、原顺序升序取 Top retrieve_top_k（5）。"],"branches":["无候选或无过阈 = 该 issue 不进入 knowledge_segments。无重排、无去重函数。"],"selection":"多个 ready issue 各自召回后一并交给 answer.md 生成一条回复。","failures":"嵌入失败升为 502。","parameters":["p-top-k","p-min-score"],"baseline_fingerprints":{"backend/src/services/qa.py":"sha256:3dc30c1e55914fb46d60c624c97f8290cb21535c27533921b306ce62aa82222d"},"sources":[{"path":"backend/src/services/qa.py","symbol":"filter_chunks_for_issue / rank_chunks"}]},{"id":"alg-handoff","subject":"转人工与客服回复（不经 AI）","implementation_status":"源码已核对","steps":["transfer：status 改为 handed_off 并刷新 updated_at；已是则原样返回。","waiting_for_agent：handed_off 且最后一条 role 不是 agent。","agent_reply：仅 handed_off 可写入 role=agent；否则 NotHandedOffError。","列表预览取最近一条非 waiting_for_agent 的 content。"],"branches":["连点转人工仍是同一会话。"],"selection":"客服列表只含 handed_off。","failures":"会话不存在 → 404。","parameters":["p-poll-ms"],"baseline_fingerprints":{"backend/src/services/handoff.py":"sha256:ae4dfe71de820f5c3c8525011a1daf017bb8f0b5658a37e06e8cd7153816c995"},"sources":[{"path":"backend/src/services/handoff.py","symbol":"transfer / agent_reply / _waiting_for_agent"}]},{"id":"alg-ticket-extract","subject":"工单异步抽取与字段合并","implementation_status":"源码已核对","steps":["PATCH 写入类型/业务线/字段后触发抽取任务；extract_status: idle→extracting→ready/failed。","LLM 按类型提示词抽槽；枚举字段校验；金额去单位。","合并规则：坐席手改优先；确认后员工续聊不自动覆盖已确认槽。","订单中心 EXT-003：一条自动填、多条候选不预选、零条 missing。"],"branches":["确认 blockers：缺必填、费用无附件、订单候选未选定。","物流负责方/赔偿方案在快照 ready 后再允许填写。"],"selection":"字段 status：filled/candidate/missing/conflict/agent_edited。","failures":"抽取失败保留可手填路径；不编造订单号。","parameters":["p-llm-model","p-llm-timeout","p-context-limit"],"baseline_fingerprints":{"backend/src/services/ticket.py":"sha256:c7e76cd0fffbbbd14eaf9f0c8aeb716c4d9e3eea43cf69a65a0d2a3460ac7e6d"},"sources":[{"path":"backend/src/services/ticket.py","symbol":"extract / confirm"}]},{"id":"alg-assign-sla","subject":"紧急程度、分配与 SLA 预警升级关闭","implementation_status":"源码已核对","steps":["compute_urgency：消协/连续三诉/金额线 → high_risk；会员 VIP → vip；否则 normal。","queue_for / role_for：高风险→高级售后；VIP→优先队列；普通→售后专员。","compute_sla_fields：按普通/VIP 与工单类型（物流按 exception_type）写 warn_at/due_at/close_after。","SlaService.scan（列表/认领路径）：预警进度、到期升级、非 VIP 关闭预告与自动关；VIP 物流一级/二级与立即二级条件。"],"branches":["VIP 永不自动关闭。","升级无人在岗：upgrade_undelivered=true，显示角色名而非「无人认领」。","无赔付 VIP 物流：一级后满 l2_wait_hours 再二级；临近 due≤2h 或威胁话语立即二级。"],"selection":"时效数字只转录 PRD，禁止改产品小时数。","failures":"会员查询失败不标 VIP。","parameters":[],"baseline_fingerprints":{"backend/src/services/assign.py":"sha256:9dc038bbad75ea299e4c4291b89ab8993699b4f0969fc31d29d3c2c5defd3ed7","backend/src/services/sla.py":"sha256:a32693c317ef16f6f9ef04331156b213bae646bde74946d9c433ea6f1bda4167"},"sources":[{"path":"backend/src/services/assign.py","symbol":"AssignService"},{"path":"backend/src/services/sla.py","symbol":"SlaService"}]},{"id":"alg-polish","subject":"润色与合规拦截","implementation_status":"源码已核对","steps":["按业务线/工单类型选模板版本（稳定或灰度桶）。","调用百炼润色；检查删金额、轻快语气、售前越界等合规规则。","发送时对比润色稿与最终 content 记 adopted/modified。"],"branches":["拦截则不可原样采用违规稿。"],"selection":"灰度按会话桶绑定版本。","failures":"无 Key 时管理端预览仍可用本地占位。","parameters":["p-llm-model","p-llm-base"],"baseline_fingerprints":{"backend/src/services/polish.py":"sha256:9c4e1fd8779dc33f798aef3daf6abab72d123c7dbce0be9c5e06843f24e6b145"},"sources":[{"path":"backend/src/services/polish.py","symbol":"polish"}]},{"id":"alg-templates","subject":"模板版本、灰度、评测与告警","implementation_status":"源码已核对","steps":["每次保存产生新 version；versions 可 diff。","评测集 item_count<5000 禁止灰度；发布后按桶分流。","指标分稳定/灰度；拦截率升高写 alerts。"],"branches":["回滚后新会话不用灰度版。"],"selection":"当前评测集以最近导入为准。","failures":"坐席访问模板写接口 403。","parameters":[],"baseline_fingerprints":{"backend/src/services/templates.py":"sha256:d7b291cbfe3728321cf1c3e1a798019796864762f634b25f5237ef5e3a9e4068"},"sources":[{"path":"backend/src/services/templates.py","symbol":"TemplateService"}]},{"id":"alg-adapters","subject":"外部适配器（订单/仓储/财务/会员/物流）","implementation_status":"源码已核对","steps":["base_url 空则用进程内 Mock；非空走 HTTP。","确认副作用：仓储/财务成功写「已发起…」进度，失败写失败说明且不显示成功文案。","会员查 VIP/投诉次数；物流快照 query_status。"],"branches":["适配器失败降级提示，不编造单号或到账。"],"selection":"隔离联调可用 File/Mock 覆盖。","failures":"超时/失败进入失败进度。","parameters":[],"baseline_fingerprints":{"backend/src/integrations/adapters/member.py":"sha256:6a0248298c424c26b0eae069847c1b9832f9eced344917822d6bdd913e182595"},"sources":[{"path":"backend/src/integrations/adapters/","symbol":"adapters"},{"path":"backend/src/services/fulfillment.py","symbol":"fulfillment"}]}],"modules":[{"id":"mod-axios","name":"前端 Axios 单例","kind":"普通函数","responsibility":"baseURL 来自 VITE_API_BASE_URL 或 /api；附带 Bearer；401 清 token。Mock 时替换 adapter。","input":"各 service 的相对路径请求","output":"JSON 信封","algorithm":null,"implementation_status":"源码已核对","sources":[{"path":"frontend/src/services/api.ts","symbol":"axios.create"}]},{"id":"mod-auth","name":"鉴权服务","kind":"普通函数","responsibility":"bcrypt 校验、JWT 签发/解码、共享账号种子。不是 Agent 工具。","input":"用户名密码或 Bearer","output":"User 或 401","algorithm":"alg-login","implementation_status":"源码已核对","sources":[{"path":"backend/src/services/auth.py","symbol":"authenticate"}]},{"id":"mod-chunk","name":"转 Markdown 与切块","kind":"普通函数","responsibility":"本地转换与窗口切块，不调用模型。","input":"文件名 + 字节 / Markdown 字符串","output":"Markdown 文本或 TextChunk[]","algorithm":"alg-chunk","implementation_status":"源码已核对","sources":[{"path":"backend/src/utils/text.py","symbol":"chunk_markdown"}]},{"id":"mod-ingest","name":"入库服务","kind":"普通函数","responsibility":"受理上传、后台任务、标签 FAQ 保存。无 Plugin。","input":"UploadFile 或 DocumentUpdate","output":"DocumentPublic","algorithm":"alg-ingest","implementation_status":"源码已核对","sources":[{"path":"backend/src/services/ingest.py","symbol":"IngestService"}]},{"id":"mod-qa","name":"问答状态机","kind":"普通函数","responsibility":"固定流水线：改写→反问/FAQ/闲聊/召回→生成。不是 Agent 工具循环。","input":"conversation_id + content","output":"EmployeeMessageResult","algorithm":"alg-qa-state","implementation_status":"源码已核对","sources":[{"path":"backend/src/services/qa.py","symbol":"QaService"}]},{"id":"mod-handoff","name":"转接与客服回复","kind":"普通函数","responsibility":"改会话状态、写客服消息。不经模型。","input":"conversation_id / 回复正文","output":"ConversationPublic / AgentReplyResult","algorithm":"alg-handoff","implementation_status":"源码已核对","sources":[{"path":"backend/src/services/handoff.py","symbol":"HandoffService"}]},{"id":"mod-cosine","name":"余弦相似度","kind":"普通函数","responsibility":"向量点积公式，零向量为 0。","input":"两个 float 序列","output":"float score","algorithm":"alg-cosine-faq","implementation_status":"源码已核对","sources":[{"path":"backend/src/utils/text.py","symbol":"cosine_similarity"}]},{"id":"mod-bailian-chat","name":"百炼 Chat（httpx）","kind":"外部服务","responsibility":"POST /chat/completions。httpx.AsyncClient(trust_env=False)。不是 Plugin，不是 Agent 工具。","input":"messages + 可选 json_object","output":"content 字符串或 BailianError","algorithm":null,"implementation_status":"源码已核对","sources":[{"path":"backend/src/integrations/bailian.py","symbol":"chat_completions"}]},{"id":"mod-bailian-embed","name":"百炼 Embeddings（httpx）","kind":"外部服务","responsibility":"POST /embeddings，按批切分。不是 Agent 工具。","input":"文本列表","output":"float[][] 或 BailianError","algorithm":null,"implementation_status":"源码已核对","sources":[{"path":"backend/src/integrations/bailian.py","symbol":"embeddings"}]},{"id":"mod-ticket","name":"工单服务","kind":"普通函数","responsibility":"抽取、确认、附件、字段校验","input":"会话与字段补丁","output":"TicketPublic","algorithm":"alg-ticket-extract"},{"id":"mod-assign","name":"分配服务","kind":"普通函数","responsibility":"紧急程度、队列、认领与状态变更","input":"Ticket + User","output":"assigned_* / urgency / queue","algorithm":"alg-assign-sla"},{"id":"mod-sla","name":"SLA 扫描","kind":"普通函数","responsibility":"预警、升级、关闭预告/自动关、VIP 二级","input":"ticket.fields_json._meta.sla","output":"progress 事件与状态","algorithm":"alg-assign-sla"},{"id":"mod-fulfillment","name":"确认副作用","kind":"普通函数","responsibility":"退货/开票联动与用户可见进度","input":"确认后的工单","output":"progress + 会话 ticket_progress 消息","algorithm":"alg-adapters"},{"id":"mod-templates","name":"模板与评测","kind":"普通函数","responsibility":"版本、灰度、指标、告警","input":"模板正文/评测集","output":"版本与 metrics","algorithm":"alg-templates"},{"id":"mod-polish","name":"润色服务","kind":"普通函数","responsibility":"润色与合规","input":"草稿","output":"polished / blocked","algorithm":"alg-polish"},{"id":"mod-adapters","name":"外部适配器集合","kind":"外部服务","responsibility":"EXT-003～007","input":"订单号/会员 key/运单号等","output":"结构化查询结果或 Mock","algorithm":"alg-adapters"}],"parameters":[{"id":"p-chunk-max","key":"chunk_max_chars","value":"800","value_kind":"源码默认值（AppSettings 与 .env.example）","location":"backend/src/db/session.py；backend/.env.example","impact":"单块正文上限（含标题前缀占用）。未读真实 .env。"},{"id":"p-chunk-overlap","key":"chunk_overlap_chars","value":"160","value_kind":"源码默认值（单块上限 800 的 20%）","location":"backend/src/db/session.py；backend/.env.example","impact":"超长段滑动窗口重叠。部分测试夹具仍写 80，不是 AppSettings 默认。"},{"id":"p-faq-th","key":"faq_hit_threshold","value":"0.82","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"FAQ 余弦命中下限。"},{"id":"p-top-k","key":"retrieve_top_k","value":"5","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"知识召回条数。"},{"id":"p-min-score","key":"retrieve_min_score","value":"0.55","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"知识召回分数下限。"},{"id":"p-clarify-max","key":"clarification_max_rounds","value":"5","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"连续反问上限；满则兜底。"},{"id":"p-fallback","key":"fallback_reply","value":"抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。","value_kind":"源码默认值（与 PRD 固定兜底原文一致）","location":"backend/src/db/session.py","impact":"超范围/无知识/满 5 轮不清时的用户可见回复。"},{"id":"p-jwt-expire","key":"jwt_expire_minutes","value":"720","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"登录有效期（分钟）。"},{"id":"p-shared-username","key":"shared_username","value":"it-help","value_kind":"源码默认值","location":"backend/src/db/session.py；backend/.env.example","impact":"唯一登录名。密码字段敏感，不展示。"},{"id":"p-ingest-stale","key":"ingest_stale_seconds","value":"300","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"仍为 ingesting 超过此时长则在文档接口路径标失败。"},{"id":"p-ingest-max","key":"ingest_max_chars","value":"24000","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"单次打标输入上限，超长按标题段再硬切。"},{"id":"p-context-limit","key":"context_message_limit","value":"20","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"改写分类纳入的最近消息条数。"},{"id":"p-max-upload","key":"max_upload_bytes","value":"5242880","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"上传字节上限，超出立刻请重新上传。"},{"id":"p-embed-batch","key":"embedding_batch_size","value":"10","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"百炼每批最多 10 条。"},{"id":"p-llm-timeout","key":"llm_timeout_seconds","value":"45","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"单次 Chat/Embedding httpx 超时；超时/429 最多再试 llm_max_retries=2。"},{"id":"p-llm-model","key":"llm_model","value":"qwen-plus","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"对话模型名。llm_api_key 无默认、不展示。"},{"id":"p-llm-base","key":"llm_base_url","value":"https://dashscope.aliyuncs.com/compatible-mode/v1","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"Chat/Embedding 共用基址。"},{"id":"p-embed-dim","key":"embedding_dimensions","value":"1024","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"向量维。"},{"id":"p-poll-ms","key":"VITE_POLL_INTERVAL_MS / poll_interval_ms","value":"3000","value_kind":"源码默认值（.env.example 与前端回退）","location":"frontend/.env.example；frontend/src/hooks/useConversation.ts；backend/src/db/session.py","impact":"已转人工对话、客服列表、知识库 ingesting 的拉取间隔（毫秒）。未读真实 .env。"},{"id":"p-vite-api","key":"VITE_API_BASE_URL","value":"/api","value_kind":"源码默认值（.env.example 与 axios 回退）","location":"frontend/.env.example；frontend/src/services/api.ts","impact":"禁止把完整后端 URL 写进业务代码。"},{"id":"p-vite-proxy","key":"VITE_BACKEND_PROXY_TARGET","value":"http://localhost:8099","value_kind":"源码默认值","location":"frontend/.env.example；frontend/vite.config.ts","impact":"仅 Vite 开发代理。"},{"id":"p-axios-timeout","key":"axios timeout","value":"10000ms（默认）；会话发消息 60000ms；其它会话接口 15000ms","value_kind":"源码默认值","location":"frontend/src/services/api.ts；frontend/src/services/conversationService.ts","impact":"与 tech-spec「其余 15000ms」不完全一致。"},{"id":"p-mock","key":"VITE_USE_MOCK","value":"未设置时 isMockEnabled()=true；.env.example 示例 false","value_kind":"源码默认值 vs 空值模板示例","location":"frontend/src/utils/mockFlag.ts；frontend/.env.example","impact":"true 走 mocks，不打真实后端/百炼。"},{"id":"p-port-fe","key":"Vite server.port","value":"5199","value_kind":"源码默认值","location":"frontend/vite.config.ts","impact":"Agent 开发口；用户门禁曾用 5175。strictPort=true。"},{"id":"p-port-be","key":"port","value":"8099","value_kind":"源码默认值","location":"backend/src/db/session.py","impact":"Agent 验证后端口；门禁约定 8003。未读真实 .env。"}],"agent":null,"not_present":["无 Plugin 层、无 OMS 工单工具、无 Agent 模型选工具观察循环。","百炼仅为 httpx 外部调用（EXT-001/002），未使用 dashscope SDK。","本导航未读取真实 .env、日志、SQLite 或用户上传文件。","无独立登出 HTTP 接口（前端清 Token 即可）。"]}</script>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const escapeHtml = (value) => String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+
+    const statusClass = (s) => {
+      if (s === "源码已核对") return "ok";
+      if (s === "来源已变化待复核" || s === "仅设计") return "warn";
+      return "err";
+    };
+
+    function parseMap(text) {
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (err) {
+        throw new Error("JSON 解析失败：" + err.message);
+      }
+      if (!data || typeof data !== "object" || !Array.isArray(data.pages) || !Array.isArray(data.features)) {
+        throw new Error("JSON 解析失败：缺少 pages/features 数组。");
+      }
+      return data;
+    }
+
+    function applySourcePolicy(map) {
+      const files = map.files || {};
+      const notes = [];
+      for (const alg of map.algorithms || []) {
+        const baseline = alg.baseline_fingerprints || {};
+        const missing = [];
+        const changed = [];
+        for (const [path, fp] of Object.entries(baseline)) {
+          const live = files[path];
+          if (!live) {
+            missing.push(path);
+          } else if (live.fingerprint !== fp) {
+            changed.push(path);
+          }
+        }
+        if (missing.length) {
+          alg.implementation_status = "未找到实现";
+          alg.status_reason = "来源缺失：" + missing.join("、");
+          notes.push(alg.id + " 来源缺失");
+        } else if (changed.length) {
+          alg.implementation_status = "来源已变化待复核";
+          alg.status_reason = "指纹已变，不能沿用「源码已核对」：" + changed.join("、");
+          notes.push(alg.id + " 待复核");
+        }
+      }
+      map._policyNotes = notes;
+      return map;
+    }
+
+    function byId(list, id) {
+      return (list || []).find((x) => x.id === id);
+    }
+
+    async function copyPath(path, btn) {
+      const text = path;
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          throw new Error("clipboard unavailable");
+        }
+        btn.textContent = "已复制";
+        setTimeout(() => { btn.textContent = "复制路径"; }, 1200);
+      } catch {
+        const wrap = btn.nextElementSibling;
+        if (wrap && wrap.tagName === "INPUT") {
+          wrap.value = text;
+          wrap.hidden = false;
+          wrap.focus();
+          wrap.select();
+        }
+        btn.textContent = "请手选";
+      }
+    }
+
+    function sourceBlock(sources) {
+      if (!sources || !sources.length) return "<p class='meta'>未记录来源。</p>";
+      return sources.map((s, i) => {
+        const path = s.path || "";
+        return `<div class="src">
+          <code class="path">${escapeHtml(path)}</code>
+          ${s.symbol ? `<span class="meta">${escapeHtml(s.symbol)}</span>` : ""}
+          ${s.note ? `<span class="meta">${escapeHtml(s.note)}</span>` : ""}
+          <button type="button" data-copy="${escapeHtml(path)}" data-idx="${i}">复制路径</button>
+          <input class="copy-fail" hidden readonly value="${escapeHtml(path)}" aria-label="路径手选" />
+        </div>`;
+      }).join("");
+    }
+
+    function chip(status) {
+      return `<span class="chip ${statusClass(status)}">${escapeHtml(status || "未记录")}</span>`;
+    }
+
+    function renderNav(map) {
+      const featLinks = (map.features || []).map((f) =>
+        `<a href="#${escapeHtml(f.id)}">${escapeHtml(f.name)}</a>`
+      ).join("");
+      const apiLinks = (map.apis || []).map((a) =>
+        `<a href="#${escapeHtml(a.id)}">${escapeHtml(a.method)} ${escapeHtml(a.url)}</a>`
+      ).join("");
+      $("nav").innerHTML = `
+        <h1>页面功能导航</h1>
+        <p class="sub">${escapeHtml(map.project && map.project.name || "")}</p>
+        <div class="sec">页面</div>
+        ${(map.pages || []).map((p) => `<a href="#${escapeHtml(p.id)}">${escapeHtml(p.name)}</a>`).join("")}
+        <div class="sec">功能</div>
+        ${featLinks}
+        <div class="sec">接口</div>
+        ${apiLinks || "<span class='meta'>未找到接口</span>"}
+      `;
+    }
+
+    function renderFlow(flow) {
+      if (!flow || !flow.length) return "";
+      return `<ol class="flow">${flow.map((s) => `<li>
+        <div><b>步骤 ${escapeHtml(s.step)}</b> · ${escapeHtml(s.actor)}</div>
+        <div>${escapeHtml(s.action)}</div>
+        <div class="meta">数据：${escapeHtml(s.data)}</div>
+        <div class="meta">分支：${escapeHtml(s.branch)}</div>
+      </li>`).join("")}</ol>`;
+    }
+
+    function renderFeature(map, feat) {
+      const apis = (feat.api_ids || []).map((id) => {
+        const api = byId(map.apis, id);
+        return api
+          ? `<a href="#${escapeHtml(id)}">${escapeHtml(api.method)} ${escapeHtml(api.url)}</a>`
+          : `<span class="meta">未找到 ${escapeHtml(id)}</span>`;
+      });
+      return `<article class="card" id="${escapeHtml(feat.id)}">
+        <h3>${escapeHtml(feat.name)} ${chip(feat.implementation_status)}</h3>
+        <p class="kv"><b>触发</b>${escapeHtml(feat.trigger)}</p>
+        <p class="kv"><b>输入</b>${escapeHtml(feat.input)}</p>
+        <p class="kv"><b>输出</b>${escapeHtml(feat.output)}</p>
+        <h4>主流程（前后端分工）</h4>
+        ${renderFlow(feat.flow)}
+        <p class="meta">接口：${apis.length ? apis.join("、") : "无 HTTP。"}</p>
+        <p class="meta">模块：${(feat.module_ids || []).map((id) => `<a href="#${escapeHtml(id)}">${escapeHtml(id)}</a>`).join("、")}</p>
+        ${feat.design_diff ? `<p class="meta">设计与源码差异：${escapeHtml(feat.design_diff)}</p>` : ""}
+        <details>
+          <summary>来源</summary>
+          ${sourceBlock(feat.sources)}
+        </details>
+      </article>`;
+    }
+
+    function renderQuery(query) {
+      if (!query || !query.length) return "无";
+      if (typeof query === "string") return escapeHtml(query);
+      return escapeHtml(JSON.stringify(query));
+    }
+
+    function renderApi(api, map) {
+      const fields = (((api.response || {}).success_fields) || []).map((f) =>
+        `<li><code>${escapeHtml(f.name)}</code> · ${escapeHtml(f.type)}${f.value ? " · " + escapeHtml(f.value) : ""}${f.note ? " · " + escapeHtml(f.note) : ""}</li>`
+      ).join("");
+      const fail = (api.response || {}).unexpected_500;
+      const alg = byId(map.algorithms, api.algorithm);
+      const req = api.request || {};
+      return `<article class="card" id="${escapeHtml(api.id)}">
+        <h3>${escapeHtml(api.name)} ${chip(api.implementation_status)}</h3>
+        <p><code>${escapeHtml(api.method)} ${escapeHtml(api.url)}</code>
+          ${api.user_path === false ? '<span class="chip warn">用户路径不直接调用</span>' : ""}</p>
+        <p class="kv"><b>请求</b>路径参数 ${(req.path_params || []).length ? escapeHtml(JSON.stringify(req.path_params)) : "无"}；查询 ${renderQuery(req.query)}；${escapeHtml(req.headers || "")}；${escapeHtml(req.body || "无")}</p>
+        <p class="kv"><b>成功</b>HTTP ${escapeHtml((api.response || {}).success_http)}，${escapeHtml((api.response || {}).success_shape)}</p>
+        <ul>${fields}</ul>
+        <p class="meta">${escapeHtml((api.response || {}).process_down || "")}</p>
+        ${fail ? `<details><summary>进程内未预期 500（源码对照）</summary>
+          <p>HTTP ${escapeHtml(fail.http)} · ${escapeHtml(fail.source)}</p>
+          <ul>${(fail.fields || []).map((f) => `<li><code>${escapeHtml(f.name)}</code> · ${escapeHtml(f.type)} · ${escapeHtml(f.value || f.note || "")}</li>`).join("")}</ul>
+          <p class="meta">${escapeHtml(fail.design_diff || "")}</p>
+        </details>` : ""}
+        ${api.design_diff ? `<p class="meta">设计与源码差异：${escapeHtml(api.design_diff)}</p>` : ""}
+        <p class="meta">运行验证边界：${escapeHtml(api.runtime_verification || "未记录")}</p>
+        ${alg ? `<p>算法：<a href="#${escapeHtml(alg.id)}">${escapeHtml(alg.subject)}</a></p>` : ""}
+        <p class="meta">模块：${(api.module_ids || []).map((id) => `<a href="#${escapeHtml(id)}">${escapeHtml(id)}</a>`).join("、") || "未记录"}</p>
+        <details>
+          <summary>来源</summary>
+          ${sourceBlock(api.sources)}
+        </details>
+      </article>`;
+    }
+
+    function renderAlg(alg) {
+      return `<article class="card" id="${escapeHtml(alg.id)}">
+        <h3>${escapeHtml(alg.subject)} ${chip(alg.implementation_status)}</h3>
+        ${alg.status_reason ? `<p class="meta">${escapeHtml(alg.status_reason)}</p>` : ""}
+        <h4>步骤</h4>
+        <ol>${(alg.steps || []).map((s) => `<li>${escapeHtml(s)}</li>`).join("")}</ol>
+        <h4>分支 / 选择 / 失败</h4>
+        <ul>${(alg.branches || []).map((s) => `<li>${escapeHtml(s)}</li>`).join("")}</ul>
+        <p class="meta">结果选择：${escapeHtml(alg.selection || "")}</p>
+        <p class="meta">失败边界：${escapeHtml(alg.failures || "")}</p>
+        <p class="meta">参数：${(alg.parameters || []).map((id) => `<a href="#${escapeHtml(id)}">${escapeHtml(id)}</a>`).join("、") || "无"}</p>
+        <details>
+          <summary>来源与核对指纹</summary>
+          ${sourceBlock(alg.sources)}
+          <p class="meta">baseline：</p>
+          <ul>${Object.entries(alg.baseline_fingerprints || {}).map(([p, fp]) =>
+            `<li><code>${escapeHtml(p)}</code><br /><code>${escapeHtml(fp)}</code></li>`).join("")}</ul>
+        </details>
+      </article>`;
+    }
+
+    function renderModule(mod) {
+      return `<article class="card" id="${escapeHtml(mod.id)}">
+        <h3>${escapeHtml(mod.name)} ${chip(mod.implementation_status)}</h3>
+        <p class="kv"><b>类型</b>${escapeHtml(mod.kind)}</p>
+        <p class="kv"><b>职责</b>${escapeHtml(mod.responsibility)}</p>
+        <p class="kv"><b>输入</b>${escapeHtml(mod.input)}</p>
+        <p class="kv"><b>输出</b>${escapeHtml(mod.output)}</p>
+        ${mod.algorithm ? `<p>算法：<a href="#${escapeHtml(mod.algorithm)}">${escapeHtml(mod.algorithm)}</a></p>` : "<p class='meta'>无独立算法对象。</p>"}
+        <details><summary>来源</summary>${sourceBlock(mod.sources)}</details>
+      </article>`;
+    }
+
+    function renderParam(p) {
+      return `<article class="card" id="${escapeHtml(p.id)}">
+        <h3><code>${escapeHtml(p.key)}</code></h3>
+        <p class="kv"><b>取值</b>${escapeHtml(p.value)}</p>
+        <p class="kv"><b>种类</b>${escapeHtml(p.value_kind)}</p>
+        <p class="kv"><b>位置</b><code>${escapeHtml(p.location)}</code>
+          <button type="button" data-copy="${escapeHtml((p.location || "").split("；")[0])}">复制路径</button>
+          <input class="copy-fail" hidden readonly value="${escapeHtml((p.location || "").split("；")[0])}" />
+        </p>
+        <p class="kv"><b>影响</b>${escapeHtml(p.impact)}</p>
+      </article>`;
+    }
+
+    function bindToolbar(mapNote) {
+      $("toolbar").innerHTML = `
+        <button type="button" id="btn-reload">重新加载 project-map.json</button>
+        <span class="meta">隔离样例：</span>
+        <button type="button" data-sample="live">当前快照</button>
+        <button type="button" data-sample="stale">源码指纹已变</button>
+        <button type="button" data-sample="missing">来源缺失</button>
+        <button type="button" data-sample="invalid">JSON 解析失败</button>
+      `;
+      $("btn-reload").onclick = () => loadFromFile("fetch");
+      document.querySelectorAll("[data-sample]").forEach((btn) => {
+        btn.onclick = () => runSample(btn.getAttribute("data-sample"));
+      });
+      void mapNote;
+    }
+
+    function renderAll(map, loadNote) {
+      const staleAlgs = (map.algorithms || []).filter((a) => a.implementation_status !== "源码已核对");
+      const banners = [];
+      if (loadNote) banners.push(`<div class="banner">${escapeHtml(loadNote)}</div>`);
+      if (map._policyNotes && map._policyNotes.length) {
+        banners.push(`<div class="banner warn" id="stale-banner">算法未保持「源码已核对」：${escapeHtml(map._policyNotes.join("；"))}。更新 generated_at 不能代替定向重读。</div>`);
+      }
+      (map.warnings || []).forEach((w) => banners.push(`<p class="meta">· ${escapeHtml(w)}</p>`));
+
+      $("status").innerHTML = banners.join("");
+      bindToolbar();
+
+      const pages = (map.pages || []).map((p) => `<section class="card" id="${escapeHtml(p.id)}">
+        <h2>${escapeHtml(p.name)} ${chip(p.implementation_status)}</h2>
+        <p class="meta">路由 <code>${escapeHtml(p.route)}</code></p>
+        <p>${escapeHtml(p.purpose)}</p>
+        ${(map.features || []).filter((f) => (p.features || []).includes(f.id)).map((f) => renderFeature(map, f)).join("")}
+        <details><summary>页面来源</summary>${sourceBlock(p.sources)}</details>
+      </section>`).join("");
+
+      $("app").innerHTML = `
+        ${pages}
+        <section>
+          <h2>接口</h2>
+          <p class="meta">登录 API-001/002；知识入库 API-003～006；提问 API-007～010；转人工 API-011/012。百炼 EXT 仅内部 httpx 调用。</p>
+          ${(map.apis || []).map((a) => renderApi(a, map)).join("") || "<p>未找到接口实现。</p>"}
+        </section>
+        <section>
+          <h2>算法</h2>
+          ${staleAlgs.length ? `<p class="meta">其中 ${staleAlgs.length} 项不是「源码已核对」。</p>` : ""}
+          ${(map.algorithms || []).map(renderAlg).join("")}
+        </section>
+        <section>
+          <h2>工具 / 子模块</h2>
+          <p class="meta">百炼是 httpx 外部调用模块，不是 Agent 工具。无 Plugin、无工单、无模型观察循环。</p>
+          ${(map.modules || []).map(renderModule).join("")}
+        </section>
+        <section>
+          <h2>参数</h2>
+          <p class="meta">源码默认值 ≠ 当前机器 .env。本页未读真实环境文件，也不展示密钥。</p>
+          ${(map.parameters || []).map(renderParam).join("")}
+        </section>
+        <section class="card">
+          <h2>未实现 / 不适用</h2>
+          <ul>${(map.not_present || []).map((x) => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
+          <p class="meta">生成时间 ${escapeHtml((map.project || {}).generated_at || "")}；算法核对时间 ${escapeHtml((map.project || {}).algorithms_checked_at || "")}</p>
+        </section>
+      `;
+
+      document.querySelectorAll("[data-copy]").forEach((btn) => {
+        btn.addEventListener("click", () => copyPath(btn.getAttribute("data-copy"), btn));
+      });
+      const params = new URL(window.location.href).searchParams;
+      if (params.get("expand") === "all") {
+        document.querySelectorAll("details").forEach((d) => { d.open = true; });
+      }
+      if (params.get("copytest") === "1") {
+        const btn = document.querySelector("[data-copy]");
+        if (btn) copyPath(btn.getAttribute("data-copy"), btn);
+      }
+      const focusId = params.get("focus") || (window.location.hash ? decodeURIComponent(window.location.hash.replace(/^#/, "")) : "");
+      if (focusId) {
+        const target = document.getElementById(focusId);
+        if (target) target.scrollIntoView({ block: "start" });
+      }
+    }
+
+    function showError(title, detail) {
+      $("status").innerHTML = `<div class="banner err" id="load-error"><strong>${escapeHtml(title)}</strong><p>${escapeHtml(detail)}</p></div>`;
+      bindToolbar();
+      $("app").innerHTML = `<div class="card"><p>说明数据不可用，已停止按功能卡片渲染，避免把损坏内容标成已核对。</p></div>`;
+      $("nav").innerHTML = `<h1>页面功能导航</h1><p class="sub">载入失败</p>`;
+    }
+
+    let embeddedRaw = "";
+    let liveMap = null;
+
+    function clone(obj) {
+      return JSON.parse(JSON.stringify(obj));
+    }
+
+    function runSample(kind) {
+      const url = new URL(window.location.href);
+      if (kind === "live") url.searchParams.delete("sample");
+      else url.searchParams.set("sample", kind);
+      history.replaceState({}, "", url);
+      if (kind === "invalid") {
+        try {
+          parseMap("{not-json");
+        } catch (err) {
+          showError("隔离样例：JSON 解析失败", err.message);
+        }
+        return;
+      }
+      if (!liveMap) {
+        showError("隔离样例无法运行", "尚未得到可用的内嵌/文件 map。");
+        return;
+      }
+      const map = clone(liveMap);
+      if (kind === "stale") {
+        const target = "backend/src/utils/text.py";
+        if (map.files && map.files[target]) {
+          map.files[target].fingerprint = "sha256:deadbeef-isolated-stale-sample";
+        }
+        applySourcePolicy(map);
+        renderNav(map);
+        renderAll(map, "隔离样例：假装 text.py 源码指纹已变。依赖该文件的切块/余弦算法不得继续显示「源码已核对」。");
+        return;
+      }
+      if (kind === "missing") {
+        delete map.files["backend/src/services/qa.py"];
+        applySourcePolicy(map);
+        renderNav(map);
+        renderAll(map, "隔离样例：假装 qa.py 来源缺失。依赖该文件的提问状态机算法降为「未找到实现」。");
+        return;
+      }
+      applySourcePolicy(map);
+      renderNav(map);
+      renderAll(map, "当前源码快照（隔离样例已关闭）。");
+    }
+
+    async function loadFromFile(mode) {
+      embeddedRaw = $("embedded-map").textContent || "";
+      let raw = "";
+      let note = "";
+      try {
+        if (mode !== "embedded-only") {
+          const res = await fetch("project-map.json", { cache: "no-store" });
+          if (!res.ok) throw new Error("HTTP " + res.status + " " + res.statusText);
+          raw = await res.text();
+          note = "已从 project-map.json 重新加载。";
+        } else {
+          throw new Error("skip");
+        }
+      } catch (err) {
+        raw = embeddedRaw;
+        note = "未能读取旁路 project-map.json（" + err.message + "），已改用页面内嵌快照。file:// 下可改用短时静态服务后再点重新加载。";
+      }
+      try {
+        liveMap = parseMap(raw);
+        const map = applySourcePolicy(clone(liveMap));
+        renderNav(map);
+        renderAll(map, note);
+        const sample = new URL(window.location.href).searchParams.get("sample");
+        if (sample && sample !== "live") runSample(sample);
+      } catch (err) {
+        showError("说明数据解析失败", err.message);
+      }
+    }
+
+    loadFromFile("init");
+  </script>
+</body>
+</html>

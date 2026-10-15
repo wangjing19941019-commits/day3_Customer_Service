@@ -1,0 +1,98 @@
+[
+  {
+    "id": "bf7a3495-051e-4d39-a431-8db815ca492c",
+    "filename": "t011-helix-vpn.md",
+    "ingest_status": "ready",
+    "object_types": [
+      "hardware"
+    ],
+    "request_types": [
+      "troubleshooting",
+      "maintenance"
+    ],
+    "chunk_count": 2,
+    "heading_paths": [
+      "T011Helix VPN / 密码重置",
+      "T011Helix VPN / 连接失败"
+    ],
+    "faqs": [
+      {
+        "id": "09b4dba2-defa-4448-a34c-1efbc49e501c",
+        "question": "T011Helix VPN 密码重置流程是什么？",
+        "answer": "在账号中心选择重置密码并完成手机验证，然后重新导入公司 VPN 配置文件。不要反复输入旧密码。完成验证后等待一分钟再打开客户端。"
+      },
+      {
+        "id": "a495f922-1dde-4770-b614-d57ae1dc0e3d",
+        "question": "T011Helix VPN 连接失败（提示认证失败）怎么办？",
+        "answer": "先检查是否连了访客 WiFi，再忘记网络后重连办公网。证书过期时联系 IT 换发，不要改本机防火墙做实验。"
+      }
+    ]
+  },
+  {
+    "id": "5074d8d5-d783-4ad8-8407-2abd9d5c5d80",
+    "filename": "t011-from-ready.md",
+    "ingest_status": "ready",
+    "object_types": [
+      "hardware",
+      "network"
+    ],
+    "request_types": [],
+    "chunk_count": 1,
+    "heading_paths": [
+      "T011 switch"
+    ],
+    "faqs": []
+  },
+  {
+    "id": "c15b9302-bf73-4d6f-b8d0-bc9e97793caa",
+    "filename": "t011-printer-guide.pdf",
+    "ingest_status": "ready",
+    "object_types": [
+      "hardware",
+      "network"
+    ],
+    "request_types": [
+      "troubleshooting"
+    ],
+    "chunk_count": 6,
+    "heading_paths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "faqs": [
+      {
+        "id": "551aee4a-4539-41bb-9931-ffe37d39ee39",
+        "question": "How do I reset the T011PRINTER office printer?",
+        "answer": "Confirm the device is on the company network and powered on. Clear the paper path then restart the spooler."
+      }
+    ]
+  },
+  {
+    "id": "504082a7-bb37-4028-8376-bfc4c0101760",
+    "filename": "t011-office-wifi.txt",
+    "ingest_status": "ready",
+    "object_types": [
+      "network"
+    ],
+    "request_types": [
+      "troubleshooting"
+    ],
+    "chunk_count": 3,
+    "heading_paths": [
+      "",
+      "",
+      ""
+    ],
+    "faqs": [
+      {
+        "id": "f745ca3e-d0f0-4f9d-87d7-728793c49c04",
+        "question": "办公区无线网络无法连接怎么办？",
+        "answer": "先确认电脑连的是公司办公网络，而不是访客网络或手机热点；关闭飞行模式后在系统设置里忘记该网络，再重新输入 IT 发放的密码；若仍失败，重启无线网卡并避开微波干扰，不要反复输错密码。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,3361 @@
+{
+  "mock": false,
+  "viewport": "1440x900",
+  "cdpPort": 9395,
+  "url": "http://127.0.0.1:5199",
+  "backend": "http://127.0.0.1:8099",
+  "userDataDir": "C:\\Users\\慈海客服\\AppData\\Local\\Temp\\t012-chrome-11irbv",
+  "llmKeyConfigured": true,
+  "fallbackFromConfigMatches": true,
+  "steps": {
+    "ac019": {
+      "tag": "反问",
+      "text": "请问您是连不上什么？例如公司内网、Wi-Fi、VPN，还是某个具体系统？另外，是在什么设备和场景下出现的？有无错误提示？",
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 1,
+        "waiting_for_agent": false,
+        "messageCount": 2,
+        "systemCount": 1,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "连不上",
+          "rewritten": "连不上"
+        },
+        "lastSystem": {
+          "kind": "clarification",
+          "content": "请问您是连不上什么？例如公司内网、Wi-Fi、VPN，还是某个具体系统？另外，是在什么设备和场景下出现的？有无错误提示？"
+        }
+      },
+      "error": null
+    },
+    "ac020": {
+      "tag": "知识问答",
+      "text": "是的，需要避开微波炉等干扰源后再重连。\n\n根据企业 IT 知识库《无线网络使用规范》，T011WIFI 连接失败后，标准排查步骤明确包含“避开微波干扰”：在确认连接的是公司办公网络（非访客网或手机热点）、关闭飞行模式、在系统设置中“忘记该网络”并重新输入 IT 发放的密码后，若仍无法连接，应重启无线网卡并避开微波炉等2.4GHz频段干扰源，而非反复尝试输入密码。",
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 4,
+        "systemCount": 2,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "是公司办公区 T011WIFI 无线网连不上。忘记该网络之后，还要不要避开微波炉再重连？请按知识说明。",
+          "rewritten": "公司办公区 T011WIFI 无线网连不上，已忘记该网络；是否需要避开微波炉等干扰源后再重连？请依据企业 IT 知识库中的无线网络使用规范说明。"
+        },
+        "lastSystem": {
+          "kind": "knowledge",
+          "content": "是的，需要避开微波炉等干扰源后再重连。\n\n根据企业 IT 知识库《无线网络使用规范》，T011WIFI 连接失败后，标准排查步骤明确包含“避开微波干扰”：在确认连接的是公司办公网络（非访客网或手机热点）、关闭飞行模式、在系统设置中“忘记该网络”并重新输入 IT 发放的密码后，若仍无法连接，应重启无线网卡并避开微波炉等2.4GHz频段干扰源，而非反复尝试输入密码。"
+        }
+      },
+      "error": null
+    },
+    "ac012": {
+      "tag": "闲聊",
+      "text": "你好呀！阳光明媚的日子让人心情也跟着亮起来～ 😊",
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 6,
+        "systemCount": 3,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "你好呀，今天天气真好，我只是打个招呼，不谈电脑。",
+          "rewritten": "你好呀，今天天气真好，我只是打个招呼，不谈电脑。"
+        },
+        "lastSystem": {
+          "kind": "small_talk",
+          "content": "你好呀！阳光明媚的日子让人心情也跟着亮起来～ 😊"
+        }
+      },
+      "error": null
+    },
+    "ac011a": {
+      "tag": "FAQ",
+      "text": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。",
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 8,
+        "systemCount": 4,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "T011HELIX 重置 VPN 密码的要点是什么",
+          "rewritten": "T011HELIX 重置 VPN 密码的要点是什么"
+        },
+        "lastSystem": {
+          "kind": "faq",
+          "content": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+        }
+      },
+      "error": null,
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    "ac001": {
+      "tag": "知识问答",
+      "text": "T011HELIX-FAIL 认证失败**不是由网卡硬件损坏导致**。\n\n根本原因：根据知识库分块，T011HELIX-FAIL 明确指向**账号层与配置层问题**，包括证书过期、VPN 配置文件失效、密码错误或账号状态异常（如锁定/过期），以及用户误连访客 WiFi 导致认证环境不合法。所有召回分块均未提及网卡硬件故障与该错误存在因果关系。\n\n常见诱因：\n- 连接了访客 WiFi 而非公司办公网络；\n- 本地 VPN 证书已过期，需 IT 换发；\n- VPN 配置文件损坏或未更新；\n- 账号密码错误、过期或被锁定（需通过账号中心重置）；\n- 未正确导入最新配置文件即尝试连接。\n\n排查路径：\n1. 确认当前连接的是公司办公无线网络（非访客网、非手机热点），必要时“忘记网络”后重连；\n2. 检查是否收到证书过期提示，如有则联系 IT 换发证书；\n3. 在账号中心完成密码重置并手机验证，等待一分钟后再操作；\n4. 重新导入 IT 发放的最新 VPN 配置文件，勿复用旧文件；\n5. 不要修改本机防火墙设置或反复输入错误密码。\n\n处置方式：\n- 若连错网络：断开访客 WiFi，忘记该网络，切换",
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 10,
+        "systemCount": 5,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "T011HELIX-FAIL 认证失败是不是网卡硬件坏了？请按知识分块说明，不要只复述 FAQ 标题。",
+          "rewritten": "T011HELIX-FAIL 认证失败是否由网卡硬件损坏导致？请依据知识库分块说明根本原因、常见诱因、排查路径及对应处置方式，不引用 FAQ 标题。"
+        },
+        "lastSystem": {
+          "kind": "knowledge",
+          "content": "T011HELIX-FAIL 认证失败**不是由网卡硬件损坏导致**。\n\n根本原因：根据知识库分块，T011HELIX-FAIL 明确指向**账号层与配置层问题**，包括证书过期、VPN 配置文件失效、密码错误或账号状态异常（如锁定/过期），以及用户误连访客 WiFi 导致认证环境不合法。所有召回分块均未提及网卡硬件故障与该错误存在因果关系。\n\n常见诱因：\n- 连接了访客 WiFi 而非公司办公网络；\n- 本地 VPN 证书已过期，需 IT 换发；\n- VPN 配置文件损坏或未更新；\n- 账号密码错误、过期或被锁定（需通过账号中心重置）；\n- 未正确导入最新配置文件即尝试连接。\n\n排查路径：\n1. 确认当前连接的是公司办公无线网络（非访客网、非手机热点），必要时“忘记网络”后重连；\n2. 检查是否收到证书过期提示，如有则联系 IT 换发证书；\n3. 在账号中心完成密码重置并手机验证，等待一分钟后再操作；\n4. 重新导入 IT 发放的最新 VPN 配置文件，勿复用旧文件；\n5. 不要修改本机防火墙设置或反复输入错误密码。\n\n处置方式：\n- 若连错网络：断开访客 WiFi，忘记该网络，切换"
+        }
+      },
+      "error": null
+    },
+    "ac021": {
+      "tag": "FAQ",
+      "text": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。",
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 12,
+        "systemCount": 6,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:faq"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "密码怎么重置",
+          "rewritten": "T011HELIX VPN 密码重置的操作要点是什么"
+        },
+        "lastSystem": {
+          "kind": "faq",
+          "content": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+        }
+      },
+      "error": null
+    },
+    "ac013a": {
+      "tag": "知识问答",
+      "text": "T012OA-LOCK-MARKER 被锁定后，解锁码（即一次性解锁码 T012OA-RESET-CODE）需通过企业账号中心操作获取：登录账号中心，点击「解锁申请」，使用企业微信扫码后即可获得该解锁码。该码有效期为十分钟，需在此期间完成输入。解锁码不会通过邮件或短信发送，也不在操作系统或注册表中存储。",
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 14,
+        "systemCount": 7,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "T012OA-LOCK-MARKER 被锁定后解锁码在哪看？请按知识正文说明，不要只念 FAQ。",
+          "rewritten": "T012OA-LOCK-MARKER 被锁定后，解锁码在哪个位置查看？请依据知识库正文内容说明，不要仅引用 FAQ 标题。"
+        },
+        "lastSystem": {
+          "kind": "knowledge",
+          "content": "T012OA-LOCK-MARKER 被锁定后，解锁码（即一次性解锁码 T012OA-RESET-CODE）需通过企业账号中心操作获取：登录账号中心，点击「解锁申请」，使用企业微信扫码后即可获得该解锁码。该码有效期为十分钟，需在此期间完成输入。解锁码不会通过邮件或短信发送，也不在操作系统或注册表中存储。"
+        }
+      },
+      "error": null
+    },
+    "ac013b": {
+      "tag": "知识问答",
+      "text": "是的，T011WIFI 办公网忘记网络后重连时，若首次重新输入密码仍无法连接，需避开微波炉等2.4GHz干扰源。\n\n依据《无线网络使用规范》：办公区无线网络无法连接时，标准步骤为——先确认连接的是公司办公网络（非访客网或手机热点），关闭飞行模式，在系统设置中忘记该网络，再重新输入IT发放的密码；**若仍失败，则需重启无线网卡并避开微波干扰**。该要求明确出现在规范多个段落（段落1–14）中，属于故障排除的必要环节，而非可选建议。",
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 16,
+        "systemCount": 8,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "T011WIFI 办公网忘记之后还要不要避开微波炉再重连，请按知识说明，不要只复述 FAQ 标题。",
+          "rewritten": "T011WIFI 办公网忘记网络后，是否需要避开微波炉等干扰源再重连？请依据《无线网络使用规范》知识正文说明，不要仅复述 FAQ 标题。"
+        },
+        "lastSystem": {
+          "kind": "knowledge",
+          "content": "是的，T011WIFI 办公网忘记网络后重连时，若首次重新输入密码仍无法连接，需避开微波炉等2.4GHz干扰源。\n\n依据《无线网络使用规范》：办公区无线网络无法连接时，标准步骤为——先确认连接的是公司办公网络（非访客网或手机热点），关闭飞行模式，在系统设置中忘记该网络，再重新输入IT发放的密码；**若仍失败，则需重启无线网卡并避开微波干扰**。该要求明确出现在规范多个段落（段落1–14）中，属于故障排除的必要环节，而非可选建议。"
+        }
+      },
+      "error": null
+    },
+    "ac016": {
+      "tag": "知识问答",
+      "text": "1）根据《无线网络使用规范》，T011WIFI 办公网在忘记网络后重连失败时，明确要求“若仍失败，重启无线网卡并避开微波干扰”。该条款在多个段落（段落1–14）中重复强调，属于规范中的标准操作步骤。因此，重连过程中确实需要避开微波炉等2.4GHz频段干扰源。\n\n2）T012OA-LOCK-MARKER 账号被锁定后，一次性解锁码（T012OA-RESET-CODE）需通过账号中心操作获取：登录账号中心，点击「解锁申请」，使用企业微信扫码即可获得该解锁码，且须在十分钟内完成输入。",
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 18,
+        "systemCount": 9,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "两个独立问题请分段回答：1）T011WIFI 办公网忘记之后还要不要避开微波炉再重连？2）T012OA-LOCK-MARKER 账号锁定后解锁码在哪看？",
+          "rewritten": "1）T011WIFI 办公网忘记网络后重连时，是否需要避开微波炉等干扰源？请依据《无线网络使用规范》说明；2）T012OA-LOCK-MARKER 账号被锁定后，一次性解锁码（T012OA-RESET-CODE）在何处查看？请按知识正文说明，不引用FAQ标题。"
+        },
+        "lastSystem": {
+          "kind": "knowledge",
+          "content": "1）根据《无线网络使用规范》，T011WIFI 办公网在忘记网络后重连失败时，明确要求“若仍失败，重启无线网卡并避开微波干扰”。该条款在多个段落（段落1–14）中重复强调，属于规范中的标准操作步骤。因此，重连过程中确实需要避开微波炉等2.4GHz频段干扰源。\n\n2）T012OA-LOCK-MARKER 账号被锁定后，一次性解锁码（T012OA-RESET-CODE）需通过账号中心操作获取：登录账号中心，点击「解锁申请」，使用企业微信扫码即可获得该解锁码，且须在十分钟内完成输入。"
+        }
+      },
+      "error": null,
+      "otherCountBefore": 8,
+      "otherCountAfter": 9
+    },
+    "ac014a": {
+      "tag": "兜底",
+      "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 20,
+        "systemCount": 10,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:fallback"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "今天中午食堂有什么菜？帮我点一份红烧肉。",
+          "rewritten": "今天中午食堂有什么菜？帮我点一份红烧肉。"
+        },
+        "lastSystem": {
+          "kind": "fallback",
+          "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+        }
+      },
+      "error": null
+    },
+    "ac014b": {
+      "tag": "兜底",
+      "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 22,
+        "systemCount": 11,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:fallback",
+          "employee:employee_turn",
+          "system:fallback"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "帮我查一下工单 INC-991122 现在审批到哪一步了，权限开了没？",
+          "rewritten": "查询工单 INC-991122 当前审批进度及对应权限是否已开通"
+        },
+        "lastSystem": {
+          "kind": "fallback",
+          "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+        }
+      },
+      "error": null
+    },
+    "ac014c": {
+      "tag": "兜底",
+      "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 24,
+        "systemCount": 12,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:fallback",
+          "employee:employee_turn",
+          "system:fallback",
+          "employee:employee_turn",
+          "system:fallback"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "T012NOKNOWLEDGE-XYZ 公司量子传真机固件内部哈希校验值是多少？这是 IT 设备问题。",
+          "rewritten": "T012NOKNOWLEDGE-XYZ 公司量子传真机固件内部哈希校验值是多少？"
+        },
+        "lastSystem": {
+          "kind": "fallback",
+          "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+        }
+      },
+      "error": null
+    },
+    "ac015logs": {
+      "addedBytes": 0,
+      "matchLines": [],
+      "hasTicket": false,
+      "hasToolCall": false,
+      "bailianOk": []
+    },
+    "d001": {
+      "beforeId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "afterId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "beforeCount": 24,
+      "afterCount": 24,
+      "screenshot": "t012-d001-reload.png"
+    },
+    "d004before": {
+      "a": {
+        "id": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 0,
+        "systemCount": 0,
+        "kinds": [],
+        "lastEmployee": null,
+        "lastSystem": null
+      },
+      "error": "timeout:还是不行"
+    },
+    "d004after": {
+      "tag": "闲聊",
+      "api": {
+        "id": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 4,
+        "systemCount": 2,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:small_talk"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "你好，我只是换个话题打个招呼，不谈刚才的故障。",
+          "rewritten": "你好，我只是换个话题打个招呼，不谈刚才的故障。"
+        },
+        "lastSystem": {
+          "kind": "small_talk",
+          "content": "你好呀～很高兴你来打个招呼，轻松一下也很重要！😊"
+        }
+      },
+      "error": null
+    },
+    "ac022": [
+      {
+        "i": 1,
+        "sent": "连不上",
+        "tag": "反问",
+        "kind": "clarification",
+        "round": 1,
+        "text": "请问您是连不上公司内网、VPN、某个业务系统，还是其他网络资源？能否提供更具体的场景或报错信息？",
+        "error": null
+      },
+      {
+        "i": 2,
+        "sent": "就是那个",
+        "tag": "反问",
+        "kind": "clarification",
+        "round": 2,
+        "text": "请问您‘连不上’的是什么？比如是公司内网、VPN、某个业务系统（如OA、ERP）、还是某台设备（如打印机、会议终端）？",
+        "error": null
+      },
+      {
+        "i": 3,
+        "sent": "还是一样",
+        "tag": "反问",
+        "kind": "clarification",
+        "round": 3,
+        "text": "您‘连不上’的具体对象是什么？例如公司内网、VPN、OA系统，或是某台打印机/会议终端？有无弹出错误提示或代码？",
+        "error": null
+      },
+      {
+        "i": 4,
+        "sent": "你再看看",
+        "tag": "反问",
+        "kind": "clarification",
+        "round": 4,
+        "text": "您‘连不上’的具体是什么？例如：公司VPN、办公内网、OA系统、ERP系统、打印机，或是某台会议终端？有无弹出错误代码或提示文字？",
+        "error": null
+      },
+      {
+        "i": 5,
+        "sent": "怎么办啊",
+        "tag": "反问",
+        "kind": "clarification",
+        "round": 5,
+        "text": "您‘连不上’的具体是什么？例如：公司VPN、办公内网、OA系统、ERP系统、打印机，或是某台会议终端？有无弹出错误代码或提示文字？",
+        "error": null
+      },
+      {
+        "i": 6,
+        "sent": "还是不行啊",
+        "tag": "兜底",
+        "kind": "fallback",
+        "round": 0,
+        "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+        "error": null
+      }
+    ],
+    "ac002transfer": {
+      "before": {
+        "statusText": "AI 接待中",
+        "disabled": false
+      },
+      "after": {
+        "statusText": "已转人工，等待客服",
+        "label": "已转人工",
+        "disabled": true
+      },
+      "api": {
+        "id": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "status": "handed_off",
+        "clarification_round": 0,
+        "waiting_for_agent": true,
+        "messageCount": 16,
+        "systemCount": 8,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:fallback"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "还是不行啊",
+          "rewritten": "还是不行啊"
+        },
+        "lastSystem": {
+          "kind": "fallback",
+          "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+        }
+      },
+      "screenshot": "t012-ac002-transfer-click.png"
+    }
+  },
+  "viteStatus": 200,
+  "backendStatus": 200,
+  "mockEnabled": false,
+  "afterLogin": {
+    "pathname": "/employee",
+    "pageHasMock": false,
+    "statusText": "AI 接待中",
+    "screenshot": "t012-login-employee.png"
+  },
+  "docList": [
+    {
+      "id": "924c1f4a-5bdc-4861-9e26-d60b338cdecd",
+      "filename": "t011-stay-ingesting.md",
+      "ingest_status": "ready",
+      "object_types": [
+        "software"
+      ],
+      "request_types": [],
+      "faq_count": 1,
+      "chunk_count": 2
+    },
+    {
+      "id": "bf7a3495-051e-4d39-a431-8db815ca492c",
+      "filename": "t011-helix-vpn.md",
+      "ingest_status": "ready",
+      "object_types": [
+        "hardware"
+      ],
+      "request_types": [
+        "troubleshooting",
+        "maintenance"
+      ],
+      "faq_count": 1,
+      "chunk_count": 2
+    },
+    {
+      "id": "f69918c8-354f-4618-99cd-3b3f3ee6f5da",
+      "filename": "t011-ingest-probe.md",
+      "ingest_status": "ready",
+      "object_types": [
+        "software"
+      ],
+      "request_types": [],
+      "faq_count": 0,
+      "chunk_count": 1
+    },
+    {
+      "id": "5074d8d5-d783-4ad8-8407-2abd9d5c5d80",
+      "filename": "t011-from-ready.md",
+      "ingest_status": "ready",
+      "object_types": [
+        "hardware",
+        "network"
+      ],
+      "request_types": [],
+      "faq_count": 0,
+      "chunk_count": 1
+    },
+    {
+      "id": "c15b9302-bf73-4d6f-b8d0-bc9e97793caa",
+      "filename": "t011-printer-guide.pdf",
+      "ingest_status": "ready",
+      "object_types": [
+        "hardware",
+        "network"
+      ],
+      "request_types": [
+        "troubleshooting"
+      ],
+      "faq_count": 1,
+      "chunk_count": 6
+    },
+    {
+      "id": "504082a7-bb37-4028-8376-bfc4c0101760",
+      "filename": "t011-office-wifi.txt",
+      "ingest_status": "ready",
+      "object_types": [
+        "network"
+      ],
+      "request_types": [
+        "troubleshooting"
+      ],
+      "faq_count": 1,
+      "chunk_count": 3
+    }
+  ],
+  "accountUpload": {
+    "status": 202,
+    "id": "a2ea3f4e-8d26-43e5-b719-097b4b603920",
+    "ingest": "ingesting"
+  },
+  "accountReady": {
+    "id": "a2ea3f4e-8d26-43e5-b719-097b4b603920",
+    "filename": "t012-oa-unlock.md",
+    "ingest_status": "ready",
+    "ingest_error": null,
+    "object_types": [
+      "account"
+    ],
+    "request_types": [
+      "troubleshooting"
+    ],
+    "faq_count": 2,
+    "chunk_count": 1,
+    "created_at": "2026-09-17T12:03:31",
+    "updated_at": "2026-09-17T12:03:37.119572"
+  },
+  "accountDetail": {
+    "object_types": [
+      "account"
+    ],
+    "faqs": [
+      {
+        "q": "OA账号被锁定后如何解锁？"
+      },
+      {
+        "q": "OA账号锁定后能否通过重装系统或修改注册表解决？"
+      }
+    ],
+    "chunk_count": 1,
+    "firstChunk": "T012OA 企业账号解锁\n\nT012OA-LOCK-MARKER：OA 账号连续输错密码被锁定后，到账号中心点「解锁申请」，用企业微信扫码获取一次性解锁码 T012OA-RESET-CODE，十分钟内输入。不要重装操作系统，也不要修改本机注册表。"
+  },
+  "helix": {
+    "object_types": [
+      "hardware"
+    ],
+    "faqs": [
+      {
+        "q": "T011HELIX 重置 VPN 密码的要点是什么",
+        "a": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+      }
+    ]
+  },
+  "wifi": {
+    "id": "504082a7-bb37-4028-8376-bfc4c0101760",
+    "object_types": [
+      "network"
+    ]
+  },
+  "convA": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+  "convB": null,
+  "turns": [
+    {
+      "sent": "连不上",
+      "ui": {
+        "tag": "反问",
+        "text": "请问您是连不上什么？例如公司内网、Wi-Fi、VPN，还是某个具体系统？另外，是在什么设备和场景下出现的？有无错误提示？",
+        "rewrite": "改写为：连不上",
+        "statusText": "AI 接待中",
+        "conversationId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "otherCount": 1,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 1,
+        "waiting_for_agent": false,
+        "messageCount": 2,
+        "systemCount": 1,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "连不上",
+          "rewritten": "连不上"
+        },
+        "lastSystem": {
+          "kind": "clarification",
+          "content": "请问您是连不上什么？例如公司内网、Wi-Fi、VPN，还是某个具体系统？另外，是在什么设备和场景下出现的？有无错误提示？"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "是公司办公区 T011WIFI 无线网连不上。忘记该网络之后，还要不要避开微波炉再重连？请按知识说明。",
+      "ui": {
+        "tag": "知识问答",
+        "text": "是的，需要避开微波炉等干扰源后再重连。\n\n根据企业 IT 知识库《无线网络使用规范》，T011WIFI 连接失败后，标准排查步骤明确包含“避开微波干扰”：在确认连接的是公司办公网络（非访客网或手机热点）、关闭飞行模式、在系统设置中“忘记该网络”并重新输入 IT 发放的密码后，若仍无法连接，应重启无线网卡并避开微波炉等2.4GHz频段干扰源，而非反复尝试输入密码。",
+        "rewrite": "改写为：公司办公区 T011WIFI 无线网连不上，已忘记该网络；是否需要避开微波炉等干扰源后再重连？请依据企业 IT 知识库中的无线网络使用规范说明。",
+        "statusText": "AI 接待中",
+        "conversationId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "otherCount": 2,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 4,
+        "systemCount": 2,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "是公司办公区 T011WIFI 无线网连不上。忘记该网络之后，还要不要避开微波炉再重连？请按知识说明。",
+          "rewritten": "公司办公区 T011WIFI 无线网连不上，已忘记该网络；是否需要避开微波炉等干扰源后再重连？请依据企业 IT 知识库中的无线网络使用规范说明。"
+        },
+        "lastSystem": {
+          "kind": "knowledge",
+          "content": "是的，需要避开微波炉等干扰源后再重连。\n\n根据企业 IT 知识库《无线网络使用规范》，T011WIFI 连接失败后，标准排查步骤明确包含“避开微波干扰”：在确认连接的是公司办公网络（非访客网或手机热点）、关闭飞行模式、在系统设置中“忘记该网络”并重新输入 IT 发放的密码后，若仍无法连接，应重启无线网卡并避开微波炉等2.4GHz频段干扰源，而非反复尝试输入密码。"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "你好呀，今天天气真好，我只是打个招呼，不谈电脑。",
+      "ui": {
+        "tag": "闲聊",
+        "text": "你好呀！阳光明媚的日子让人心情也跟着亮起来～ 😊",
+        "rewrite": "改写为：你好呀，今天天气真好，我只是打个招呼，不谈电脑。",
+        "statusText": "AI 接待中",
+        "conversationId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "otherCount": 3,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 6,
+        "systemCount": 3,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "你好呀，今天天气真好，我只是打个招呼，不谈电脑。",
+          "rewritten": "你好呀，今天天气真好，我只是打个招呼，不谈电脑。"
+        },
+        "lastSystem": {
+          "kind": "small_talk",
+          "content": "你好呀！阳光明媚的日子让人心情也跟着亮起来～ 😊"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "T011HELIX 重置 VPN 密码的要点是什么",
+      "ui": {
+        "tag": "FAQ",
+        "text": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。",
+        "rewrite": "改写为：T011HELIX 重置 VPN 密码的要点是什么",
+        "statusText": "AI 接待中",
+        "conversationId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "otherCount": 4,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 8,
+        "systemCount": 4,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "T011HELIX 重置 VPN 密码的要点是什么",
+          "rewritten": "T011HELIX 重置 VPN 密码的要点是什么"
+        },
+        "lastSystem": {
+          "kind": "faq",
+          "content": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "T011HELIX-FAIL 认证失败是不是网卡硬件坏了？请按知识分块说明，不要只复述 FAQ 标题。",
+      "ui": {
+        "tag": "知识问答",
+        "text": "T011HELIX-FAIL 认证失败**不是由网卡硬件损坏导致**。\n\n根本原因：根据知识库分块，T011HELIX-FAIL 明确指向**账号层与配置层问题**，包括证书过期、VPN 配置文件失效、密码错误或账号状态异常（如锁定/过期），以及用户误连访客 WiFi 导致认证环境不合法。所有召回分块均未提及网卡硬件故障与该错误存在因果关系。\n\n常见诱因：\n- 连接了访客 WiFi 而非公司办公网络；\n- 本地 VPN 证书已过期，需 IT 换发；\n- VPN 配置文件损坏或未更新；\n- 账号密码错误、过期或被锁定（需通过账号中心重置）；\n- 未正确导入最新配置文件即尝试连接。\n\n排查路径：\n1. 确认当前连接的是公司办公无线网络（非访客网、非手机热点），必要时“忘记网络”后重连；\n2. 检查是否收到证书过期提示，如有则联系 IT 换发证书；\n3. 在账号中心完成密码重置并手机验证，等待一分钟后再操作；\n4. 重新导入 IT 发放的最新 VPN 配置文件，勿复用旧文件；\n5. 不要修改本机防火墙设置或反复输入错误密码。\n\n处置方式：\n- 若连错网络：断开访客 WiFi，忘记该网络，切换",
+        "rewrite": "改写为：T011HELIX-FAIL 认证失败是否由网卡硬件损坏导致？请依据知识库分块说明根本原因、常见诱因、排查路径及对应处置方式，不引用 FAQ 标题。",
+        "statusText": "AI 接待中",
+        "conversationId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "otherCount": 5,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 10,
+        "systemCount": 5,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "T011HELIX-FAIL 认证失败是不是网卡硬件坏了？请按知识分块说明，不要只复述 FAQ 标题。",
+          "rewritten": "T011HELIX-FAIL 认证失败是否由网卡硬件损坏导致？请依据知识库分块说明根本原因、常见诱因、排查路径及对应处置方式，不引用 FAQ 标题。"
+        },
+        "lastSystem": {
+          "kind": "knowledge",
+          "content": "T011HELIX-FAIL 认证失败**不是由网卡硬件损坏导致**。\n\n根本原因：根据知识库分块，T011HELIX-FAIL 明确指向**账号层与配置层问题**，包括证书过期、VPN 配置文件失效、密码错误或账号状态异常（如锁定/过期），以及用户误连访客 WiFi 导致认证环境不合法。所有召回分块均未提及网卡硬件故障与该错误存在因果关系。\n\n常见诱因：\n- 连接了访客 WiFi 而非公司办公网络；\n- 本地 VPN 证书已过期，需 IT 换发；\n- VPN 配置文件损坏或未更新；\n- 账号密码错误、过期或被锁定（需通过账号中心重置）；\n- 未正确导入最新配置文件即尝试连接。\n\n排查路径：\n1. 确认当前连接的是公司办公无线网络（非访客网、非手机热点），必要时“忘记网络”后重连；\n2. 检查是否收到证书过期提示，如有则联系 IT 换发证书；\n3. 在账号中心完成密码重置并手机验证，等待一分钟后再操作；\n4. 重新导入 IT 发放的最新 VPN 配置文件，勿复用旧文件；\n5. 不要修改本机防火墙设置或反复输入错误密码。\n\n处置方式：\n- 若连错网络：断开访客 WiFi，忘记该网络，切换"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "密码怎么重置",
+      "ui": {
+        "tag": "FAQ",
+        "text": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。",
+        "rewrite": "改写为：T011HELIX VPN 密码重置的操作要点是什么",
+        "statusText": "AI 接待中",
+        "conversationId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "otherCount": 6,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 12,
+        "systemCount": 6,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:faq"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "密码怎么重置",
+          "rewritten": "T011HELIX VPN 密码重置的操作要点是什么"
+        },
+        "lastSystem": {
+          "kind": "faq",
+          "content": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "T012OA-LOCK-MARKER 被锁定后解锁码在哪看？请按知识正文说明，不要只念 FAQ。",
+      "ui": {
+        "tag": "知识问答",
+        "text": "T012OA-LOCK-MARKER 被锁定后，解锁码（即一次性解锁码 T012OA-RESET-CODE）需通过企业账号中心操作获取：登录账号中心，点击「解锁申请」，使用企业微信扫码后即可获得该解锁码。该码有效期为十分钟，需在此期间完成输入。解锁码不会通过邮件或短信发送，也不在操作系统或注册表中存储。",
+        "rewrite": "改写为：T012OA-LOCK-MARKER 被锁定后，解锁码在哪个位置查看？请依据知识库正文内容说明，不要仅引用 FAQ 标题。",
+        "statusText": "AI 接待中",
+        "conversationId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "otherCount": 7,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 14,
+        "systemCount": 7,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "T012OA-LOCK-MARKER 被锁定后解锁码在哪看？请按知识正文说明，不要只念 FAQ。",
+          "rewritten": "T012OA-LOCK-MARKER 被锁定后，解锁码在哪个位置查看？请依据知识库正文内容说明，不要仅引用 FAQ 标题。"
+        },
+        "lastSystem": {
+          "kind": "knowledge",
+          "content": "T012OA-LOCK-MARKER 被锁定后，解锁码（即一次性解锁码 T012OA-RESET-CODE）需通过企业账号中心操作获取：登录账号中心，点击「解锁申请」，使用企业微信扫码后即可获得该解锁码。该码有效期为十分钟，需在此期间完成输入。解锁码不会通过邮件或短信发送，也不在操作系统或注册表中存储。"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "T011WIFI 办公网忘记之后还要不要避开微波炉再重连，请按知识说明，不要只复述 FAQ 标题。",
+      "ui": {
+        "tag": "知识问答",
+        "text": "是的，T011WIFI 办公网忘记网络后重连时，若首次重新输入密码仍无法连接，需避开微波炉等2.4GHz干扰源。\n\n依据《无线网络使用规范》：办公区无线网络无法连接时，标准步骤为——先确认连接的是公司办公网络（非访客网或手机热点），关闭飞行模式，在系统设置中忘记该网络，再重新输入IT发放的密码；**若仍失败，则需重启无线网卡并避开微波干扰**。该要求明确出现在规范多个段落（段落1–14）中，属于故障排除的必要环节，而非可选建议。",
+        "rewrite": "改写为：T011WIFI 办公网忘记网络后，是否需要避开微波炉等干扰源再重连？请依据《无线网络使用规范》知识正文说明，不要仅复述 FAQ 标题。",
+        "statusText": "AI 接待中",
+        "conversationId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "otherCount": 8,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 16,
+        "systemCount": 8,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "T011WIFI 办公网忘记之后还要不要避开微波炉再重连，请按知识说明，不要只复述 FAQ 标题。",
+          "rewritten": "T011WIFI 办公网忘记网络后，是否需要避开微波炉等干扰源再重连？请依据《无线网络使用规范》知识正文说明，不要仅复述 FAQ 标题。"
+        },
+        "lastSystem": {
+          "kind": "knowledge",
+          "content": "是的，T011WIFI 办公网忘记网络后重连时，若首次重新输入密码仍无法连接，需避开微波炉等2.4GHz干扰源。\n\n依据《无线网络使用规范》：办公区无线网络无法连接时，标准步骤为——先确认连接的是公司办公网络（非访客网或手机热点），关闭飞行模式，在系统设置中忘记该网络，再重新输入IT发放的密码；**若仍失败，则需重启无线网卡并避开微波干扰**。该要求明确出现在规范多个段落（段落1–14）中，属于故障排除的必要环节，而非可选建议。"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "两个独立问题请分段回答：1）T011WIFI 办公网忘记之后还要不要避开微波炉再重连？2）T012OA-LOCK-MARKER 账号锁定后解锁码在哪看？",
+      "ui": {
+        "tag": "知识问答",
+        "text": "1）根据《无线网络使用规范》，T011WIFI 办公网在忘记网络后重连失败时，明确要求“若仍失败，重启无线网卡并避开微波干扰”。该条款在多个段落（段落1–14）中重复强调，属于规范中的标准操作步骤。因此，重连过程中确实需要避开微波炉等2.4GHz频段干扰源。\n\n2）T012OA-LOCK-MARKER 账号被锁定后，一次性解锁码（T012OA-RESET-CODE）需通过账号中心操作获取：登录账号中心，点击「解锁申请」，使用企业微信扫码即可获得该解锁码，且须在十分钟内完成输入。",
+        "rewrite": "改写为：1）T011WIFI 办公网忘记网络后重连时，是否需要避开微波炉等干扰源？请依据《无线网络使用规范》说明；2）T012OA-LOCK-MARKER 账号被锁定后，一次性解锁码（T012OA-RESET-CODE）在何处查看？请按知识正文说明，不引用FAQ标题。",
+        "statusText": "AI 接待中",
+        "conversationId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "otherCount": 9,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 18,
+        "systemCount": 9,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "两个独立问题请分段回答：1）T011WIFI 办公网忘记之后还要不要避开微波炉再重连？2）T012OA-LOCK-MARKER 账号锁定后解锁码在哪看？",
+          "rewritten": "1）T011WIFI 办公网忘记网络后重连时，是否需要避开微波炉等干扰源？请依据《无线网络使用规范》说明；2）T012OA-LOCK-MARKER 账号被锁定后，一次性解锁码（T012OA-RESET-CODE）在何处查看？请按知识正文说明，不引用FAQ标题。"
+        },
+        "lastSystem": {
+          "kind": "knowledge",
+          "content": "1）根据《无线网络使用规范》，T011WIFI 办公网在忘记网络后重连失败时，明确要求“若仍失败，重启无线网卡并避开微波干扰”。该条款在多个段落（段落1–14）中重复强调，属于规范中的标准操作步骤。因此，重连过程中确实需要避开微波炉等2.4GHz频段干扰源。\n\n2）T012OA-LOCK-MARKER 账号被锁定后，一次性解锁码（T012OA-RESET-CODE）需通过账号中心操作获取：登录账号中心，点击「解锁申请」，使用企业微信扫码即可获得该解锁码，且须在十分钟内完成输入。"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "今天中午食堂有什么菜？帮我点一份红烧肉。",
+      "ui": {
+        "tag": "兜底",
+        "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+        "rewrite": "改写为：今天中午食堂有什么菜？帮我点一份红烧肉。",
+        "statusText": "AI 接待中",
+        "conversationId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "otherCount": 10,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 20,
+        "systemCount": 10,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:fallback"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "今天中午食堂有什么菜？帮我点一份红烧肉。",
+          "rewritten": "今天中午食堂有什么菜？帮我点一份红烧肉。"
+        },
+        "lastSystem": {
+          "kind": "fallback",
+          "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "帮我查一下工单 INC-991122 现在审批到哪一步了，权限开了没？",
+      "ui": {
+        "tag": "兜底",
+        "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+        "rewrite": "改写为：查询工单 INC-991122 当前审批进度及对应权限是否已开通",
+        "statusText": "AI 接待中",
+        "conversationId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "otherCount": 11,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 22,
+        "systemCount": 11,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:fallback",
+          "employee:employee_turn",
+          "system:fallback"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "帮我查一下工单 INC-991122 现在审批到哪一步了，权限开了没？",
+          "rewritten": "查询工单 INC-991122 当前审批进度及对应权限是否已开通"
+        },
+        "lastSystem": {
+          "kind": "fallback",
+          "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "T012NOKNOWLEDGE-XYZ 公司量子传真机固件内部哈希校验值是多少？这是 IT 设备问题。",
+      "ui": {
+        "tag": "兜底",
+        "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+        "rewrite": "改写为：T012NOKNOWLEDGE-XYZ 公司量子传真机固件内部哈希校验值是多少？",
+        "statusText": "AI 接待中",
+        "conversationId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "otherCount": 12,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 24,
+        "systemCount": 12,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:faq",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:knowledge",
+          "employee:employee_turn",
+          "system:fallback",
+          "employee:employee_turn",
+          "system:fallback",
+          "employee:employee_turn",
+          "system:fallback"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "T012NOKNOWLEDGE-XYZ 公司量子传真机固件内部哈希校验值是多少？这是 IT 设备问题。",
+          "rewritten": "T012NOKNOWLEDGE-XYZ 公司量子传真机固件内部哈希校验值是多少？"
+        },
+        "lastSystem": {
+          "kind": "fallback",
+          "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "连不上",
+      "ui": {
+        "tag": "反问",
+        "text": "请问是连不上公司内网、VPN、某个系统，还是其他具体资源？发生在什么设备上？是否有错误提示？",
+        "rewrite": "改写为：连不上",
+        "statusText": "AI 接待中",
+        "conversationId": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "otherCount": 1,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 0,
+        "systemCount": 0,
+        "kinds": [],
+        "lastEmployee": null,
+        "lastSystem": null
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "你好，我只是换个话题打个招呼，不谈刚才的故障。",
+      "ui": {
+        "tag": "闲聊",
+        "text": "你好呀～很高兴你来打个招呼，轻松一下也很重要！😊",
+        "rewrite": "改写为：你好，我只是换个话题打个招呼，不谈刚才的故障。",
+        "statusText": "AI 接待中",
+        "conversationId": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "otherCount": 2,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 4,
+        "systemCount": 2,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:small_talk"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "你好，我只是换个话题打个招呼，不谈刚才的故障。",
+          "rewritten": "你好，我只是换个话题打个招呼，不谈刚才的故障。"
+        },
+        "lastSystem": {
+          "kind": "small_talk",
+          "content": "你好呀～很高兴你来打个招呼，轻松一下也很重要！😊"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "连不上",
+      "ui": {
+        "tag": "反问",
+        "text": "请问您是连不上公司内网、VPN、某个业务系统，还是其他网络资源？能否提供更具体的场景或报错信息？",
+        "rewrite": "改写为：连不上",
+        "statusText": "AI 接待中",
+        "conversationId": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "otherCount": 3,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "status": "bot",
+        "clarification_round": 1,
+        "waiting_for_agent": false,
+        "messageCount": 6,
+        "systemCount": 3,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:clarification"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "连不上",
+          "rewritten": "连不上"
+        },
+        "lastSystem": {
+          "kind": "clarification",
+          "content": "请问您是连不上公司内网、VPN、某个业务系统，还是其他网络资源？能否提供更具体的场景或报错信息？"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "就是那个",
+      "ui": {
+        "tag": "反问",
+        "text": "请问您‘连不上’的是什么？比如是公司内网、VPN、某个业务系统（如OA、ERP）、还是某台设备（如打印机、会议终端）？",
+        "rewrite": "改写为：就是那个",
+        "statusText": "AI 接待中",
+        "conversationId": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "otherCount": 4,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "status": "bot",
+        "clarification_round": 2,
+        "waiting_for_agent": false,
+        "messageCount": 8,
+        "systemCount": 4,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "就是那个",
+          "rewritten": "就是那个"
+        },
+        "lastSystem": {
+          "kind": "clarification",
+          "content": "请问您‘连不上’的是什么？比如是公司内网、VPN、某个业务系统（如OA、ERP）、还是某台设备（如打印机、会议终端）？"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "还是一样",
+      "ui": {
+        "tag": "反问",
+        "text": "您‘连不上’的具体对象是什么？例如公司内网、VPN、OA系统，或是某台打印机/会议终端？有无弹出错误提示或代码？",
+        "rewrite": "改写为：还是连不上",
+        "statusText": "AI 接待中",
+        "conversationId": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "otherCount": 5,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "status": "bot",
+        "clarification_round": 3,
+        "waiting_for_agent": false,
+        "messageCount": 10,
+        "systemCount": 5,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "还是一样",
+          "rewritten": "还是连不上"
+        },
+        "lastSystem": {
+          "kind": "clarification",
+          "content": "您‘连不上’的具体对象是什么？例如公司内网、VPN、OA系统，或是某台打印机/会议终端？有无弹出错误提示或代码？"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "你再看看",
+      "ui": {
+        "tag": "反问",
+        "text": "您‘连不上’的具体是什么？例如：公司VPN、办公内网、OA系统、ERP系统、打印机，或是某台会议终端？有无弹出错误代码或提示文字？",
+        "rewrite": "改写为：请再帮忙查看一下连不上问题的具体原因",
+        "statusText": "AI 接待中",
+        "conversationId": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "otherCount": 6,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "status": "bot",
+        "clarification_round": 4,
+        "waiting_for_agent": false,
+        "messageCount": 12,
+        "systemCount": 6,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "你再看看",
+          "rewritten": "请再帮忙查看一下连不上问题的具体原因"
+        },
+        "lastSystem": {
+          "kind": "clarification",
+          "content": "您‘连不上’的具体是什么？例如：公司VPN、办公内网、OA系统、ERP系统、打印机，或是某台会议终端？有无弹出错误代码或提示文字？"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "怎么办啊",
+      "ui": {
+        "tag": "反问",
+        "text": "您‘连不上’的具体是什么？例如：公司VPN、办公内网、OA系统、ERP系统、打印机，或是某台会议终端？有无弹出错误代码或提示文字？",
+        "rewrite": "改写为：连不上，怎么办啊",
+        "statusText": "AI 接待中",
+        "conversationId": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "otherCount": 7,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "status": "bot",
+        "clarification_round": 5,
+        "waiting_for_agent": false,
+        "messageCount": 14,
+        "systemCount": 7,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "怎么办啊",
+          "rewritten": "连不上，怎么办啊"
+        },
+        "lastSystem": {
+          "kind": "clarification",
+          "content": "您‘连不上’的具体是什么？例如：公司VPN、办公内网、OA系统、ERP系统、打印机，或是某台会议终端？有无弹出错误代码或提示文字？"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "sent": "还是不行啊",
+      "ui": {
+        "tag": "兜底",
+        "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+        "rewrite": "改写为：还是不行啊",
+        "statusText": "AI 接待中",
+        "conversationId": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "otherCount": 8,
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 16,
+        "systemCount": 8,
+        "kinds": [
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:small_talk",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:clarification",
+          "employee:employee_turn",
+          "system:fallback"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "还是不行啊",
+          "rewritten": "还是不行啊"
+        },
+        "lastSystem": {
+          "kind": "fallback",
+          "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+        }
+      },
+      "http": {
+        "getStatus": 200
+      },
+      "logs": {
+        "addedBytes": 0,
+        "matchLines": [],
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    }
+  ],
+  "postBodies": [
+    {
+      "requestId": "22656.66",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "status": 200,
+      "replyKind": "clarification",
+      "conversationStatus": "bot",
+      "clarificationRound": 1,
+      "replyContent": "请问您是连不上什么？例如公司内网、Wi-Fi、VPN，还是某个具体系统？另外，是在什么设备和场景下出现的？有无错误提示？",
+      "systemKinds": [
+        "clarification"
+      ]
+    },
+    {
+      "requestId": "22656.68",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "status": 200,
+      "replyKind": "knowledge",
+      "conversationStatus": "bot",
+      "clarificationRound": 0,
+      "replyContent": "是的，需要避开微波炉等干扰源后再重连。\n\n根据企业 IT 知识库《无线网络使用规范》，T011WIFI 连接失败后，标准排查步骤明确包含“避开微波干扰”：在确认连接的是公司办公网络（非访客网或手机热点）、关闭飞行模式、在系统设置中“忘记该网络”并重新输入 IT 发放的密码后，若仍无法连接，应重启无线网卡并避开微波炉等2.4GHz频段干扰源，而非反复尝试输入密码。",
+      "systemKinds": [
+        "clarification",
+        "knowledge"
+      ]
+    },
+    {
+      "requestId": "22656.70",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "status": 200,
+      "replyKind": "small_talk",
+      "conversationStatus": "bot",
+      "clarificationRound": 0,
+      "replyContent": "你好呀！阳光明媚的日子让人心情也跟着亮起来～ 😊",
+      "systemKinds": [
+        "clarification",
+        "knowledge",
+        "small_talk"
+      ]
+    },
+    {
+      "requestId": "22656.72",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "status": 200,
+      "replyKind": "faq",
+      "conversationStatus": "bot",
+      "clarificationRound": 0,
+      "replyContent": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。",
+      "systemKinds": [
+        "clarification",
+        "knowledge",
+        "small_talk",
+        "faq"
+      ]
+    },
+    {
+      "requestId": "22656.74",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "status": 200,
+      "replyKind": "knowledge",
+      "conversationStatus": "bot",
+      "clarificationRound": 0,
+      "replyContent": "T011HELIX-FAIL 认证失败**不是由网卡硬件损坏导致**。\n\n根本原因：根据知识库分块，T011HELIX-FAIL 明确指向**账号层与配置层问题**，包括证书过期、VPN 配置文件失效、密码错误或账号状态异常（如锁定/过期），以及用户误连访客 WiFi 导致认证环境不合法。所有召回分块均未提及网卡硬件故障与该错误存在因果关系。\n\n常见诱因：\n- 连接了访客 WiFi 而非公司办公网络；\n- 本地 VPN 证书已过期，需 IT 换发；\n- VPN 配置文件损坏或",
+      "systemKinds": [
+        "clarification",
+        "knowledge",
+        "small_talk",
+        "faq",
+        "knowledge"
+      ]
+    },
+    {
+      "requestId": "22656.76",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "status": 200,
+      "replyKind": "faq",
+      "conversationStatus": "bot",
+      "clarificationRound": 0,
+      "replyContent": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。",
+      "systemKinds": [
+        "clarification",
+        "knowledge",
+        "small_talk",
+        "faq",
+        "knowledge",
+        "faq"
+      ]
+    },
+    {
+      "requestId": "22656.78",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "status": 200,
+      "replyKind": "knowledge",
+      "conversationStatus": "bot",
+      "clarificationRound": 0,
+      "replyContent": "T012OA-LOCK-MARKER 被锁定后，解锁码（即一次性解锁码 T012OA-RESET-CODE）需通过企业账号中心操作获取：登录账号中心，点击「解锁申请」，使用企业微信扫码后即可获得该解锁码。该码有效期为十分钟，需在此期间完成输入。解锁码不会通过邮件或短信发送，也不在操作系统或注册表中存储。",
+      "systemKinds": [
+        "clarification",
+        "knowledge",
+        "small_talk",
+        "faq",
+        "knowledge",
+        "faq",
+        "knowledge"
+      ]
+    },
+    {
+      "requestId": "22656.80",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "status": 200,
+      "replyKind": "knowledge",
+      "conversationStatus": "bot",
+      "clarificationRound": 0,
+      "replyContent": "是的，T011WIFI 办公网忘记网络后重连时，若首次重新输入密码仍无法连接，需避开微波炉等2.4GHz干扰源。\n\n依据《无线网络使用规范》：办公区无线网络无法连接时，标准步骤为——先确认连接的是公司办公网络（非访客网或手机热点），关闭飞行模式，在系统设置中忘记该网络，再重新输入IT发放的密码；**若仍失败，则需重启无线网卡并避开微波干扰**。该要求明确出现在规范多个段落（段落1–14）中，属于故障排除的必要环节，而非可选建议。",
+      "systemKinds": [
+        "clarification",
+        "knowledge",
+        "small_talk",
+        "faq",
+        "knowledge",
+        "faq",
+        "knowledge",
+        "knowledge"
+      ]
+    },
+    {
+      "requestId": "22656.82",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "status": 200,
+      "replyKind": "knowledge",
+      "conversationStatus": "bot",
+      "clarificationRound": 0,
+      "replyContent": "1）根据《无线网络使用规范》，T011WIFI 办公网在忘记网络后重连失败时，明确要求“若仍失败，重启无线网卡并避开微波干扰”。该条款在多个段落（段落1–14）中重复强调，属于规范中的标准操作步骤。因此，重连过程中确实需要避开微波炉等2.4GHz频段干扰源。\n\n2）T012OA-LOCK-MARKER 账号被锁定后，一次性解锁码（T012OA-RESET-CODE）需通过账号中心操作获取：登录账号中心，点击「解锁申请」，使用企业微信扫码即可获得该解锁码，且须在十分钟内完成输入",
+      "systemKinds": [
+        "clarification",
+        "knowledge",
+        "small_talk",
+        "faq",
+        "knowledge",
+        "faq",
+        "knowledge",
+        "knowledge",
+        "knowledge"
+      ]
+    },
+    {
+      "requestId": "22656.84",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "status": 200,
+      "replyKind": "fallback",
+      "conversationStatus": "bot",
+      "clarificationRound": 0,
+      "replyContent": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "systemKinds": [
+        "clarification",
+        "knowledge",
+        "small_talk",
+        "faq",
+        "knowledge",
+        "faq",
+        "knowledge",
+        "knowledge",
+        "knowledge",
+        "fallback"
+      ]
+    },
+    {
+      "requestId": "22656.86",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "status": 200,
+      "replyKind": "fallback",
+      "conversationStatus": "bot",
+      "clarificationRound": 0,
+      "replyContent": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "systemKinds": [
+        "clarification",
+        "knowledge",
+        "small_talk",
+        "faq",
+        "knowledge",
+        "faq",
+        "knowledge",
+        "knowledge",
+        "knowledge",
+        "fallback",
+        "fallback"
+      ]
+    },
+    {
+      "requestId": "22656.88",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "status": 200,
+      "replyKind": "fallback",
+      "conversationStatus": "bot",
+      "clarificationRound": 0,
+      "replyContent": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "systemKinds": [
+        "clarification",
+        "knowledge",
+        "small_talk",
+        "faq",
+        "knowledge",
+        "faq",
+        "knowledge",
+        "knowledge",
+        "knowledge",
+        "fallback",
+        "fallback",
+        "fallback"
+      ]
+    },
+    {
+      "requestId": "22656.204",
+      "url": "http://127.0.0.1:5199/api/conversations/cd33baef-eab8-4ecc-a1fd-ff54beae5e32/messages",
+      "status": 200,
+      "replyKind": "clarification",
+      "conversationStatus": "bot",
+      "clarificationRound": 1,
+      "replyContent": "请问是连不上公司内网、VPN、某个系统，还是其他具体资源？发生在什么设备上？是否有错误提示？",
+      "systemKinds": [
+        "clarification"
+      ]
+    },
+    {
+      "requestId": "22656.206",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "status": 200,
+      "replyKind": "clarification",
+      "conversationStatus": "bot",
+      "clarificationRound": 1,
+      "replyContent": "请问您之前尝试解决的是什么问题？涉及哪个系统、设备或服务？现在具体出现什么现象或报错？",
+      "systemKinds": [
+        "clarification"
+      ]
+    },
+    {
+      "requestId": "22656.207",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "status": 200,
+      "replyKind": "small_talk",
+      "conversationStatus": "bot",
+      "clarificationRound": 0,
+      "replyContent": "你好呀～很高兴你来打个招呼，轻松一下也很重要！😊",
+      "systemKinds": [
+        "clarification",
+        "small_talk"
+      ]
+    },
+    {
+      "requestId": "22656.209",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "status": 200,
+      "replyKind": "clarification",
+      "conversationStatus": "bot",
+      "clarificationRound": 1,
+      "replyContent": "请问您是连不上公司内网、VPN、某个业务系统，还是其他网络资源？能否提供更具体的场景或报错信息？",
+      "systemKinds": [
+        "clarification",
+        "small_talk",
+        "clarification"
+      ]
+    },
+    {
+      "requestId": "22656.211",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "status": 200,
+      "replyKind": "clarification",
+      "conversationStatus": "bot",
+      "clarificationRound": 2,
+      "replyContent": "请问您‘连不上’的是什么？比如是公司内网、VPN、某个业务系统（如OA、ERP）、还是某台设备（如打印机、会议终端）？",
+      "systemKinds": [
+        "clarification",
+        "small_talk",
+        "clarification",
+        "clarification"
+      ]
+    },
+    {
+      "requestId": "22656.213",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "status": 200,
+      "replyKind": "clarification",
+      "conversationStatus": "bot",
+      "clarificationRound": 3,
+      "replyContent": "您‘连不上’的具体对象是什么？例如公司内网、VPN、OA系统，或是某台打印机/会议终端？有无弹出错误提示或代码？",
+      "systemKinds": [
+        "clarification",
+        "small_talk",
+        "clarification",
+        "clarification",
+        "clarification"
+      ]
+    },
+    {
+      "requestId": "22656.215",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "status": 200,
+      "replyKind": "clarification",
+      "conversationStatus": "bot",
+      "clarificationRound": 4,
+      "replyContent": "您‘连不上’的具体是什么？例如：公司VPN、办公内网、OA系统、ERP系统、打印机，或是某台会议终端？有无弹出错误代码或提示文字？",
+      "systemKinds": [
+        "clarification",
+        "small_talk",
+        "clarification",
+        "clarification",
+        "clarification",
+        "clarification"
+      ]
+    },
+    {
+      "requestId": "22656.217",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "status": 200,
+      "replyKind": "clarification",
+      "conversationStatus": "bot",
+      "clarificationRound": 5,
+      "replyContent": "您‘连不上’的具体是什么？例如：公司VPN、办公内网、OA系统、ERP系统、打印机，或是某台会议终端？有无弹出错误代码或提示文字？",
+      "systemKinds": [
+        "clarification",
+        "small_talk",
+        "clarification",
+        "clarification",
+        "clarification",
+        "clarification",
+        "clarification"
+      ]
+    },
+    {
+      "requestId": "22656.219",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "status": 200,
+      "replyKind": "fallback",
+      "conversationStatus": "bot",
+      "clarificationRound": 0,
+      "replyContent": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "systemKinds": [
+        "clarification",
+        "small_talk",
+        "clarification",
+        "clarification",
+        "clarification",
+        "clarification",
+        "clarification",
+        "fallback"
+      ]
+    }
+  ],
+  "network": [
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/sessions",
+      "ts": 1789646611130
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/sessions",
+      "ts": 1789646611697
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations",
+      "ts": 1789646611705
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations",
+      "ts": 1789646611705
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations",
+      "ts": 1789646611733
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations",
+      "ts": 1789646611755
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/documents?page=1&page_size=50",
+      "ts": 1789646611827
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/documents?page=1&page_size=50",
+      "ts": 1789646611874
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/documents",
+      "ts": 1789646611878
+    },
+    {
+      "kind": "response",
+      "status": 202,
+      "url": "http://127.0.0.1:5199/api/documents",
+      "ts": 1789646612540
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/documents?page=1&page_size=50",
+      "ts": 1789646612543
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/documents?page=1&page_size=50",
+      "ts": 1789646612596
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/documents?page=1&page_size=50",
+      "ts": 1789646614613
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/documents?page=1&page_size=50",
+      "ts": 1789646614674
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/documents?page=1&page_size=50",
+      "ts": 1789646616686
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/documents?page=1&page_size=50",
+      "ts": 1789646616777
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/documents?page=1&page_size=50",
+      "ts": 1789646618784
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/documents?page=1&page_size=50",
+      "ts": 1789646618841
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/documents/a2ea3f4e-8d26-43e5-b719-097b4b603920",
+      "ts": 1789646618847
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/documents/a2ea3f4e-8d26-43e5-b719-097b4b603920",
+      "ts": 1789646618880
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/documents/bf7a3495-051e-4d39-a431-8db815ca492c",
+      "ts": 1789646618888
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/documents/bf7a3495-051e-4d39-a431-8db815ca492c",
+      "ts": 1789646618917
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646618948
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646625213
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646625526
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646625558
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646625653
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646638339
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646638367
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646638388
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646638412
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646642700
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646642988
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646643008
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646643149
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646649793
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646650090
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646650115
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646650250
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646669640
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646670015
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646670036
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646670167
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646677115
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646677154
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646677182
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646677209
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646688574
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646688735
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646688759
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646688784
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646701288
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646701596
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646701633
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646701769
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646719505
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646719837
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646719865
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646720033
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646725587
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646725847
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646725873
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646725901
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646732549
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646732910
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646732932
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646732954
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0/messages",
+      "ts": 1789646739241
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646739557
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646739586
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/sessions/current",
+      "ts": 1789646739998
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/sessions/current",
+      "ts": 1789646739998
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/sessions/current",
+      "ts": 1789646739999
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/sessions/current",
+      "ts": 1789646740007
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646740022
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646740023
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646740044
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+      "ts": 1789646740071
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/sessions/current",
+      "ts": 1789646740555
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/sessions/current",
+      "ts": 1789646740555
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/sessions/current",
+      "ts": 1789646740557
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/sessions/current",
+      "ts": 1789646740559
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations",
+      "ts": 1789646740560
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations",
+      "ts": 1789646740561
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations",
+      "ts": 1789646740578
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/cd33baef-eab8-4ecc-a1fd-ff54beae5e32/messages",
+      "ts": 1789646740586
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations",
+      "ts": 1789646740604
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/cd33baef-eab8-4ecc-a1fd-ff54beae5e32/messages",
+      "ts": 1789646746745
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646746765
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646746785
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646746801
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646752166
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646837129
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646841371
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646841646
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646841671
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646841698
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646847388
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646847446
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646847467
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646847485
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646852959
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646853254
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646853281
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646853303
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646858893
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646859099
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646859122
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646859145
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646865160
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646865365
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646865388
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646865407
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646871355
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646871634
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646871657
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646871678
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/messages",
+      "ts": 1789646877701
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646877828
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646877856
+    },
+    {
+      "kind": "request",
+      "method": "POST",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/transfer",
+      "ts": 1789646877994
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2/transfer",
+      "ts": 1789646878031
+    },
+    {
+      "kind": "request",
+      "method": "GET",
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646878172
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:5199/api/conversations/e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+      "ts": 1789646878192
+    }
+  ],
+  "checks": [
+    {
+      "id": "tc-fallback-config",
+      "pass": true,
+      "expected": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "actual": "(matches PRD)"
+    },
+    {
+      "id": "env-vite",
+      "pass": true,
+      "expected": 200,
+      "actual": 200
+    },
+    {
+      "id": "env-backend",
+      "pass": true,
+      "expected": 200,
+      "actual": 200
+    },
+    {
+      "id": "env-llm-key",
+      "pass": true,
+      "expected": true,
+      "actual": true
+    },
+    {
+      "id": "tc-mock-off",
+      "pass": true,
+      "expected": false,
+      "actual": false
+    },
+    {
+      "id": "tc-no-mock-page",
+      "pass": true,
+      "expected": {
+        "mock": false,
+        "page": "/employee"
+      },
+      "actual": {
+        "mock": false,
+        "pathname": "/employee"
+      }
+    },
+    {
+      "id": "tc-real-list",
+      "pass": true,
+      "expected": 200,
+      "actual": 200
+    },
+    {
+      "id": "setup-upload-account",
+      "pass": true,
+      "expected": 202,
+      "actual": 202
+    },
+    {
+      "id": "setup-account-ready",
+      "pass": true,
+      "expected": "ready",
+      "actual": "ready"
+    },
+    {
+      "id": "setup-account-tags",
+      "pass": true,
+      "expected": [
+        "account"
+      ],
+      "actual": [
+        "account"
+      ]
+    },
+    {
+      "id": "tc-two-object-classes",
+      "pass": true,
+      "expected": ">=2 object types",
+      "actual": [
+        "software",
+        "hardware",
+        "network",
+        "account"
+      ]
+    },
+    {
+      "id": "d001-created-id",
+      "pass": true,
+      "expected": true,
+      "actual": true
+    },
+    {
+      "id": "ac019-clarify",
+      "pass": true,
+      "expected": {
+        "kind": "clarification",
+        "notFallback": true,
+        "rewritten": true
+      },
+      "actual": {
+        "tag": "反问",
+        "kind": "clarification",
+        "round": 1,
+        "rewritten": "连不上",
+        "error": null
+      }
+    },
+    {
+      "id": "ac020-after-clarify",
+      "pass": true,
+      "expected": {
+        "kind": "faq|knowledge",
+        "roundReset": 0
+      },
+      "actual": {
+        "tag": "知识问答",
+        "kind": "knowledge",
+        "round": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "ac012-small-talk",
+      "pass": true,
+      "expected": {
+        "kind": "small_talk"
+      },
+      "actual": {
+        "tag": "闲聊",
+        "kind": "small_talk",
+        "error": null
+      }
+    },
+    {
+      "id": "ac011-faq-direct",
+      "pass": true,
+      "expected": {
+        "kind": "faq",
+        "cachedAnswer": true
+      },
+      "actual": {
+        "tag": "FAQ",
+        "kind": "faq",
+        "text": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。",
+        "error": null
+      }
+    },
+    {
+      "id": "tc-faq-no-chunk-gen",
+      "pass": false,
+      "expected": "rewrite+embed, no knowledge answer chat required",
+      "actual": {
+        "bailianOk": [],
+        "chatCount": 0,
+        "embed": false
+      }
+    },
+    {
+      "id": "ac001-knowledge",
+      "pass": true,
+      "expected": {
+        "kind": "knowledge",
+        "notWaiting": true
+      },
+      "actual": {
+        "tag": "知识问答",
+        "kind": "knowledge",
+        "error": null
+      }
+    },
+    {
+      "id": "ac021-anaphora",
+      "pass": true,
+      "expected": {
+        "rewrittenUsesHelix": true,
+        "notFreshFallback": true
+      },
+      "actual": {
+        "tag": "FAQ",
+        "rewritten": "T011HELIX VPN 密码重置的操作要点是什么",
+        "kind": "faq",
+        "error": null
+      }
+    },
+    {
+      "id": "ac011-faq-short",
+      "pass": true,
+      "expected": {
+        "kind": "faq",
+        "usedContext": true
+      },
+      "actual": {
+        "tag": "FAQ",
+        "rewritten": "T011HELIX VPN 密码重置的操作要点是什么"
+      }
+    },
+    {
+      "id": "ac013-account",
+      "pass": true,
+      "expected": {
+        "kind": "knowledge",
+        "marker": "T012OA",
+        "notOtherClass": true
+      },
+      "actual": {
+        "tag": "知识问答",
+        "text": "T012OA-LOCK-MARKER 被锁定后，解锁码（即一次性解锁码 T012OA-RESET-CODE）需通过企业账号中心操作获取：登录账号中心，点击「解锁申请」，使用企业微信扫码后即可获得该解锁码。该码有效期为十分钟，需在此期间完成输入。解锁码不会通过邮件或短信发送，也不在操作系统或注册表中存储。",
+        "error": null
+      }
+    },
+    {
+      "id": "ac013-network",
+      "pass": true,
+      "expected": {
+        "kind": "knowledge",
+        "marker": "T011WIFI",
+        "notAccount": true
+      },
+      "actual": {
+        "tag": "知识问答",
+        "text": "是的，T011WIFI 办公网忘记网络后重连时，若首次重新输入密码仍无法连接，需避开微波炉等2.4GHz干扰源。\n\n依据《无线网络使用规范》：办公区无线网络无法连接时，标准步骤为——先确认连接的是公司办公网络（非访客网或手机热点），关闭飞行模式，在系统设置中忘记该网络，再重新输入IT发放的密码；**若仍失败，则需重启无线网卡并避开微波干扰**。该要求明确出现在规范多个段落（段落1–14）中，属于故障排除的必要环节，而非可选建议。",
+        "error": null
+      }
+    },
+    {
+      "id": "ac016-two-issues-one-reply",
+      "pass": false,
+      "expected": {
+        "oneSystemMessage": true,
+        "bothTopics": true
+      },
+      "actual": {
+        "tag": "知识问答",
+        "otherDelta": 1,
+        "hasNum": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ac014-out-of-scope",
+      "pass": true,
+      "expected": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "actual": {
+        "tag": "兜底",
+        "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+        "error": null
+      }
+    },
+    {
+      "id": "ac014-live-ticket",
+      "pass": true,
+      "expected": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "actual": {
+        "tag": "兜底",
+        "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+        "error": null
+      }
+    },
+    {
+      "id": "ac014-no-knowledge",
+      "pass": true,
+      "expected": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+      "actual": {
+        "tag": "兜底",
+        "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+        "error": null
+      }
+    },
+    {
+      "id": "ac015-no-ticket-tools",
+      "pass": true,
+      "expected": {
+        "noTicket": true,
+        "onlyBailianChatOrEmbed": true
+      },
+      "actual": {
+        "hasTicket": false,
+        "hasToolCall": false,
+        "bailianOk": []
+      }
+    },
+    {
+      "id": "tc-d001-same-tab-resume",
+      "pass": true,
+      "expected": {
+        "sameId": true
+      },
+      "actual": {
+        "beforeId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "afterId": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "beforeCount": 24,
+        "afterCount": 24
+      }
+    },
+    {
+      "id": "ac002-no-auto-transfer-convA",
+      "pass": true,
+      "expected": {
+        "status": "bot"
+      },
+      "actual": {
+        "statusText": "AI 接待中",
+        "transferDisabled": false
+      }
+    },
+    {
+      "id": "convB-new",
+      "pass": false,
+      "expected": "new id",
+      "actual": {
+        "a": "a2bee8f1-0d62-441c-a0eb-1ee8cac112b0",
+        "b": null
+      }
+    },
+    {
+      "id": "d004-two-unclear",
+      "pass": false,
+      "expected": {
+        "round": 2
+      },
+      "actual": {
+        "tags": [
+          "反问",
+          "反问"
+        ]
+      }
+    },
+    {
+      "id": "tc-d004-reset-on-clear-topic",
+      "pass": true,
+      "expected": {
+        "round": 0,
+        "notClarification": true
+      },
+      "actual": {
+        "tag": "闲聊",
+        "round": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "ac022-five-clarify",
+      "pass": true,
+      "expected": {
+        "rounds": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "kind": "clarification"
+      },
+      "actual": [
+        {
+          "i": 1,
+          "tag": "反问",
+          "kind": "clarification",
+          "round": 1,
+          "error": null
+        },
+        {
+          "i": 2,
+          "tag": "反问",
+          "kind": "clarification",
+          "round": 2,
+          "error": null
+        },
+        {
+          "i": 3,
+          "tag": "反问",
+          "kind": "clarification",
+          "round": 3,
+          "error": null
+        },
+        {
+          "i": 4,
+          "tag": "反问",
+          "kind": "clarification",
+          "round": 4,
+          "error": null
+        },
+        {
+          "i": 5,
+          "tag": "反问",
+          "kind": "clarification",
+          "round": 5,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "ac022-sixth-fallback",
+      "pass": true,
+      "expected": {
+        "kind": "fallback",
+        "noSixthClarify": true
+      },
+      "actual": {
+        "tag": "兜底",
+        "kind": "fallback",
+        "round": 0,
+        "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+        "error": null
+      }
+    },
+    {
+      "id": "ac002-manual-transfer-button",
+      "pass": true,
+      "expected": {
+        "buttonWorks": true,
+        "leftFullT013": true
+      },
+      "actual": {
+        "statusText": "已转人工，等待客服",
+        "disabled": true,
+        "apiStatus": "handed_off"
+      }
+    },
+    {
+      "id": "tc-real-http-messages",
+      "pass": true,
+      "expected": {
+        "all200": true,
+        "count": ">=1"
+      },
+      "actual": {
+        "count": 21,
+        "statuses": [
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200
+        ]
+      }
+    },
+    {
+      "id": "tc-no-mock-final",
+      "pass": true,
+      "expected": false,
+      "actual": false
+    }
+  ],
+  "failed": [
+    "tc-faq-no-chunk-gen",
+    "ac016-two-issues-one-reply",
+    "convB-new",
+    "d004-two-unclear"
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "convA": "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0",
+  "cdpPort": 9415,
+  "userDataDir": "C:\\Users\\慈海客服\\AppData\\Local\\Temp\\t013-chrome-BA1xb0",
+  "steps": {
+    "before": {
+      "conversationId": "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0",
+      "statusText": "已转人工，等待客服",
+      "transferDisabled": true,
+      "sending": false,
+      "otherCount": 3,
+      "employeeCount": 2,
+      "otherTags": [
+        "FAQ",
+        "客服",
+        "客服"
+      ],
+      "lastEmployee": "T013-POST-HANDOFF-CHAT 你好呀今天天气真好我们不谈电脑",
+      "lastOther": {
+        "side": "other",
+        "tag": "客服",
+        "text": "T013-AGENT-2 用于约三秒到达员工端。"
+      },
+      "pageHasMock": false
+    },
+    "faq": {
+      "ui": {
+        "conversationId": "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0",
+        "statusText": "已转人工，等待客服",
+        "transferDisabled": true,
+        "sending": false,
+        "otherCount": 3,
+        "employeeCount": 3,
+        "otherTags": [
+          "FAQ",
+          "客服",
+          "客服"
+        ],
+        "lastEmployee": "T013-RETRY-FAQ T011HELIX 重置 VPN 密码的要点是什么",
+        "lastOther": {
+          "side": "other",
+          "tag": "客服",
+          "text": "T013-AGENT-2 用于约三秒到达员工端。"
+        },
+        "pageHasMock": false
+      },
+      "elapsedMs": 242,
+      "http": 200,
+      "status": "handed_off",
+      "afterKinds": [
+        "employee:employee_turn",
+        "system:waiting_for_agent"
+      ],
+      "otherDelta": 0,
+      "lastOther": {
+        "side": "other",
+        "tag": "客服",
+        "text": "T013-AGENT-2 用于约三秒到达员工端。"
+      },
+      "logs": {
+        "chatCompletions": 0,
+        "embeddings": 0,
+        "sample": []
+      }
+    },
+    "agent": {
+      "faqMsg": {
+        "tag": null,
+        "text": "T013-RETRY-FAQ T011HELIX 重置 VPN 密码的要点是什么"
+      },
+      "autoFaqAfter": false,
+      "msgs": [
+        {
+          "tag": null,
+          "text": "T011HELIX 重置 VPN 密码的要点是什么"
+        },
+        {
+          "tag": "FAQ",
+          "text": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+        },
+        {
+          "tag": null,
+          "text": "T013-POST-HANDOFF-CHAT 你好呀今天天气真好我们不谈电脑"
+        },
+        {
+          "tag": "等待客服",
+          "text": "已转交客服，请等待回复。"
+        },
+        {
+          "tag": "客服",
+          "text": "T013-AGENT-1 这是客服接管后的第一条回复。"
+        },
+        {
+          "tag": "客服",
+          "text": "T013-AGENT-2 用于约三秒到达员工端。"
+        },
+        {
+          "tag": null,
+          "text": "T013-RETRY-FAQ T011HELIX 重置 VPN 密码的要点是什么"
+        },
+        {
+          "tag": "等待客服",
+          "text": "已转交客服，请等待回复。"
+        }
+      ]
+    }
+  },
+  "checks": [
+    {
+      "id": "resume-handed-off",
+      "pass": true,
+      "expected": "same conv handed_off",
+      "actual": {
+        "conversationId": "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0",
+        "statusText": "已转人工，等待客服",
+        "transferDisabled": true,
+        "sending": false,
+        "otherCount": 3,
+        "employeeCount": 2,
+        "otherTags": [
+          "FAQ",
+          "客服",
+          "客服"
+        ],
+        "lastEmployee": "T013-POST-HANDOFF-CHAT 你好呀今天天气真好我们不谈电脑",
+        "lastOther": {
+          "side": "other",
+          "tag": "客服",
+          "text": "T013-AGENT-2 用于约三秒到达员工端。"
+        },
+        "pageHasMock": false
+      }
+    },
+    {
+      "id": "ac006-retry-faq-no-ai",
+      "pass": false,
+      "expected": "handed_off FAQ question waits, no FAQ/AI, no completions",
+      "actual": {
+        "ui": {
+          "conversationId": "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0",
+          "statusText": "已转人工，等待客服",
+          "transferDisabled": true,
+          "sending": false,
+          "otherCount": 3,
+          "employeeCount": 3,
+          "otherTags": [
+            "FAQ",
+            "客服",
+            "客服"
+          ],
+          "lastEmployee": "T013-RETRY-FAQ T011HELIX 重置 VPN 密码的要点是什么",
+          "lastOther": {
+            "side": "other",
+            "tag": "客服",
+            "text": "T013-AGENT-2 用于约三秒到达员工端。"
+          },
+          "pageHasMock": false
+        },
+        "elapsedMs": 242,
+        "http": 200,
+        "status": "handed_off",
+        "afterKinds": [
+          "employee:employee_turn",
+          "system:waiting_for_agent"
+        ],
+        "otherDelta": 0,
+        "lastOther": {
+          "side": "other",
+          "tag": "客服",
+          "text": "T013-AGENT-2 用于约三秒到达员工端。"
+        },
+        "logs": {
+          "chatCompletions": 0,
+          "embeddings": 0,
+          "sample": []
+        }
+      }
+    },
+    {
+      "id": "ac006-retry-agent-no-faq-reply",
+      "pass": true,
+      "expected": "agent sees employee FAQ text without FAQ auto reply after it",
+      "actual": {
+        "faqMsg": {
+          "tag": null,
+          "text": "T013-RETRY-FAQ T011HELIX 重置 VPN 密码的要点是什么"
+        },
+        "autoFaqAfter": false,
+        "msgs": [
+          {
+            "tag": null,
+            "text": "T011HELIX 重置 VPN 密码的要点是什么"
+          },
+          {
+            "tag": "FAQ",
+            "text": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+          },
+          {
+            "tag": null,
+            "text": "T013-POST-HANDOFF-CHAT 你好呀今天天气真好我们不谈电脑"
+          },
+          {
+            "tag": "等待客服",
+            "text": "已转交客服，请等待回复。"
+          },
+          {
+            "tag": "客服",
+            "text": "T013-AGENT-1 这是客服接管后的第一条回复。"
+          },
+          {
+            "tag": "客服",
+            "text": "T013-AGENT-2 用于约三秒到达员工端。"
+          },
+          {
+            "tag": null,
+            "text": "T013-RETRY-FAQ T011HELIX 重置 VPN 密码的要点是什么"
+          },
+          {
+            "tag": "等待客服",
+            "text": "已转交客服，请等待回复。"
+          }
+        ]
+      }
+    }
+  ],
+  "failed": [
+    "ac006-retry-faq-no-ai"
+  ]
+}

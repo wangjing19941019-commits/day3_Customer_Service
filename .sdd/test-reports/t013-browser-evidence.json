@@ -1,0 +1,734 @@
+{
+  "mock": false,
+  "viewport": "1440x900",
+  "cdpPort": 9413,
+  "url": "http://127.0.0.1:5199",
+  "backend": "http://127.0.0.1:8099",
+  "userDataDir": "C:\\Users\\慈海客服\\AppData\\Local\\Temp\\t013-chrome-IF61Lf",
+  "llmKeyConfigured": true,
+  "t012HandedOffAvoided": "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2",
+  "steps": {
+    "login": {
+      "pathname": "/employee",
+      "pageHasMock": false,
+      "topbarUser": "已登录：it-help"
+    },
+    "q1": {
+      "error": null,
+      "ui": {
+        "statusText": "AI 接待中",
+        "tag": "FAQ",
+        "rewrite": "改写为：T011HELIX 重置 VPN 密码的要点是什么",
+        "pageHasMock": false
+      },
+      "api": {
+        "id": "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 2,
+        "kinds": [
+          "employee:employee_turn",
+          "system:faq"
+        ],
+        "employeeOriginals": [
+          "T011HELIX 重置 VPN 密码的要点是什么"
+        ],
+        "employeeRewrites": [
+          "T011HELIX 重置 VPN 密码的要点是什么"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "T011HELIX 重置 VPN 密码的要点是什么",
+          "rewritten": "T011HELIX 重置 VPN 密码的要点是什么"
+        },
+        "lastSystem": {
+          "kind": "faq",
+          "content": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+        },
+        "lastAgent": null,
+        "waitingKinds": 0,
+        "faqOrAiAfter": [
+          "system:faq"
+        ]
+      },
+      "httpStatus": 200,
+      "logs": {
+        "addedBytes": 569,
+        "matchLines": [
+          "\u001b[32m2026-09-17 20:20:00.655\u001b[0m | \u001b[1mINFO    \u001b[0m | \u001b[36msrc.integrations.bailian\u001b[0m:\u001b[36m_post\u001b[0m:\u001b[36m83\u001b[0m | \u001b[1m���ð����ӿڳɹ� | path=https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions status_code=200\u001b[0m",
+          "\u001b[32m2026-09-17 20:20:01.778\u001b[0m | \u001b[1mINFO    \u001b[0m | \u001b[36msrc.integrations.bailian\u001b[0m:\u001b[36m_post\u001b[0m:\u001b[36m83\u001b[0m | \u001b[1m���ð����ӿڳɹ� | path=https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings status_code=200\u001b[0m"
+        ],
+        "chatCompletions": 1,
+        "embeddings": 1,
+        "bailianOk": 0
+      }
+    },
+    "listBefore": {
+      "count": 1,
+      "ids": [
+        "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2"
+      ],
+      "statuses": [
+        "handed_off"
+      ],
+      "allHandedOff": true,
+      "previews": [
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+      ]
+    },
+    "api012onBot": {
+      "status": 409,
+      "error": "会话尚未转人工，无法以客服身份回复",
+      "errorCode": "CONFLICT"
+    },
+    "transfer": {
+      "ui": {
+        "pathname": "/employee",
+        "conversationId": "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0",
+        "pageName": "员工端",
+        "topbarUser": "已登录：it-help",
+        "statusText": "已转人工，等待客服",
+        "transferLabel": "已转人工",
+        "transferDisabled": true,
+        "messageCount": 2,
+        "otherCount": 1,
+        "employeeCount": 1,
+        "otherTags": [
+          "FAQ"
+        ],
+        "messages": [
+          {
+            "side": "employee",
+            "tag": null,
+            "text": "T011HELIX 重置 VPN 密码的要点是什么",
+            "rewrite": "改写为：T011HELIX 重置 VPN 密码的要点是什么"
+          },
+          {
+            "side": "other",
+            "tag": "FAQ",
+            "text": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。",
+            "rewrite": null
+          }
+        ],
+        "lastOther": {
+          "tag": "FAQ",
+          "text": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+        },
+        "lastEmployee": {
+          "text": "T011HELIX 重置 VPN 密码的要点是什么",
+          "rewrite": "改写为：T011HELIX 重置 VPN 密码的要点是什么"
+        },
+        "pageHasMock": false,
+        "sending": false,
+        "errorText": "",
+        "layout": {
+          "composerBottom": 900,
+          "statusTop": 56,
+          "employeeBubbleWhite": "rgb(255, 255, 255)",
+          "employeeBubbleBg": "rgb(29, 78, 137)",
+          "canvas": "rgb(244, 246, 248)"
+        }
+      },
+      "api": {
+        "id": "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0",
+        "status": "handed_off",
+        "clarification_round": 0,
+        "waiting_for_agent": true,
+        "messageCount": 2,
+        "kinds": [
+          "employee:employee_turn",
+          "system:faq"
+        ],
+        "employeeOriginals": [
+          "T011HELIX 重置 VPN 密码的要点是什么"
+        ],
+        "employeeRewrites": [
+          "T011HELIX 重置 VPN 密码的要点是什么"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "T011HELIX 重置 VPN 密码的要点是什么",
+          "rewritten": "T011HELIX 重置 VPN 密码的要点是什么"
+        },
+        "lastSystem": {
+          "kind": "faq",
+          "content": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+        },
+        "lastAgent": null,
+        "waitingKinds": 0,
+        "faqOrAiAfter": [
+          "system:faq"
+        ]
+      }
+    },
+    "listAfter": {
+      "count": 2,
+      "ids": [
+        "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0",
+        "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2"
+      ],
+      "statuses": [
+        "handed_off",
+        "handed_off"
+      ],
+      "allHandedOff": true,
+      "previews": [
+        "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+      ]
+    },
+    "agentOpen": {
+      "rowCount": 2,
+      "listWidth": 320,
+      "pageName": "客服端",
+      "pageHasMock": false,
+      "selectedTitle": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。",
+      "messageCount": 2,
+      "hasRewrite": true,
+      "hasEmployeeQ": true,
+      "hasSystem": true,
+      "tags": [
+        null,
+        "FAQ"
+      ],
+      "rewrites": [
+        "改写为：T011HELIX 重置 VPN 密码的要点是什么"
+      ]
+    },
+    "ac006faq": {
+      "error": "timeout-handoff:T013-POST-HANDOFF-FAQ T011HELIX 重置 VPN 密",
+      "otherTags": [
+        "FAQ"
+      ],
+      "logs": {
+        "addedBytes": 856,
+        "matchLines": [],
+        "chatCompletions": 0,
+        "embeddings": 0,
+        "bailianOk": 0
+      }
+    },
+    "ac006chat": {
+      "error": null,
+      "otherDelta": 0,
+      "afterKinds": [
+        "system:waiting_for_agent"
+      ],
+      "lastKind": "waiting_for_agent",
+      "status": "handed_off",
+      "logs": {
+        "addedBytes": 322,
+        "matchLines": [],
+        "chatCompletions": 0,
+        "embeddings": 0,
+        "bailianOk": 0
+      }
+    },
+    "agentAfterAc006": {
+      "postHandoffEmployeeVisible": false,
+      "tags": [
+        null,
+        "FAQ",
+        null,
+        "等待客服"
+      ],
+      "lastTexts": [
+        {
+          "tag": null,
+          "text": "T011HELIX 重置 VPN 密码的要点是什么"
+        },
+        {
+          "tag": "FAQ",
+          "text": "T011HELIX-FAQ-NEW 先在账号中心完成手机验证，再重新导入公司 VPN 配置文件。"
+        },
+        {
+          "tag": null,
+          "text": "T013-POST-HANDOFF-CHAT 你好呀今天天气真好我们不谈电脑"
+        },
+        {
+          "tag": "等待客服",
+          "text": "已转交客服，请等待回复。"
+        }
+      ]
+    },
+    "agentReply1": {
+      "visible": true,
+      "sendError": ""
+    },
+    "employeeSeesR1": {
+      "sawR1": true,
+      "elapsedMs": 220,
+      "lastOther": {
+        "tag": "客服",
+        "text": "T013-AGENT-1 这是客服接管后的第一条回复。"
+      },
+      "statusText": "已转人工，等待客服",
+      "conversationId": "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0"
+    },
+    "d003": {
+      "http": 200,
+      "elapsedMs": 2864,
+      "saw": true,
+      "lastOther": {
+        "tag": "客服",
+        "text": "T013-AGENT-2 用于约三秒到达员工端。"
+      }
+    },
+    "ac007": {
+      "error": null,
+      "ui": {
+        "statusText": "AI 接待中",
+        "transferDisabled": false,
+        "tag": "兜底",
+        "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+      },
+      "api": {
+        "id": "ad1eaa4e-df21-42a4-8ea2-66a73529e471",
+        "status": "bot",
+        "clarification_round": 0,
+        "waiting_for_agent": false,
+        "messageCount": 2,
+        "kinds": [
+          "employee:employee_turn",
+          "system:fallback"
+        ],
+        "employeeOriginals": [
+          "请帮我转人工，不要点按钮。"
+        ],
+        "employeeRewrites": [
+          "请帮我转人工，不要点按钮。"
+        ],
+        "lastEmployee": {
+          "kind": "employee_turn",
+          "original": "请帮我转人工，不要点按钮。",
+          "rewritten": "请帮我转人工，不要点按钮。"
+        },
+        "lastSystem": {
+          "kind": "fallback",
+          "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+        },
+        "lastAgent": null,
+        "waitingKinds": 0,
+        "faqOrAiAfter": [
+          "system:fallback"
+        ]
+      },
+      "logs": {
+        "addedBytes": 569,
+        "matchLines": [
+          "\u001b[32m2026-09-17 20:20:33.363\u001b[0m | \u001b[1mINFO    \u001b[0m | \u001b[36msrc.integrations.bailian\u001b[0m:\u001b[36m_post\u001b[0m:\u001b[36m83\u001b[0m | \u001b[1m���ð����ӿڳɹ� | path=https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions status_code=200\u001b[0m",
+          "\u001b[32m2026-09-17 20:20:34.409\u001b[0m | \u001b[1mINFO    \u001b[0m | \u001b[36msrc.integrations.bailian\u001b[0m:\u001b[36m_post\u001b[0m:\u001b[36m83\u001b[0m | \u001b[1m���ð����ӿڳɹ� | path=https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings status_code=200\u001b[0m"
+        ],
+        "chatCompletions": 1,
+        "embeddings": 1,
+        "bailianOk": 0
+      }
+    },
+    "listAfterText": {
+      "count": 2,
+      "ids": [
+        "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0",
+        "e05c8bc6-f3aa-4eb6-a96e-11b3219578a2"
+      ],
+      "statuses": [
+        "handed_off",
+        "handed_off"
+      ],
+      "allHandedOff": true,
+      "previews": [
+        "T013-AGENT-2 用于约三秒到达员工端。",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+      ]
+    },
+    "api012onText": {
+      "status": 409,
+      "errorCode": "CONFLICT",
+      "error": "会话尚未转人工，无法以客服身份回复"
+    },
+    "agentFinal": {
+      "rowCount": 2,
+      "botPreviewLeak": false,
+      "titles": [
+        "T013-AGENT-2 用于约三秒到达员工端。",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+      ],
+      "pageHasMock": false
+    },
+    "convAFinal": {
+      "status": "handed_off",
+      "kinds": [
+        "employee:employee_turn",
+        "system:faq",
+        "employee:employee_turn",
+        "system:waiting_for_agent",
+        "agent:agent",
+        "agent:agent"
+      ],
+      "kindsAfterHandoffFaq": [],
+      "transferIdx": 3
+    }
+  },
+  "viteStatus": 200,
+  "backendStatus": 200,
+  "convA": "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0",
+  "convB": "ad1eaa4e-df21-42a4-8ea2-66a73529e471",
+  "bailianNote": {
+    "q1Chat": 1,
+    "ac006faqChat": 0,
+    "ac006chatChat": 0,
+    "ac007Chat": 1,
+    "textXferLogStart": 86027
+  },
+  "checks": [
+    {
+      "id": "env-vite",
+      "pass": true,
+      "expected": 200,
+      "actual": 200
+    },
+    {
+      "id": "env-backend",
+      "pass": true,
+      "expected": 200,
+      "actual": 200
+    },
+    {
+      "id": "env-llm-key",
+      "pass": true,
+      "expected": true,
+      "actual": "configured"
+    },
+    {
+      "id": "env-no-mock",
+      "pass": true,
+      "expected": false,
+      "actual": false
+    },
+    {
+      "id": "env-login",
+      "pass": true,
+      "expected": "/employee + 已登录",
+      "actual": "/employee 已登录：it-help"
+    },
+    {
+      "id": "tc-new-session",
+      "pass": true,
+      "expected": "new id != T-012 Conv B",
+      "actual": "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0"
+    },
+    {
+      "id": "ac008-unhanded-no-waiting-after-q1",
+      "pass": true,
+      "expected": "bot + AI接待中 + rewritten + not waiting_for_agent",
+      "actual": {
+        "status": "bot",
+        "ui": "AI 接待中",
+        "kind": "faq",
+        "rewritten": true,
+        "error": null
+      }
+    },
+    {
+      "id": "tc-api008-only-handed-off-before",
+      "pass": true,
+      "expected": "list all handed_off and convA absent",
+      "actual": {
+        "allHandedOff": true,
+        "includesA": false,
+        "count": 1
+      }
+    },
+    {
+      "id": "ac008-api012-409-on-bot",
+      "pass": true,
+      "expected": "409 CONFLICT",
+      "actual": {
+        "status": 409,
+        "errorCode": "CONFLICT",
+        "error": "会话尚未转人工，无法以客服身份回复"
+      }
+    },
+    {
+      "id": "ac008-still-bot-after-409",
+      "pass": true,
+      "expected": "status bot, last system not waiting",
+      "actual": {
+        "status": "bot",
+        "lastKind": "faq"
+      }
+    },
+    {
+      "id": "ac005-transfer",
+      "pass": true,
+      "expected": "handed_off + 已转人工，等待客服 + button disabled",
+      "actual": {
+        "status": "handed_off",
+        "ui": "已转人工，等待客服",
+        "disabled": true
+      }
+    },
+    {
+      "id": "tc-api008-includes-handed-off-a",
+      "pass": true,
+      "expected": "convA in list, no bot statuses",
+      "actual": {
+        "includesA": true,
+        "statuses": [
+          "handed_off"
+        ]
+      }
+    },
+    {
+      "id": "ac005-agent-sees-history-rewrite",
+      "pass": true,
+      "expected": "agent thread has employee Q + rewrite + prior system reply",
+      "actual": {
+        "hasEmployeeQ": true,
+        "hasRewrite": true,
+        "hasSystem": true,
+        "mock": false
+      }
+    },
+    {
+      "id": "ui03-layout",
+      "pass": true,
+      "expected": "客服端 + list 320 + 回复 + 已转人工",
+      "actual": {
+        "pageName": "客服端",
+        "listWidth": 320,
+        "sendLabel": "回复"
+      }
+    },
+    {
+      "id": "d001-same-session-after-nav",
+      "pass": false,
+      "expected": "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0",
+      "actual": "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0"
+    },
+    {
+      "id": "ac006-faq-no-ai",
+      "pass": false,
+      "expected": "handed_off, no new FAQ/AI bubble, waiting_for_agent, no chat/completions",
+      "actual": {
+        "chat": 0,
+        "error": "timeout-handoff:T013-POST-HANDOFF-FAQ T011HELIX 重置 VPN 密"
+      }
+    },
+    {
+      "id": "ac006-smalltalk-no-ai",
+      "pass": true,
+      "expected": "handed_off, no small_talk/FAQ/AI, no chat/completions",
+      "actual": {
+        "status": "handed_off",
+        "otherDelta": 0,
+        "afterKinds": [
+          "system:waiting_for_agent"
+        ],
+        "lastKind": "waiting_for_agent",
+        "chat": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "ui02-layout",
+      "pass": true,
+      "expected": "员工端 status + composer pinned",
+      "actual": {
+        "pageName": "员工端",
+        "statusText": "已转人工，等待客服",
+        "composerBottom": 900,
+        "employeeBubbleWhite": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "id": "ac006-agent-sees-waiting-not-faq",
+      "pass": false,
+      "expected": "agent sees post-handoff employee FAQ/chat texts",
+      "actual": {
+        "postHandoffEmployeeVisible": false,
+        "tags": [
+          null,
+          "FAQ",
+          null,
+          "等待客服"
+        ]
+      }
+    },
+    {
+      "id": "ac005-agent-sent-reply",
+      "pass": true,
+      "expected": "agent UI shows T013-AGENT-1",
+      "actual": {
+        "visible": true,
+        "sendError": ""
+      }
+    },
+    {
+      "id": "ac005-employee-sees-agent-reply",
+      "pass": true,
+      "expected": "same conv, 客服 bubble with T013-AGENT-1",
+      "actual": {
+        "sawR1": true,
+        "elapsedMs": 220,
+        "lastOther": {
+          "tag": "客服",
+          "text": "T013-AGENT-1 这是客服接管后的第一条回复。"
+        },
+        "statusText": "已转人工，等待客服",
+        "conversationId": "b68e4e94-5a53-4ae7-b25a-8e8d13527bc0"
+      }
+    },
+    {
+      "id": "tc-d003-poll-within-3s",
+      "pass": true,
+      "expected": "API-012 200 and employee UI <=5000ms (D-003 ~3s poll)",
+      "actual": {
+        "http": 200,
+        "elapsedMs": 2864
+      }
+    },
+    {
+      "id": "ac007-new-bot-session",
+      "pass": true,
+      "expected": "fresh bot conv",
+      "actual": "ad1eaa4e-df21-42a4-8ea2-66a73529e471"
+    },
+    {
+      "id": "ac007-text-transfer-still-req001",
+      "pass": true,
+      "expected": "bot + AI接待中 + REQ-001 kind, not waiting_for_agent",
+      "actual": {
+        "status": "bot",
+        "ui": "AI 接待中",
+        "kind": "fallback",
+        "tag": "兜底",
+        "error": null
+      }
+    },
+    {
+      "id": "ac008-text-transfer-no-waiting-result",
+      "pass": true,
+      "expected": "no waiting_for_agent takeover",
+      "actual": {
+        "kind": "fallback",
+        "ui": "AI 接待中",
+        "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+      }
+    },
+    {
+      "id": "ac007-not-in-agent-list",
+      "pass": true,
+      "expected": "convB absent from API-008",
+      "actual": {
+        "includesB": false,
+        "allHandedOff": true
+      }
+    },
+    {
+      "id": "tc-api012-409-text-only",
+      "pass": true,
+      "expected": "409 CONFLICT",
+      "actual": {
+        "status": 409,
+        "errorCode": "CONFLICT",
+        "error": "会话尚未转人工，无法以客服身份回复"
+      }
+    },
+    {
+      "id": "tc-text-does-not-change-status",
+      "pass": true,
+      "expected": "bot",
+      "actual": "bot"
+    },
+    {
+      "id": "ac007-agent-ui-not-taken-over",
+      "pass": true,
+      "expected": "agent list has no convB preview",
+      "actual": {
+        "botPreviewLeak": false,
+        "titles": [
+          "T013-AGENT-2 用于约三秒到达员工端。",
+          "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+        ]
+      }
+    },
+    {
+      "id": "tc-after-handoff-kinds-not-faq-ai",
+      "pass": true,
+      "expected": "post-handoff messages are employee/waiting/agent only",
+      "actual": []
+    }
+  ],
+  "failed": [
+    "d001-same-session-after-nav",
+    "ac006-faq-no-ai",
+    "ac006-agent-sees-waiting-not-faq"
+  ],
+  "postBodies": [
+    {
+      "url": "http://127.0.0.1:5199/api/conversations/b68e4e94-5a53-4ae7-b25a-8e8d13527bc0/messages",
+      "method": "POST",
+      "status": 200,
+      "replyKind": "faq",
+      "conversationStatus": "bot",
+      "errorCode": null
+    },
+    {
+      "url": "http://127.0.0.1:5199/api/conversations/b68e4e94-5a53-4ae7-b25a-8e8d13527bc0/replies",
+      "method": "POST",
+      "status": 409,
+      "replyKind": null,
+      "conversationStatus": null,
+      "errorCode": "CONFLICT"
+    },
+    {
+      "url": "http://127.0.0.1:5199/api/conversations/b68e4e94-5a53-4ae7-b25a-8e8d13527bc0/transfer",
+      "method": "POST",
+      "status": 200,
+      "replyKind": null,
+      "conversationStatus": "handed_off",
+      "errorCode": null
+    },
+    {
+      "url": "http://127.0.0.1:5199/api/conversations/b68e4e94-5a53-4ae7-b25a-8e8d13527bc0/messages",
+      "method": "POST",
+      "status": 200,
+      "replyKind": "waiting_for_agent",
+      "conversationStatus": "handed_off",
+      "errorCode": null
+    },
+    {
+      "url": "http://127.0.0.1:5199/api/conversations/b68e4e94-5a53-4ae7-b25a-8e8d13527bc0/replies",
+      "method": "POST",
+      "status": 200,
+      "replyKind": "agent",
+      "conversationStatus": "handed_off",
+      "errorCode": null
+    },
+    {
+      "url": "http://127.0.0.1:5199/api/conversations/b68e4e94-5a53-4ae7-b25a-8e8d13527bc0/replies",
+      "method": "POST",
+      "status": 200,
+      "replyKind": "agent",
+      "conversationStatus": "handed_off",
+      "errorCode": null
+    },
+    {
+      "url": "http://127.0.0.1:5199/api/conversations/ad1eaa4e-df21-42a4-8ea2-66a73529e471/messages",
+      "method": "POST",
+      "status": 200,
+      "replyKind": "fallback",
+      "conversationStatus": "bot",
+      "errorCode": null
+    },
+    {
+      "url": "http://127.0.0.1:5199/api/conversations/ad1eaa4e-df21-42a4-8ea2-66a73529e471/replies",
+      "method": "POST",
+      "status": 409,
+      "replyKind": null,
+      "conversationStatus": null,
+      "errorCode": "CONFLICT"
+    }
+  ]
+}

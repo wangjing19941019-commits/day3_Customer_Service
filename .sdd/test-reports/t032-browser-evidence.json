@@ -1,0 +1,202 @@
+{
+  "mock": true,
+  "task": "T-032",
+  "base": "http://127.0.0.1:5216",
+  "viewport": "1440x900",
+  "cdpPort": 9462,
+  "chrome": "Chrome/153.0.8010.48",
+  "userDataDir": "C:\\Users\\慈海客服\\AppData\\Local\\Temp\\t032-chrome-JHSp2T",
+  "demoUser": "it-help",
+  "steps": {
+    "handoff": {
+      "statusText": "[Mock] 已转人工，等待客服",
+      "transferText": "已转人工",
+      "transferDisabled": true,
+      "otherCount": 0,
+      "conversationId": "fa5bea1c-f06b-4554-9ae1-dd2796f9fa78",
+      "topbarUser": "已登录：[Mock] it-help"
+    },
+    "ordinaryFaq": {
+      "lastEmployee": {
+        "side": "employee",
+        "tag": null,
+        "text": "[Mock] 怎么开发票",
+        "rewrite": null,
+        "alignSelf": "flex-end",
+        "tagFontSize": null,
+        "tagLineHeight": null,
+        "tagColor": null,
+        "bubbleBg": "rgb(29, 78, 137)",
+        "bubbleColor": "rgb(255, 255, 255)"
+      },
+      "lastOther": null,
+      "otherCount": 0,
+      "systemTags": [],
+      "bodyHasFaqAnswer": false
+    },
+    "ordinaryHi": {
+      "lastEmployee": {
+        "side": "employee",
+        "tag": null,
+        "text": "[Mock] 你好",
+        "rewrite": null,
+        "alignSelf": "flex-end",
+        "tagFontSize": null,
+        "tagLineHeight": null,
+        "tagColor": null,
+        "bubbleBg": "rgb(29, 78, 137)",
+        "bubbleColor": "rgb(255, 255, 255)"
+      },
+      "lastOther": null,
+      "otherCount": 0,
+      "systemTags": [],
+      "bodyHasSmallTalk": false
+    },
+    "noTicket": {
+      "lastEmployee": {
+        "side": "employee",
+        "tag": null,
+        "text": "[Mock] 我的退款到哪了",
+        "rewrite": null,
+        "alignSelf": "flex-end",
+        "tagFontSize": null,
+        "tagLineHeight": null,
+        "tagColor": null,
+        "bubbleBg": "rgb(29, 78, 137)",
+        "bubbleColor": "rgb(255, 255, 255)"
+      },
+      "lastProgress": {
+        "side": "other",
+        "tag": "进度说明",
+        "text": "[Mock] 目前没有可查询的工单进度。",
+        "rewrite": null,
+        "alignSelf": "flex-start",
+        "tagFontSize": "12px",
+        "tagLineHeight": "18px",
+        "tagColor": "rgb(92, 107, 122)",
+        "bubbleBg": "rgb(232, 241, 250)",
+        "bubbleColor": "rgb(31, 41, 51)"
+      },
+      "lastOther": {
+        "side": "other",
+        "tag": "进度说明",
+        "text": "[Mock] 目前没有可查询的工单进度。",
+        "rewrite": null,
+        "alignSelf": "flex-start",
+        "tagFontSize": "12px",
+        "tagLineHeight": "18px",
+        "tagColor": "rgb(92, 107, 122)",
+        "bubbleBg": "rgb(232, 241, 250)",
+        "bubbleColor": "rgb(31, 41, 51)"
+      },
+      "systemTags": [
+        "进度说明"
+      ],
+      "pageHasEnum": false,
+      "bodyHasArrived": false,
+      "pageHasMock": true
+    },
+    "seedTicket": {
+      "conversationId": "fa5bea1c-f06b-4554-9ae1-dd2796f9fa78",
+      "status": "in_progress",
+      "ticket_type": "return_exchange"
+    },
+    "writtenProgress": {
+      "lastProgress": {
+        "side": "other",
+        "tag": "进度说明",
+        "text": "[Mock] 仓储已完成收货核验。订单 AP20260921011，连衣裙 的退货退款正在处理中，尚未到账。",
+        "rewrite": null,
+        "alignSelf": "flex-start",
+        "tagFontSize": "12px",
+        "tagLineHeight": "18px",
+        "tagColor": "rgb(92, 107, 122)",
+        "bubbleBg": "rgb(232, 241, 250)",
+        "bubbleColor": "rgb(31, 41, 51)"
+      },
+      "progressCount": 2,
+      "progressTexts": [
+        "[Mock] 目前没有可查询的工单进度。",
+        "[Mock] 仓储已完成收货核验。订单 AP20260921011，连衣裙 的退货退款正在处理中，尚未到账。"
+      ],
+      "pageHasEnum": false
+    },
+    "askWithTicket": {
+      "lastEmployee": {
+        "side": "employee",
+        "tag": null,
+        "text": "[Mock] 我的退款到哪了",
+        "rewrite": null,
+        "alignSelf": "flex-end",
+        "tagFontSize": null,
+        "tagLineHeight": null,
+        "tagColor": null,
+        "bubbleBg": "rgb(29, 78, 137)",
+        "bubbleColor": "rgb(255, 255, 255)"
+      },
+      "lastProgress": {
+        "side": "other",
+        "tag": "进度说明",
+        "text": "[Mock] 仓储已完成收货核验。订单 AP20260921011，连衣裙 的退货退款正在处理中，尚未到账。",
+        "rewrite": null,
+        "alignSelf": "flex-start",
+        "tagFontSize": "12px",
+        "tagLineHeight": "18px",
+        "tagColor": "rgb(92, 107, 122)",
+        "bubbleBg": "rgb(232, 241, 250)",
+        "bubbleColor": "rgb(31, 41, 51)"
+      },
+      "progressCount": 3,
+      "progressTexts": [
+        "[Mock] 目前没有可查询的工单进度。",
+        "[Mock] 仓储已完成收货核验。订单 AP20260921011，连衣裙 的退货退款正在处理中，尚未到账。",
+        "[Mock] 仓储已完成收货核验。订单 AP20260921011，连衣裙 的退货退款正在处理中，尚未到账。"
+      ],
+      "systemTags": [
+        "进度说明",
+        "进度说明",
+        "进度说明"
+      ]
+    },
+    "ordinaryAfter": {
+      "lastEmployee": {
+        "side": "employee",
+        "tag": null,
+        "text": "[Mock] 这件连衣裙能退吗",
+        "rewrite": null,
+        "alignSelf": "flex-end",
+        "tagFontSize": null,
+        "tagLineHeight": null,
+        "tagColor": null,
+        "bubbleBg": "rgb(29, 78, 137)",
+        "bubbleColor": "rgb(255, 255, 255)"
+      },
+      "lastOther": {
+        "side": "other",
+        "tag": "进度说明",
+        "text": "[Mock] 仓储已完成收货核验。订单 AP20260921011，连衣裙 的退货退款正在处理中，尚未到账。",
+        "rewrite": null,
+        "alignSelf": "flex-start",
+        "tagFontSize": "12px",
+        "tagLineHeight": "18px",
+        "tagColor": "rgb(92, 107, 122)",
+        "bubbleBg": "rgb(232, 241, 250)",
+        "bubbleColor": "rgb(31, 41, 51)"
+      },
+      "systemTags": [
+        "进度说明",
+        "进度说明",
+        "进度说明"
+      ],
+      "otherCount": 3,
+      "progressCount": 3,
+      "bodyHasKnowledge": false
+    }
+  },
+  "failed": [],
+  "viteStatus": 200,
+  "viteUrl": "http://127.0.0.1:5216",
+  "viteUseMock": true,
+  "landedOnLogin": true,
+  "pass": true
+}

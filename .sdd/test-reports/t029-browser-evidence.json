@@ -1,0 +1,235 @@
+{
+  "chrome": "Chrome/153.0.8010.48",
+  "cdpPort": 9479,
+  "base": "http://127.0.0.1:5211",
+  "mock": true,
+  "loginOpen": {
+    "href": "http://127.0.0.1:5211/login",
+    "pathname": "/login",
+    "title": "智能客服",
+    "hasLoggedOutHint": true,
+    "hasMock": true,
+    "seedHintHas": {
+      "employee": true,
+      "agent": true,
+      "specialist": true,
+      "senior": true,
+      "supervisor": true,
+      "after_sales_supervisor": true,
+      "cs_lead": true,
+      "logistics_agent": true,
+      "cs_supervisor": true,
+      "admin": true
+    },
+    "formAlert": "",
+    "usernameValue": "",
+    "card": {
+      "width": "400px",
+      "padding": "32px",
+      "radius": "8px",
+      "centerDelta": 0,
+      "verticalInView": true
+    },
+    "h1": {
+      "fontSize": "20px",
+      "fontWeight": "600",
+      "lineHeight": "28px"
+    },
+    "primary": {
+      "backgroundColor": "rgb(29, 78, 137)",
+      "height": "40px"
+    },
+    "canvas": "rgb(244, 246, 248)",
+    "tokenPresent": false
+  },
+  "loginOpenShot": "t029-login.png",
+  "wrongPass": {
+    "pathname": "/login",
+    "formAlert": "[Mock] 用户名或密码错误",
+    "usernameKept": "employee",
+    "tokenPresent": false,
+    "hasLoggedOutHint": true
+  },
+  "wrongPassShot": "t029-wrong-password.png",
+  "employeeHome": {
+    "href": "http://127.0.0.1:5211/employee",
+    "pathname": "/employee",
+    "topbarHeight": "56px",
+    "topbarUser": "已登录：[Mock] employee",
+    "hasLogout": true,
+    "nav": [
+      {
+        "text": "员工端",
+        "href": "/employee",
+        "className": "active"
+      }
+    ],
+    "navHasTemplate": false,
+    "navHasGray": false,
+    "navHasTickets": false,
+    "navHasKnowledge": false,
+    "navHasAgent": false,
+    "navHasEmployee": true,
+    "mainHeadings": [],
+    "mainText": "[Mock] AI 接待中\n转人工\n\n[Mock] 描述你的购物问题\n\n发送",
+    "tokenPresent": true
+  },
+  "employeeShot": "t029-employee.png",
+  "employeeBlockedAgent": {
+    "pathname": "/employee"
+  },
+  "employeeBlockedKb": {
+    "pathname": "/employee"
+  },
+  "afterEmployeeLogout": {
+    "pathname": "/login",
+    "hasLoggedOutHint": true,
+    "tokenPresent": false
+  },
+  "agentHome": {
+    "href": "http://127.0.0.1:5211/agent",
+    "pathname": "/agent",
+    "topbarHeight": "56px",
+    "topbarUser": "已登录：[Mock] agent",
+    "hasLogout": true,
+    "nav": [
+      {
+        "text": "客服端",
+        "href": "/agent",
+        "className": "active"
+      }
+    ],
+    "navHasTemplate": false,
+    "navHasGray": false,
+    "navHasTickets": false,
+    "navHasKnowledge": false,
+    "navHasAgent": true,
+    "navHasEmployee": false,
+    "mainHeadings": [],
+    "mainText": "还没有需要人工处理的对话\n\n还没有需要人工处理的对话\n\n润色\n发送\n\n还没有需要人工处理的对话",
+    "tokenPresent": true
+  },
+  "agentShot": "t029-agent.png",
+  "agentBlockedTemplates": {
+    "pathname": "/agent",
+    "navHasTemplate": false,
+    "mainHeadings": []
+  },
+  "agentBlockedTickets": {
+    "pathname": "/agent"
+  },
+  "adminHome": {
+    "href": "http://127.0.0.1:5211/knowledge",
+    "pathname": "/knowledge",
+    "topbarHeight": "56px",
+    "topbarUser": "已登录：[Mock] admin",
+    "hasLogout": true,
+    "nav": [
+      {
+        "text": "知识库",
+        "href": "/knowledge",
+        "className": "active"
+      },
+      {
+        "text": "工单列表",
+        "href": "/tickets",
+        "className": ""
+      },
+      {
+        "text": "模板",
+        "href": "/templates",
+        "className": ""
+      }
+    ],
+    "navHasTemplate": true,
+    "navHasGray": false,
+    "navHasTickets": true,
+    "navHasKnowledge": true,
+    "navHasAgent": false,
+    "navHasEmployee": false,
+    "mainHeadings": [],
+    "mainText": "上传\n\n[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF\n\n全部\n入库中\n已完成\n请重新上传\n[Mock] 订单配送时效说明.md\n入库中 · [Mock] 9月22日 20:40\n[Mock] 投诉处理说明.md\n已完成 · 4 块 · [Mock] 9月22日 20:36\n[Mock] 发票开具说明.md\n已完成 · 4 块 · [Mock] 9月22日 20:32\n[Mock] 修改收货地址.md\n已完成 · 4 块 · [Mock] 9月22日 20:28\n[Mock] 3C数码常见问题.md\n已完成 · 4 块 · [Mock] 9月22日 20:22\n[Mock] 服饰美妆常见问题.md\n已完成 · 4 块 · [Mock] 9月22日 20:20\n[Mock] 3C数码质保与退换.md\n已完成 · 5 块 · [Mock] 9月22日 20:12\n[Mo",
+    "tokenPresent": true
+  },
+  "adminKnowledgeShot": "t029-admin-knowledge.png",
+  "adminTickets": {
+    "href": "http://127.0.0.1:5211/tickets",
+    "pathname": "/tickets",
+    "topbarHeight": "56px",
+    "topbarUser": "已登录：[Mock] admin",
+    "hasLogout": true,
+    "nav": [
+      {
+        "text": "知识库",
+        "href": "/knowledge",
+        "className": ""
+      },
+      {
+        "text": "工单列表",
+        "href": "/tickets",
+        "className": "active"
+      },
+      {
+        "text": "模板",
+        "href": "/templates",
+        "className": ""
+      }
+    ],
+    "navHasTemplate": true,
+    "navHasGray": false,
+    "navHasTickets": true,
+    "navHasKnowledge": true,
+    "navHasAgent": false,
+    "navHasEmployee": false,
+    "mainHeadings": [
+      "[Mock] 工单列表"
+    ],
+    "mainText": "[Mock] 工单列表\n\n管理端按类型、状态与紧急程度查看工单。本页由后续任务替换。",
+    "tokenPresent": true
+  },
+  "adminTicketsShot": "t029-admin-tickets.png",
+  "adminTemplates": {
+    "href": "http://127.0.0.1:5211/templates",
+    "pathname": "/templates",
+    "topbarHeight": "56px",
+    "topbarUser": "已登录：[Mock] admin",
+    "hasLogout": true,
+    "nav": [
+      {
+        "text": "知识库",
+        "href": "/knowledge",
+        "className": ""
+      },
+      {
+        "text": "工单列表",
+        "href": "/tickets",
+        "className": ""
+      },
+      {
+        "text": "模板",
+        "href": "/templates",
+        "className": "active"
+      }
+    ],
+    "navHasTemplate": true,
+    "navHasGray": false,
+    "navHasTickets": true,
+    "navHasKnowledge": true,
+    "navHasAgent": false,
+    "navHasEmployee": false,
+    "mainHeadings": [
+      "[Mock] 模板配置"
+    ],
+    "mainText": "[Mock] 模板配置\n\n管理端维护提示模板、版本与灰度发布。本页由后续任务替换。一线坐席不能进入本页。",
+    "tokenPresent": true
+  },
+  "adminTemplatesShot": "t029-admin-templates.png",
+  "adminBlockedEmployee": {
+    "pathname": "/knowledge"
+  },
+  "legacyHelp": {
+    "pathname": "/employee",
+    "topbarUser": "已登录：[Mock] it-help"
+  },
+  "legacyHelpShot": "t029-it-help.png"
+}

@@ -1,0 +1,204 @@
+{
+  "mock": true,
+  "viewport": "1440x900",
+  "steps": [
+    {
+      "id": "unauth-employee",
+      "screenshot": "t001-unauth-employee.png",
+      "href": "http://127.0.0.1:5199/login",
+      "pathname": "/login",
+      "title": "智能客服",
+      "hasLoggedOutHint": true,
+      "fieldErrors": [],
+      "formAlert": "",
+      "card": {
+        "width": "400px",
+        "padding": "32px",
+        "radius": "8px",
+        "shadow": "rgba(31, 41, 51, 0.08) 0px 8px 24px 0px",
+        "centerDelta": 0,
+        "verticalInView": true
+      },
+      "h1": {
+        "fontSize": "20px",
+        "fontWeight": "600",
+        "lineHeight": "28px"
+      },
+      "primary": {
+        "backgroundColor": "rgb(29, 78, 137)",
+        "height": "40px"
+      },
+      "canvas": "rgb(244, 246, 248)",
+      "tokenPresent": false
+    }
+  ],
+  "unauthDirect": {
+    "pathname": "/login",
+    "hasLoggedOutHint": true,
+    "tokenPresent": false,
+    "title": "智能客服"
+  },
+  "visualLogin": {
+    "canvas": "rgb(244, 246, 248)",
+    "card": {
+      "width": "400px",
+      "padding": "32px",
+      "radius": "8px",
+      "shadow": "rgba(31, 41, 51, 0.08) 0px 8px 24px 0px",
+      "centerDelta": 0,
+      "verticalInView": true
+    },
+    "h1": {
+      "fontSize": "20px",
+      "fontWeight": "600",
+      "lineHeight": "28px"
+    },
+    "primary": {
+      "backgroundColor": "rgb(29, 78, 137)",
+      "height": "40px"
+    },
+    "hasLoggedOutHint": true,
+    "hasMockOnPage": true
+  },
+  "emptySubmit": {
+    "pathname": "/login",
+    "fieldErrors": [
+      "请输入用户名",
+      "请输入密码"
+    ],
+    "formAlert": "",
+    "screenshot": "t001-empty-submit.png"
+  },
+  "wrongPassword": {
+    "pathname": "/login",
+    "formAlert": "[Mock] 用户名或密码错误",
+    "usernameKept": "it-help",
+    "tokenPresent": false,
+    "screenshot": "t001-wrong-password.png"
+  },
+  "loggedIn": {
+    "pathname": "/employee",
+    "topbarHeight": "56px",
+    "topbarUser": "已登录：[Mock] it-help",
+    "hasLogout": true,
+    "nav": [
+      {
+        "text": "员工端",
+        "href": "/employee",
+        "className": "active",
+        "ariaCurrent": "page"
+      },
+      {
+        "text": "客服端",
+        "href": "/agent",
+        "className": "",
+        "ariaCurrent": null
+      },
+      {
+        "text": "知识库",
+        "href": "/knowledge",
+        "className": "",
+        "ariaCurrent": null
+      }
+    ],
+    "mainHeadings": [
+      "员工端"
+    ],
+    "tokenPresent": true,
+    "screenshot": "t001-logged-in-employee.png"
+  },
+  "navAgent": {
+    "pathname": "/agent",
+    "mainHeadings": [
+      "客服端"
+    ],
+    "nav": [
+      {
+        "text": "员工端",
+        "href": "/employee",
+        "className": "",
+        "ariaCurrent": null
+      },
+      {
+        "text": "客服端",
+        "href": "/agent",
+        "className": "active",
+        "ariaCurrent": "page"
+      },
+      {
+        "text": "知识库",
+        "href": "/knowledge",
+        "className": "",
+        "ariaCurrent": null
+      }
+    ],
+    "screenshot": "t001-nav-agent.png"
+  },
+  "navKnowledge": {
+    "pathname": "/knowledge",
+    "mainHeadings": [
+      "知识库"
+    ],
+    "nav": [
+      {
+        "text": "员工端",
+        "href": "/employee",
+        "className": "",
+        "ariaCurrent": null
+      },
+      {
+        "text": "客服端",
+        "href": "/agent",
+        "className": "",
+        "ariaCurrent": null
+      },
+      {
+        "text": "知识库",
+        "href": "/knowledge",
+        "className": "active",
+        "ariaCurrent": "page"
+      }
+    ],
+    "screenshot": "t001-nav-knowledge.png"
+  },
+  "afterReload": {
+    "pathname": "/knowledge",
+    "topbarUser": "已登录：[Mock] it-help",
+    "nav": [
+      {
+        "text": "员工端",
+        "href": "/employee",
+        "className": "",
+        "ariaCurrent": null
+      },
+      {
+        "text": "客服端",
+        "href": "/agent",
+        "className": "",
+        "ariaCurrent": null
+      },
+      {
+        "text": "知识库",
+        "href": "/knowledge",
+        "className": "active",
+        "ariaCurrent": "page"
+      }
+    ],
+    "mainHeadings": [
+      "知识库"
+    ],
+    "tokenPresent": true,
+    "screenshot": "t001-reload-knowledge.png"
+  },
+  "afterLogout": {
+    "pathname": "/login",
+    "hasLoggedOutHint": true,
+    "tokenPresent": false,
+    "screenshot": "t001-after-logout.png"
+  },
+  "afterLogoutEmployee": {
+    "pathname": "/login",
+    "hasLoggedOutHint": true,
+    "tokenPresent": false
+  }
+}

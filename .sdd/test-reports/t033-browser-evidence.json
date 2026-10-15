@@ -1,0 +1,214 @@
+{
+  "mock": true,
+  "base": "http://127.0.0.1:5293",
+  "viewport": "1440x900",
+  "cdpPort": 9473,
+  "chrome": "Chrome/153.0.8010.48",
+  "userDataDir": "C:\\Users\\慈海客服\\AppData\\Local\\Temp\\t033-chrome-WbxgBK",
+  "adminUser": "admin",
+  "agentUser": "agent",
+  "steps": {
+    "adminLogin": {
+      "pathname": "/knowledge",
+      "user": "已登录：[Mock] admin"
+    },
+    "initial": {
+      "pathname": "/tickets",
+      "title": "[Mock] 工单列表",
+      "labels": [
+        "类型",
+        "紧急程度",
+        "订单号",
+        "用户",
+        "工单号",
+        "开始时间",
+        "结束时间"
+      ],
+      "statusBtns": [
+        "全部",
+        "待处理",
+        "处理中",
+        "挂起",
+        "已完成",
+        "已关闭"
+      ],
+      "head": [
+        "工单号",
+        "类型",
+        "紧急程度",
+        "状态",
+        "处理人",
+        "更新时间"
+      ],
+      "rowCount": 10,
+      "statuses": [
+        "待处理",
+        "处理中",
+        "挂起",
+        "已关闭",
+        "已完成"
+      ],
+      "mock": true,
+      "nav": [
+        {
+          "text": "知识库",
+          "href": "/knowledge"
+        },
+        {
+          "text": "工单列表",
+          "href": "/tickets"
+        },
+        {
+          "text": "模板",
+          "href": "/templates"
+        }
+      ],
+      "hasTemplateEditor": false
+    },
+    "visual": {
+      "vip": {
+        "ticketNo": "[Mock] TKT-20260923-V009",
+        "type": "退换货",
+        "urgency": "VIP",
+        "status": "待处理",
+        "assignee": "[Mock] 售后专员（升级未送达）",
+        "updated": "2026/9/23 15:00:00",
+        "classes": [
+          "tickets-row",
+          "vip"
+        ],
+        "selected": false,
+        "bg": "rgba(180, 83, 9, 0.12)",
+        "urgencyColor": "rgb(31, 41, 51)",
+        "urgencyClass": ""
+      },
+      "highRisk": {
+        "ticketNo": "[Mock] TKT-20260922-R004",
+        "type": "投诉维权",
+        "urgency": "高风险",
+        "status": "处理中",
+        "assignee": "[Mock] 高级售后专员",
+        "updated": "2026/9/22 20:00:00",
+        "classes": [
+          "tickets-row",
+          "high-risk"
+        ],
+        "selected": false,
+        "bg": "rgb(255, 255, 255)",
+        "urgencyColor": "rgb(180, 35, 24)",
+        "urgencyClass": "danger-text"
+      },
+      "highRiskAny": {
+        "ticketNo": "[Mock] TKT-20260923-R010",
+        "type": "投诉维权",
+        "urgency": "高风险",
+        "status": "待处理",
+        "assignee": "[Mock] 高级售后专员",
+        "updated": "2026/9/23 15:30:00",
+        "classes": [
+          "tickets-row",
+          "high-risk",
+          "selected"
+        ],
+        "selected": true,
+        "bg": "rgb(232, 241, 250)",
+        "urgencyColor": "rgb(180, 35, 24)",
+        "urgencyClass": "danger-text"
+      }
+    },
+    "warehouseProgress": {
+      "detailTitle": "只读进度",
+      "progress": [
+        "2026/9/21 23:10:00[Mock] 仓储未接单：仓配系统繁忙，未生成退货单",
+        "2026/9/21 23:12:00[Mock] 挂起：在等仓储确认"
+      ],
+      "detailText": "只读进度 [Mock] TKT-20260921-H006 · 退换货 · 普通 · 挂起（在等仓储确认） 处理人 [Mock] 售后专员 · 订单 [Mock] AP20260920007 · 用户 [Mock] 吴兰 2026/9/21 23:10:00 [Mock] 仓储未接单：仓配系统繁忙，未生成退货单 2026/9/21 23:12:00 [Mock] 挂起：在等仓储确认 标记已完成 上调为 VIP 上调为高风险",
+      "hasTemplateEditor": false
+    },
+    "financeProgress": {
+      "progress": [
+        "2026/9/22 19:00:00[Mock] VIP 优先队列已分配给售后专员",
+        "2026/9/22 19:01:00[Mock] 已向财务发起开票"
+      ],
+      "detailText": "只读进度 [Mock] TKT-20260922-V003 · 开发票 · VIP · 处理中 处理人 [Mock] 售后专员 · 订单 [Mock] JD20260922001 · 用户 [Mock] 赵雅 2026/9/22 19:00:00 [Mock] VIP 优先队列已分配给售后专员 2026/9/22 19:01:00 [Mock] 已向财务发起开票 挂起（等用户补充） 挂起（等仓储确认） 标记已完成 上调为高风险"
+    },
+    "statusHold": {
+      "statuses": [
+        "挂起"
+      ],
+      "count": 2,
+      "empty": null
+    },
+    "typeReturn": {
+      "types": [
+        "退换货",
+        "退换货",
+        "退换货"
+      ],
+      "count": 3
+    },
+    "urgencyVip": {
+      "urgencies": [
+        "VIP",
+        "VIP"
+      ],
+      "count": 2
+    },
+    "orderNo": {
+      "count": 1,
+      "tickets": [
+        "[Mock] TKT-20260922-A002"
+      ],
+      "detail": "只读进度 [Mock] TKT-20260922-A002 · 退换货 · 普通 · 处理中 处理人 [Mock] 售后专员 · 订单 [Mock] AP20260922021 · 用户 [Mock] 李芳 2026/9/22 18:00:00 [Mock] 已确认并分配给售后专员 2026/9/22 18:02:00 [Mock] 已发起退货 挂起（等用户补充） 挂起（等仓储确认） 标记已完成 上调为 VIP 上调为高风险"
+    },
+    "userQuery": {
+      "count": 1,
+      "tickets": [
+        "[Mock] TKT-20260922-A002"
+      ],
+      "detail": "只读进度 [Mock] TKT-20260922-A002 · 退换货 · 普通 · 处理中 处理人 [Mock] 售后专员 · 订单 [Mock] AP20260922021 · 用户 [Mock] 李芳 2026/9/22 18:00:00 [Mock] 已确认并分配给售后专员 2026/9/22 18:02:00 [Mock] 已发起退货 挂起（等用户补充） 挂起（等仓储确认） 标记已完成 上调为 VIP 上调为高风险"
+    },
+    "ticketNo": {
+      "count": 1,
+      "tickets": [
+        "[Mock] TKT-20260922-A002"
+      ]
+    },
+    "timeRange": {
+      "count": 2,
+      "tickets": [
+        "[Mock] TKT-20260923-R010",
+        "[Mock] TKT-20260923-V009"
+      ],
+      "statuses": [
+        "待处理"
+      ]
+    },
+    "empty": {
+      "empty": "当前没有符合条件的工单",
+      "tableVisible": false,
+      "rowCount": 0
+    },
+    "agentLogin": {
+      "pathname": "/agent",
+      "user": "已登录：[Mock] agent"
+    },
+    "agentBlocked": {
+      "pathname": "/agent",
+      "nav": [
+        {
+          "text": "客服端",
+          "href": "/agent"
+        }
+      ],
+      "navHasTickets": false,
+      "tableVisible": false
+    }
+  },
+  "failed": [],
+  "viteStatus": 200,
+  "listShot": "t033-admin-list.png",
+  "progressShot": "t033-readonly-progress.png",
+  "emptyShot": "t033-empty.png",
+  "agentShot": "t033-agent-blocked.png"
+}

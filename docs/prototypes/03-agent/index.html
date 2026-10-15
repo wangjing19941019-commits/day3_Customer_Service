@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>客服端 · 智能客服</title>
+  <link rel="stylesheet" href="../shared/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-left">
+        <strong>智能客服</strong>
+        <span class="page-name">客服端</span>
+      </div>
+    </header>
+    <div class="shell">
+      <nav class="sidebar" aria-label="页面">
+        <a data-page="employee" href="../02-employee/index.html">员工端</a>
+        <a data-page="agent" class="active" href="../03-agent/index.html">客服端</a>
+        <a data-page="knowledge" href="../04-knowledge/index.html">知识库</a>
+      </nav>
+      <div class="split main">
+        <aside class="list-col" id="conv-list"></aside>
+        <section class="main agent-chat">
+          <div class="messages" id="messages"></div>
+          <form class="composer" id="composer">
+            <textarea id="reply" rows="2" placeholder="回复用户"></textarea>
+            <button class="btn btn-secondary" type="button" id="polish">润色</button>
+            <button class="btn btn-primary" type="submit" id="send-reply">发送</button>
+          </form>
+        </section>
+        <aside class="agent-work" id="agent-work"></aside>
+      </div>
+    </div>
+  </div>
+  <script src="../shared/app.js"></script>
+  <script>initAgent();</script>
+</body>
+</html>

@@ -1,0 +1,723 @@
+{
+  "mock": true,
+  "base": "http://127.0.0.1:5199",
+  "viewport": "1440x900",
+  "cdpPort": 9495,
+  "chrome": "Chrome/153.0.8010.48",
+  "userDataDir": "C:\\Users\\慈海客服\\AppData\\Local\\Temp\\t035-chrome-ZBCn0N",
+  "steps": {
+    "envelope": {
+      "mockEnv": true,
+      "okKeys": true,
+      "failKeys": true,
+      "extraOk": [],
+      "okSuccess": true,
+      "failShape": true
+    },
+    "employeeLogin": {
+      "pathname": "/employee",
+      "user": "已登录：[Mock] employee",
+      "nav": [
+        "员工端"
+      ],
+      "mock": true
+    },
+    "afterTransfer": {
+      "status": "[Mock] 已转人工，等待客服",
+      "transferDisabled": true
+    },
+    "agentLogin": {
+      "pathname": "/agent",
+      "user": "已登录：[Mock] agent",
+      "nav": [
+        "客服端"
+      ],
+      "mock": true
+    },
+    "beforeType": {
+      "typeValue": "",
+      "confirmDisabled": true,
+      "typeOptions": [
+        "售前咨询（不建单）",
+        "退换货",
+        "修改地址",
+        "开发票",
+        "投诉维权",
+        "费用争议",
+        "物流异常"
+      ],
+      "mock": true,
+      "nav": [
+        "客服端"
+      ]
+    },
+    "orderCandidates": {
+      "order": {
+        "id": "ticket-field-order_no",
+        "label": "订单号",
+        "value": "",
+        "status": "待确认",
+        "statusColor": "rgb(180, 83, 9)",
+        "candidates": [
+          {
+            "text": "[Mock] JD20260922001 · 蓝色手机",
+            "pressed": "false"
+          },
+          {
+            "text": "[Mock] JD20260922002 · 蓝色手机（另一笔）",
+            "pressed": "false"
+          }
+        ],
+        "conflict": null
+      },
+      "knowledge": [
+        "[Mock] 3C数码质保与退换.md / 质保 [Mock] 以签收后的保修说明为准，非人为损坏可保修或只换不修。 [Mock] 3C 按质保处理，不适用服饰七天无理由。 生效：2026年1月1日 ~ 2026年12月31日 适用品类：3C数码",
+        "[Mock] 3C数码常见问题.md / 规格核对 [Mock] 优先核对规格、兼容与质保。 [Mock] 3C 售前口径，不引用服饰七天无理由。 生效：2026年3月1日 ~ 2026年12月31日 适用品类：3C数码"
+      ],
+      "hasApparelPush": false,
+      "sendUser": false,
+      "layout": {
+        "flex": "row",
+        "listWidth": 320,
+        "listHeight": 844,
+        "listHeightRatio": 0.94,
+        "workWidth": 360,
+        "workTop": 56,
+        "threadBottom": 900,
+        "workBelowThread": false,
+        "pinGap": 0,
+        "sameRowPrimary": false
+      },
+      "statuses": [
+        {
+          "label": "业务线",
+          "status": null,
+          "value": "digital_3c"
+        },
+        {
+          "label": "工单类型",
+          "status": null,
+          "value": "return_exchange"
+        },
+        {
+          "label": "订单号",
+          "status": "待确认",
+          "value": ""
+        },
+        {
+          "label": "商品信息",
+          "status": "已填",
+          "value": "连衣裙"
+        },
+        {
+          "label": "相关金额",
+          "status": "缺失",
+          "value": ""
+        },
+        {
+          "label": "用户诉求摘要",
+          "status": "已填",
+          "value": "昨天有两笔蓝色手机要退"
+        },
+        {
+          "label": "售后方式",
+          "status": "缺失",
+          "value": ""
+        },
+        {
+          "label": "退换原因",
+          "status": "缺失",
+          "value": ""
+        },
+        {
+          "label": "数量",
+          "status": "缺失",
+          "value": ""
+        }
+      ]
+    },
+    "polishBad": {
+      "text": "[Mock] 合规未通过，不能直接采用润色稿。 [Mock] 润色稿出现会话中未承诺的「一定退」类表述 放弃 [Mock] 当次结果反馈，不会保存为模板。 有用 无用 说明提交反馈",
+      "hasAdopt": false,
+      "risk": "[Mock] 合规未通过，不能直接采用润色稿。 [Mock] 润色稿出现会话中未承诺的「一定退」类表述",
+      "riskColor": "rgb(180, 35, 24)"
+    },
+    "narrow": {
+      "flex": "column",
+      "listWidth": 885,
+      "listHeight": 320,
+      "listHeightRatio": 0.4,
+      "workWidth": 885,
+      "workTop": 744,
+      "threadBottom": 744,
+      "workBelowThread": true,
+      "pinGap": -56,
+      "sameRowPrimary": false
+    },
+    "employeeAfterPush": {
+      "pathname": "/employee",
+      "hasAgentPush": false,
+      "others": [
+        "[Mock] 找客服 改写为：[Mock] 当前问法缺少商品或订单对象，需补充后才能检索",
+        "反问 [Mock] 请问是哪件商品？例如连衣裙、耳机，还是订单和发票问题。",
+        "[Mock] 昨天有两笔蓝色手机要退"
+      ]
+    },
+    "adminLogin": {
+      "pathname": "/knowledge",
+      "user": "已登录：[Mock] admin",
+      "nav": [
+        "知识库",
+        "工单列表",
+        "模板"
+      ],
+      "mock": true
+    },
+    "visibility": {
+      "labels": [
+        {
+          "value": "user_visible",
+          "text": "用户可见",
+          "checked": true
+        },
+        {
+          "value": "agent_only",
+          "text": "仅坐席可见",
+          "checked": false
+        },
+        {
+          "value": "high_risk_human_only",
+          "text": "高风险仅人工",
+          "checked": false
+        }
+      ],
+      "from": true,
+      "to": true,
+      "save": true,
+      "saveClass": "btn btn-secondary",
+      "enumLeak": false,
+      "mock": true
+    },
+    "ticketsHome": {
+      "pathname": "/tickets",
+      "title": "[Mock] 工单列表",
+      "headers": [
+        "工单号",
+        "类型",
+        "紧急程度",
+        "状态",
+        "处理人",
+        "更新时间"
+      ],
+      "overflow": {
+        "body": 1440,
+        "inner": 1440,
+        "wrap": 1155,
+        "wrapClient": 1155
+      },
+      "mock": true
+    },
+    "emptySearch": {
+      "empty": "当前没有符合条件的工单",
+      "rows": 0
+    },
+    "templates": {
+      "pathname": "/templates",
+      "title": "[Mock] 模板配置",
+      "gray": {
+        "text": "灰度约 5%",
+        "disabled": true,
+        "className": "btn btn-secondary"
+      },
+      "reasons": [
+        "[Mock] 当前 0 条，不足 5000 条不能灰度。Mock 可用一行 {\"item_count\":5000} 声明条数，{\"item_count\":0} 清空。",
+        "[Mock] 没有不少于 5000 条的评测集，不能开始灰度"
+      ],
+      "primary": [
+        "保存新版本"
+      ],
+      "mock": true
+    },
+    "agentBlocked": {
+      "pathname": "/agent",
+      "nav": [
+        "客服端"
+      ],
+      "hasEditor": false
+    }
+  },
+  "failed": [],
+  "checks": [
+    {
+      "id": "vite-200",
+      "ok": true,
+      "expected": 200,
+      "actual": 200
+    },
+    {
+      "id": "envelope-ok",
+      "ok": true,
+      "expected": "§二 成功信封",
+      "actual": {
+        "mockEnv": true,
+        "okKeys": true,
+        "failKeys": true,
+        "extraOk": [],
+        "okSuccess": true,
+        "failShape": true
+      }
+    },
+    {
+      "id": "envelope-fail",
+      "ok": true,
+      "expected": "§二 失败信封",
+      "actual": {
+        "mockEnv": true,
+        "okKeys": true,
+        "failKeys": true,
+        "extraOk": [],
+        "okSuccess": true,
+        "failShape": true
+      }
+    },
+    {
+      "id": "vite-mock-true",
+      "ok": true,
+      "expected": "VITE_USE_MOCK=true",
+      "actual": true
+    },
+    {
+      "id": "employee-home",
+      "ok": true,
+      "expected": "/employee",
+      "actual": {
+        "pathname": "/employee",
+        "user": "已登录：[Mock] employee",
+        "nav": [
+          "员工端"
+        ],
+        "mock": true
+      }
+    },
+    {
+      "id": "employee-nav",
+      "ok": true,
+      "expected": "仅员工端",
+      "actual": [
+        "员工端"
+      ]
+    },
+    {
+      "id": "employee-mock",
+      "ok": true,
+      "expected": "[Mock] employee",
+      "actual": "已登录：[Mock] employee"
+    },
+    {
+      "id": "employee-handoff",
+      "ok": true,
+      "expected": "已转人工且按钮禁用",
+      "actual": {
+        "status": "[Mock] 已转人工，等待客服",
+        "transferDisabled": true
+      }
+    },
+    {
+      "id": "agent-home",
+      "ok": true,
+      "expected": "/agent",
+      "actual": {
+        "pathname": "/agent",
+        "user": "已登录：[Mock] agent",
+        "nav": [
+          "客服端"
+        ],
+        "mock": true
+      }
+    },
+    {
+      "id": "agent-no-template",
+      "ok": true,
+      "expected": "侧栏无模板",
+      "actual": [
+        "客服端"
+      ]
+    },
+    {
+      "id": "confirm-disabled-no-type",
+      "ok": true,
+      "expected": true,
+      "actual": true
+    },
+    {
+      "id": "six-types",
+      "ok": true,
+      "expected": "六类选项",
+      "actual": [
+        "售前咨询（不建单）",
+        "退换货",
+        "修改地址",
+        "开发票",
+        "投诉维权",
+        "费用争议",
+        "物流异常"
+      ]
+    },
+    {
+      "id": "order-multi-no-preselect",
+      "ok": true,
+      "expected": "多条候选不预选",
+      "actual": {
+        "id": "ticket-field-order_no",
+        "label": "订单号",
+        "value": "",
+        "status": "待确认",
+        "statusColor": "rgb(180, 83, 9)",
+        "candidates": [
+          {
+            "text": "[Mock] JD20260922001 · 蓝色手机",
+            "pressed": "false"
+          },
+          {
+            "text": "[Mock] JD20260922002 · 蓝色手机（另一笔）",
+            "pressed": "false"
+          }
+        ],
+        "conflict": null
+      }
+    },
+    {
+      "id": "no-send-to-user",
+      "ok": true,
+      "expected": false,
+      "actual": false
+    },
+    {
+      "id": "agent-knowledge-push",
+      "ok": true,
+      "expected": "坐席知识卡片",
+      "actual": [
+        "[Mock] 3C数码质保与退换.md / 质保 [Mock] 以签收后的保修说明为准，非人为损坏可保修或只换不修。 [Mock] 3C 按质保处理，不适用服饰七天无理由。 生效：2026年1月1日 ~ 2026年12月31日 适用品类：3C数码",
+        "[Mock] 3C数码常见问题.md / 规格核对 [Mock] 优先核对规格、兼容与质保。 [Mock] 3C 售前口径，不引用服饰七天无理由。 生效：2026年3月1日 ~ 2026年12月31日 适用品类：3C数码"
+      ]
+    },
+    {
+      "id": "layout-1440",
+      "ok": true,
+      "expected": "左320/右360",
+      "actual": {
+        "flex": "row",
+        "listWidth": 320,
+        "listHeight": 844,
+        "listHeightRatio": 0.94,
+        "workWidth": 360,
+        "workTop": 56,
+        "threadBottom": 900,
+        "workBelowThread": false,
+        "pinGap": 0,
+        "sameRowPrimary": false
+      }
+    },
+    {
+      "id": "input-pin-1440",
+      "ok": true,
+      "expected": "输入钉底",
+      "actual": {
+        "flex": "row",
+        "listWidth": 320,
+        "listHeight": 844,
+        "listHeightRatio": 0.94,
+        "workWidth": 360,
+        "workTop": 56,
+        "threadBottom": 900,
+        "workBelowThread": false,
+        "pinGap": 0,
+        "sameRowPrimary": false
+      }
+    },
+    {
+      "id": "confirm-send-not-same-row",
+      "ok": true,
+      "expected": false,
+      "actual": {
+        "flex": "row",
+        "listWidth": 320,
+        "listHeight": 844,
+        "listHeightRatio": 0.94,
+        "workWidth": 360,
+        "workTop": 56,
+        "threadBottom": 900,
+        "workBelowThread": false,
+        "pinGap": 0,
+        "sameRowPrimary": false
+      }
+    },
+    {
+      "id": "polish-cannot-adopt",
+      "ok": true,
+      "expected": "无采用 + 合规风险",
+      "actual": {
+        "text": "[Mock] 合规未通过，不能直接采用润色稿。 [Mock] 润色稿出现会话中未承诺的「一定退」类表述 放弃 [Mock] 当次结果反馈，不会保存为模板。 有用 无用 说明提交反馈",
+        "hasAdopt": false,
+        "risk": "[Mock] 合规未通过，不能直接采用润色稿。 [Mock] 润色稿出现会话中未承诺的「一定退」类表述",
+        "riskColor": "rgb(180, 35, 24)"
+      }
+    },
+    {
+      "id": "polish-danger",
+      "ok": true,
+      "expected": "#B42318",
+      "actual": "rgb(180, 35, 24)"
+    },
+    {
+      "id": "narrow-work-below",
+      "ok": true,
+      "expected": "工作台在对话下方",
+      "actual": {
+        "flex": "column",
+        "listWidth": 885,
+        "listHeight": 320,
+        "listHeightRatio": 0.4,
+        "workWidth": 885,
+        "workTop": 744,
+        "threadBottom": 744,
+        "workBelowThread": true,
+        "pinGap": -56,
+        "sameRowPrimary": false
+      }
+    },
+    {
+      "id": "narrow-list-40vh",
+      "ok": true,
+      "expected": "列表约 40vh",
+      "actual": {
+        "flex": "column",
+        "listWidth": 885,
+        "listHeight": 320,
+        "listHeightRatio": 0.4,
+        "workWidth": 885,
+        "workTop": 744,
+        "threadBottom": 744,
+        "workBelowThread": true,
+        "pinGap": -56,
+        "sameRowPrimary": false
+      }
+    },
+    {
+      "id": "narrow-pin",
+      "ok": true,
+      "expected": "窄屏输入在对话列底、工作台在下方",
+      "actual": {
+        "flex": "column",
+        "listWidth": 885,
+        "listHeight": 320,
+        "listHeightRatio": 0.4,
+        "workWidth": 885,
+        "workTop": 744,
+        "threadBottom": 744,
+        "workBelowThread": true,
+        "pinGap": -56,
+        "sameRowPrimary": false
+      }
+    },
+    {
+      "id": "knowledge-not-in-employee",
+      "ok": true,
+      "expected": "员工对话无坐席推送原文",
+      "actual": {
+        "pathname": "/employee",
+        "hasAgentPush": false,
+        "others": [
+          "[Mock] 找客服 改写为：[Mock] 当前问法缺少商品或订单对象，需补充后才能检索",
+          "反问 [Mock] 请问是哪件商品？例如连衣裙、耳机，还是订单和发票问题。",
+          "[Mock] 昨天有两笔蓝色手机要退"
+        ]
+      }
+    },
+    {
+      "id": "admin-home",
+      "ok": true,
+      "expected": "/knowledge",
+      "actual": {
+        "pathname": "/knowledge",
+        "user": "已登录：[Mock] admin",
+        "nav": [
+          "知识库",
+          "工单列表",
+          "模板"
+        ],
+        "mock": true
+      }
+    },
+    {
+      "id": "admin-nav",
+      "ok": true,
+      "expected": "三入口",
+      "actual": [
+        "知识库",
+        "工单列表",
+        "模板"
+      ]
+    },
+    {
+      "id": "visibility-options",
+      "ok": true,
+      "expected": "可见范围+生效时间",
+      "actual": {
+        "labels": [
+          {
+            "value": "user_visible",
+            "text": "用户可见",
+            "checked": true
+          },
+          {
+            "value": "agent_only",
+            "text": "仅坐席可见",
+            "checked": false
+          },
+          {
+            "value": "high_risk_human_only",
+            "text": "高风险仅人工",
+            "checked": false
+          }
+        ],
+        "from": true,
+        "to": true,
+        "save": true,
+        "saveClass": "btn btn-secondary",
+        "enumLeak": false,
+        "mock": true
+      }
+    },
+    {
+      "id": "visibility-no-enum",
+      "ok": true,
+      "expected": false,
+      "actual": false
+    },
+    {
+      "id": "visibility-secondary",
+      "ok": true,
+      "expected": "次按钮",
+      "actual": "btn btn-secondary"
+    },
+    {
+      "id": "admin-tickets",
+      "ok": true,
+      "expected": "/tickets",
+      "actual": {
+        "pathname": "/tickets",
+        "title": "[Mock] 工单列表",
+        "headers": [
+          "工单号",
+          "类型",
+          "紧急程度",
+          "状态",
+          "处理人",
+          "更新时间"
+        ],
+        "overflow": {
+          "body": 1440,
+          "inner": 1440,
+          "wrap": 1155,
+          "wrapClient": 1155
+        },
+        "mock": true
+      }
+    },
+    {
+      "id": "ticket-headers",
+      "ok": true,
+      "expected": "六列",
+      "actual": [
+        "工单号",
+        "类型",
+        "紧急程度",
+        "状态",
+        "处理人",
+        "更新时间"
+      ]
+    },
+    {
+      "id": "tickets-no-overflow",
+      "ok": true,
+      "expected": "无整页溢出",
+      "actual": {
+        "body": 1440,
+        "inner": 1440,
+        "wrap": 1155,
+        "wrapClient": 1155
+      }
+    },
+    {
+      "id": "tickets-empty-search",
+      "ok": true,
+      "expected": "空搜文案",
+      "actual": {
+        "empty": "当前没有符合条件的工单",
+        "rows": 0
+      }
+    },
+    {
+      "id": "admin-templates",
+      "ok": true,
+      "expected": "/templates",
+      "actual": {
+        "pathname": "/templates",
+        "title": "[Mock] 模板配置",
+        "gray": {
+          "text": "灰度约 5%",
+          "disabled": true,
+          "className": "btn btn-secondary"
+        },
+        "reasons": [
+          "[Mock] 当前 0 条，不足 5000 条不能灰度。Mock 可用一行 {\"item_count\":5000} 声明条数，{\"item_count\":0} 清空。",
+          "[Mock] 没有不少于 5000 条的评测集，不能开始灰度"
+        ],
+        "primary": [
+          "保存新版本"
+        ],
+        "mock": true
+      }
+    },
+    {
+      "id": "gray-disabled",
+      "ok": true,
+      "expected": true,
+      "actual": {
+        "text": "灰度约 5%",
+        "disabled": true,
+        "className": "btn btn-secondary"
+      }
+    },
+    {
+      "id": "gray-reason",
+      "ok": true,
+      "expected": "评测不足文案",
+      "actual": [
+        "[Mock] 当前 0 条，不足 5000 条不能灰度。Mock 可用一行 {\"item_count\":5000} 声明条数，{\"item_count\":0} 清空。",
+        "[Mock] 没有不少于 5000 条的评测集，不能开始灰度"
+      ]
+    },
+    {
+      "id": "gray-not-primary",
+      "ok": true,
+      "expected": "灰度是次按钮",
+      "actual": "btn btn-secondary"
+    },
+    {
+      "id": "agent-cannot-open-templates",
+      "ok": true,
+      "expected": "坐席打不开模板",
+      "actual": {
+        "pathname": "/agent",
+        "nav": [
+          "客服端"
+        ],
+        "hasEditor": false
+      }
+    }
+  ],
+  "viteStatus": 200,
+  "pass": true
+}

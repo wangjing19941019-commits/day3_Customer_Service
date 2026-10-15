@@ -1,0 +1,299 @@
+{
+  "mock": true,
+  "base": "http://127.0.0.1:5206",
+  "viewport": "1440x900 then 900x800",
+  "cdpPort": 9453,
+  "chrome": "Chrome/153.0.8010.48",
+  "userDataDir": "C:\\Users\\慈海客服\\AppData\\Local\\Temp\\t021-chrome-vx90vV",
+  "steps": {
+    "badLogin": {
+      "pathname": "/login",
+      "stillLogin": true,
+      "hasError": true
+    },
+    "knowledge": {
+      "rowCount": 4,
+      "filenames": [
+        "[Mock] outlook.md",
+        "[Mock] vpn-faq.md",
+        "[Mock] wifi-reset.txt",
+        "[Mock] scan-only.pdf"
+      ],
+      "uploadHint": "[Mock] 支持 Markdown、TXT，以及能抽出文字的 PDF",
+      "bodyHasMock": true,
+      "topbar": {
+        "pathname": "/knowledge",
+        "brand": "智能客服",
+        "pageName": "知识库",
+        "user": "已登录：[Mock] it-help",
+        "logout": "退出",
+        "logoutClass": "btn btn-secondary",
+        "nav": [
+          {
+            "text": "员工端",
+            "active": false,
+            "href": "/employee"
+          },
+          {
+            "text": "客服端",
+            "active": false,
+            "href": "/agent"
+          },
+          {
+            "text": "知识库",
+            "active": true,
+            "href": "/knowledge"
+          }
+        ],
+        "bodyHasMock": true
+      }
+    },
+    "emptyEmployee": {
+      "emptyText": "[Mock] 描述你的购物问题",
+      "hasItEmpty": false,
+      "bodyHasMock": true,
+      "statusText": "[Mock] AI 接待中",
+      "pinGap": 0,
+      "topbar": {
+        "pathname": "/employee",
+        "brand": "智能客服",
+        "pageName": "员工端",
+        "user": "已登录：[Mock] it-help",
+        "logout": "退出",
+        "logoutClass": "btn btn-secondary",
+        "nav": [
+          {
+            "text": "员工端",
+            "active": true,
+            "href": "/employee"
+          },
+          {
+            "text": "客服端",
+            "active": false,
+            "href": "/agent"
+          },
+          {
+            "text": "知识库",
+            "active": false,
+            "href": "/knowledge"
+          }
+        ],
+        "bodyHasMock": true
+      }
+    },
+    "emptyAgent": {
+      "listCount": 0,
+      "emptyText": "还没有需要人工处理的对话",
+      "confirmText": null,
+      "topbarUser": "已登录：[Mock] it-help"
+    },
+    "afterAsk": {
+      "messageCount": 2,
+      "otherTexts": [
+        "[Mock] 服饰美妆支持七天无理由退货，需商品完好"
+      ],
+      "statusText": "[Mock] AI 接待中"
+    },
+    "afterHandoff": {
+      "statusText": "[Mock] 已转人工，等待客服",
+      "transferDisabled": true,
+      "transferText": "已转人工"
+    },
+    "draft": {
+      "listCount": 1,
+      "confirmDisabled": true,
+      "typeValue": "",
+      "lineValue": "",
+      "bodyHasMock": true,
+      "listWidth": 320,
+      "workWidth": 360,
+      "pinGap": 0,
+      "sideBySideEqualPrimary": false,
+      "sameRow": false,
+      "polishClass": "btn btn-secondary",
+      "sendClass": "btn btn-primary",
+      "confirmClass": "btn btn-primary confirm-ticket",
+      "store": {
+        "conversationId": "8934bb7c-b162-4fc4-96b1-65f4f8771c53",
+        "convStatus": "handed_off",
+        "convMessageCount": 2,
+        "ticketConversationId": "8934bb7c-b162-4fc4-96b1-65f4f8771c53",
+        "ticketStatus": "draft",
+        "ticketType": null,
+        "sameId": true
+      },
+      "topbarUser": "已登录：[Mock] it-help"
+    },
+    "polish": {
+      "before": 2,
+      "after": 2,
+      "draft": "[Mock] 您好，已了解您希望办理的事项。售前核对一下退货条件。请补充必要信息，我们会按售后流程帮您登记。",
+      "confirmDisabled": true
+    },
+    "presaleSend": {
+      "lastPeer": {
+        "side": "peer",
+        "tag": "客服",
+        "text": "[Mock] 您好，已了解您希望办理的事项。售前核对一下退货条件。请补充必要信息，我们会按售后流程帮您登记。"
+      },
+      "confirmDisabled": true,
+      "messageCount": 3
+    },
+    "knowledgePush": {
+      "hasApparelPush": true,
+      "hasSendToUserButton": false,
+      "cardCount": 1,
+      "confirmDisabled": false
+    },
+    "employeeAfterPush": {
+      "otherTexts": [
+        "[Mock] 服饰美妆支持七天无理由退货，需商品完好",
+        "[Mock] 您好，已了解您希望办理的事项。售前核对一下退货条件。请补充必要信息，我们会按售后流程帮您登记。"
+      ],
+      "messageCount": 3,
+      "hasPush": false,
+      "hasPolished": true
+    },
+    "confirmed": {
+      "confirmText": "已确认",
+      "typeDisabled": true,
+      "typeValue": "return_exchange",
+      "store": {
+        "conversationId": "8934bb7c-b162-4fc4-96b1-65f4f8771c53",
+        "convStatus": "handed_off",
+        "convMessageCount": 3,
+        "ticketConversationId": "8934bb7c-b162-4fc4-96b1-65f4f8771c53",
+        "ticketStatus": "confirmed",
+        "ticketType": "return_exchange",
+        "sameId": true
+      }
+    },
+    "narrow": {
+      "viewport": {
+        "w": 900,
+        "h": 800
+      },
+      "list": {
+        "w": 885,
+        "h": 320,
+        "top": 104
+      },
+      "work": {
+        "w": 885,
+        "h": 1182,
+        "top": 744,
+        "bottom": 1926
+      },
+      "thread": {
+        "w": 885,
+        "h": 320,
+        "top": 424,
+        "bottom": 744
+      },
+      "pinGap": 0,
+      "workBelowThread": true,
+      "listHeightRatio": 0.4,
+      "sameRow": false,
+      "sideBySideEqualPrimary": false,
+      "polishClass": "btn btn-secondary",
+      "sendClass": "btn btn-primary",
+      "confirmClass": "btn btn-primary confirm-ticket"
+    },
+    "topbars": {
+      "员工端": {
+        "pathname": "/employee",
+        "brand": "智能客服",
+        "pageName": "员工端",
+        "user": "已登录：[Mock] it-help",
+        "logout": "退出",
+        "logoutClass": "btn btn-secondary",
+        "nav": [
+          {
+            "text": "员工端",
+            "active": true,
+            "href": "/employee"
+          },
+          {
+            "text": "客服端",
+            "active": false,
+            "href": "/agent"
+          },
+          {
+            "text": "知识库",
+            "active": false,
+            "href": "/knowledge"
+          }
+        ],
+        "bodyHasMock": true
+      },
+      "客服端": {
+        "pathname": "/agent",
+        "brand": "智能客服",
+        "pageName": "客服端",
+        "user": "已登录：[Mock] it-help",
+        "logout": "退出",
+        "logoutClass": "btn btn-secondary",
+        "nav": [
+          {
+            "text": "员工端",
+            "active": false,
+            "href": "/employee"
+          },
+          {
+            "text": "客服端",
+            "active": true,
+            "href": "/agent"
+          },
+          {
+            "text": "知识库",
+            "active": false,
+            "href": "/knowledge"
+          }
+        ],
+        "bodyHasMock": true
+      },
+      "知识库": {
+        "pathname": "/knowledge",
+        "brand": "智能客服",
+        "pageName": "知识库",
+        "user": "已登录：[Mock] it-help",
+        "logout": "退出",
+        "logoutClass": "btn btn-secondary",
+        "nav": [
+          {
+            "text": "员工端",
+            "active": false,
+            "href": "/employee"
+          },
+          {
+            "text": "客服端",
+            "active": false,
+            "href": "/agent"
+          },
+          {
+            "text": "知识库",
+            "active": true,
+            "href": "/knowledge"
+          }
+        ],
+        "bodyHasMock": true
+      }
+    },
+    "envelopes": {
+      "loginMissing": [],
+      "loginHasToken": true,
+      "listMissing": [],
+      "listHasPagination": true,
+      "detailMissing": [],
+      "ticketMissing": [],
+      "knowledgeMissing": [],
+      "polishMissing": [],
+      "polishDoesNotSend": true
+    }
+  },
+  "failed": [],
+  "viteStatus": 200,
+  "viteUrl": "http://127.0.0.1:5206",
+  "conversationId": "8934bb7c-b162-4fc4-96b1-65f4f8771c53",
+  "pass": true
+}

@@ -1,0 +1,565 @@
+{
+  "base": "http://127.0.0.1:5220",
+  "cdpPort": 9561,
+  "checks": [
+    {
+      "id": "tc-mock-off-login",
+      "pass": true,
+      "expected": {
+        "mockEnabled": false,
+        "pageHasMock": false
+      },
+      "actual": {
+        "mockEnabled": false,
+        "pageHasMock": false
+      }
+    },
+    {
+      "id": "ac053-save",
+      "pass": true,
+      "expected": {
+        "fromValue": "2026-06-18T08:45",
+        "toValue": "2026-12-11T17:20",
+        "mock": false
+      },
+      "actual": {
+        "fromValue": "2026-06-18T08:45",
+        "toValue": "2026-12-11T17:20",
+        "mock": false,
+        "selectedRow": "t045-user-visible.md"
+      }
+    },
+    {
+      "id": "ac053-reopen",
+      "pass": true,
+      "expected": {
+        "fromValue": "2026-06-18T08:45",
+        "toValue": "2026-12-11T17:20",
+        "chunks": true
+      },
+      "actual": {
+        "fromValue": "2026-06-18T08:45",
+        "toValue": "2026-12-11T17:20",
+        "selectedRow": "t045-user-visible.md",
+        "chunkCount": 1
+      }
+    },
+    {
+      "id": "ac053-clear-reopen",
+      "pass": true,
+      "expected": {
+        "fromValue": "",
+        "toValue": ""
+      },
+      "actual": {
+        "fromValue": "",
+        "toValue": "",
+        "selectedRow": "t045-user-visible.md",
+        "chunkCount": 1
+      }
+    },
+    {
+      "id": "ac059-admin-open-agent-only",
+      "pass": true,
+      "expected": {
+        "vis": "agent_only",
+        "hasToken": true,
+        "chunks": true
+      },
+      "actual": {
+        "vis": "agent_only",
+        "hasToken": true,
+        "chunkCount": 2,
+        "selected": "t045-agent-only.md"
+      }
+    },
+    {
+      "id": "ac060-admin-open-high-risk",
+      "pass": true,
+      "expected": {
+        "vis": "high_risk_human_only",
+        "hasToken": true,
+        "chunks": true
+      },
+      "actual": {
+        "vis": "high_risk_human_only",
+        "hasToken": true,
+        "chunkCount": 1,
+        "selected": "t045-high-risk.md"
+      }
+    },
+    {
+      "id": "tc-employee-no-mock",
+      "pass": true,
+      "expected": {
+        "mock": false,
+        "path": "/employee"
+      },
+      "actual": {
+        "mockEnabled": false,
+        "pageHasMock": false,
+        "pathname": "/employee"
+      }
+    },
+    {
+      "id": "ac059-employee-agent-only",
+      "pass": true,
+      "expected": {
+        "contains_agent_token": false
+      },
+      "actual": {
+        "contains_agent_token": false,
+        "lastKind": "兜底",
+        "lastOther": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+      }
+    },
+    {
+      "id": "ac059-employee-user-visible",
+      "pass": true,
+      "expected": {
+        "has_user_script": true,
+        "no_internal": true
+      },
+      "actual": {
+        "has_user_script": true,
+        "contains_user_token": false,
+        "contains_agent_token": false,
+        "lastKind": "FAQ",
+        "lastOther": "未拆封的手机支持七天无理由退货。包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。"
+      }
+    },
+    {
+      "id": "ac060-employee-high-risk",
+      "pass": true,
+      "expected": {
+        "contains_risk_token": false
+      },
+      "actual": {
+        "contains_risk_token": false,
+        "lastKind": "兜底",
+        "lastOther": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+      }
+    },
+    {
+      "id": "tc-agent-no-mock",
+      "pass": true,
+      "expected": {
+        "mock": false
+      },
+      "actual": {
+        "mockEnabled": false,
+        "pageHasMock": false,
+        "pathname": "/agent"
+      }
+    },
+    {
+      "id": "ac059-agent-search-internal",
+      "pass": true,
+      "expected": {
+        "hasToken": true,
+        "byFilename": true
+      },
+      "actual": {
+        "hasToken": true,
+        "hasFile": true,
+        "excerpt": "t045-user-visible.md / 手机七天无理由对客说明\n手机七天无理由对客说明\n\n未拆封的手机支持七天无理由退货。对客话术请使用固定句：T045_USER_VISIBLE_SEVEN_DAY_RETURN。\n\n请告诉顾客：包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。\n\n手机七天无理由对客说明 未拆封的手机支持七天无理由退货。\n\n生效：2026年8月31日 ~ 2027年3月22日\n\n适用品类：3C数码\n---\nt045-agent-only.md / 3C 退货内部作业手册 / 内部处理步骤\n3C 退货内部作业手册 / 内部处理步骤\n\n坐席必须先执行内部步骤 T045_AGENT_INTERNAL_STEP_NEVER_TO_USER：先冻结仓内批次码，再在后台勾选「质检豁免」。\n\n该内部步骤不得出现在未转人工的自动回答里。\n\n3C 退货内部作业手册 / 内部"
+      }
+    },
+    {
+      "id": "ac060-agent-search-high-risk",
+      "pass": false,
+      "expected": {
+        "hasToken": true,
+        "byFilename": true
+      },
+      "actual": {
+        "hasToken": false,
+        "hasFile": false,
+        "excerpt": "t045-user-visible.md / 手机七天无理由对客说明\n手机七天无理由对客说明\n\n未拆封的手机支持七天无理由退货。对客话术请使用固定句：T045_USER_VISIBLE_SEVEN_DAY_RETURN。\n\n请告诉顾客：包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。\n\n手机七天无理由对客说明 未拆封的手机支持七天无理由退货。\n\n生效：2026年8月31日 ~ 2027年3月22日\n\n适用品类：3C数码\n---\nt045-agent-only.md / 3C 退货内部作业手册 / 内部处理步骤\n3C 退货内部作业手册 / 内部处理步骤\n\n坐席必须先执行内部步骤 T045_AGENT_INTERNAL_STEP_NEVER_TO_USER：先冻结仓内批次码，再在后台勾选「质检豁免」。\n\n该内部步骤不得出现在未转人工的自动回答里。\n\n3C 退货内部作业手册 / 内部"
+      }
+    },
+    {
+      "id": "ac060-not-auto-sent-hint",
+      "pass": true,
+      "expected": {
+        "hint": true
+      },
+      "actual": {
+        "hint": true,
+        "hintText": "确认被挡住：工单类型、业务线、订单号、商品信息、相关金额、用户诉求摘要\n未指定业务线，不套用单一口径\n手机七天无理由对客说明 未拆封的手机支持七天无理由退货。\n生效：2026年8月31日 ~ 2027年3月22日\n适用品类：3C数码\n3C "
+      }
+    },
+    {
+      "id": "ac060-employee-still-no-risk",
+      "pass": true,
+      "expected": {
+        "no_internal_auto_send": true
+      },
+      "actual": {
+        "contains_risk_token": false,
+        "contains_agent_token": false,
+        "excerpt": "已转人工，等待客服\n已转人工\n手机退货时坐席要不要先冻结仓内批次码并勾选质检豁免？\n改写为：手机退货时坐席是否需要先冻结仓内批次码并勾选质检豁免？\n兜底\n抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。\n我刚买的手机还没拆封，能七天无理由退货吗？\n改写为：我刚买的手机还没拆封，能七天无理由退货吗？\nFAQ\n未拆封的手机支持七天无理由退货。包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。\n手机屏幕进液了，会按内部补偿方案赔付吗？\n改写"
+      }
+    }
+  ],
+  "apiHits": [
+    {
+      "path": "/api/sessions",
+      "status": 200
+    },
+    {
+      "path": "/api/documents?page=1&page_size=20",
+      "status": 200
+    },
+    {
+      "path": "/api/documents?page=1&page_size=20",
+      "status": 200
+    },
+    {
+      "path": "/api/documents/8ca19c8f-bc95-4e11-82f2-5127f1ed303d",
+      "status": 200
+    },
+    {
+      "path": "/api/documents/8ca19c8f-bc95-4e11-82f2-5127f1ed303d",
+      "status": 200
+    },
+    {
+      "path": "/api/documents?page=1&page_size=20",
+      "status": 200
+    },
+    {
+      "path": "/api/documents/5b84149a-1d5a-4168-942e-5740cec67dde",
+      "status": 200
+    },
+    {
+      "path": "/api/documents/8ca19c8f-bc95-4e11-82f2-5127f1ed303d",
+      "status": 200
+    },
+    {
+      "path": "/api/documents/8ca19c8f-bc95-4e11-82f2-5127f1ed303d",
+      "status": 200
+    },
+    {
+      "path": "/api/documents?page=1&page_size=20",
+      "status": 200
+    },
+    {
+      "path": "/api/documents/4bd54e16-3b89-4995-bf8e-4e1848711b13",
+      "status": 200
+    },
+    {
+      "path": "/api/documents/8ca19c8f-bc95-4e11-82f2-5127f1ed303d",
+      "status": 200
+    },
+    {
+      "path": "/api/documents/8ca19c8f-bc95-4e11-82f2-5127f1ed303d",
+      "status": 200
+    },
+    {
+      "path": "/api/documents?page=1&page_size=20",
+      "status": 200
+    },
+    {
+      "path": "/api/documents/4bd54e16-3b89-4995-bf8e-4e1848711b13",
+      "status": 200
+    },
+    {
+      "path": "/api/documents/5b84149a-1d5a-4168-942e-5740cec67dde",
+      "status": 200
+    },
+    {
+      "path": "/api/sessions",
+      "status": 200
+    },
+    {
+      "path": "/api/conversations",
+      "status": 200
+    },
+    {
+      "path": "/api/conversations",
+      "status": 200
+    },
+    {
+      "path": "/api/conversations/3e96d16e-b10e-4f24-9680-e7bef087f1e3/messages",
+      "status": 200
+    },
+    {
+      "path": "/api/conversations/3e96d16e-b10e-4f24-9680-e7bef087f1e3/messages",
+      "status": 200
+    },
+    {
+      "path": "/api/conversations/3e96d16e-b10e-4f24-9680-e7bef087f1e3/messages",
+      "status": 200
+    },
+    {
+      "path": "/api/conversations/3e96d16e-b10e-4f24-9680-e7bef087f1e3/transfer",
+      "status": 200
+    },
+    {
+      "path": "/api/sessions",
+      "status": 200
+    },
+    {
+      "path": "/api/conversations?page=1&page_size=20",
+      "status": 200
+    },
+    {
+      "path": "/api/conversations?page=1&page_size=20",
+      "status": 200
+    },
+    {
+      "path": "/api/conversations/3e96d16e-b10e-4f24-9680-e7bef087f1e3",
+      "status": 200
+    },
+    {
+      "path": "/api/conversations/3e96d16e-b10e-4f24-9680-e7bef087f1e3/ticket",
+      "status": 200
+    },
+    {
+      "path": "/api/conversations/3e96d16e-b10e-4f24-9680-e7bef087f1e3/ticket",
+      "status": 200
+    },
+    {
+      "path": "/api/conversations/3e96d16e-b10e-4f24-9680-e7bef087f1e3/knowledge-suggestions",
+      "status": 200
+    },
+    {
+      "path": "/api/sessions",
+      "status": 200
+    },
+    {
+      "path": "/api/conversations/3e96d16e-b10e-4f24-9680-e7bef087f1e3",
+      "status": 200
+    },
+    {
+      "path": "/api/conversations/3e96d16e-b10e-4f24-9680-e7bef087f1e3",
+      "status": 200
+    }
+  ],
+  "loginPage": {
+    "pathname": "/login",
+    "topbarUser": null,
+    "nav": [],
+    "pageHasMock": false,
+    "mockEnabled": false,
+    "saveMessage": null,
+    "fromValue": null,
+    "toValue": null,
+    "visibility": null,
+    "visibilityLabel": null,
+    "selectedRow": null,
+    "chunkCount": 0,
+    "chunkText": "",
+    "knowledgeCards": "",
+    "lastOther": "",
+    "lastKind": "",
+    "screenshot": "t045-login.png"
+  },
+  "afterSave": {
+    "pathname": "/knowledge",
+    "topbarUser": "已登录：admin",
+    "nav": [
+      "知识库",
+      "工单列表",
+      "模板"
+    ],
+    "pageHasMock": false,
+    "mockEnabled": false,
+    "saveMessage": "所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 1 块（只读）。",
+    "fromValue": "2026-06-18T08:45",
+    "toValue": "2026-12-11T17:20",
+    "visibility": "user_visible",
+    "visibilityLabel": "用户可见\n仅坐席可见\n高风险仅人工",
+    "selectedRow": "t045-user-visible.md",
+    "chunkCount": 1,
+    "chunkText": "手机七天无理由对客说明\n\n未拆封的手机支持七天无理由退货。对客话术请使用固定句：T045_USER_VISIBLE_SEVEN_DAY_RETURN。\n\n请告诉顾客：包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。",
+    "knowledgeCards": "",
+    "lastOther": "",
+    "lastKind": "",
+    "screenshot": "t045-kb-saved.png"
+  },
+  "leftToRisk": {
+    "selectedRow": "t045-high-risk.md",
+    "chunkCount": 1
+  },
+  "reopened": {
+    "pathname": "/knowledge",
+    "topbarUser": "已登录：admin",
+    "nav": [
+      "知识库",
+      "工单列表",
+      "模板"
+    ],
+    "pageHasMock": false,
+    "mockEnabled": false,
+    "saveMessage": "所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 1 块（只读）。",
+    "fromValue": "2026-06-18T08:45",
+    "toValue": "2026-12-11T17:20",
+    "visibility": "user_visible",
+    "visibilityLabel": "用户可见\n仅坐席可见\n高风险仅人工",
+    "selectedRow": "t045-user-visible.md",
+    "chunkCount": 1,
+    "chunkText": "手机七天无理由对客说明\n\n未拆封的手机支持七天无理由退货。对客话术请使用固定句：T045_USER_VISIBLE_SEVEN_DAY_RETURN。\n\n请告诉顾客：包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。",
+    "knowledgeCards": "",
+    "lastOther": "",
+    "lastKind": "",
+    "screenshot": "t045-kb-reopen.png"
+  },
+  "emptied": {
+    "pathname": "/knowledge",
+    "topbarUser": "已登录：admin",
+    "nav": [
+      "知识库",
+      "工单列表",
+      "模板"
+    ],
+    "pageHasMock": false,
+    "mockEnabled": false,
+    "saveMessage": "所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 1 块（只读）。",
+    "fromValue": "",
+    "toValue": "",
+    "visibility": "user_visible",
+    "visibilityLabel": "用户可见\n仅坐席可见\n高风险仅人工",
+    "selectedRow": "t045-user-visible.md",
+    "chunkCount": 1,
+    "chunkText": "手机七天无理由对客说明\n\n未拆封的手机支持七天无理由退货。对客话术请使用固定句：T045_USER_VISIBLE_SEVEN_DAY_RETURN。\n\n请告诉顾客：包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。",
+    "knowledgeCards": "",
+    "lastOther": "",
+    "lastKind": "",
+    "screenshot": "t045-kb-cleared.png"
+  },
+  "restoreUserDates": {
+    "pathname": "/knowledge",
+    "topbarUser": "已登录：admin",
+    "nav": [
+      "知识库",
+      "工单列表",
+      "模板"
+    ],
+    "pageHasMock": false,
+    "mockEnabled": false,
+    "saveMessage": "所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 1 块（只读）。",
+    "fromValue": "2026-09-01T00:00",
+    "toValue": "2027-03-22T23:59",
+    "visibility": "user_visible",
+    "visibilityLabel": "用户可见\n仅坐席可见\n高风险仅人工",
+    "selectedRow": "t045-user-visible.md",
+    "chunkCount": 1,
+    "chunkText": "手机七天无理由对客说明\n\n未拆封的手机支持七天无理由退货。对客话术请使用固定句：T045_USER_VISIBLE_SEVEN_DAY_RETURN。\n\n请告诉顾客：包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。",
+    "knowledgeCards": "",
+    "lastOther": "",
+    "lastKind": ""
+  },
+  "adminAgentDoc": {
+    "pathname": "/knowledge",
+    "topbarUser": "已登录：admin",
+    "nav": [
+      "知识库",
+      "工单列表",
+      "模板"
+    ],
+    "pageHasMock": false,
+    "mockEnabled": false,
+    "saveMessage": "所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 2 块（只读）。",
+    "fromValue": "2026-09-23T09:42",
+    "toValue": "2027-03-22T09:42",
+    "visibility": "agent_only",
+    "visibilityLabel": "用户可见\n仅坐席可见\n高风险仅人工",
+    "selectedRow": "t045-agent-only.md",
+    "chunkCount": 2,
+    "chunkText": "3C 退货内部作业手册\n\n本手册只给坐席。对客禁止复述下列内部步骤。\n3C 退货内部作业手册 / 内部处理步骤\n\n坐席必须先执行内部步骤 T045_AGENT_INTERNAL_STEP_NEVER_TO_USER：先冻结仓内批次码，再在后台勾选「质检豁免」。\n\n该内部步骤不得出现在未转人工的自动回答里。",
+    "knowledgeCards": "",
+    "lastOther": "",
+    "lastKind": "",
+    "screenshot": "t045-kb-agent-only.png"
+  },
+  "adminRiskDoc": {
+    "pathname": "/knowledge",
+    "topbarUser": "已登录：admin",
+    "nav": [
+      "知识库",
+      "工单列表",
+      "模板"
+    ],
+    "pageHasMock": false,
+    "mockEnabled": false,
+    "saveMessage": "所有格式先转为 Markdown；按 Markdown 标题与段落切块，单块不超过 800 字，块间重叠 160 字（上限的 20%）；有标题时保留标题路径，没有则路径为空。 本篇共 1 块（只读）。",
+    "fromValue": "2026-09-23T09:42",
+    "toValue": "2027-03-22T09:42",
+    "visibility": "high_risk_human_only",
+    "visibilityLabel": "用户可见\n仅坐席可见\n高风险仅人工",
+    "selectedRow": "t045-high-risk.md",
+    "chunkCount": 1,
+    "chunkText": "屏幕进液高风险赔付内部口径\n\n出现手机屏幕进液时，内部可评估补偿方案 T045_HIGH_RISK_COMPENSATION_TOKEN，金额不得超过内部表。\n\n本内容属于高风险仅人工，不得自动发给用户。",
+    "knowledgeCards": "",
+    "lastOther": "",
+    "lastKind": "",
+    "screenshot": "t045-kb-high-risk.png"
+  },
+  "employeeHome": {
+    "pathname": "/employee",
+    "pageHasMock": false,
+    "mockEnabled": false,
+    "screenshot": "t045-employee.png"
+  },
+  "q1": {
+    "lastKind": "兜底",
+    "lastOther": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+    "excerpt": "AI 接待中\n转人工\n手机退货时坐席要不要先冻结仓内批次码并勾选质检豁免？\n改写为：手机退货时坐席是否需要先冻结仓内批次码并勾选质检豁免？\n兜底\n抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。\n发送"
+  },
+  "q2": {
+    "lastKind": "FAQ",
+    "lastOther": "未拆封的手机支持七天无理由退货。包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。",
+    "excerpt": "AI 接待中\n转人工\n手机退货时坐席要不要先冻结仓内批次码并勾选质检豁免？\n改写为：手机退货时坐席是否需要先冻结仓内批次码并勾选质检豁免？\n兜底\n抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。\n我刚买的手机还没拆封，能七天无理由退货吗？\n改写为：我刚买的手机还没拆封，能七天无理由退货吗？\nFAQ\n未拆封的手机支持七天无理由退货。包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。\n发送"
+  },
+  "q3": {
+    "lastKind": "兜底",
+    "lastOther": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+    "excerpt": "AI 接待中\n转人工\n手机退货时坐席要不要先冻结仓内批次码并勾选质检豁免？\n改写为：手机退货时坐席是否需要先冻结仓内批次码并勾选质检豁免？\n兜底\n抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。\n我刚买的手机还没拆封，能七天无理由退货吗？\n改写为：我刚买的手机还没拆封，能七天无理由退货吗？\nFAQ\n未拆封的手机支持七天无理由退货。包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。\n手机屏幕进液了，会按内部补偿方案赔付吗？\n改写为：手机屏幕进液了，是否适用内部补偿方案进行赔付？\n兜底\n抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。\n发送"
+  },
+  "afterTransfer": {
+    "pathname": "/employee",
+    "topbarUser": "已登录：employee",
+    "nav": [
+      "员工端"
+    ],
+    "pageHasMock": false,
+    "mockEnabled": false,
+    "saveMessage": null,
+    "fromValue": null,
+    "toValue": null,
+    "visibility": null,
+    "visibilityLabel": null,
+    "selectedRow": null,
+    "chunkCount": 0,
+    "chunkText": "",
+    "knowledgeCards": "",
+    "lastOther": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+    "lastKind": "兜底"
+  },
+  "agentHome": {
+    "pathname": "/agent",
+    "mockEnabled": false,
+    "pageHasMock": false,
+    "screenshot": "t045-agent.png"
+  },
+  "agentSearch": {
+    "cards": "t045-user-visible.md / 手机七天无理由对客说明\n手机七天无理由对客说明\n\n未拆封的手机支持七天无理由退货。对客话术请使用固定句：T045_USER_VISIBLE_SEVEN_DAY_RETURN。\n\n请告诉顾客：包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。\n\n手机七天无理由对客说明 未拆封的手机支持七天无理由退货。\n\n生效：2026年8月31日 ~ 2027年3月22日\n\n适用品类：3C数码\n---\nt045-agent-only.md / 3C 退货内部作业手册 / 内部处理步骤\n3C 退货内部作业手册 / 内部处理步骤\n\n坐席必须先执行内部步骤 T045_AGENT_INTERNAL_STEP_NEVER_TO_USER：先冻结仓内批次码，再在后台勾选「质检豁免」。\n\n该内部步骤不得出现在未转人工的自动回答里。\n\n3C 退货内部作业手册 / 内部处理步骤 坐席必须先执行内部步骤 T045_AGENT_INTERNAL_STEP_NEVER_TO_USER：先冻结仓内批次码，再在后台勾选「质检豁免」。\n\n生效：2026年9月23日 ~ 2027年3月22日\n\n适用品类：3C数码",
+    "panel": "工单\n业务线\n请选择\n3C 数码\n服饰美妆\n工单类型\n售前咨询（不建单）\n退换货\n修改地址\n开发票\n投诉维权\n费用争议\n物流异常\n订单号\n缺失\n商品信息\n缺失\n相关金额\n缺失\n用户诉求摘要\n缺失\n\n确认被挡住：工单类型、业务线、订单号、商品信息、相关金额、用户诉求摘要\n\n确认工单",
+    "hint": "确认被挡住：工单类型、业务线、订单号、商品信息、相关金额、用户诉求摘要\n未指定业务线，不套用单一口径\n手机七天无理由对客说明 未拆封的手机支持七天无理由退货。\n生效：2026年8月31日 ~ 2027年3月22日\n适用品类：3C数码\n3C 退货内部作业手册 / 内部处理步骤 坐席必须先执行内部步骤 T045_AGENT_INTERNAL_STEP_NEVER_TO_USER：先冻结仓内批次码，再在后台勾选「质检豁免」。\n生效：2026年9月23日 ~ 2027年3月22日\n适用品类：3C数码\n仅坐席可见，不会发给用户。",
+    "screenshot": "t045-agent-search.png"
+  },
+  "agentSearchRisk": {
+    "cards": "t045-user-visible.md / 手机七天无理由对客说明\n手机七天无理由对客说明\n\n未拆封的手机支持七天无理由退货。对客话术请使用固定句：T045_USER_VISIBLE_SEVEN_DAY_RETURN。\n\n请告诉顾客：包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。\n\n手机七天无理由对客说明 未拆封的手机支持七天无理由退货。\n\n生效：2026年8月31日 ~ 2027年3月22日\n\n适用品类：3C数码\n---\nt045-agent-only.md / 3C 退货内部作业手册 / 内部处理步骤\n3C 退货内部作业手册 / 内部处理步骤\n\n坐席必须先执行内部步骤 T045_AGENT_INTERNAL_STEP_NEVER_TO_USER：先冻结仓内批次码，再在后台勾选「质检豁免」。\n\n该内部步骤不得出现在未转人工的自动回答里。\n\n3C 退货内部作业手册 / 内部处理步骤 坐席必须先执行内部步骤 T045_AGENT_INTERNAL_STEP_NEVER_TO_USER：先冻结仓内批次码，再在后台勾选「质检豁免」。\n\n生效：2026年9月23日 ~ 2027年3月22日\n\n适用品类：3C数码",
+    "panel": "工单\n业务线\n请选择\n3C 数码\n服饰美妆\n工单类型\n售前咨询（不建单）\n退换货\n修改地址\n开发票\n投诉维权\n费用争议\n物流异常\n订单号\n缺失\n商品信息\n缺失\n相关金额\n缺失\n用户诉求摘要\n缺失\n\n确认被挡住：工单类型、业务线、订单号、商品信息、相关金额、用户诉求摘要\n\n确认工单",
+    "hint": "确认被挡住：工单类型、业务线、订单号、商品信息、相关金额、用户诉求摘要\n未指定业务线，不套用单一口径\n手机七天无理由对客说明 未拆封的手机支持七天无理由退货。\n生效：2026年8月31日 ~ 2027年3月22日\n适用品类：3C数码\n3C 退货内部作业手册 / 内部处理步骤 坐席必须先执行内部步骤 T045_AGENT_INTERNAL_STEP_NEVER_TO_USER：先冻结仓内批次码，再在后台勾选「质检豁免」。\n生效：2026年9月23日 ~ 2027年3月22日\n适用品类：3C数码\n仅坐席可见，不会发给用户。",
+    "screenshot": "t045-agent-search-risk.png"
+  },
+  "employeeBack": {
+    "excerpt": "已转人工，等待客服\n已转人工\n手机退货时坐席要不要先冻结仓内批次码并勾选质检豁免？\n改写为：手机退货时坐席是否需要先冻结仓内批次码并勾选质检豁免？\n兜底\n抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。\n我刚买的手机还没拆封，能七天无理由退货吗？\n改写为：我刚买的手机还没拆封，能七天无理由退货吗？\nFAQ\n未拆封的手机支持七天无理由退货。包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。\n手机屏幕进液了，会按内部补偿方案赔付吗？\n改写为：手机屏幕进液了，是否适用内部补偿方案进行赔付？\n兜底\n抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。\n发送",
+    "screenshot": "t045-employee-after-agent.png"
+  },
+  "failed": [
+    "ac060-agent-search-high-risk"
+  ]
+}

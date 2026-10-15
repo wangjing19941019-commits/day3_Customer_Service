@@ -1,0 +1,194 @@
+{
+  "llm_api_key_in_process": "empty (launcher override)",
+  "database_path": "data/t048.db",
+  "backend": "http://127.0.0.1:8108",
+  "frontend": "http://127.0.0.1:5218",
+  "seed_password_in_dotenv": false,
+  "checks": {
+    "docs": {
+      "status": 200
+    },
+    "agent_login": {
+      "status": 200,
+      "success": true,
+      "error": null,
+      "error_code": null,
+      "data_keys": [
+        "access_token",
+        "role",
+        "token_type",
+        "username"
+      ],
+      "role": "frontline_agent",
+      "username": "agent",
+      "item_count": null
+    },
+    "admin_login": {
+      "status": 200,
+      "success": true,
+      "error": null,
+      "error_code": null,
+      "data_keys": [
+        "access_token",
+        "role",
+        "token_type",
+        "username"
+      ],
+      "role": "admin",
+      "username": "admin",
+      "item_count": null
+    },
+    "agent_current": {
+      "status": 200,
+      "success": true,
+      "error": null,
+      "error_code": null,
+      "data_keys": [
+        "role",
+        "username"
+      ],
+      "role": "frontline_agent",
+      "username": "agent",
+      "item_count": null
+    },
+    "admin_list_templates": {
+      "status": 200,
+      "success": true,
+      "error": null,
+      "error_code": null,
+      "data_keys": [
+        "list"
+      ],
+      "role": null,
+      "username": null,
+      "item_count": 2,
+      "has_template_id": true
+    },
+    "admin_get_template": {
+      "status": 200,
+      "success": true,
+      "error": null,
+      "error_code": null,
+      "data_keys": [
+        "body",
+        "business_line",
+        "gray_percent",
+        "gray_version",
+        "id",
+        "latest_version",
+        "placeholder_notes",
+        "scene",
+        "stable_version",
+        "ticket_type"
+      ],
+      "role": null,
+      "username": null,
+      "item_count": null,
+      "has_body": true
+    },
+    "agent_list_templates": {
+      "status": 403,
+      "success": false,
+      "error": "没有权限",
+      "error_code": "FORBIDDEN",
+      "data_keys": null,
+      "role": null,
+      "username": null,
+      "item_count": null
+    },
+    "agent_get_template": {
+      "status": 403,
+      "success": false,
+      "error": "没有权限",
+      "error_code": "FORBIDDEN",
+      "data_keys": null,
+      "role": null,
+      "username": null,
+      "item_count": null
+    },
+    "agent_save_template": {
+      "status": 403,
+      "success": false,
+      "error": "没有权限",
+      "error_code": "FORBIDDEN",
+      "data_keys": null,
+      "role": null,
+      "username": null,
+      "item_count": null
+    },
+    "agent_release": {
+      "status": 403,
+      "success": false,
+      "error": "没有权限",
+      "error_code": "FORBIDDEN",
+      "data_keys": null,
+      "role": null,
+      "username": null,
+      "item_count": null
+    },
+    "agent_rollback": {
+      "status": 403,
+      "success": false,
+      "error": "没有权限",
+      "error_code": "FORBIDDEN",
+      "data_keys": null,
+      "role": null,
+      "username": null,
+      "item_count": null
+    },
+    "agent_preview": {
+      "status": 403,
+      "success": false,
+      "error": "没有权限",
+      "error_code": "FORBIDDEN",
+      "data_keys": null,
+      "role": null,
+      "username": null,
+      "item_count": null
+    },
+    "agent_alerts": {
+      "status": 403,
+      "success": false,
+      "error": "没有权限",
+      "error_code": "FORBIDDEN",
+      "data_keys": null,
+      "role": null,
+      "username": null,
+      "item_count": null
+    },
+    "agent_eval_import": {
+      "status": 403,
+      "success": false,
+      "error": "没有权限",
+      "error_code": "FORBIDDEN",
+      "data_keys": null,
+      "role": null,
+      "username": null,
+      "item_count": null
+    },
+    "missing_key_did_not_block_login": true,
+    "missing_key_did_not_block_403": true,
+    "proxy_agent_login": {
+      "status": 200,
+      "success": true,
+      "error": null,
+      "error_code": null,
+      "data_keys": [
+        "access_token",
+        "role",
+        "token_type",
+        "username"
+      ],
+      "role": "frontline_agent",
+      "username": "agent",
+      "item_count": null
+    },
+    "frontend_index": {
+      "status": 200,
+      "has_mock_flag_false": true
+    }
+  },
+  "t048_db_exists": true,
+  "t048_db_bytes": 167936,
+  "biz_db_bytes": 622592
+}

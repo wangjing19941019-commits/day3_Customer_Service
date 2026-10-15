@@ -1,0 +1,779 @@
+{
+  "env": {
+    "base": "http://127.0.0.1:5219",
+    "api": "http://127.0.0.1:8109",
+    "vite_use_mock": "false (from running 5219 mockFlag.ts)",
+    "warehouse_base_url_empty": true,
+    "finance_base_url_empty": true,
+    "db_configured_in_serve": "data/t052.db",
+    "chrome": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "cdp_port": 9522
+  },
+  "steps": {
+    "employeeLogin": {
+      "href": "http://127.0.0.1:5219/employee",
+      "pathname": "/employee",
+      "user": "已登录：employee",
+      "mock": false,
+      "hasLogin": false,
+      "nav": [
+        "员工端"
+      ]
+    },
+    "agentLogin": {
+      "href": "http://127.0.0.1:5219/agent",
+      "pathname": "/agent",
+      "user": "已登录：agent",
+      "mock": false,
+      "hasLogin": false,
+      "nav": [
+        "客服端"
+      ]
+    },
+    "confirmReturnOk": {
+      "text": "已确认",
+      "disabled": true,
+      "work": "工单\n\n已确认，不再自动预填；可手改字段和业务线，不能改类型。\n\n业务线\n请选择\n3C 数码\n服饰美妆\n工单类型\n售前咨询（不建单）\n退换货\n修改地址\n开发票\n投诉维权\n费用争议\n物流异常\n订单号\n已填\n商品信息\n已填\n相关金额\n已填\n用户诉求摘要\n已填\n售后方式\n请选择\n退货\n换货\n仅退款\n已填\n退换原因\n已填\n数量\n已填\n进度\n2026-09-23T02:00:48.492486+00:00 已发起退货\n已确认\n知识推送\n搜索\n搜索\n\n当前没有可推送的政策或流程\n\n仅坐席可见，不会发给用户。"
+    },
+    "agentReturnOk": {
+      "pathname": "/agent",
+      "user": "已登录：agent",
+      "mock": false,
+      "rows": [
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 10:00:42 · 已转人工",
+        "目前没有可查询的工单进度。2026/9/23 09:42:43 · 已转人工",
+        "财务接口拒绝了开票申请2026/9/23 09:42:33 · 已转人工",
+        "已发起开票2026/9/23 09:42:18 · 已转人工",
+        "仓储接口拒绝了退货申请2026/9/23 09:42:03 · 已转人工",
+        "已发起退货2026/9/23 09:41:48 · 已转人工",
+        "2026/9/23 09:39:32 · 已转人工",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 09:37:14 · 已转人工",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 09:32:39 · 已转人工",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 09:31:43 · 已转人工",
+        "目前没有可查询的工单进度。2026/9/23 09:24:51 · 已转人工",
+        "财务接口拒绝了开票申请2026/9/23 09:24:50 · 已转人工",
+        "仓储接口拒绝了退货申请2026/9/23 09:24:49 · 已转人工",
+        "已发起开票2026/9/23 09:24:48 · 已转人工",
+        "已发起退货2026/9/23 09:24:47 · 已转人工",
+        "已发起退货2026/9/23 09:24:14 · 已转人工"
+      ],
+      "confirmText": "已确认",
+      "confirmDisabled": true,
+      "typeValue": "return_exchange",
+      "lineValue": "apparel_beauty",
+      "extracting": false,
+      "blockers": [
+        "已确认，不再自动预填；可手改字段和业务线，不能改类型。",
+        "当前没有可推送的政策或流程",
+        "仅坐席可见，不会发给用户。"
+      ],
+      "workText": "工单 已确认，不再自动预填；可手改字段和业务线，不能改类型。 业务线 请选择 3C 数码 服饰美妆 工单类型 售前咨询（不建单） 退换货 修改地址 开发票 投诉维权 费用争议 物流异常 订单号 已填 商品信息 已填 相关金额 已填 用户诉求摘要 已填 售后方式 请选择 退货 换货 仅退款 已填 退换原因 已填 数量 已填 进度 2026-09-23T02:00:48.492486+00:00 已发起退货 已确认 知识推送 搜索 搜索 当前没有可推送的政策或流程 仅坐席可见，不会发给用户。",
+      "threadText": "T052退货成功834058 改写为：T052退货成功834058 兜底 抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。 润色 发送",
+      "bubbles": [
+        {
+          "tag": null,
+          "text": "T052退货成功834058"
+        },
+        {
+          "tag": "兜底",
+          "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+        }
+      ],
+      "hasReturnOk": true,
+      "hasInvoiceOk": false,
+      "hasForbiddenReturn": false,
+      "hasForbiddenInvoice": false,
+      "workHasFail": false,
+      "workHasProgressHeading": true
+    },
+    "ticketJsonReturnOk": {
+      "status": 200,
+      "details": [
+        "已发起退货"
+      ],
+      "ticket_no": "TKT-20260923-0010"
+    },
+    "empReturnOk": {
+      "pathname": "/employee",
+      "user": "已登录：employee",
+      "mock": false,
+      "status": "已转人工，等待客服\n已转人工\nT052退货成功834058\n改写为：T052退货成功834058\n兜底\n抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。\n进度说明\n已发起退货\n发送",
+      "statusBar": true,
+      "bubbles": [
+        {
+          "tag": null,
+          "text": "T052退货成功834058",
+          "role": "employee"
+        },
+        {
+          "tag": "兜底",
+          "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+          "role": "other"
+        },
+        {
+          "tag": "进度说明",
+          "text": "已发起退货",
+          "role": "other"
+        }
+      ],
+      "hasFaq": false,
+      "hasKnowledge": false,
+      "hasProgressTag": true,
+      "progressTexts": [
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+        "已发起退货"
+      ],
+      "bodyHasForbiddenReturn": false,
+      "bodyHasForbiddenInvoice": false,
+      "bodyHasArrival": false
+    },
+    "empAskOk": {
+      "pathname": "/employee",
+      "user": "已登录：employee",
+      "mock": false,
+      "status": "已转人工，等待客服\n已转人工\nT052退货成功834058\n改写为：T052退货成功834058\n兜底\n抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。\n进度说明\n已发起退货\n我的退款到哪了\n进度说明\n已发起退货\n发送",
+      "statusBar": true,
+      "bubbles": [
+        {
+          "tag": null,
+          "text": "T052退货成功834058",
+          "role": "employee"
+        },
+        {
+          "tag": "兜底",
+          "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+          "role": "other"
+        },
+        {
+          "tag": "进度说明",
+          "text": "已发起退货",
+          "role": "other"
+        },
+        {
+          "tag": null,
+          "text": "我的退款到哪了",
+          "role": "employee"
+        },
+        {
+          "tag": "进度说明",
+          "text": "已发起退货",
+          "role": "other"
+        }
+      ],
+      "hasFaq": false,
+      "hasKnowledge": false,
+      "hasProgressTag": true,
+      "progressTexts": [
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+        "已发起退货",
+        "已发起退货"
+      ],
+      "bodyHasForbiddenReturn": false,
+      "bodyHasForbiddenInvoice": false,
+      "bodyHasArrival": false
+    },
+    "confirmReturnFail": {
+      "text": "已确认",
+      "disabled": true,
+      "work": "工单\n\n已确认，不再自动预填；可手改字段和业务线，不能改类型。\n\n业务线\n请选择\n3C 数码\n服饰美妆\n工单类型\n售前咨询（不建单）\n退换货\n修改地址\n开发票\n投诉维权\n费用争议\n物流异常\n订单号\n已填\n商品信息\n已填\n相关金额\n已填\n用户诉求摘要\n已填\n售后方式\n请选择\n退货\n换货\n仅退款\n已填\n退换原因\n已填\n数量\n已填\n进度\n2026-09-23T02:01:07.126092+00:00 仓储接口拒绝了退货申请\n已确认\n知识推送\n搜索\n搜索\n\n当前没有可推送的政策或流程\n\n仅坐席可见，不会发给用户。"
+    },
+    "agentReturnFail": {
+      "pathname": "/agent",
+      "user": "已登录：agent",
+      "mock": false,
+      "rows": [
+        "仓储接口拒绝了退货申请2026/9/23 10:01:07 · 已转人工",
+        "已发起退货2026/9/23 10:00:51 · 已转人工",
+        "目前没有可查询的工单进度。2026/9/23 09:42:43 · 已转人工",
+        "财务接口拒绝了开票申请2026/9/23 09:42:33 · 已转人工",
+        "已发起开票2026/9/23 09:42:18 · 已转人工",
+        "仓储接口拒绝了退货申请2026/9/23 09:42:03 · 已转人工",
+        "已发起退货2026/9/23 09:41:48 · 已转人工",
+        "2026/9/23 09:39:32 · 已转人工",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 09:37:14 · 已转人工",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 09:32:39 · 已转人工",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 09:31:43 · 已转人工",
+        "目前没有可查询的工单进度。2026/9/23 09:24:51 · 已转人工",
+        "财务接口拒绝了开票申请2026/9/23 09:24:50 · 已转人工",
+        "仓储接口拒绝了退货申请2026/9/23 09:24:49 · 已转人工",
+        "已发起开票2026/9/23 09:24:48 · 已转人工",
+        "已发起退货2026/9/23 09:24:47 · 已转人工",
+        "已发起退货2026/9/23 09:24:14 · 已转人工"
+      ],
+      "confirmText": "已确认",
+      "confirmDisabled": true,
+      "typeValue": "return_exchange",
+      "lineValue": "apparel_beauty",
+      "extracting": false,
+      "blockers": [
+        "已确认，不再自动预填；可手改字段和业务线，不能改类型。",
+        "当前没有可推送的政策或流程",
+        "仅坐席可见，不会发给用户。"
+      ],
+      "workText": "工单 已确认，不再自动预填；可手改字段和业务线，不能改类型。 业务线 请选择 3C 数码 服饰美妆 工单类型 售前咨询（不建单） 退换货 修改地址 开发票 投诉维权 费用争议 物流异常 订单号 已填 商品信息 已填 相关金额 已填 用户诉求摘要 已填 售后方式 请选择 退货 换货 仅退款 已填 退换原因 已填 数量 已填 进度 2026-09-23T02:01:07.126092+00:00 仓储接口拒绝了退货申请 已确认 知识推送 搜索 搜索 当前没有可推送的政策或流程 仅坐席可见，不会发给用户。",
+      "threadText": "T052退货失败834058 改写为：T052商品退货失败，订单号834058 反问 请问退货失败时系统显示了什么提示信息？或者您是在哪个环节遇到失败（如提交申请、快递取件、审核不通过等）？ 仓储接口拒绝了退货申请 润色 发送",
+      "bubbles": [
+        {
+          "tag": null,
+          "text": "T052退货失败834058"
+        },
+        {
+          "tag": "反问",
+          "text": "请问退货失败时系统显示了什么提示信息？或者您是在哪个环节遇到失败（如提交申请、快递取件、审核不通过等）？"
+        },
+        {
+          "tag": null,
+          "text": "仓储接口拒绝了退货申请"
+        }
+      ],
+      "hasReturnOk": false,
+      "hasInvoiceOk": false,
+      "hasForbiddenReturn": false,
+      "hasForbiddenInvoice": false,
+      "workHasFail": true,
+      "workHasProgressHeading": true
+    },
+    "ticketJsonReturnFail": {
+      "status": 200,
+      "details": [
+        "仓储接口拒绝了退货申请"
+      ]
+    },
+    "confirmInvOk": {
+      "text": "已确认",
+      "disabled": true,
+      "work": "工单\n\n已确认，不再自动预填；可手改字段和业务线，不能改类型。\n\n业务线\n请选择\n3C 数码\n服饰美妆\n工单类型\n售前咨询（不建单）\n退换货\n修改地址\n开发票\n投诉维权\n费用争议\n物流异常\n订单号\n已填\n商品信息\n已填\n相关金额\n已填\n用户诉求摘要\n已填\n发票种类\n请选择\n普通发票\n专用发票\n已填\n抬头\n已填\n纳税人识别号\n缺失\n接收邮箱或手机\n已填\n进度\n2026-09-23T02:01:22.143303+00:00 已发起开票\n已确认\n知识推送\n搜索\n搜索\n\n当前没有可推送的政策或流程\n\n仅坐席可见，不会发给用户。"
+    },
+    "agentInvOk": {
+      "pathname": "/agent",
+      "user": "已登录：agent",
+      "mock": false,
+      "rows": [
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 10:01:16 · 已转人工",
+        "仓储接口拒绝了退货申请2026/9/23 10:01:07 · 已转人工",
+        "已发起退货2026/9/23 10:00:51 · 已转人工",
+        "目前没有可查询的工单进度。2026/9/23 09:42:43 · 已转人工",
+        "财务接口拒绝了开票申请2026/9/23 09:42:33 · 已转人工",
+        "已发起开票2026/9/23 09:42:18 · 已转人工",
+        "仓储接口拒绝了退货申请2026/9/23 09:42:03 · 已转人工",
+        "已发起退货2026/9/23 09:41:48 · 已转人工",
+        "2026/9/23 09:39:32 · 已转人工",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 09:37:14 · 已转人工",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 09:32:39 · 已转人工",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 09:31:43 · 已转人工",
+        "目前没有可查询的工单进度。2026/9/23 09:24:51 · 已转人工",
+        "财务接口拒绝了开票申请2026/9/23 09:24:50 · 已转人工",
+        "仓储接口拒绝了退货申请2026/9/23 09:24:49 · 已转人工",
+        "已发起开票2026/9/23 09:24:48 · 已转人工",
+        "已发起退货2026/9/23 09:24:47 · 已转人工",
+        "已发起退货2026/9/23 09:24:14 · 已转人工"
+      ],
+      "confirmText": "已确认",
+      "confirmDisabled": true,
+      "typeValue": "invoice",
+      "lineValue": "apparel_beauty",
+      "extracting": false,
+      "blockers": [
+        "已确认，不再自动预填；可手改字段和业务线，不能改类型。",
+        "当前没有可推送的政策或流程",
+        "仅坐席可见，不会发给用户。"
+      ],
+      "workText": "工单 已确认，不再自动预填；可手改字段和业务线，不能改类型。 业务线 请选择 3C 数码 服饰美妆 工单类型 售前咨询（不建单） 退换货 修改地址 开发票 投诉维权 费用争议 物流异常 订单号 已填 商品信息 已填 相关金额 已填 用户诉求摘要 已填 发票种类 请选择 普通发票 专用发票 已填 抬头 已填 纳税人识别号 缺失 接收邮箱或手机 已填 进度 2026-09-23T02:01:22.143303+00:00 已发起开票 已确认 知识推送 搜索 搜索 当前没有可推送的政策或流程 仅坐席可见，不会发给用户。",
+      "threadText": "T052开票成功834058 改写为：T052开票成功834058 兜底 抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。 润色 发送",
+      "bubbles": [
+        {
+          "tag": null,
+          "text": "T052开票成功834058"
+        },
+        {
+          "tag": "兜底",
+          "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+        }
+      ],
+      "hasReturnOk": false,
+      "hasInvoiceOk": true,
+      "hasForbiddenReturn": false,
+      "hasForbiddenInvoice": false,
+      "workHasFail": false,
+      "workHasProgressHeading": true
+    },
+    "ticketJsonInvOk": {
+      "status": 200,
+      "details": [
+        "已发起开票"
+      ]
+    },
+    "empInvOk": {
+      "pathname": "/employee",
+      "user": "已登录：employee",
+      "mock": false,
+      "status": "已转人工，等待客服\n已转人工\nT052开票成功834058\n改写为：T052开票成功834058\n兜底\n抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。\n进度说明\n已发起开票\n发送",
+      "statusBar": true,
+      "bubbles": [
+        {
+          "tag": null,
+          "text": "T052开票成功834058",
+          "role": "employee"
+        },
+        {
+          "tag": "兜底",
+          "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+          "role": "other"
+        },
+        {
+          "tag": "进度说明",
+          "text": "已发起开票",
+          "role": "other"
+        }
+      ],
+      "hasFaq": false,
+      "hasKnowledge": false,
+      "hasProgressTag": true,
+      "progressTexts": [
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+        "已发起开票"
+      ],
+      "bodyHasForbiddenReturn": false,
+      "bodyHasForbiddenInvoice": false,
+      "bodyHasArrival": false
+    },
+    "confirmInvFail": {
+      "text": "已确认",
+      "disabled": true,
+      "work": "工单\n\n已确认，不再自动预填；可手改字段和业务线，不能改类型。\n\n业务线\n请选择\n3C 数码\n服饰美妆\n工单类型\n售前咨询（不建单）\n退换货\n修改地址\n开发票\n投诉维权\n费用争议\n物流异常\n订单号\n已填\n商品信息\n已填\n相关金额\n已填\n用户诉求摘要\n已填\n发票种类\n请选择\n普通发票\n专用发票\n已填\n抬头\n已填\n纳税人识别号\n缺失\n接收邮箱或手机\n已填\n进度\n2026-09-23T02:01:38.116730+00:00 财务接口拒绝了开票申请\n已确认\n知识推送\n搜索\n搜索\n\n当前没有可推送的政策或流程\n\n仅坐席可见，不会发给用户。"
+    },
+    "agentInvFail": {
+      "pathname": "/agent",
+      "user": "已登录：agent",
+      "mock": false,
+      "rows": [
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 10:01:32 · 已转人工",
+        "已发起开票2026/9/23 10:01:22 · 已转人工",
+        "仓储接口拒绝了退货申请2026/9/23 10:01:07 · 已转人工",
+        "已发起退货2026/9/23 10:00:51 · 已转人工",
+        "目前没有可查询的工单进度。2026/9/23 09:42:43 · 已转人工",
+        "财务接口拒绝了开票申请2026/9/23 09:42:33 · 已转人工",
+        "已发起开票2026/9/23 09:42:18 · 已转人工",
+        "仓储接口拒绝了退货申请2026/9/23 09:42:03 · 已转人工",
+        "已发起退货2026/9/23 09:41:48 · 已转人工",
+        "2026/9/23 09:39:32 · 已转人工",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 09:37:14 · 已转人工",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 09:32:39 · 已转人工",
+        "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。2026/9/23 09:31:43 · 已转人工",
+        "目前没有可查询的工单进度。2026/9/23 09:24:51 · 已转人工",
+        "财务接口拒绝了开票申请2026/9/23 09:24:50 · 已转人工",
+        "仓储接口拒绝了退货申请2026/9/23 09:24:49 · 已转人工",
+        "已发起开票2026/9/23 09:24:48 · 已转人工",
+        "已发起退货2026/9/23 09:24:47 · 已转人工",
+        "已发起退货2026/9/23 09:24:14 · 已转人工"
+      ],
+      "confirmText": "已确认",
+      "confirmDisabled": true,
+      "typeValue": "invoice",
+      "lineValue": "apparel_beauty",
+      "extracting": false,
+      "blockers": [
+        "已确认，不再自动预填；可手改字段和业务线，不能改类型。",
+        "当前没有可推送的政策或流程",
+        "仅坐席可见，不会发给用户。"
+      ],
+      "workText": "工单 已确认，不再自动预填；可手改字段和业务线，不能改类型。 业务线 请选择 3C 数码 服饰美妆 工单类型 售前咨询（不建单） 退换货 修改地址 开发票 投诉维权 费用争议 物流异常 订单号 已填 商品信息 已填 相关金额 已填 用户诉求摘要 已填 发票种类 请选择 普通发票 专用发票 已填 抬头 已填 纳税人识别号 缺失 接收邮箱或手机 已填 进度 2026-09-23T02:01:38.116730+00:00 财务接口拒绝了开票申请 已确认 知识推送 搜索 搜索 当前没有可推送的政策或流程 仅坐席可见，不会发给用户。",
+      "threadText": "T052开票失败834058 改写为：订单号834058开票失败，错误码T052 兜底 抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。 润色 发送",
+      "bubbles": [
+        {
+          "tag": null,
+          "text": "T052开票失败834058"
+        },
+        {
+          "tag": "兜底",
+          "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。"
+        }
+      ],
+      "hasReturnOk": false,
+      "hasInvoiceOk": false,
+      "hasForbiddenReturn": false,
+      "hasForbiddenInvoice": false,
+      "workHasFail": true,
+      "workHasProgressHeading": true
+    },
+    "ticketJsonInvFail": {
+      "status": 200,
+      "details": [
+        "财务接口拒绝了开票申请"
+      ]
+    },
+    "empNone": {
+      "pathname": "/employee",
+      "user": "已登录：employee",
+      "mock": false,
+      "status": "已转人工，等待客服\n已转人工\nT052无工单834058\n改写为：T052无工单834058\n反问\n请问T052和834058分别代表什么？您是想处理订单、售后、物流，还是其他问题？\n我的退款到哪了\n进度说明\n目前没有可查询的工单进度。\n发送",
+      "statusBar": true,
+      "bubbles": [
+        {
+          "tag": null,
+          "text": "T052无工单834058",
+          "role": "employee"
+        },
+        {
+          "tag": "反问",
+          "text": "请问T052和834058分别代表什么？您是想处理订单、售后、物流，还是其他问题？",
+          "role": "other"
+        },
+        {
+          "tag": null,
+          "text": "我的退款到哪了",
+          "role": "employee"
+        },
+        {
+          "tag": "进度说明",
+          "text": "目前没有可查询的工单进度。",
+          "role": "other"
+        }
+      ],
+      "hasFaq": false,
+      "hasKnowledge": false,
+      "hasProgressTag": true,
+      "progressTexts": [
+        "请问T052和834058分别代表什么？您是想处理订单、售后、物流，还是其他问题？",
+        "目前没有可查询的工单进度。"
+      ],
+      "bodyHasForbiddenReturn": false,
+      "bodyHasForbiddenInvoice": false,
+      "bodyHasArrival": false
+    },
+    "adminLogin": {
+      "href": "http://127.0.0.1:5219/knowledge",
+      "pathname": "/knowledge",
+      "user": "已登录：admin",
+      "mock": false,
+      "hasLogin": false,
+      "nav": [
+        "知识库",
+        "工单列表",
+        "模板"
+      ]
+    },
+    "ticketsPageBeforeClick": {
+      "pathname": "/tickets",
+      "mock": false,
+      "title": "工单列表",
+      "listError": null,
+      "actionError": [],
+      "detailText": "只读进度 TKT-20260923-0013 · 开发票 · 普通 · 处理中 处理人 售后专员 2026/9/23 10:01:38 财务接口拒绝了开票申请 挂起（等用户补充） 挂起（等仓储确认） 标记已完成 上调为 VIP 上调为高风险",
+      "hasProgressOl": true,
+      "rows": [
+        "工单号类型紧急程度状态处理人更新时间",
+        "TKT-20260923-0013开发票普通处理中售后专员2026/9/23 10:01:38",
+        "TKT-20260923-0012开发票普通处理中售后专员2026/9/23 10:01:22",
+        "TKT-20260923-0011退换货普通处理中售后专员2026/9/23 10:01:07",
+        "TKT-20260923-0010退换货普通处理中售后专员2026/9/23 10:00:48",
+        "TKT-20260923-0009开发票普通处理中售后专员2026/9/23 09:42:33",
+        "TKT-20260923-0008开发票普通处理中售后专员2026/9/23 09:42:18",
+        "TKT-20260923-0007退换货普通处理中售后专员2026/9/23 09:42:03"
+      ]
+    },
+    "ticketsPageAfterClick": {
+      "firstRow": "TKT-20260923-0010退换货普通处理中售后专员2026/9/23 10:00:48",
+      "wantedNo": "TKT-20260923-0010",
+      "wantedDetail": "已发起退货",
+      "mock": false,
+      "actionError": [],
+      "detailText": "只读进度 TKT-20260923-0010 · 退换货 · 普通 · 处理中 处理人 售后专员 2026/9/23 10:00:48 已发起退货 挂起（等用户补充） 挂起（等仓储确认） 标记已完成 上调为 VIP 上调为高风险",
+      "hasProgressOl": true,
+      "heading": "只读进度",
+      "hasReturnOk": true,
+      "hasInvoiceOk": false,
+      "hasWantedDetail": true
+    },
+    "ticketsListApi": {
+      "status": 200,
+      "firstKeys": [
+        "id",
+        "ticket_no",
+        "ticket_type",
+        "status",
+        "urgency",
+        "queue",
+        "order_no",
+        "assigned_display",
+        "upgrade_undelivered",
+        "confirmed_at",
+        "sla_due_at",
+        "updated_at"
+      ],
+      "firstHasId": true,
+      "count": 13,
+      "matchedTicketNo": "TKT-20260923-0010"
+    },
+    "ticketsDetailApi": {
+      "status": 200,
+      "error": null,
+      "error_code": null,
+      "details": [
+        "已发起退货"
+      ]
+    }
+  },
+  "screenshots": [
+    "t052-return-ok-agent.png",
+    "t052-return-ok-employee.png",
+    "t052-ask-with-ticket.png",
+    "t052-return-fail-agent.png",
+    "t052-invoice-ok-agent.png",
+    "t052-invoice-fail-agent.png",
+    "t052-ask-no-ticket.png",
+    "t052-tickets-list.png"
+  ],
+  "checks": [
+    {
+      "id": "login-employee",
+      "ok": true,
+      "expected": "/employee no [Mock]",
+      "actual": {
+        "href": "http://127.0.0.1:5219/employee",
+        "pathname": "/employee",
+        "user": "已登录：employee",
+        "mock": false,
+        "hasLogin": false,
+        "nav": [
+          "员工端"
+        ]
+      }
+    },
+    {
+      "id": "login-agent",
+      "ok": true,
+      "expected": "/agent no [Mock]",
+      "actual": {
+        "href": "http://127.0.0.1:5219/agent",
+        "pathname": "/agent",
+        "user": "已登录：agent",
+        "mock": false,
+        "hasLogin": false,
+        "nav": [
+          "客服端"
+        ]
+      }
+    },
+    {
+      "id": "AC-070-return-ok-api",
+      "ok": true,
+      "expected": "JSON 工单含已发起退货",
+      "actual": {
+        "status": 200,
+        "details": [
+          "已发起退货"
+        ],
+        "ticket_no": "TKT-20260923-0010"
+      }
+    },
+    {
+      "id": "AC-070-return-ok-page",
+      "ok": true,
+      "expected": "客服工作台能看到已发起退货，且无已生成退货单",
+      "actual": {
+        "hasReturnOk": true,
+        "hasForbiddenReturn": false,
+        "workHasProgressHeading": true,
+        "confirmText": "已确认",
+        "workText": "工单 已确认，不再自动预填；可手改字段和业务线，不能改类型。 业务线 请选择 3C 数码 服饰美妆 工单类型 售前咨询（不建单） 退换货 修改地址 开发票 投诉维权 费用争议 物流异常 订单号 已填 商品信息 已填 相关金额 已填 用户诉求摘要 已填 售后方式 请选择 退货 换货 仅退款 已填 退换原因 已填 数量 已填 进度 2026-09-23T02:00:48.492486+00:00 已发起退货 已确认 知识推送 搜索 搜索 当前没有可推送的政策或流程 仅坐席可见，不会发给用户。"
+      }
+    },
+    {
+      "id": "AC-071-session-return-ok",
+      "ok": true,
+      "expected": "原会话可见已发起退货",
+      "actual": {
+        "hasProgressTag": true,
+        "progressTexts": [
+          "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+          "已发起退货"
+        ],
+        "mock": false
+      }
+    },
+    {
+      "id": "AC-075-with-ticket",
+      "ok": true,
+      "expected": "问退款进度与工单最新进度一致，不进 FAQ/AI",
+      "actual": {
+        "lastOther": {
+          "tag": "进度说明",
+          "text": "已发起退货",
+          "role": "other"
+        },
+        "latestDetail": "已发起退货",
+        "hasFaq": false,
+        "hasKnowledge": false
+      }
+    },
+    {
+      "id": "AC-070-return-fail-api",
+      "ok": true,
+      "expected": "失败说明，无已生成退货单",
+      "actual": {
+        "status": 200,
+        "details": [
+          "仓储接口拒绝了退货申请"
+        ]
+      }
+    },
+    {
+      "id": "AC-070-return-fail-page",
+      "ok": true,
+      "expected": "客服工作台看到失败说明，无已生成退货单/已开票",
+      "actual": {
+        "hasForbiddenReturn": false,
+        "workHasProgressHeading": true,
+        "workText": "工单 已确认，不再自动预填；可手改字段和业务线，不能改类型。 业务线 请选择 3C 数码 服饰美妆 工单类型 售前咨询（不建单） 退换货 修改地址 开发票 投诉维权 费用争议 物流异常 订单号 已填 商品信息 已填 相关金额 已填 用户诉求摘要 已填 售后方式 请选择 退货 换货 仅退款 已填 退换原因 已填 数量 已填 进度 2026-09-23T02:01:07.126092+00:00 仓储接口拒绝了退货申请 已确认 知识推送 搜索 搜索 当前没有可推送的政策或流程 仅坐席可见，不会发给用户。",
+        "threadText": "T052退货失败834058 改写为：T052商品退货失败，订单号834058 反问 请问退货失败时系统显示了什么提示信息？或者您是在哪个环节遇到失败（如提交申请、快递取件、审核不通过等）？ 仓储接口拒绝了退货申请 润色 发送"
+      }
+    },
+    {
+      "id": "AC-070-invoice-ok-api",
+      "ok": true,
+      "expected": "JSON 工单含已发起开票",
+      "actual": {
+        "status": 200,
+        "details": [
+          "已发起开票"
+        ]
+      }
+    },
+    {
+      "id": "AC-070-invoice-ok-page",
+      "ok": true,
+      "expected": "客服工作台能看到已发起开票，且无已开票",
+      "actual": {
+        "hasInvoiceOk": true,
+        "hasForbiddenInvoice": false,
+        "workHasProgressHeading": true,
+        "workText": "工单 已确认，不再自动预填；可手改字段和业务线，不能改类型。 业务线 请选择 3C 数码 服饰美妆 工单类型 售前咨询（不建单） 退换货 修改地址 开发票 投诉维权 费用争议 物流异常 订单号 已填 商品信息 已填 相关金额 已填 用户诉求摘要 已填 发票种类 请选择 普通发票 专用发票 已填 抬头 已填 纳税人识别号 缺失 接收邮箱或手机 已填 进度 2026-09-23T02:01:22.143303+00:00 已发起开票 已确认 知识推送 搜索 搜索 当前没有可推送的政策或流程 仅坐席可见，不会发给用户。"
+      }
+    },
+    {
+      "id": "AC-071-session-invoice-ok",
+      "ok": true,
+      "expected": "原会话可见已发起开票",
+      "actual": {
+        "hasProgressTag": true,
+        "progressTexts": [
+          "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+          "已发起开票"
+        ]
+      }
+    },
+    {
+      "id": "AC-070-invoice-fail-api",
+      "ok": true,
+      "expected": "开票失败说明，无已开票",
+      "actual": {
+        "status": 200,
+        "details": [
+          "财务接口拒绝了开票申请"
+        ]
+      }
+    },
+    {
+      "id": "AC-070-invoice-fail-page",
+      "ok": true,
+      "expected": "客服工作台看到开票失败说明，无已开票/已生成退货单",
+      "actual": {
+        "hasForbiddenInvoice": false,
+        "workHasProgressHeading": true,
+        "workText": "工单 已确认，不再自动预填；可手改字段和业务线，不能改类型。 业务线 请选择 3C 数码 服饰美妆 工单类型 售前咨询（不建单） 退换货 修改地址 开发票 投诉维权 费用争议 物流异常 订单号 已填 商品信息 已填 相关金额 已填 用户诉求摘要 已填 发票种类 请选择 普通发票 专用发票 已填 抬头 已填 纳税人识别号 缺失 接收邮箱或手机 已填 进度 2026-09-23T02:01:38.116730+00:00 财务接口拒绝了开票申请 已确认 知识推送 搜索 搜索 当前没有可推送的政策或流程 仅坐席可见，不会发给用户。"
+      }
+    },
+    {
+      "id": "AC-075-no-ticket",
+      "ok": true,
+      "expected": "无工单不编造到账",
+      "actual": {
+        "lastNone": {
+          "tag": "进度说明",
+          "text": "目前没有可查询的工单进度。",
+          "role": "other"
+        },
+        "hasFaq": false,
+        "hasKnowledge": false
+      }
+    },
+    {
+      "id": "login-admin-no-mock",
+      "ok": true,
+      "expected": "管理端无 [Mock]",
+      "actual": {
+        "href": "http://127.0.0.1:5219/knowledge",
+        "pathname": "/knowledge",
+        "user": "已登录：admin",
+        "mock": false,
+        "hasLogin": false,
+        "nav": [
+          "知识库",
+          "工单列表",
+          "模板"
+        ]
+      }
+    },
+    {
+      "id": "AC-071-open-ticket-page",
+      "ok": true,
+      "expected": "工作台和管理端打开工单能看到同一段新进度；列表带 id；GET 200",
+      "actual": {
+        "listKeys": {
+          "status": 200,
+          "firstKeys": [
+            "id",
+            "ticket_no",
+            "ticket_type",
+            "status",
+            "urgency",
+            "queue",
+            "order_no",
+            "assigned_display",
+            "upgrade_undelivered",
+            "confirmed_at",
+            "sla_due_at",
+            "updated_at"
+          ],
+          "firstHasId": true,
+          "count": 13,
+          "matchedTicketNo": "TKT-20260923-0010"
+        },
+        "detailApi": {
+          "status": 200,
+          "error": null,
+          "error_code": null,
+          "details": [
+            "已发起退货"
+          ]
+        },
+        "page": {
+          "mock": false,
+          "actionError": [],
+          "detailText": "只读进度 TKT-20260923-0010 · 退换货 · 普通 · 处理中 处理人 售后专员 2026/9/23 10:00:48 已发起退货 挂起（等用户补充） 挂起（等仓储确认） 标记已完成 上调为 VIP 上调为高风险",
+          "hasProgressOl": true,
+          "heading": "只读进度",
+          "hasReturnOk": true,
+          "hasInvoiceOk": false,
+          "hasWantedDetail": true
+        },
+        "agentWorkbenchShowsProgressHeading": true,
+        "agentWorkbenchShowsReturnOk": true
+      }
+    },
+    {
+      "id": "TC-no-mock",
+      "ok": true,
+      "expected": "前端无 [Mock]",
+      "actual": {
+        "emp": false,
+        "agent": false,
+        "admin": false,
+        "tickets": false
+      }
+    }
+  ],
+  "failed": [],
+  "pass": true
+}

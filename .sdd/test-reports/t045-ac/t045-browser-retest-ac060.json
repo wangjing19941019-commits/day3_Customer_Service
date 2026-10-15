@@ -1,0 +1,18 @@
+{
+  "id": "ac060-agent-search-high-risk-retest",
+  "pass": false,
+  "query": "屏幕进液高风险赔付",
+  "expected": {
+    "hasToken": true,
+    "hasFile": true,
+    "mock": false
+  },
+  "actual": {
+    "hasToken": false,
+    "hasFile": false,
+    "mock": false,
+    "query": "屏幕进液高风险赔付",
+    "excerpt": "t045-user-visible.md / 手机七天无理由对客说明\n手机七天无理由对客说明\n\n未拆封的手机支持七天无理由退货。对客话术请使用固定句：T045_USER_VISIBLE_SEVEN_DAY_RETURN。\n\n请告诉顾客：包装完整、配件齐全时，可在订单页提交退货申请，无需说明理由。\n\n手机七天无理由对客说明 未拆封的手机支持七天无理由退货。\n\n生效：2026年8月31日 ~ 2027年3月22日\n\n适用品类：3C数码\n---\nt045-agent-only.md / 3C 退货内部作业手册 / 内部处理步骤\n3C 退货内部作业手册 / 内部处理步骤\n\n坐席必须先执行内部步骤 T045_AGENT_INTERNAL_STEP_NEVER_TO_USER：先冻结仓内批次码，再在后台勾选「质检豁免」。\n\n该内部步骤不得出现在未转人工的自动回答里。\n\n3C 退货内部作业手册 / 内部处理步骤 坐席必须先执行内部步骤 T045_AGENT_INTERNAL_STEP_NEVER_TO_USER：先冻结仓内批次码，再在后台勾选「质检豁免」。\n\n生效：2026年9月23日 ~ 2027",
+    "screenshot": "t045-agent-search-risk-retest.png"
+  }
+}

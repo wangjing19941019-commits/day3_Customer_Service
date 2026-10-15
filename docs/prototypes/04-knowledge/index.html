@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>知识库 · 智能客服</title>
+  <link rel="stylesheet" href="../shared/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-left">
+        <strong>智能客服</strong>
+        <span class="page-name">知识库</span>
+      </div>
+    </header>
+    <div class="shell">
+      <nav class="sidebar" aria-label="页面">
+        <a data-page="employee" href="../02-employee/index.html">员工端</a>
+        <a data-page="agent" href="../03-agent/index.html">客服端</a>
+        <a data-page="knowledge" class="active" href="../04-knowledge/index.html">知识库</a>
+      </nav>
+      <div class="main">
+        <div class="upload-bar">
+          <input id="file" type="file" accept=".md,.txt,.pdf,text/markdown,text/plain,application/pdf" />
+          <button class="btn btn-primary" type="button" id="upload">上传</button>
+          <span class="hint upload-hint">支持 Markdown、TXT，以及能抽出文字的 PDF</span>
+          <span class="error-text" id="upload-error"></span>
+        </div>
+        <div class="split" style="flex:1;min-height:0;">
+          <div class="list-col">
+            <div class="kb-filter" role="radiogroup" aria-label="入库状态筛选">
+              <button type="button" class="kb-filter-btn selected" data-filter="all" aria-pressed="true">全部</button>
+              <button type="button" class="kb-filter-btn" data-filter="ingesting" aria-pressed="false">入库中</button>
+              <button type="button" class="kb-filter-btn" data-filter="ready" aria-pressed="false">已完成</button>
+              <button type="button" class="kb-filter-btn" data-filter="failed" aria-pressed="false">请重新上传</button>
+            </div>
+            <div id="doc-list"></div>
+          </div>
+          <aside class="detail" id="detail"></aside>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../shared/app.js"></script>
+  <script>initKnowledge();</script>
+</body>
+</html>

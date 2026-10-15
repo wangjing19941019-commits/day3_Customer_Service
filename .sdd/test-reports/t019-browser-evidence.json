@@ -1,0 +1,108 @@
+{
+  "mock": true,
+  "base": "http://127.0.0.1:5203",
+  "viewport": "1440x900",
+  "cdpPort": 9449,
+  "chrome": "Chrome/153.0.8010.48",
+  "userDataDir": "C:\\Users\\慈海客服\\AppData\\Local\\Temp\\t019-chrome-nl4W3J",
+  "steps": {
+    "empty": {
+      "pathname": "/employee",
+      "emptyText": "[Mock] 描述你的购物问题",
+      "statusText": "[Mock] AI 接待中",
+      "transferText": "转人工",
+      "transferDisabled": false,
+      "hasItEmpty": false,
+      "hasShoppingEmpty": true,
+      "pageHasMock": true,
+      "topbarUser": "已登录：[Mock] it-help",
+      "conversationId": "f91c3ece-1054-419a-98bb-ce7a1bc733fc",
+      "emptyColor": "rgb(92, 107, 122)",
+      "emptyFontSize": "14px",
+      "composerPinGap": 0
+    },
+    "vague": {
+      "lastEmployee": {
+        "side": "employee",
+        "tag": null,
+        "text": "[Mock] 能不能退",
+        "rewrite": "改写为：[Mock] 当前问法缺少商品或订单对象，需补充后才能检索",
+        "alignSelf": "flex-end"
+      },
+      "lastOther": {
+        "side": "other",
+        "tag": "反问",
+        "text": "[Mock] 请问是哪件商品？例如连衣裙、耳机，还是订单和发票问题。",
+        "rewrite": null,
+        "alignSelf": "flex-start"
+      },
+      "systemTags": [
+        "反问"
+      ],
+      "hasItEmpty": false
+    },
+    "dress": {
+      "lastEmployee": {
+        "side": "employee",
+        "tag": null,
+        "text": "[Mock] 这件连衣裙能退吗",
+        "rewrite": "改写为：[Mock] 询问该连衣裙是否支持退货",
+        "alignSelf": "flex-end"
+      },
+      "lastOther": {
+        "side": "other",
+        "tag": "知识问答",
+        "text": "[Mock] 服饰美妆支持七天无理由退货，需商品完好",
+        "rewrite": null,
+        "alignSelf": "flex-start"
+      },
+      "employeeAlign": "flex-end",
+      "otherAlign": "flex-start",
+      "employeeBubble": {
+        "backgroundColor": "rgb(29, 78, 137)",
+        "color": "rgb(255, 255, 255)"
+      },
+      "systemBubble": {
+        "backgroundColor": "rgb(232, 241, 250)",
+        "color": "rgb(31, 41, 51)"
+      },
+      "composerPinGap": 0,
+      "composerFlexShrink": "0"
+    },
+    "handoff": {
+      "statusText": "[Mock] 已转人工，等待客服",
+      "transferText": "已转人工",
+      "transferDisabled": true,
+      "otherCount": 2,
+      "messageCount": 4
+    },
+    "afterHandoff": {
+      "lastEmployee": {
+        "side": "employee",
+        "tag": null,
+        "text": "[Mock] 你好",
+        "rewrite": null,
+        "alignSelf": "flex-end"
+      },
+      "lastOther": {
+        "side": "other",
+        "tag": "知识问答",
+        "text": "[Mock] 服饰美妆支持七天无理由退货，需商品完好",
+        "rewrite": null,
+        "alignSelf": "flex-start"
+      },
+      "otherCount": 2,
+      "otherBeforeSend": 2,
+      "systemTags": [
+        "反问",
+        "知识问答"
+      ],
+      "statusText": "[Mock] 已转人工，等待客服"
+    }
+  },
+  "failed": [],
+  "viteStatus": 200,
+  "viteUrl": "http://127.0.0.1:5203",
+  "landedOnLogin": true,
+  "pass": true
+}

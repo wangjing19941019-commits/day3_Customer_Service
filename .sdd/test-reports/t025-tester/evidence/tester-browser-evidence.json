@@ -1,0 +1,3239 @@
+{
+  "pass": true,
+  "failed": [],
+  "checks": [
+    {
+      "id": "empty-copy",
+      "ok": true,
+      "expected": "empty 描述你的购物问题, no [Mock], /employee",
+      "actual": {
+        "empty": "描述你的购物问题",
+        "mock": false,
+        "header": "已登录：employee",
+        "status": "AI 接待中",
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c"
+      }
+    },
+    {
+      "id": "header-no-mock",
+      "ok": true,
+      "expected": "已登录：employee / AI 接待中",
+      "actual": {
+        "header": "已登录：employee",
+        "status": "AI 接待中"
+      }
+    },
+    {
+      "id": "AC-001",
+      "ok": true,
+      "expected": "knowledge from 3C tags, 48h/星海蓝, not waiting, no mock",
+      "actual": {
+        "tag": "知识问答",
+        "text": "星海 X1 耳机配合充电盒的总续航是 48 小时。 充电盒官方颜色只有星海蓝一种。",
+        "status": "bot",
+        "waiting": false,
+        "kinds": [
+          "employee_turn",
+          "knowledge"
+        ]
+      }
+    },
+    {
+      "id": "AC-013",
+      "ok": true,
+      "expected": "fashion answer not using 3C; 3C answer not using fashion",
+      "actual": {
+        "fashionTag": "知识问答",
+        "fashionText": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策： - 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）； - 要求商品完好、吊牌未剪。 非质量问题的退货运费由买家承担。",
+        "threeCText": "星海 X1 耳机配合充电盒的总续航是 48 小时。 充电盒官方颜色只有星海蓝一种。"
+      }
+    },
+    {
+      "id": "AC-016",
+      "ok": true,
+      "expected": "one knowledge bubble/system message with both answers segmented",
+      "actual": {
+        "otherDelta": 1,
+        "systemDelta": 1,
+        "tag": "知识问答",
+        "text": "星海 X1 耳机的蓝牙版本是 5.4。 云棉连衣裙签收后 7 个自然日内可申请七天无理由退货，时限自签收次日起算，满 7 日截止。"
+      }
+    },
+    {
+      "id": "AC-012",
+      "ok": true,
+      "expected": "small_talk kind, not knowledge chunks, not fallback",
+      "actual": {
+        "tag": "闲聊",
+        "kind": "small_talk",
+        "text": "是呀，阳光暖暖的，连心情都跟着轻快起来了～ 😊"
+      }
+    },
+    {
+      "id": "AC-014",
+      "ok": true,
+      "expected": "fixed fallback, bot status, ticket 409 no row",
+      "actual": {
+        "fallbackDetails": [
+          {
+            "key": "live-location",
+            "text": "包裹现在到哪了，不要说政策只要当前位置",
+            "tag": "兜底",
+            "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "kind": "fallback",
+            "status": "bot",
+            "waiting": false,
+            "fabricated": false
+          },
+          {
+            "key": "inventory",
+            "text": "仓库里星海 X1 现在还有多少件库存",
+            "tag": "兜底",
+            "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "kind": "fallback",
+            "status": "bot",
+            "waiting": false,
+            "fabricated": false
+          },
+          {
+            "key": "payment",
+            "text": "刚才那笔支付成功了吗",
+            "tag": "兜底",
+            "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "kind": "fallback",
+            "status": "bot",
+            "waiting": false,
+            "fabricated": false
+          },
+          {
+            "key": "out-of-scope",
+            "text": "帮我推导一下广义相对论场方程，这和购物无关",
+            "tag": "兜底",
+            "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "kind": "fallback",
+            "status": "bot",
+            "waiting": false,
+            "fabricated": false
+          }
+        ],
+        "ticket": {
+          "http": 409,
+          "error": "会话尚未转人工，不能填单",
+          "error_code": "CONFLICT",
+          "hasTicketId": false
+        }
+      }
+    },
+    {
+      "id": "AC-015",
+      "ok": true,
+      "expected": "no fabricated live location/stock/payment",
+      "actual": [
+        {
+          "key": "live-location",
+          "text": "包裹现在到哪了，不要说政策只要当前位置",
+          "tag": "兜底",
+          "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+          "kind": "fallback",
+          "status": "bot",
+          "waiting": false,
+          "fabricated": false
+        },
+        {
+          "key": "inventory",
+          "text": "仓库里星海 X1 现在还有多少件库存",
+          "tag": "兜底",
+          "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+          "kind": "fallback",
+          "status": "bot",
+          "waiting": false,
+          "fabricated": false
+        },
+        {
+          "key": "payment",
+          "text": "刚才那笔支付成功了吗",
+          "tag": "兜底",
+          "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+          "kind": "fallback",
+          "status": "bot",
+          "waiting": false,
+          "fabricated": false
+        },
+        {
+          "key": "out-of-scope",
+          "text": "帮我推导一下广义相对论场方程，这和购物无关",
+          "tag": "兜底",
+          "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+          "kind": "fallback",
+          "status": "bot",
+          "waiting": false,
+          "fabricated": false
+        }
+      ]
+    },
+    {
+      "id": "empty-session-b",
+      "ok": true,
+      "expected": "new session empty copy",
+      "actual": {
+        "empty": "描述你的购物问题",
+        "mock": false,
+        "cid": "4a1d3756-599f-46ed-ad85-9b5803d78db2"
+      }
+    },
+    {
+      "id": "AC-021",
+      "ok": true,
+      "expected": "short follow-up completed to 连衣裙 return, rewritten stored",
+      "actual": {
+        "tag": "知识问答",
+        "text": "云棉连衣裙支持退货。作为服饰美妆类商品，适用“七天无理由退货”政策：签收后7个自然日内（自签收次日起算），商品保持完好、吊牌未剪，即可申请无理由退货；非质量问题的退货运费由买家承担。 办理方式：在订单页提交退货申请，原因选择「七天无理由」，并将商品寄回「华东服饰仓」。",
+        "original": "能退吗",
+        "rewritten": "云棉连衣裙能退吗"
+      }
+    },
+    {
+      "id": "AC-019",
+      "ok": true,
+      "expected": "clarification not fallback/knowledge; original+rewrite stored",
+      "actual": {
+        "tag": "反问",
+        "kind": "clarification",
+        "text": "请问您想退的是哪件商品？是电子产品（如手机、耳机）还是服饰美妆类商品？方便我为您确认对应的退货政策。",
+        "original": "能不能退",
+        "rewritten": "能不能退"
+      }
+    },
+    {
+      "id": "no-mock-page",
+      "ok": true,
+      "expected": "no [Mock] on pages",
+      "actual": {
+        "empty": false,
+        "ac001": false,
+        "ac019": false
+      }
+    }
+  ],
+  "sessionIds": {
+    "s1": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+    "s2": "4a1d3756-599f-46ed-ad85-9b5803d78db2",
+    "s3": "166d7c3b-0603-4998-9f38-59426e770739"
+  },
+  "createdConversationPosts": 6,
+  "apiCalls": [
+    {
+      "requestId": "35844.86",
+      "url": "/api/sessions",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.88",
+      "url": "/api/conversations",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.87",
+      "url": "/api/conversations",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.173",
+      "url": "/api/sessions/current",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.174",
+      "url": "/api/sessions/current",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.176",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.177",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.178",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.180",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.181",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.182",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.183",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.184",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.185",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.186",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.187",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.188",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.189",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.190",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.191",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.192",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.193",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.194",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.195",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.196",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.197",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.179",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c/messages",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.198",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.199",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.200",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.202",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.203",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.204",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.205",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.206",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.207",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.208",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.209",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.210",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.211",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.212",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.213",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.214",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.215",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.216",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.217",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.218",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.219",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.201",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c/messages",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.220",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.221",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.222",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.224",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.225",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.226",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.227",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.228",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.229",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.230",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.231",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.232",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.233",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.234",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.235",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.236",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.237",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.238",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.239",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.240",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.241",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.242",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.243",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.244",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.245",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.246",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.247",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.248",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.249",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.223",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c/messages",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.250",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.251",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.252",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.254",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.255",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.256",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.257",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.258",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.259",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.260",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.261",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.262",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.253",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c/messages",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.263",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.264",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.265",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.267",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.268",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.269",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.270",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.271",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.272",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.273",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.274",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.275",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.276",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.277",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.278",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.279",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.266",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c/messages",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.280",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.281",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.282",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.284",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.285",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.286",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.287",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.288",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.289",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.290",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.291",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.292",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.293",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.294",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.295",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.283",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c/messages",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.296",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.297",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.298",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.300",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.301",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.302",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.303",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.304",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.305",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.306",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.307",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.308",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.309",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.299",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c/messages",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.310",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.311",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.312",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.314",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.315",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.316",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.317",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.318",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.319",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.320",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.321",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.322",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.323",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.324",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.313",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c/messages",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.325",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.326",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.327",
+      "url": "/api/conversations/c7fd212f-f229-46d6-82c2-d93e3235b64c/ticket",
+      "method": "GET",
+      "status": 409,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.412",
+      "url": "/api/sessions/current",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.413",
+      "url": "/api/sessions/current",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.416",
+      "url": "/api/conversations",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.415",
+      "url": "/api/conversations",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.501",
+      "url": "/api/sessions/current",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.502",
+      "url": "/api/sessions/current",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.504",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.505",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.506",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.508",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.509",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.510",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.511",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.512",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.513",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.514",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.515",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.516",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.517",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.518",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.519",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.520",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.521",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.522",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.523",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.524",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.507",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2/messages",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.525",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.526",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.528",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.529",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.530",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.531",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.532",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.533",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.534",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.535",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.536",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.537",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.538",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.539",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.540",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.541",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.542",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.543",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.544",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.545",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.546",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.547",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.527",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2/messages",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.548",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.549",
+      "url": "/api/conversations/4a1d3756-599f-46ed-ad85-9b5803d78db2",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.634",
+      "url": "/api/sessions/current",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.635",
+      "url": "/api/sessions/current",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.637",
+      "url": "/api/conversations",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.638",
+      "url": "/api/conversations",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.723",
+      "url": "/api/sessions/current",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.724",
+      "url": "/api/sessions/current",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.726",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.727",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.728",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.730",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.731",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.732",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.733",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.734",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.735",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.736",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.737",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.738",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.739",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.740",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.741",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.742",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.729",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739/messages",
+      "method": "POST",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.743",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    },
+    {
+      "requestId": "35844.744",
+      "url": "/api/conversations/166d7c3b-0603-4998-9f38-59426e770739",
+      "method": "GET",
+      "status": 200,
+      "mime": "application/json"
+    }
+  ],
+  "results": {
+    "empty": {
+      "pathname": "/employee",
+      "header": "已登录：employee",
+      "status": "AI 接待中",
+      "empty": "描述你的购物问题",
+      "mock": false,
+      "bodyHasITEmpty": false,
+      "waiting": false,
+      "transferDisabled": false,
+      "otherCount": 0,
+      "employeeCount": 0,
+      "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+      "messages": []
+    },
+    "AC-001": {
+      "snap": {
+        "pathname": "/employee",
+        "header": "已登录：employee",
+        "status": "AI 接待中",
+        "empty": null,
+        "mock": false,
+        "bodyHasITEmpty": false,
+        "waiting": false,
+        "transferDisabled": false,
+        "otherCount": 1,
+        "employeeCount": 1,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "messages": [
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewrite": "改写为：星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "星海 X1 耳机配合充电盒的总续航是 48 小时。 充电盒官方颜色只有星海蓝一种。",
+            "rewrite": null
+          }
+        ]
+      },
+      "conv": {
+        "http": 200,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "status": "bot",
+        "waiting_for_agent": false,
+        "clarification_round": 0,
+        "messages": [
+          {
+            "id": "07c78196-a828-4d6f-b91c-d3548f2cc321",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "original_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewritten_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "id": "6921f340-7868-4524-a65b-76fa4a6f00bc",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "星海 X1 耳机配合充电盒的总续航是 48 小时。  \n充电盒官方颜色只有星海蓝一种。",
+            "original_content": null,
+            "rewritten_content": null
+          }
+        ]
+      }
+    },
+    "AC-013": {
+      "snap": {
+        "pathname": "/employee",
+        "header": "已登录：employee",
+        "status": "AI 接待中",
+        "empty": null,
+        "mock": false,
+        "bodyHasITEmpty": false,
+        "waiting": false,
+        "transferDisabled": false,
+        "otherCount": 2,
+        "employeeCount": 2,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "messages": [
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewrite": "改写为：星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "星海 X1 耳机配合充电盒的总续航是 48 小时。 充电盒官方颜色只有星海蓝一种。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "rewrite": "改写为：云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策： - 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）； - 要求商品完好、吊牌未剪。 非质量问题的退货运费由买家承担。",
+            "rewrite": null
+          }
+        ]
+      },
+      "conv": {
+        "http": 200,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "status": "bot",
+        "waiting_for_agent": false,
+        "clarification_round": 0,
+        "messages": [
+          {
+            "id": "07c78196-a828-4d6f-b91c-d3548f2cc321",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "original_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewritten_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "id": "6921f340-7868-4524-a65b-76fa4a6f00bc",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "星海 X1 耳机配合充电盒的总续航是 48 小时。  \n充电盒官方颜色只有星海蓝一种。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "badb2779-204e-43ad-9f2a-9b700c467f9e",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "original_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "rewritten_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+          },
+          {
+            "id": "4b660aa2-9361-4573-9c11-01bb85d1b7d1",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策：  \n- 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）；  \n- 要求商品完好、吊牌未剪。  \n\n非质量问题的退货运费由买家承担。",
+            "original_content": null,
+            "rewritten_content": null
+          }
+        ]
+      }
+    },
+    "AC-016": {
+      "snap": {
+        "pathname": "/employee",
+        "header": "已登录：employee",
+        "status": "AI 接待中",
+        "empty": null,
+        "mock": false,
+        "bodyHasITEmpty": false,
+        "waiting": false,
+        "transferDisabled": false,
+        "otherCount": 3,
+        "employeeCount": 3,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "messages": [
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewrite": "改写为：星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "星海 X1 耳机配合充电盒的总续航是 48 小时。 充电盒官方颜色只有星海蓝一种。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "rewrite": "改写为：云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策： - 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）； - 要求商品完好、吊牌未剪。 非质量问题的退货运费由买家承担。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "rewrite": "改写为：星海 X1 耳机的蓝牙版本是什么？云棉连衣裙签收后几天可以无理由退货？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "星海 X1 耳机的蓝牙版本是 5.4。 云棉连衣裙签收后 7 个自然日内可申请七天无理由退货，时限自签收次日起算，满 7 日截止。",
+            "rewrite": null
+          }
+        ]
+      },
+      "conv": {
+        "http": 200,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "status": "bot",
+        "waiting_for_agent": false,
+        "clarification_round": 0,
+        "messages": [
+          {
+            "id": "07c78196-a828-4d6f-b91c-d3548f2cc321",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "original_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewritten_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "id": "6921f340-7868-4524-a65b-76fa4a6f00bc",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "星海 X1 耳机配合充电盒的总续航是 48 小时。  \n充电盒官方颜色只有星海蓝一种。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "badb2779-204e-43ad-9f2a-9b700c467f9e",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "original_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "rewritten_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+          },
+          {
+            "id": "4b660aa2-9361-4573-9c11-01bb85d1b7d1",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策：  \n- 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）；  \n- 要求商品完好、吊牌未剪。  \n\n非质量问题的退货运费由买家承担。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "56e76002-900c-457e-8280-eec26399f459",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "original_content": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "rewritten_content": "星海 X1 耳机的蓝牙版本是什么？云棉连衣裙签收后几天可以无理由退货？"
+          },
+          {
+            "id": "dddfcb96-b212-4d36-b0d1-b3fc09a63b0b",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "星海 X1 耳机的蓝牙版本是 5.4。\n\n云棉连衣裙签收后 7 个自然日内可申请七天无理由退货，时限自签收次日起算，满 7 日截止。",
+            "original_content": null,
+            "rewritten_content": null
+          }
+        ]
+      }
+    },
+    "AC-012": {
+      "snap": {
+        "pathname": "/employee",
+        "header": "已登录：employee",
+        "status": "AI 接待中",
+        "empty": null,
+        "mock": false,
+        "bodyHasITEmpty": false,
+        "waiting": false,
+        "transferDisabled": false,
+        "otherCount": 4,
+        "employeeCount": 4,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "messages": [
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewrite": "改写为：星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "星海 X1 耳机配合充电盒的总续航是 48 小时。 充电盒官方颜色只有星海蓝一种。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "rewrite": "改写为：云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策： - 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）； - 要求商品完好、吊牌未剪。 非质量问题的退货运费由买家承担。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "rewrite": "改写为：星海 X1 耳机的蓝牙版本是什么？云棉连衣裙签收后几天可以无理由退货？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "星海 X1 耳机的蓝牙版本是 5.4。 云棉连衣裙签收后 7 个自然日内可申请七天无理由退货，时限自签收次日起算，满 7 日截止。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "rewrite": "改写为：今天天气真好，陪我闲聊两句吧，不谈购物也不问商品"
+          },
+          {
+            "role": "other",
+            "tag": "闲聊",
+            "text": "是呀，阳光暖暖的，连心情都跟着轻快起来了～ 😊",
+            "rewrite": null
+          }
+        ]
+      },
+      "conv": {
+        "http": 200,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "status": "bot",
+        "waiting_for_agent": false,
+        "clarification_round": 0,
+        "messages": [
+          {
+            "id": "07c78196-a828-4d6f-b91c-d3548f2cc321",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "original_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewritten_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "id": "6921f340-7868-4524-a65b-76fa4a6f00bc",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "星海 X1 耳机配合充电盒的总续航是 48 小时。  \n充电盒官方颜色只有星海蓝一种。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "badb2779-204e-43ad-9f2a-9b700c467f9e",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "original_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "rewritten_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+          },
+          {
+            "id": "4b660aa2-9361-4573-9c11-01bb85d1b7d1",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策：  \n- 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）；  \n- 要求商品完好、吊牌未剪。  \n\n非质量问题的退货运费由买家承担。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "56e76002-900c-457e-8280-eec26399f459",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "original_content": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "rewritten_content": "星海 X1 耳机的蓝牙版本是什么？云棉连衣裙签收后几天可以无理由退货？"
+          },
+          {
+            "id": "dddfcb96-b212-4d36-b0d1-b3fc09a63b0b",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "星海 X1 耳机的蓝牙版本是 5.4。\n\n云棉连衣裙签收后 7 个自然日内可申请七天无理由退货，时限自签收次日起算，满 7 日截止。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "57022853-eed8-4f7d-9a4a-3f7d187792a3",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "original_content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "rewritten_content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品"
+          },
+          {
+            "id": "a7d141cf-687f-4941-b751-8b6f703bd81b",
+            "role": "system",
+            "kind": "small_talk",
+            "content": "是呀，阳光暖暖的，连心情都跟着轻快起来了～ 😊",
+            "original_content": null,
+            "rewritten_content": null
+          }
+        ]
+      }
+    },
+    "AC-014-live-location": {
+      "snap": {
+        "pathname": "/employee",
+        "header": "已登录：employee",
+        "status": "AI 接待中",
+        "empty": null,
+        "mock": false,
+        "bodyHasITEmpty": false,
+        "waiting": false,
+        "transferDisabled": false,
+        "otherCount": 5,
+        "employeeCount": 5,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "messages": [
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewrite": "改写为：星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "星海 X1 耳机配合充电盒的总续航是 48 小时。 充电盒官方颜色只有星海蓝一种。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "rewrite": "改写为：云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策： - 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）； - 要求商品完好、吊牌未剪。 非质量问题的退货运费由买家承担。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "rewrite": "改写为：星海 X1 耳机的蓝牙版本是什么？云棉连衣裙签收后几天可以无理由退货？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "星海 X1 耳机的蓝牙版本是 5.4。 云棉连衣裙签收后 7 个自然日内可申请七天无理由退货，时限自签收次日起算，满 7 日截止。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "rewrite": "改写为：今天天气真好，陪我闲聊两句吧，不谈购物也不问商品"
+          },
+          {
+            "role": "other",
+            "tag": "闲聊",
+            "text": "是呀，阳光暖暖的，连心情都跟着轻快起来了～ 😊",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "包裹现在到哪了，不要说政策只要当前位置",
+            "rewrite": "改写为：包裹现在到哪了，只要当前位置，不要说政策"
+          },
+          {
+            "role": "other",
+            "tag": "兜底",
+            "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "rewrite": null
+          }
+        ]
+      },
+      "conv": {
+        "http": 200,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "status": "bot",
+        "waiting_for_agent": false,
+        "clarification_round": 0,
+        "messages": [
+          {
+            "id": "07c78196-a828-4d6f-b91c-d3548f2cc321",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "original_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewritten_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "id": "6921f340-7868-4524-a65b-76fa4a6f00bc",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "星海 X1 耳机配合充电盒的总续航是 48 小时。  \n充电盒官方颜色只有星海蓝一种。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "badb2779-204e-43ad-9f2a-9b700c467f9e",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "original_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "rewritten_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+          },
+          {
+            "id": "4b660aa2-9361-4573-9c11-01bb85d1b7d1",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策：  \n- 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）；  \n- 要求商品完好、吊牌未剪。  \n\n非质量问题的退货运费由买家承担。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "56e76002-900c-457e-8280-eec26399f459",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "original_content": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "rewritten_content": "星海 X1 耳机的蓝牙版本是什么？云棉连衣裙签收后几天可以无理由退货？"
+          },
+          {
+            "id": "dddfcb96-b212-4d36-b0d1-b3fc09a63b0b",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "星海 X1 耳机的蓝牙版本是 5.4。\n\n云棉连衣裙签收后 7 个自然日内可申请七天无理由退货，时限自签收次日起算，满 7 日截止。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "57022853-eed8-4f7d-9a4a-3f7d187792a3",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "original_content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "rewritten_content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品"
+          },
+          {
+            "id": "a7d141cf-687f-4941-b751-8b6f703bd81b",
+            "role": "system",
+            "kind": "small_talk",
+            "content": "是呀，阳光暖暖的，连心情都跟着轻快起来了～ 😊",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "a95c18c9-e204-4f18-be1c-056f4b7f6492",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "包裹现在到哪了，不要说政策只要当前位置",
+            "original_content": "包裹现在到哪了，不要说政策只要当前位置",
+            "rewritten_content": "包裹现在到哪了，只要当前位置，不要说政策"
+          },
+          {
+            "id": "2db4a4de-8eac-4a23-b410-e1689d46d02a",
+            "role": "system",
+            "kind": "fallback",
+            "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "original_content": null,
+            "rewritten_content": null
+          }
+        ]
+      }
+    },
+    "AC-014-inventory": {
+      "snap": {
+        "pathname": "/employee",
+        "header": "已登录：employee",
+        "status": "AI 接待中",
+        "empty": null,
+        "mock": false,
+        "bodyHasITEmpty": false,
+        "waiting": false,
+        "transferDisabled": false,
+        "otherCount": 6,
+        "employeeCount": 6,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "messages": [
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewrite": "改写为：星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "星海 X1 耳机配合充电盒的总续航是 48 小时。 充电盒官方颜色只有星海蓝一种。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "rewrite": "改写为：云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策： - 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）； - 要求商品完好、吊牌未剪。 非质量问题的退货运费由买家承担。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "rewrite": "改写为：星海 X1 耳机的蓝牙版本是什么？云棉连衣裙签收后几天可以无理由退货？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "星海 X1 耳机的蓝牙版本是 5.4。 云棉连衣裙签收后 7 个自然日内可申请七天无理由退货，时限自签收次日起算，满 7 日截止。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "rewrite": "改写为：今天天气真好，陪我闲聊两句吧，不谈购物也不问商品"
+          },
+          {
+            "role": "other",
+            "tag": "闲聊",
+            "text": "是呀，阳光暖暖的，连心情都跟着轻快起来了～ 😊",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "包裹现在到哪了，不要说政策只要当前位置",
+            "rewrite": "改写为：包裹现在到哪了，只要当前位置，不要说政策"
+          },
+          {
+            "role": "other",
+            "tag": "兜底",
+            "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "仓库里星海 X1 现在还有多少件库存",
+            "rewrite": "改写为：仓库里星海 X1 现在还有多少件库存"
+          },
+          {
+            "role": "other",
+            "tag": "兜底",
+            "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "rewrite": null
+          }
+        ]
+      },
+      "conv": {
+        "http": 200,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "status": "bot",
+        "waiting_for_agent": false,
+        "clarification_round": 0,
+        "messages": [
+          {
+            "id": "07c78196-a828-4d6f-b91c-d3548f2cc321",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "original_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewritten_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "id": "6921f340-7868-4524-a65b-76fa4a6f00bc",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "星海 X1 耳机配合充电盒的总续航是 48 小时。  \n充电盒官方颜色只有星海蓝一种。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "badb2779-204e-43ad-9f2a-9b700c467f9e",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "original_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "rewritten_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+          },
+          {
+            "id": "4b660aa2-9361-4573-9c11-01bb85d1b7d1",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策：  \n- 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）；  \n- 要求商品完好、吊牌未剪。  \n\n非质量问题的退货运费由买家承担。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "56e76002-900c-457e-8280-eec26399f459",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "original_content": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "rewritten_content": "星海 X1 耳机的蓝牙版本是什么？云棉连衣裙签收后几天可以无理由退货？"
+          },
+          {
+            "id": "dddfcb96-b212-4d36-b0d1-b3fc09a63b0b",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "星海 X1 耳机的蓝牙版本是 5.4。\n\n云棉连衣裙签收后 7 个自然日内可申请七天无理由退货，时限自签收次日起算，满 7 日截止。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "57022853-eed8-4f7d-9a4a-3f7d187792a3",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "original_content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "rewritten_content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品"
+          },
+          {
+            "id": "a7d141cf-687f-4941-b751-8b6f703bd81b",
+            "role": "system",
+            "kind": "small_talk",
+            "content": "是呀，阳光暖暖的，连心情都跟着轻快起来了～ 😊",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "a95c18c9-e204-4f18-be1c-056f4b7f6492",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "包裹现在到哪了，不要说政策只要当前位置",
+            "original_content": "包裹现在到哪了，不要说政策只要当前位置",
+            "rewritten_content": "包裹现在到哪了，只要当前位置，不要说政策"
+          },
+          {
+            "id": "2db4a4de-8eac-4a23-b410-e1689d46d02a",
+            "role": "system",
+            "kind": "fallback",
+            "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "67ab2eb9-203d-4424-b0ce-b5cc71a680df",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "仓库里星海 X1 现在还有多少件库存",
+            "original_content": "仓库里星海 X1 现在还有多少件库存",
+            "rewritten_content": "仓库里星海 X1 现在还有多少件库存"
+          },
+          {
+            "id": "ae86c457-bae6-465a-920c-1993d9b1a248",
+            "role": "system",
+            "kind": "fallback",
+            "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "original_content": null,
+            "rewritten_content": null
+          }
+        ]
+      }
+    },
+    "AC-014-payment": {
+      "snap": {
+        "pathname": "/employee",
+        "header": "已登录：employee",
+        "status": "AI 接待中",
+        "empty": null,
+        "mock": false,
+        "bodyHasITEmpty": false,
+        "waiting": false,
+        "transferDisabled": false,
+        "otherCount": 7,
+        "employeeCount": 7,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "messages": [
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewrite": "改写为：星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "星海 X1 耳机配合充电盒的总续航是 48 小时。 充电盒官方颜色只有星海蓝一种。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "rewrite": "改写为：云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策： - 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）； - 要求商品完好、吊牌未剪。 非质量问题的退货运费由买家承担。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "rewrite": "改写为：星海 X1 耳机的蓝牙版本是什么？云棉连衣裙签收后几天可以无理由退货？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "星海 X1 耳机的蓝牙版本是 5.4。 云棉连衣裙签收后 7 个自然日内可申请七天无理由退货，时限自签收次日起算，满 7 日截止。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "rewrite": "改写为：今天天气真好，陪我闲聊两句吧，不谈购物也不问商品"
+          },
+          {
+            "role": "other",
+            "tag": "闲聊",
+            "text": "是呀，阳光暖暖的，连心情都跟着轻快起来了～ 😊",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "包裹现在到哪了，不要说政策只要当前位置",
+            "rewrite": "改写为：包裹现在到哪了，只要当前位置，不要说政策"
+          },
+          {
+            "role": "other",
+            "tag": "兜底",
+            "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "仓库里星海 X1 现在还有多少件库存",
+            "rewrite": "改写为：仓库里星海 X1 现在还有多少件库存"
+          },
+          {
+            "role": "other",
+            "tag": "兜底",
+            "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "刚才那笔支付成功了吗",
+            "rewrite": "改写为：刚才那笔支付是否成功"
+          },
+          {
+            "role": "other",
+            "tag": "兜底",
+            "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "rewrite": null
+          }
+        ]
+      },
+      "conv": {
+        "http": 200,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "status": "bot",
+        "waiting_for_agent": false,
+        "clarification_round": 0,
+        "messages": [
+          {
+            "id": "07c78196-a828-4d6f-b91c-d3548f2cc321",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "original_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewritten_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "id": "6921f340-7868-4524-a65b-76fa4a6f00bc",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "星海 X1 耳机配合充电盒的总续航是 48 小时。  \n充电盒官方颜色只有星海蓝一种。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "badb2779-204e-43ad-9f2a-9b700c467f9e",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "original_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "rewritten_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+          },
+          {
+            "id": "4b660aa2-9361-4573-9c11-01bb85d1b7d1",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策：  \n- 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）；  \n- 要求商品完好、吊牌未剪。  \n\n非质量问题的退货运费由买家承担。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "56e76002-900c-457e-8280-eec26399f459",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "original_content": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "rewritten_content": "星海 X1 耳机的蓝牙版本是什么？云棉连衣裙签收后几天可以无理由退货？"
+          },
+          {
+            "id": "dddfcb96-b212-4d36-b0d1-b3fc09a63b0b",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "星海 X1 耳机的蓝牙版本是 5.4。\n\n云棉连衣裙签收后 7 个自然日内可申请七天无理由退货，时限自签收次日起算，满 7 日截止。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "57022853-eed8-4f7d-9a4a-3f7d187792a3",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "original_content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "rewritten_content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品"
+          },
+          {
+            "id": "a7d141cf-687f-4941-b751-8b6f703bd81b",
+            "role": "system",
+            "kind": "small_talk",
+            "content": "是呀，阳光暖暖的，连心情都跟着轻快起来了～ 😊",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "a95c18c9-e204-4f18-be1c-056f4b7f6492",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "包裹现在到哪了，不要说政策只要当前位置",
+            "original_content": "包裹现在到哪了，不要说政策只要当前位置",
+            "rewritten_content": "包裹现在到哪了，只要当前位置，不要说政策"
+          },
+          {
+            "id": "2db4a4de-8eac-4a23-b410-e1689d46d02a",
+            "role": "system",
+            "kind": "fallback",
+            "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "67ab2eb9-203d-4424-b0ce-b5cc71a680df",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "仓库里星海 X1 现在还有多少件库存",
+            "original_content": "仓库里星海 X1 现在还有多少件库存",
+            "rewritten_content": "仓库里星海 X1 现在还有多少件库存"
+          },
+          {
+            "id": "ae86c457-bae6-465a-920c-1993d9b1a248",
+            "role": "system",
+            "kind": "fallback",
+            "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "a9a079fc-e84a-4b2e-95db-8ea105a5963e",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "刚才那笔支付成功了吗",
+            "original_content": "刚才那笔支付成功了吗",
+            "rewritten_content": "刚才那笔支付是否成功"
+          },
+          {
+            "id": "2a659004-d7a7-4f9a-99d0-ac635aee9e78",
+            "role": "system",
+            "kind": "fallback",
+            "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "original_content": null,
+            "rewritten_content": null
+          }
+        ]
+      }
+    },
+    "AC-014-out-of-scope": {
+      "snap": {
+        "pathname": "/employee",
+        "header": "已登录：employee",
+        "status": "AI 接待中",
+        "empty": null,
+        "mock": false,
+        "bodyHasITEmpty": false,
+        "waiting": false,
+        "transferDisabled": false,
+        "otherCount": 8,
+        "employeeCount": 8,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "messages": [
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewrite": "改写为：星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "星海 X1 耳机配合充电盒的总续航是 48 小时。 充电盒官方颜色只有星海蓝一种。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "rewrite": "改写为：云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策： - 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）； - 要求商品完好、吊牌未剪。 非质量问题的退货运费由买家承担。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "rewrite": "改写为：星海 X1 耳机的蓝牙版本是什么？云棉连衣裙签收后几天可以无理由退货？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "星海 X1 耳机的蓝牙版本是 5.4。 云棉连衣裙签收后 7 个自然日内可申请七天无理由退货，时限自签收次日起算，满 7 日截止。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "rewrite": "改写为：今天天气真好，陪我闲聊两句吧，不谈购物也不问商品"
+          },
+          {
+            "role": "other",
+            "tag": "闲聊",
+            "text": "是呀，阳光暖暖的，连心情都跟着轻快起来了～ 😊",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "包裹现在到哪了，不要说政策只要当前位置",
+            "rewrite": "改写为：包裹现在到哪了，只要当前位置，不要说政策"
+          },
+          {
+            "role": "other",
+            "tag": "兜底",
+            "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "仓库里星海 X1 现在还有多少件库存",
+            "rewrite": "改写为：仓库里星海 X1 现在还有多少件库存"
+          },
+          {
+            "role": "other",
+            "tag": "兜底",
+            "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "刚才那笔支付成功了吗",
+            "rewrite": "改写为：刚才那笔支付是否成功"
+          },
+          {
+            "role": "other",
+            "tag": "兜底",
+            "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "帮我推导一下广义相对论场方程，这和购物无关",
+            "rewrite": "改写为：帮我推导一下广义相对论场方程，这和购物无关"
+          },
+          {
+            "role": "other",
+            "tag": "兜底",
+            "text": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "rewrite": null
+          }
+        ]
+      },
+      "conv": {
+        "http": 200,
+        "cid": "c7fd212f-f229-46d6-82c2-d93e3235b64c",
+        "status": "bot",
+        "waiting_for_agent": false,
+        "clarification_round": 0,
+        "messages": [
+          {
+            "id": "07c78196-a828-4d6f-b91c-d3548f2cc321",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "original_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？",
+            "rewritten_content": "星海 X1 耳机配合充电盒的总续航是多少小时？充电盒官方颜色是什么？"
+          },
+          {
+            "id": "6921f340-7868-4524-a65b-76fa4a6f00bc",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "星海 X1 耳机配合充电盒的总续航是 48 小时。  \n充电盒官方颜色只有星海蓝一种。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "badb2779-204e-43ad-9f2a-9b700c467f9e",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "original_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？",
+            "rewritten_content": "云棉连衣裙签收后几天可以无理由退货？吊牌有什么要求？"
+          },
+          {
+            "id": "4b660aa2-9361-4573-9c11-01bb85d1b7d1",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策：  \n- 退货时限为签收后7个自然日内（自签收次日起算，满7日截止）；  \n- 要求商品完好、吊牌未剪。  \n\n非质量问题的退货运费由买家承担。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "56e76002-900c-457e-8280-eec26399f459",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "original_content": "星海 X1 的蓝牙版本是什么？另外云棉连衣裙的退货时限是几天？",
+            "rewritten_content": "星海 X1 耳机的蓝牙版本是什么？云棉连衣裙签收后几天可以无理由退货？"
+          },
+          {
+            "id": "dddfcb96-b212-4d36-b0d1-b3fc09a63b0b",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "星海 X1 耳机的蓝牙版本是 5.4。\n\n云棉连衣裙签收后 7 个自然日内可申请七天无理由退货，时限自签收次日起算，满 7 日截止。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "57022853-eed8-4f7d-9a4a-3f7d187792a3",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "original_content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品",
+            "rewritten_content": "今天天气真好，陪我闲聊两句吧，不谈购物也不问商品"
+          },
+          {
+            "id": "a7d141cf-687f-4941-b751-8b6f703bd81b",
+            "role": "system",
+            "kind": "small_talk",
+            "content": "是呀，阳光暖暖的，连心情都跟着轻快起来了～ 😊",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "a95c18c9-e204-4f18-be1c-056f4b7f6492",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "包裹现在到哪了，不要说政策只要当前位置",
+            "original_content": "包裹现在到哪了，不要说政策只要当前位置",
+            "rewritten_content": "包裹现在到哪了，只要当前位置，不要说政策"
+          },
+          {
+            "id": "2db4a4de-8eac-4a23-b410-e1689d46d02a",
+            "role": "system",
+            "kind": "fallback",
+            "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "67ab2eb9-203d-4424-b0ce-b5cc71a680df",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "仓库里星海 X1 现在还有多少件库存",
+            "original_content": "仓库里星海 X1 现在还有多少件库存",
+            "rewritten_content": "仓库里星海 X1 现在还有多少件库存"
+          },
+          {
+            "id": "ae86c457-bae6-465a-920c-1993d9b1a248",
+            "role": "system",
+            "kind": "fallback",
+            "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "a9a079fc-e84a-4b2e-95db-8ea105a5963e",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "刚才那笔支付成功了吗",
+            "original_content": "刚才那笔支付成功了吗",
+            "rewritten_content": "刚才那笔支付是否成功"
+          },
+          {
+            "id": "2a659004-d7a7-4f9a-99d0-ac635aee9e78",
+            "role": "system",
+            "kind": "fallback",
+            "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "8a42f54b-72e6-441a-9a7a-89e77ad344f8",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "帮我推导一下广义相对论场方程，这和购物无关",
+            "original_content": "帮我推导一下广义相对论场方程，这和购物无关",
+            "rewritten_content": "帮我推导一下广义相对论场方程，这和购物无关"
+          },
+          {
+            "id": "789532c8-da35-4f25-9502-ade1aeaf3cb4",
+            "role": "system",
+            "kind": "fallback",
+            "content": "抱歉，这个问题我暂时无法根据现有知识准确回答。你可以换个说法再问，或点击转人工。",
+            "original_content": null,
+            "rewritten_content": null
+          }
+        ]
+      }
+    },
+    "ticketProbe": {
+      "http": 409,
+      "error": "会话尚未转人工，不能填单",
+      "error_code": "CONFLICT",
+      "hasTicketId": false
+    },
+    "AC-021": {
+      "snap": {
+        "pathname": "/employee",
+        "header": "已登录：employee",
+        "status": "AI 接待中",
+        "empty": null,
+        "mock": false,
+        "bodyHasITEmpty": false,
+        "waiting": false,
+        "transferDisabled": false,
+        "otherCount": 2,
+        "employeeCount": 2,
+        "cid": "4a1d3756-599f-46ed-ad85-9b5803d78db2",
+        "messages": [
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "这件云棉连衣裙退货要不要保留吊牌？",
+            "rewrite": "改写为：这件云棉连衣裙退货要不要保留吊牌？"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "需要保留吊牌。 云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策：签收后7个自然日内，商品完好且吊牌未剪，方可办理无理由退货。",
+            "rewrite": null
+          },
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "能退吗",
+            "rewrite": "改写为：云棉连衣裙能退吗"
+          },
+          {
+            "role": "other",
+            "tag": "知识问答",
+            "text": "云棉连衣裙支持退货。作为服饰美妆类商品，适用“七天无理由退货”政策：签收后7个自然日内（自签收次日起算），商品保持完好、吊牌未剪，即可申请无理由退货；非质量问题的退货运费由买家承担。 办理方式：在订单页提交退货申请，原因选择「七天无理由」，并将商品寄回「华东服饰仓」。",
+            "rewrite": null
+          }
+        ]
+      },
+      "conv": {
+        "http": 200,
+        "cid": "4a1d3756-599f-46ed-ad85-9b5803d78db2",
+        "status": "bot",
+        "waiting_for_agent": false,
+        "clarification_round": 0,
+        "messages": [
+          {
+            "id": "3ba6078c-444b-4574-98d4-e3aacc42981a",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "这件云棉连衣裙退货要不要保留吊牌？",
+            "original_content": "这件云棉连衣裙退货要不要保留吊牌？",
+            "rewritten_content": "这件云棉连衣裙退货要不要保留吊牌？"
+          },
+          {
+            "id": "b58ee778-fd03-416d-8c09-374995c47a39",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "需要保留吊牌。  \n云棉连衣裙属于服饰美妆商品，适用七天无理由退货政策：签收后7个自然日内，商品完好且吊牌未剪，方可办理无理由退货。",
+            "original_content": null,
+            "rewritten_content": null
+          },
+          {
+            "id": "77801ad7-8ae1-4e83-b633-d94027264c1e",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "能退吗",
+            "original_content": "能退吗",
+            "rewritten_content": "云棉连衣裙能退吗"
+          },
+          {
+            "id": "577547c8-a5a9-4730-94b6-37caa5f531e0",
+            "role": "system",
+            "kind": "knowledge",
+            "content": "云棉连衣裙支持退货。作为服饰美妆类商品，适用“七天无理由退货”政策：签收后7个自然日内（自签收次日起算），商品保持完好、吊牌未剪，即可申请无理由退货；非质量问题的退货运费由买家承担。\n\n办理方式：在订单页提交退货申请，原因选择「七天无理由」，并将商品寄回「华东服饰仓」。",
+            "original_content": null,
+            "rewritten_content": null
+          }
+        ]
+      }
+    },
+    "AC-019": {
+      "snap": {
+        "pathname": "/employee",
+        "header": "已登录：employee",
+        "status": "AI 接待中",
+        "empty": null,
+        "mock": false,
+        "bodyHasITEmpty": false,
+        "waiting": false,
+        "transferDisabled": false,
+        "otherCount": 1,
+        "employeeCount": 1,
+        "cid": "166d7c3b-0603-4998-9f38-59426e770739",
+        "messages": [
+          {
+            "role": "employee",
+            "tag": null,
+            "text": "能不能退",
+            "rewrite": "改写为：能不能退"
+          },
+          {
+            "role": "other",
+            "tag": "反问",
+            "text": "请问您想退的是哪件商品？是电子产品（如手机、耳机）还是服饰美妆类商品？方便我为您确认对应的退货政策。",
+            "rewrite": null
+          }
+        ]
+      },
+      "conv": {
+        "http": 200,
+        "cid": "166d7c3b-0603-4998-9f38-59426e770739",
+        "status": "bot",
+        "waiting_for_agent": false,
+        "clarification_round": 1,
+        "messages": [
+          {
+            "id": "23359d8c-b17d-429f-876c-29c9031e332b",
+            "role": "employee",
+            "kind": "employee_turn",
+            "content": "能不能退",
+            "original_content": "能不能退",
+            "rewritten_content": "能不能退"
+          },
+          {
+            "id": "1a1bcb77-fa33-4b47-b96e-3a88b65e0c1f",
+            "role": "system",
+            "kind": "clarification",
+            "content": "请问您想退的是哪件商品？是电子产品（如手机、耳机）还是服饰美妆类商品？方便我为您确认对应的退货政策。",
+            "original_content": null,
+            "rewritten_content": null
+          }
+        ]
+      }
+    }
+  },
+  "secrets_omitted": true
+}
